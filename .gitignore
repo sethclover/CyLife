@@ -86,4 +86,8 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# ignoring DS_Store that the terminal created
+.DS_Store
+
+
 # End of https://www.toptal.com/developers/gitignore/api/java,android,maven
