@@ -20,7 +20,7 @@ class WelcomeController {
     @GetMapping("/{name}")
     public String personalizedWelcome(@PathVariable String name) {
         return "<html><body style='font-family:Arial; color:green; font-size:18px;'>"
-                + "Hello " + name + ", welcome to the world of COMS 309! Ready to code?"
+                + "Hello " + name + ", you suck at Valorant, please join Greg at 10:00pm to be better."
                 + "</body></html>";
     }
 }
