@@ -13,7 +13,7 @@ public class Person {
 
     private String lastName;
 
-    private String address;
+    private String homePlanet;
 
     private String telephone;
 
@@ -21,10 +21,10 @@ public class Person {
         
     }
 
-    public Person(String firstName, String lastName, String address, String telephone){
+    public Person(String firstName, String lastName, String homePlanet, String telephone){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
+        this.homePlanet = homePlanet;
         this.telephone = telephone;
     }
 
@@ -44,12 +44,12 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return this.address;
+    public String getHomePlanet() {
+        return this.homePlanet;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setHomePlanet(String homePlanet) {
+        this.homePlanet = homePlanet;
     }
 
     public String getTelephone() {
@@ -64,7 +64,7 @@ public class Person {
     public String toString() {
         return firstName + " " 
                + lastName + " "
-               + address + " "
+               + homePlanet + " "
                + telephone;
     }
 }

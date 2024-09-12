@@ -1,35 +1,36 @@
 package coms309.people;
-
-
 /**
- * Provides the Definition/Structure for the people row
- *
- * @author Vivek Bengre
+ * Defines a person with attributes like name, address, etc.
  */
-
 public class Person {
 
+    private int id;
     private String firstName;
-
     private String lastName;
-
     private String address;
-
     private String telephone;
 
-    public Person(){
-        
-    }
+    public Person() {}
 
-    public Person(String firstName, String lastName, String address, String telephone){
+    public Person(int id, String firstName, String lastName, String address, String telephone) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.telephone = telephone;
     }
 
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -37,7 +38,7 @@ public class Person {
     }
 
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
@@ -45,7 +46,7 @@ public class Person {
     }
 
     public String getAddress() {
-        return this.address;
+        return address;
     }
 
     public void setAddress(String address) {
@@ -53,18 +54,10 @@ public class Person {
     }
 
     public String getTelephone() {
-        return this.telephone;
+        return telephone;
     }
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
-    @Override
-    public String toString() {
-        return firstName + " " 
-               + lastName + " "
-               + address + " "
-               + telephone;
     }
 }
