@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:text="Back to Main" >
+        android:text="Back to Main">
 
     </Button>
 

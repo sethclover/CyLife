@@ -29,4 +29,12 @@
         android:textColor="#ffffff">
     </Button>
 
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="New Information" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
