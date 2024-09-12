@@ -65,6 +65,6 @@ public class Person {
         return firstName + " " 
                + lastName + " "
                + address + " "
-               + telephone;
+               + telephone + "Welcome to our group " + firstName + "!";
     }
 }
