@@ -14,6 +14,6 @@ class WelcomeController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Hello and welcome to COMS 309";
+        return "Greetings traveler. Welcome to COMS 309 ( ) _ ( )";
     }
 }
