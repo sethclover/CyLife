@@ -32,9 +32,11 @@
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="text"
-        android:text="New Information" />
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:text="Input Text here" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -8,6 +8,17 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/keepText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="right"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:text="Default" />
+
+    <TextView
         android:id="@+id/number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +26,7 @@
         android:layout_gravity="center"
         android:textSize="150sp"
         android:textColor="#E91E63"
-        android:text="0" >
+        android:text="1" >
     </TextView>
 
     <Button
@@ -24,7 +35,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:text="Increase">
+        android:text="Double">
     </Button>
 
     <Button
@@ -33,7 +44,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Decrease">
+        android:text="Halve">
     </Button>
 
     <Button

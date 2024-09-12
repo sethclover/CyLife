@@ -94,6 +94,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="70sp"
+            android:text="First pet's\nname: "
+            android:textColor="#000000"
+            android:textSize="20dp">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/signup_pet"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:hint="Enter pet name here"
+            android:inputType="textPassword">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:orientation="horizontal">
 
