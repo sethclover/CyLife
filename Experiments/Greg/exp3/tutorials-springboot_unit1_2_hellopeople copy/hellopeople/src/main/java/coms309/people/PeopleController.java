@@ -15,7 +15,7 @@ import java.util.HashMap;
  * Controller for managing groups of people.
  */
 @RestController
-public class Controller {
+public class PeopleController {
 
     // HashMap to store groups of people. Each group name maps to another HashMap of person IDs and persons.
     private HashMap<String, HashMap<Integer, Person>> groupMap = new HashMap<>();
