@@ -14,8 +14,23 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="50dp"
-        android:textSize="50dp"
-        android:textColor="#000000" >
+        android:fontFamily="cursive"
+        android:stateListAnimator="@android:anim/slide_in_left"
+        android:textColor="#1434E6"
+        android:textSize="50dp">
+
     </TextView>
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="XML text"
+        android:layout_gravity="center"
+        android:textColor="#A01C1C"
+        android:rotation="90"
+        android:textSize="34sp"
+    />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

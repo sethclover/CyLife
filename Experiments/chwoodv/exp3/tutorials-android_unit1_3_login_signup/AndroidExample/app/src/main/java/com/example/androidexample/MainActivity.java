@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -16,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView usernameText;  // define username textview variable
     private Button loginButton;     // define login button variable
     private Button signupButton;    // define signup button variable
+    private ImageView teller;    // define signup button variable
+    private TextView petName;    // define signup button variable
+
+
+    private SignupActivity signOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +33,19 @@ public class MainActivity extends AppCompatActivity {
         usernameText = findViewById(R.id.main_username_txt);// link to username textview in the Main activity XML
         loginButton = findViewById(R.id.main_login_btn);    // link to login button in the Main activity XML
         signupButton = findViewById(R.id.main_signup_btn);  // link to signup button in the Main activity XML
+        teller = findViewById(R.id.teller);  // link to signup button in the Main activity XML
+        petName = findViewById(R.id.pet_name);  // link to signup button in the Main activity XML
+
+        String petText = "Your first pet's name was " + signOn.pet;
+        petName.setText(petText);
 
         /* extract data passed into this activity from another activity */
         Bundle extras = getIntent().getExtras();
         if(extras == null) {
             messageText.setText("Home Page");
             usernameText.setVisibility(View.INVISIBLE);             // set username text invisible initially
+            petName.setVisibility(View.INVISIBLE);
+            teller.setVisibility(View.INVISIBLE);
         } else {
             messageText.setText("Welcome");
             usernameText.setText(extras.getString("USERNAME")); // this will come from LoginActivity
