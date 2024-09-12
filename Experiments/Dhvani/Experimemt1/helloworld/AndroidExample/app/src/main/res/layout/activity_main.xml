@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".MainActivity"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:background="#C3B9EF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/main_msg_txt"
@@ -14,8 +14,17 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="50dp"
-        android:textSize="50dp"
-        android:textColor="#000000" >
-    </TextView>
+        android:fontFamily="cursive"
+        android:freezesText="true"
+        android:textColor="#FF0000"
+        android:textSize="59dp"></TextView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Button"
+        android:layout_gravity="center"
+   />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

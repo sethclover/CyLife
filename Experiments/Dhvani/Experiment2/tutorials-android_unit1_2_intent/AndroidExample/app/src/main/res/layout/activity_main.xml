@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".MainActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/main_msg_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:textSize="40dp"
+        android:textColor="#008000">
+    </TextView>
+
+    <Button
+        android:id="@+id/main_counter_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/flower_button"
+        android:text="Start"
+        android:textColor="#C9D9C9"
+        android:textColorLink="#CA9797"
+        android:textSize="20sp"></Button>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
