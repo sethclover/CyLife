@@ -17,6 +17,8 @@ public class Person {
 
     private String telephone;
 
+    private String gpa;
+
     public Person(){
         
     }
@@ -26,6 +28,7 @@ public class Person {
         this.lastName = lastName;
         this.address = address;
         this.telephone = telephone;
+        this.gpa = gpa;
     }
 
     public String getFirstName() {
@@ -60,11 +63,20 @@ public class Person {
         this.telephone = telephone;
     }
 
+    public String getGpa() {
+        return this.gpa;
+    }
+
+    public void setGpa(String gpa) {
+        this.gpa = gpa;
+    }
+
     @Override
     public String toString() {
         return firstName + " " 
                + lastName + " "
                + address + " "
-               + telephone;
+               + telephone + " "
+               + gpa;
     }
 }
