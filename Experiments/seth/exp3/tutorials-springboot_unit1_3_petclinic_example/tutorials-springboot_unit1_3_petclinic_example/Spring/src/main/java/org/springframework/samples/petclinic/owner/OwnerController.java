@@ -50,10 +50,10 @@ class OwnerController {
      // function just to create dummy data
     @RequestMapping(method = RequestMethod.GET, path = "/owner/create")
     public String createDummyData() {
-        Owners o1 = new Owners(1, "John", "Doe", "404 Not found", "some numbers");
+        Owners o1 = new Owners(1, "John", "Doe", "Earth", "some numbers");
         Owners o2 = new Owners(2, "Jane", "Doe", "Its a secret", "you wish");
-        Owners o3 = new Owners(3, "Some", "Pleb", "Right next to the Library", "515-345-41213");
-        Owners o4 = new Owners(4, "Chad", "Champion", "Reddit memes corner", "420-420-4200");
+        Owners o3 = new Owners(3, "Some", "Pleb", "Mars", "515908-307745-412913");
+        Owners o4 = new Owners(4, "⌇⏃⋔", "⋔⟟⏁⊑", "Kepler-452b", "N/A");
         ownersRepository.save(o1);
         ownersRepository.save(o2);
         ownersRepository.save(o3);
@@ -76,4 +76,11 @@ class OwnerController {
         return results;
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = "/owners/{ownerID}/{newID}")
+    public String updateOwner(@PathVariable("ownerID") int id, @PathVariable("newID") int newID) {
+        logger.info("Entered into Controller Layer");
+        Optional<Owners> results = ownersRepository.findById(id);
+        owner.setId(newID);
+        return "ID changed successfully";
+    }
 }
