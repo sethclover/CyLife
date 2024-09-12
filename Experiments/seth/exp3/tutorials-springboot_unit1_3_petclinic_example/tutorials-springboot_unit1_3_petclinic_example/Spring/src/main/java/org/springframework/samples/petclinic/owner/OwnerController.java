@@ -80,7 +80,7 @@ class OwnerController {
     public String updateOwner(@PathVariable("ownerID") int id, @PathVariable("newID") int newID) {
         logger.info("Entered into Controller Layer");
         Optional<Owners> results = ownersRepository.findById(id);
-        owner.setId(newID);
+        //gowner.setId(newID);
         return "ID changed successfully";
     }
 }
