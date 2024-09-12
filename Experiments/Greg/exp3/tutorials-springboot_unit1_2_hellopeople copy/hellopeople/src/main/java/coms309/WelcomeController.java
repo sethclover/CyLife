@@ -8,6 +8,6 @@ class WelcomeController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Hello and welcome to the Valorant Rank Manager";
+        return "Hello and welcome to the Group ID Project.";
     }
 }
