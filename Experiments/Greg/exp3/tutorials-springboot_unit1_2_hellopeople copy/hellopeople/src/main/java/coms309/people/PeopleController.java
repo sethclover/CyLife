@@ -1,15 +1,14 @@
 package coms309.people;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controller for managing groups of people.
@@ -54,12 +53,18 @@ public class PeopleController {
         HashMap<Integer, Person> peopleInGroup = groupMap.get(groupName);
 
         if (peopleInGroup != null && peopleInGroup.containsKey(personId)) {
-            peopleInGroup.put(personId, updatedPerson);
-            return "Person with ID " + personId + " updated.";
+            // Remove the person with the old ID
+            peopleInGroup.remove(personId);
+
+            // Add the updated person with the new ID
+            peopleInGroup.put(updatedPerson.getId(), updatedPerson);
+
+            return "Person with old ID " + personId + " updated to new ID " + updatedPerson.getId() + ". Use new ID for future requests.";
         }
 
         return "Person not found.";
     }
+
 
 
     // DELETE: Remove a person from a group by their ID
