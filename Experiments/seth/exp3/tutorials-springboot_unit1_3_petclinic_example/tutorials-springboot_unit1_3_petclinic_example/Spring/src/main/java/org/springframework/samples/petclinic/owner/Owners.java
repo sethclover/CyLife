@@ -54,9 +54,9 @@ public class Owners {
     @NotFound(action = NotFoundAction.IGNORE)
     private String lastName;
 
-    @Column(name = "address")
+    @Column(name = "homePlanet")
     @NotFound(action = NotFoundAction.IGNORE)
-    private String address;
+    private String homePlanet;
 
     @Column(name = "telephone")
     @NotFound(action = NotFoundAction.IGNORE)
@@ -66,11 +66,11 @@ public class Owners {
         
     }
 
-    public Owners(int id, String firstName, String lastName, String address, String telephone){
+    public Owners(int id, String firstName, String lastName, String homePlanet, String telephone){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
+        this.homePlanet = homePlanet;
         this.telephone = telephone;
     }
 
@@ -102,12 +102,12 @@ public class Owners {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return this.address;
+    public String getHomePlanet() {
+        return this.homePlanet;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setHomePlanet(String homePlanet) {
+        this.homePlanet = homePlanet;
     }
 
     public String getTelephone() {
@@ -126,7 +126,7 @@ public class Owners {
                 .append("new", this.isNew())
                 .append("lastName", this.getLastName())
                 .append("firstName", this.getFirstName())
-                .append("address", this.address)
+                .append("homePlanet", this.homePlanet)
                 .append("telephone", this.telephone).toString();
     }
 }

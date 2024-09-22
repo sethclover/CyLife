@@ -9,6 +9,6 @@ class WelcomeController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Welcome</br> Go to localhost:8080/owners/create to create dummy data </br>";
+        return "Greetings</br> Go to localhost:8080/owners/create to create dummy data </br>";
     }
 }
