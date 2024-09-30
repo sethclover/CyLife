@@ -4,22 +4,34 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignupActivity extends AppCompatActivity {
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Signup extends AppCompatActivity {
 
     private EditText usernameEditText;  // define username edittext variable
     private EditText passwordEditText;  // define password edittext variable
     private EditText confirmEditText;   // define confirm edittext variable
-    private EditText petEditText;   // define confirm edittext variable
 
     private Button loginButton;         // define login button variable
     private Button signupButton;        // define signup button variable
 
-    public static String pet;
+    private static final String PUTURL = "localhost:/TODO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +42,6 @@ public class SignupActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.signup_username_edt);  // link to username edtext in the Signup activity XML
         passwordEditText = findViewById(R.id.signup_password_edt);  // link to password edtext in the Signup activity XML
         confirmEditText = findViewById(R.id.signup_confirm_edt);    // link to confirm edtext in the Signup activity XML
-        petEditText = findViewById(R.id.signup_pet);    // link to confirm edtext in the Signup activity XML
         loginButton = findViewById(R.id.signup_login_btn);    // link to login button in the Signup activity XML
         signupButton = findViewById(R.id.signup_signup_btn);  // link to signup button in the Signup activity XML
 
@@ -41,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 /* when login button is pressed, use intent to switch to Login Activity */
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                Intent intent = new Intent(Signup.this, Login.class);
                 startActivity(intent);  // go to LoginActivity
             }
         });
@@ -55,7 +66,6 @@ public class SignupActivity extends AppCompatActivity {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 String confirm = confirmEditText.getText().toString();
-                pet = petEditText.getText().toString();
 
                 if (password.equals(confirm)){
                     Toast.makeText(getApplicationContext(), "Signing up", Toast.LENGTH_LONG).show();
@@ -65,5 +75,41 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+
+        private void makeJsonObjReq() {
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                    Request.Method.GET,
+                    PUTURL,
+                    null, // Pass null as the request body since it's a GET request
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.d("Volley Response", response.toString());
+                            msgResponse.setText(response.toString());
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Volley Error", error.toString());
+                        }
+                    }
+            ) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("Authorization", "Bearer YOUR_ACCESS_TOKEN");
+//                headers.put("Content-Type", "application/json");
+                    return headers;
+                }
+
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+//                params.put("param1", "value1");
+//                params.put("param2", "value2");
+                    return params;
+                }
+            };
     }
 }
