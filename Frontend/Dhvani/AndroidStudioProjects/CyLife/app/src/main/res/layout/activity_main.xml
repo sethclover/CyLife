@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to the Login App"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="24dp"/>
+    <Button
+        android:id="@+id/main_login_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Login"
+        android:textSize="20sp"
+        android:textColor="#ffffff">
+    </Button>
+<!--    <Button-->
+<!--        android:id="@+id/loginButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Login"-->
+<!--        android:layout_below="@id/welcomeTextView"-->
+<!--        android:layout_centerHorizontal="true" />-->
+
+</RelativeLayout>
