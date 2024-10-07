@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF">
+
+    <!-- Welcome Text -->
+    <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WELCOME CYCLONES"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:paddingBottom="16dp"/>
+
+    <!-- Organization Events Button -->
+    <Button
+            android:id="@+id/organization_events_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ORGANIZATION EVENTS"
+            android:textSize="18sp"
+            android:background="#f0f0f0"
+            android:textColor="#000000"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp" />
+
+    <!-- Join Club Button -->
+    <Button
+            android:id="@+id/join_club_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JOIN CLUB"
+            android:textSize="18sp"
+            android:background="#f0f0f0"
+            android:textColor="#000000"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp" />
+
+    <!-- Image of the Clock Tower -->
+    <ImageView
+            android:id="@+id/clock_tower_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/camp" />
+
+    <!-- Log Out Button -->
+    <Button
+            android:id="@+id/logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOG OUT"
+            android:textColor="#FF0000"
+            android:background="@null"
+            android:layout_gravity="start"
+            android:layout_marginTop="16dp"/>
+
+    <!-- Star Icon Button -->
+    <ImageButton
+            android:id="@+id/star_icon_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@null"
+            android:src="@drawable/ic_star"
+            android:tint="#FF0000"
+            android:contentDescription="Favorite" />
+</LinearLayout>
