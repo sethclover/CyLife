@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import onetoone.Laptops.Laptop;
+import onetoone.Laptops.LaptopRepository;
+
 /**
  * 
  * @author Vivek Bengre

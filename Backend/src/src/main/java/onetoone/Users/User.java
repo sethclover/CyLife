@@ -8,79 +8,87 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
-import jakarta.persistence.*;
+import onetoone.Laptops.Laptop;
+
+/**
+ * 
+ * @author Vivek Bengre
+ * 
+ */ 
 
 @Entity
 public class User {
 
+     /* 
+     * The annotation @ID marks the field below as the primary key for the table created by springboot
+     * The @GeneratedValue generates a value if not already present, The strategy in this case is to start from 1 and increment for each table
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private int id;
     private String name;
-    private String sid;  // Student ID
-    private String email;
+    private String emailId;
+    private boolean ifActive;
 
-    @Enumerated(EnumType.STRING) // Dropdown for Race
-    private Race race;
+    /*
+     * @OneToOne creates a relation between the current entity/table(Laptop) with the entity/table defined below it(User)
+     * cascade is responsible propagating all changes, even to children of the class Eg: changes made to laptop within a user object will be reflected
+     * in the database (more info : https://www.baeldung.com/jpa-cascade-types)
+     * @JoinColumn defines the ownership of the foreign key i.e. the user table will have a field called laptop_id
+     */
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "laptop_id")
+    private Laptop laptop;
 
-    private boolean international; // International status
-    private String password;
+    public User(String name, String emailId) {
+        this.name = name;
+        this.emailId = emailId;
+        this.ifActive = true;
+    }
 
-    // Getters and Setters
-    public Long getId() {
+    public User() {
+    }
+
+    // =============================== Getters and Setters for each field ================================== //
+
+    public int getId(){
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id){
         this.id = id;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name){
         this.name = name;
     }
 
-    public String getSid() {
-        return sid;
+    public String getEmailId(){
+        return emailId;
     }
 
-    public void setSid(String sid) {
-        this.sid = sid;
+    public void setEmailId(String emailId){
+        this.emailId = emailId;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean getIsActive(){
+        return ifActive;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setIfActive(boolean ifActive){
+        this.ifActive = ifActive;
     }
 
-    public Race getRace() {
-        return race;
+    public Laptop getLaptop(){
+        return laptop;
     }
 
-    public void setRace(Race race) {
-        this.race = race;
+    public void setLaptop(Laptop laptop){
+        this.laptop = laptop;
     }
-
-    public boolean isInternational() {
-        return international;
-    }
-
-    public void setInternational(boolean international) {
-        this.international = international;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    
 }
