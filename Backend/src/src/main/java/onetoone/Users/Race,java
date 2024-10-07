@@ -1,0 +1,7 @@
+public enum Race {
+    ASIAN,
+    BLACK,
+    HISPANIC,
+    WHITE,
+    OTHER
+}
