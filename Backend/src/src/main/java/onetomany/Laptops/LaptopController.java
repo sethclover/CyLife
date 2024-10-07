@@ -1,4 +1,4 @@
-package onetoone.Laptops;
+package onetomany.Laptops;
 
 import java.util.List;
 

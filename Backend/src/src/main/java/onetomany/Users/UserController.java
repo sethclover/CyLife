@@ -1,4 +1,4 @@
-package onetoone.Users;
+package onetomany.Users;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import onetoone.Laptops.Laptop;
-import onetoone.Laptops.LaptopRepository;
+import onetomany.Laptops.Laptop;
+import onetomany.Laptops.LaptopRepository;
 
 /**
  * 
@@ -72,7 +72,7 @@ public class UserController {
     }
 
     @DeleteMapping(path = "/users/{id}")
-    String deleteUser(@PathVariable int id){
+    String deleteLaptop(@PathVariable int id){
         userRepository.deleteById(id);
         return success;
     }

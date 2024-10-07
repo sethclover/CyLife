@@ -1,4 +1,4 @@
-package onetoone.Laptops;
+package onetomany.Laptops;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import jakarta.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import onetoone.Users.User;
+import onetomany.Users.User;
 
 /**
  * 
@@ -38,6 +38,10 @@ public class Laptop {
     @OneToOne
     @JsonIgnore
     private User user;
+
+    
+     // =============================== Constructors ================================== //
+
 
     public Laptop( double cpuClock, int cpuCores, int ram, String manufacturer, int cost) {
         this.cpuClock = cpuClock;
