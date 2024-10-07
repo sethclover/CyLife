@@ -1,14 +1,10 @@
 package onetomany.Users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-/**
- * 
- * @author Vivek Bengre
- * 
- */ 
-
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
     User findById(int id);
-    void deleteById(int id);
+    List<User> findByOrganisation_OrgId(String orgId);
+    List<User> findByClub_ClubId(int clubId);
 }

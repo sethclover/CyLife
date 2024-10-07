@@ -1,132 +1,109 @@
 package onetomany.Users;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 
-import onetomany.Laptops.Laptop;
-import onetomany.Phones.Phone;
+import onetomany.Clubs.Club;
+import onetomany.Organisation.Organisation;
 
 @Entity
 public class User {
 
-    /* 
-     * The annotation @ID marks the field below as the primary key for the table created by springboot
-     * The @GeneratedValue generates a value if not already present, The strategy in this case is to start from 1 and increment for each table
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int userId;
     private String name;
-    private String emailId;
-    private Date joiningDate;
-    private boolean ifActive;
+    private String email;
+    private String password;
 
-    /*
-     * @OneToOne creates a relation between the current entity/table(Laptop) with the entity/table defined below it(User), the cascade option tells springboot
-     * to create the child entity if not present already (in this case it is laptop)
-     * @JoinColumn specifies the ownership of the key i.e. The User table will contain a foreign key from the laptop table and the column name will be laptop_id
-     */
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "laptop_id")
-    private Laptop laptop;
+    @Enumerated(EnumType.STRING)
+    private UserType type;  // Enum for 'student', 'staff', 'club', 'org'
 
-     /*
-     * @OneToMany tells springboot that one instance of User can map to multiple instances of Phone OR one user row can map to multiple rows of the phone table 
-     */
-    @OneToMany
-    private List<Phone> phones;
+    @ManyToOne
+    @JoinColumn(name = "org_id")
+    private Organisation organisation;
 
-     // =============================== Constructors ================================== //
+    @ManyToOne
+    @JoinColumn(name = "club_id")
+    private Club club;
 
-
-    public User(String name, String emailId, Date joiningDate) {
-        this.name = name;
-        this.emailId = emailId;
-        this.joiningDate = joiningDate;
-        this.ifActive = true;
-        phones = new ArrayList<>();
+    public enum UserType {
+        STUDENT, STAFF, CLUB, ORG
     }
+
+    // Constructors, getters, and setters
 
     public User() {
-        phones = new ArrayList<>();
     }
 
-    
-    // =============================== Getters and Setters for each field ================================== //
-
-
-    public int getId(){
-        return id;
+    public User(String name, String email, String password, UserType type) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.type = type;
     }
 
-    public void setId(int id){
-        this.id = id;
+    public int getUserId() {
+        return userId;
     }
 
-    public String getName(){
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getEmailId(){
-        return emailId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailId(String emailId){
-        this.emailId = emailId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Date getJoiningDate(){
-        return joiningDate;
+    public String getPassword() {
+        return password;
     }
 
-    public void setJoiningDate(Date joiningDate){
-        this.joiningDate = joiningDate;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public boolean getIsActive(){
-        return ifActive;
+    public UserType getType() {
+        return type;
     }
 
-    public void setIfActive(boolean ifActive){
-        this.ifActive = ifActive;
+    public void setType(UserType type) {
+        this.type = type;
     }
 
-    public Laptop getLaptop(){
-        return laptop;
+    public Organisation getOrganisation() {
+        return organisation;
     }
 
-    public void setLaptop(Laptop laptop){
-        this.laptop = laptop;
+    public void setOrganisation(Organisation organisation) {
+        this.organisation = organisation;
     }
 
-    public boolean isIfActive() {
-        return ifActive;
+    public Club getClub() {
+        return club;
     }
 
-    public List<Phone> getPhones() {
-        return phones;
+    public void setClub(Club club) {
+        this.club = club;
     }
-
-    public void setPhones(List<Phone> phones) {
-        this.phones = phones;
-    }
-
-    public void addPhones(Phone phone){
-        this.phones.add(phone);
-    }
-    
 }
