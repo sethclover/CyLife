@@ -11,17 +11,15 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity {
+public class Main extends AppCompatActivity {
 
     private TextView messageText;   // define message textview variable
     private TextView usernameText;  // define username textview variable
     private Button loginButton;     // define login button variable
     private Button signupButton;    // define signup button variable
-    private ImageView teller;    // define signup button variable
-    private TextView petName;    // define signup button variable
 
 
-    private SignupActivity signOn;
+    private Signup signOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +31,13 @@ public class MainActivity extends AppCompatActivity {
         usernameText = findViewById(R.id.main_username_txt);// link to username textview in the Main activity XML
         loginButton = findViewById(R.id.main_login_btn);    // link to login button in the Main activity XML
         signupButton = findViewById(R.id.main_signup_btn);  // link to signup button in the Main activity XML
-        teller = findViewById(R.id.teller);  // link to signup button in the Main activity XML
-        petName = findViewById(R.id.pet_name);  // link to signup button in the Main activity XML
 
-        String petText = "Your first pet's name was " + signOn.pet;
-        petName.setText(petText);
 
         /* extract data passed into this activity from another activity */
         Bundle extras = getIntent().getExtras();
         if(extras == null) {
             messageText.setText("Home Page");
             usernameText.setVisibility(View.INVISIBLE);             // set username text invisible initially
-            petName.setVisibility(View.INVISIBLE);
-            teller.setVisibility(View.INVISIBLE);
         } else {
             messageText.setText("Welcome");
             usernameText.setText(extras.getString("USERNAME")); // this will come from LoginActivity
@@ -59,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 /* when login button is pressed, use intent to switch to Login Activity */
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(Main.this, Login.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 /* when signup button is pressed, use intent to switch to Signup Activity */
-                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                Intent intent = new Intent(Main.this, Signup.class);
                 startActivity(intent);
             }
         });

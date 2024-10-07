@@ -7,15 +7,6 @@
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <TextClock
-        android:id="@+id/textClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:scaleX="2"
-        android:scaleY="2" />
-
     <TextView
         android:id="@+id/main_msg_txt"
         android:layout_width="wrap_content"
@@ -60,22 +51,6 @@
         android:textSize="20sp"
         android:textColor="#ffffff">
     </Button>
-
-    <ImageView
-        android:id="@+id/teller"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/teller"
-        android:layout_gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/pet_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:text="Your first pet's name was... " />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
