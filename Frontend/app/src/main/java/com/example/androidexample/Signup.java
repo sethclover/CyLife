@@ -31,7 +31,7 @@ public class Signup extends AppCompatActivity {
     private Button loginButton;         // define login button variable
     private Button signupButton;        // define signup button variable
 
-    private static final String PUTURL = "localhost:/TODO";
+    private static final String PUTURL = "https://63ccd67d-41f5-46ad-b50f-e45a53ee7606.mock.pstmn.io/testing";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,49 +67,47 @@ public class Signup extends AppCompatActivity {
                 String password = passwordEditText.getText().toString();
                 String confirm = confirmEditText.getText().toString();
 
-                if (password.equals(confirm)){
+                if (password.equals(confirm)) {
                     Toast.makeText(getApplicationContext(), "Signing up", Toast.LENGTH_LONG).show();
-                }
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Password don't match", Toast.LENGTH_LONG).show();
                 }
             }
         });
-
-        private void makeJsonObjReq() {
-            JsonObjectRequest jsonObjReq = new JsonObjectRequest(
-                    Request.Method.GET,
-                    PUTURL,
-                    null, // Pass null as the request body since it's a GET request
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Log.d("Volley Response", response.toString());
-                            msgResponse.setText(response.toString());
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("Volley Error", error.toString());
-                        }
+    }
+    private void makeJsonObjReq() {
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                Request.Method.GET,
+                PUTURL,
+                null, // Pass null as the request body since it's a GET request
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Volley Response", response.toString());
                     }
-            ) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> headers = new HashMap<String, String>();
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Volley Error", error.toString());
+                    }
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
 //                headers.put("Authorization", "Bearer YOUR_ACCESS_TOKEN");
 //                headers.put("Content-Type", "application/json");
-                    return headers;
-                }
+                return headers;
+            }
 
-                @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
 //                params.put("param1", "value1");
 //                params.put("param2", "value2");
-                    return params;
-                }
-            };
+                return params;
+            }
+        };
     }
 }
