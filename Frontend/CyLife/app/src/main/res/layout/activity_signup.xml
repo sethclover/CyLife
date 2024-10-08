@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="24dp"
-        android:fontFamily="@font/aboreto"
         android:text="Sign Up"
         android:textColor="@color/gold"
         android:textSize="24sp" />
@@ -22,7 +21,6 @@
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/aboreto"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -40,7 +38,6 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/aboreto"
         android:hint="Full Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -58,7 +55,6 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/aboreto"
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -76,7 +72,6 @@
         android:id="@+id/confirm_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/aboreto"
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -93,9 +88,8 @@
     <CheckBox
         android:id="@+id/international_checkbox"
         android:layout_width="384dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="1dp"
-        android:fontFamily="@font/aboreto"
         android:rotation="-360"
         android:rotationX="-360"
         android:rotationY="-360"
@@ -106,10 +100,9 @@
     <CheckBox
         android:id="@+id/multicultural_checkbox"
         android:layout_width="385dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="-10dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/aboreto"
         android:text="Are you part of a multicultural group?"
         android:textAlignment="viewStart"
         android:textColor="@color/gold" />
@@ -120,7 +113,6 @@
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/dark_red"
-        android:fontFamily="@font/aboreto"
         android:text="Sign Up"
         android:textColor="@color/white" />
 
@@ -129,7 +121,6 @@
         android:layout_width="199dp"
         android:layout_height="48dp"
         android:backgroundTint="@color/dark_red"
-        android:fontFamily="@font/aboreto"
         android:text="Log In"
         android:textColor="@color/white" />
 
