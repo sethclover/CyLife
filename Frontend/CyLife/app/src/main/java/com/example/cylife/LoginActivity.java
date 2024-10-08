@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        String url = "http://10.0.2.2:3000/students";           // Change once local server set up
+        String url = "http://10.0.2.2:3000/students";
 
         JSONObject jsonBody = new JSONObject();
         try {
