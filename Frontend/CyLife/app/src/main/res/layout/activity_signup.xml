@@ -88,7 +88,7 @@
     <CheckBox
         android:id="@+id/international_checkbox"
         android:layout_width="384dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginBottom="1dp"
         android:rotation="-360"
         android:rotationX="-360"
@@ -100,7 +100,7 @@
     <CheckBox
         android:id="@+id/multicultural_checkbox"
         android:layout_width="385dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="-10dp"
         android:layout_marginBottom="16dp"
         android:text="Are you part of a multicultural group?"

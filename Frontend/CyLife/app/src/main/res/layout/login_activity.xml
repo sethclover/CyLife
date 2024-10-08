@@ -34,10 +34,10 @@
         android:layout_height="wrap_content"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textColor="@color/gold"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:textColorHint="@color/gold"
-        android:textColor="@color/gold"
         android:textSize="34sp" />
 
     <View
@@ -51,10 +51,10 @@
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/gold"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColorHint="@color/gold"
+        android:textColor="@color/gold"
         android:textSize="34sp" />
 
     <View
