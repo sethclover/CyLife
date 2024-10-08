@@ -43,12 +43,29 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    User updateUser(@PathVariable int id, @RequestBody User request) {
-        User user = userRepository.findById(id);
-        if (user == null) return null;
-        userRepository.save(request);
-        return userRepository.findById(id);
+    public User updateUser(@PathVariable int id, @RequestBody User request) {
+        // Fetch the existing user by id
+        User existingUser = userRepository.findById(id);
+        
+        // Check if user exists, if not return null or handle error
+        if (existingUser == null) {
+            return null;  // You could also throw an exception or return a 404 response here
+        }
+    
+        // Update the existing user's details with the values from the request
+        existingUser.setName(request.getName());
+        existingUser.setEmail(request.getEmail());
+        existingUser.setPassword(request.getPassword());
+        existingUser.setType(request.getType());
+    
+        // Save the updated user back to the repository
+        userRepository.save(existingUser);
+        
+        // Return the updated user
+        return existingUser;
     }
+    
+
 
     @GetMapping("/users/organisation/{orgId}")
     List<User> getUsersByOrganisation(@PathVariable String orgId) {

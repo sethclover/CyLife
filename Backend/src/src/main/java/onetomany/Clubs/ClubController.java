@@ -33,11 +33,16 @@ public class ClubController {
     }
 
     @PutMapping("/clubs/{id}")
-    Club updateClub(@PathVariable int id, @RequestBody Club request) {
-        Club club = clubRepository.findById(id).orElse(null);
-        if (club == null) return null;
-        clubRepository.save(request);
-        return clubRepository.findById(id).orElse(null);
+    public Club updateClub(@PathVariable int id, @RequestBody Club request) {
+        Club existingClub = clubRepository.findById(id).orElse(null);
+        if (existingClub == null) {
+            return null;
+        }
+        existingClub.setClubName(request.getClubName());
+        existingClub.setDescription(request.getDescription());
+        existingClub.setClubEmail(request.getClubEmail());
+        clubRepository.save(existingClub);
+        return existingClub;
     }
 
     @DeleteMapping(path = "/clubs/{id}")
