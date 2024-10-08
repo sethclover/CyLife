@@ -35,8 +35,14 @@ public class OrganisationController {
     Organisation updateOrganisation(@PathVariable String id, @RequestBody Organisation request) {
         Organisation organisation = organisationRepository.findById(id).orElse(null);
         if (organisation == null) return null;
-        organisationRepository.save(request);
-        return organisationRepository.findById(id).orElse(null);
+        
+        // Update the fields of the existing organisation
+        organisation.setName(request.getName());
+        organisation.setEmail(request.getEmail());
+        organisation.setQualification(request.getQualification());
+
+        organisationRepository.save(organisation);
+        return organisation;
     }
 
     @DeleteMapping(path = "/organisations/{id}")
