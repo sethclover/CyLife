@@ -3,22 +3,12 @@ package onetomany.Users;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import onetomany.Laptops.Laptop;
-import onetomany.Laptops.LaptopRepository;
-
-/**
- * 
- * @author Vivek Bengre
- * 
- */ 
+import onetomany.Clubs.Club;
+import onetomany.Clubs.ClubRepository;
+import onetomany.Organisation.Organisation;
+import onetomany.Organisation.OrganisationRepository;
 
 @RestController
 public class UserController {
@@ -27,52 +17,71 @@ public class UserController {
     UserRepository userRepository;
 
     @Autowired
-    LaptopRepository laptopRepository;
+    OrganisationRepository organisationRepository;
+
+    @Autowired
+    ClubRepository clubRepository;
 
     private String success = "{\"message\":\"success\"}";
     private String failure = "{\"message\":\"failure\"}";
 
     @GetMapping(path = "/users")
-    List<User> getAllUsers(){
+    List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @GetMapping(path = "/users/{id}")
-    User getUserById( @PathVariable int id){
+    User getUserById(@PathVariable int id) {
         return userRepository.findById(id);
     }
 
     @PostMapping(path = "/users")
-    String createUser(@RequestBody User user){
-        if (user == null)
-            return failure;
+    String createUser(@RequestBody User user) {
+        if (user == null) return failure;
         userRepository.save(user);
         return success;
     }
 
     @PutMapping("/users/{id}")
-    User updateUser(@PathVariable int id, @RequestBody User request){
+    User updateUser(@PathVariable int id, @RequestBody User request) {
         User user = userRepository.findById(id);
-        if(user == null)
-            return null;
+        if (user == null) return null;
         userRepository.save(request);
         return userRepository.findById(id);
-    }   
-    
-    @PutMapping("/users/{userId}/laptops/{laptopId}")
-    String assignLaptopToUser(@PathVariable int userId,@PathVariable int laptopId){
+    }
+
+    @GetMapping("/users/organisation/{orgId}")
+    List<User> getUsersByOrganisation(@PathVariable String orgId) {
+        return userRepository.findByOrganisation_OrgId(orgId);
+    }
+
+    @GetMapping("/users/club/{clubId}")
+    List<User> getUsersByClub(@PathVariable int clubId) {
+        return userRepository.findByClub_ClubId(clubId);
+    }
+
+    @PutMapping("/users/{userId}/organisation/{orgId}")
+    String assignOrganisationToUser(@PathVariable int userId, @PathVariable String orgId) {
         User user = userRepository.findById(userId);
-        Laptop laptop = laptopRepository.findById(laptopId);
-        if(user == null || laptop == null)
-            return failure;
-        laptop.setUser(user);
-        user.setLaptop(laptop);
+        Organisation organisation = organisationRepository.findById(orgId).orElse(null);
+        if (user == null || organisation == null) return failure;
+        user.setOrganisation(organisation);
+        userRepository.save(user);
+        return success;
+    }
+
+    @PutMapping("/users/{userId}/club/{clubId}")
+    String assignClubToUser(@PathVariable int userId, @PathVariable int clubId) {
+        User user = userRepository.findById(userId);
+        Club club = clubRepository.findById(clubId).orElse(null);
+        if (user == null || club == null) return failure;
+        user.setClub(club);
         userRepository.save(user);
         return success;
     }
 
     @DeleteMapping(path = "/users/{id}")
-    String deleteLaptop(@PathVariable int id){
+    String deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
         return success;
     }
