@@ -1,4 +1,3 @@
-
 package onetomany.Organisation;
 
 import jakarta.persistence.Entity;
