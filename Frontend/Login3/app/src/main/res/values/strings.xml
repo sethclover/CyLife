@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login</string>
+    <string name="app_name">CyLife</string>
     <string name="email">email</string>
     <string name="name">Name</string>
     <string name="international">International</string>

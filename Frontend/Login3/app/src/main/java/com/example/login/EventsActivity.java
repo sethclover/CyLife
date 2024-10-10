@@ -1,5 +1,6 @@
 package com.example.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -17,8 +18,9 @@ public class EventsActivity extends AppCompatActivity {
         logoutButton = findViewById(R.id.logout_button);
 
         logoutButton.setOnClickListener(view -> {
-            // Handle logout logic
-            finish();  // Ends the activity and "logs out"
+            Intent intent = new Intent(EventsActivity.this, WelcomeActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

@@ -55,30 +55,30 @@
                 android:hint="Enter Organization ID"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:padding="8dp" />
 
         <!-- EditText for Director -->
-        <EditText
-                android:id="@+id/etDirector"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Director"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="8dp"
-                android:padding="8dp" />
+<!--        <EditText-->
+<!--                android:id="@+id/etDirector"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Director"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:background="@android:drawable/edit_text"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:padding="8dp" />-->
 
-        <!-- EditText for Advisor -->
-        <EditText
-                android:id="@+id/etAdvisor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Advisor"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="8dp"
-                android:padding="8dp" />
+<!--        &lt;!&ndash; EditText for Advisor &ndash;&gt;-->
+<!--        <EditText-->
+<!--                android:id="@+id/etAdvisor"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Advisor"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:background="@android:drawable/edit_text"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:padding="8dp" />-->
 
         <!-- Button to Create Organization -->
         <Button
@@ -93,6 +93,7 @@
                 android:layout_marginTop="8dp" />
 
         <!-- Button to Edit Organization -->
+
         <Button
                 android:id="@+id/EO"
                 android:layout_width="match_parent"
@@ -103,6 +104,49 @@
                 android:textColor="@color/black"
                 android:padding="16dp"
                 android:layout_marginTop="8dp" />
+
+        <EditText
+                android:id="@+id/etOrgIdE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Organization ID"
+                android:textColor="@color/black"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp"
+                android:padding="8dp" />
+
+        <!-- Button to submit OrgID and show name/email fields -->
+        <Button
+                android:id="@+id/btnSubmitOrgId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit Organization ID"
+                android:layout_marginTop="12dp" />
+
+        <!-- Name EditText (hidden initially) -->
+        <EditText
+                android:id="@+id/etOrgNameE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter New Organization Name"
+                android:textColor="@color/black"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="12dp"
+                android:padding="8dp"
+                android:visibility="gone" />
+
+        <!-- Email EditText (hidden initially) -->
+        <EditText
+                android:id="@+id/etOrgEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter New Organization Email"
+                android:textColor="@color/black"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="gone" />
+
 
         <!-- Button to Get Organization -->
         <Button
@@ -126,16 +170,6 @@
                 android:layout_marginTop="8dp"
                 android:textColor="@color/white" />
 
-        <!-- EditText for Organization Name to Delete -->
-        <EditText
-                android:id="@+id/etOrgNameD"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Organization Name"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="16dp"
-                android:padding="8dp" />
 
         <EditText
                 android:id="@+id/etOrgIdD"

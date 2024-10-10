@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.login"> <!-- Add your package name here -->
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.example.login">
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Set application settings -->
     <application
-        android:usesCleartextTraffic="true"
-        android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Login"
-        tools:targetApi="31">
+    android:usesCleartextTraffic="true"
+    android:allowBackup="true"
+    android:dataExtractionRules="@xml/data_extraction_rules"
+    android:fullBackupContent="@xml/backup_rules"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.Login"
+    tools:targetApi="31">
 
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    <!-- LoginActivity (launch activity) -->
+    <activity
+            android:name="com.example.login.LoginActivity"
+            android:exported="true">  <!-- Marked as exported to allow external apps to open it -->
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
 
+    <!-- SignupActivity -->
+    <activity android:name="com.example.login.SignupActivity" />
 
-        <activity android:name=".SignupActivity" />
+    <!-- EventsActivity (marked as Instantiatable, you may want to check if this is necessary) -->
+    <activity
+            android:name="com.example.login.EventsActivity"
+            tools:ignore="Instantiatable" />
 
-        <activity android:name=".EventsActivity"
-                tools:ignore="Instantiatable" />
-        <activity android:name=".createOrganization"
-                android:exported="true">
+    <!-- createOrganization Activity -->
+    <activity android:name="com.example.login.createOrganization"
+        android:exported="true" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    <!-- WelcomeActivity -->
+    <activity android:name="com.example.login.WelcomeActivity" />
 
+    <!-- Preloaded fonts for the app -->
+    <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".WelcomeActivity"></activity>
+</application>
 
-
-        <meta-data
-                android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts" />
-
-    </application>
-
-
-</manifest>
+        </manifest>
