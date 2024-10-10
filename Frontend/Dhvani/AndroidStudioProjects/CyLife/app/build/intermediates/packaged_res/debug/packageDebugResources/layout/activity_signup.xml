@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/aboreto"
+        android:text="Sign Up"
+        android:textColor="@color/gold"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aboreto"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColor="@color/gold"
+        android:textColorHint="@color/gold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/red" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aboreto"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/gold"
+        android:textColorHint="@color/gold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/red" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aboreto"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/gold"
+        android:textColorHint="@color/gold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/red" />
+
+    <EditText
+        android:id="@+id/confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aboreto"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/gold"
+        android:textColorHint="@color/gold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/red" />
+
+    <CheckBox
+        android:id="@+id/international_checkbox"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/aboreto"
+        android:rotation="-360"
+        android:rotationX="-360"
+        android:rotationY="-360"
+        android:text="Are you an international student?"
+        android:textAlignment="viewStart"
+        android:textColor="@color/gold" />
+
+    <CheckBox
+        android:id="@+id/multicultural_checkbox"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/aboreto"
+        android:text="Are you part of a multicultural group?"
+        android:textAlignment="viewStart"
+        android:textColor="@color/gold" />
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/dark_red"
+        android:fontFamily="@font/aboreto"
+        android:text="Sign Up"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="199dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/dark_red"
+        android:fontFamily="@font/aboreto"
+        android:text="Log In"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="600dp"
+        android:layout_height="140dp"
+        android:baselineAligned="false"
+        app:srcCompat="@drawable/logo" />
+</LinearLayout>

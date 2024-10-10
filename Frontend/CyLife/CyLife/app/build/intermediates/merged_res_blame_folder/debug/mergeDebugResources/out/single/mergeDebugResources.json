@@ -1,0 +1,98 @@
+[
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/drawable_logo.jpg.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/drawable/logo.jpg"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/font_aboreto.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/font/aboreto.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/xml_backup_rules.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/drawable_isu.jpg.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/drawable/isu.jpg"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/layout_activity_signup.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/layout_activity_welcome.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/layout/activity_welcome.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/drawable_cy.jpg.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/drawable/cy.jpg"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/layout_login_activity.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/layout/login_activity.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/layout_activity_main.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+    }
+]
