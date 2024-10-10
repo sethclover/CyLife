@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const students = [
-    {id: '1', name: 'Event1', location: 'library', time: '15:30', description: 'name'},
+    {email: 'dhvani', password: '321'},
     { email: 'student1@example.com', password: 'password123' },
     { email: 'student2@example.com', password: 'password456' },
     { email: 'student3@example.com', password: 'password789' },

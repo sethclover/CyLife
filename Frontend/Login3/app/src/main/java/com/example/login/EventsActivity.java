@@ -29,6 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EventsActivity extends AppCompatActivity {
 
     private final String URL = "http://coms-3090-065.class.las.iastate.edu:8080/events";
+//    private final String URL = "https://9e3fe20e-1ffb-409a-816f-4f2a2f121fab.mock.pstmn.io";
+
 
     private EditText etName, etLocation, etTime, etDescription, etEditID, etDeleteID;
     private Button createEventButton, editEventButton, getEventButton, deleteEventButton, logoutButton;
@@ -93,7 +95,7 @@ public class EventsActivity extends AppCompatActivity {
 
     // Function to post data and create an organization
     private void createEvent() {
-        String url = URL;
+        String url = URL + "/postEvent";
 
         // Get values from EditTexts
         String name = etName.getText().toString();
@@ -150,7 +152,7 @@ public class EventsActivity extends AppCompatActivity {
 
     // Function to get the list of organizations
     private void getEvents() {
-        String url = URL;  // Use the correct API URL
+        String url = URL + "/events";  // Use the correct API URL
 
         // Create a JsonObjectRequest (since the response is a JSON object)
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -208,8 +210,8 @@ public class EventsActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void deleteEvent(String orgId) {
-        String url = URL + orgId;
+    private void deleteEvent(String eventId) {
+        String url = URL + eventId;
 
         StringRequest deleteRequest = new StringRequest(
                 Request.Method.DELETE,
