@@ -14,6 +14,7 @@ public class Event {
     private int eventId;
     private String eventName;
     private String description;
+    private String eventLocation;
 
     // Constructors
     public Event() {
@@ -47,5 +48,13 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
     }
 }
