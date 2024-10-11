@@ -11,8 +11,8 @@ public class EventController {
     @Autowired
     EventRepository eventRepository;
 
-    private String success = "{\"message\":\"success\"}";
-    private String failure = "{\"message\":\"failure\"}";
+    private String success = "{\"message\":\"Success\"}";
+    private String failure = "{\"message\":\"Failure\"}";
 
     @GetMapping(path = "/events")
     List<Event> getAllEvents() {
