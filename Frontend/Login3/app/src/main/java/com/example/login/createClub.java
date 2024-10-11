@@ -113,8 +113,8 @@ public class createClub extends AppCompatActivity {
         // Prepare POST request data
         JSONObject postData = new JSONObject();
         try {
-            postData.put("name", clubName);
-            postData.put("email", email);
+            postData.put("clubName", clubName);
+            postData.put("clubEmail", email);
             postData.put("clubId", clubId);
         } catch (JSONException e) {
             e.printStackTrace();
