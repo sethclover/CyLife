@@ -40,6 +40,9 @@
     <activity android:name="com.example.login.createOrganization"
         android:exported="true" />
 
+    <!-- createOrganization Activity -->
+    <activity android:name="com.example.login.createClub"
+        android:exported="true" />
 
     <!-- WelcomeActivity -->
     <activity android:name="com.example.login.WelcomeActivity" />
