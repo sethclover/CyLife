@@ -39,7 +39,7 @@ public class createOrganization extends AppCompatActivity {
         // Initialize fields and buttons
         etOrgName = findViewById(R.id.etOrgName);
         etEmail = findViewById(R.id.etEmail);
-        createOrgButton = findViewById(R.id.CO);
+        createOrgButton = findViewById(R.id.CC);
         getOrgButton = findViewById(R.id.GO);
         orgListTextView = findViewById(R.id.orgListTextView);
         orgListTextView2 = findViewById(R.id.orgListTextView2);

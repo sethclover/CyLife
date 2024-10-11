@@ -27,10 +27,10 @@
 
         <!-- EditText for Organization Name -->
         <EditText
-                android:id="@+id/etOrgName"
+                android:id="@+id/etClubName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Organization Name"
+                android:hint="Club Name"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="16dp"
@@ -49,10 +49,10 @@
 
         <!-- EditText for Organization ID -->
         <EditText
-                android:id="@+id/etOrgId"
+                android:id="@+id/etClubId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Organization ID"
+                android:hint="Enter Club ID"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="8dp"
@@ -82,10 +82,10 @@
 
         <!-- Button to Create Organization -->
         <Button
-                android:id="@+id/CO"
+                android:id="@+id/CC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create Organisation"
+                android:text="Create Club"
                 android:textSize="18sp"
                 android:background="#B3FFFFFF"
                 android:textColor="@color/black"
@@ -93,30 +93,30 @@
                 android:layout_marginTop="8dp" />
 
         <TextView
-                android:id="@+id/orgListTextView2"
+                android:id="@+id/clubListTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create Organisation response"
+                android:text="Create Club response"
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/white" />
 
         <!-- Button to Edit Organization -->
         <EditText
-                android:id="@+id/etOrgIdE"
+                android:id="@+id/etClubIdE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Organization ID"
+                android:hint="Enter Club ID"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="8dp"
                 android:padding="8dp" />
 
         <Button
-                android:id="@+id/EO"
+                android:id="@+id/EC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Edit Organization"
+                android:text="Edit Club"
                 android:textSize="18sp"
                 android:background="#B3FFFFFF"
                 android:textColor="@color/black"
@@ -128,10 +128,10 @@
         <!-- Name EditText (hidden initially) -->
 
         <EditText
-                android:id="@+id/etOrgNameE"
+                android:id="@+id/etClubNameE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter New Organization Name"
+                android:hint="Enter New Club Name"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="12dp"
@@ -140,10 +140,10 @@
 
         <!-- Email EditText (hidden initially) -->
         <EditText
-                android:id="@+id/etOgEmail"
+                android:id="@+id/etClubEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter New Organization Email"
+                android:hint="Enter New Club Email"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="8dp"
@@ -153,10 +153,10 @@
 
         <!-- Button to Get Organization -->
         <Button
-                android:id="@+id/GO"
+                android:id="@+id/GC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Get Organization"
+                android:text="Get Club"
                 android:textSize="18sp"
                 android:background="#B3FFFFFF"
                 android:textColor="@color/black"
@@ -165,20 +165,20 @@
 
         <!-- TextView for Organization List -->
         <TextView
-                android:id="@+id/orgListTextView"
+                android:id="@+id/clubListTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Organizations will be listed here"
+                android:text="Clubs will be listed here"
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/white" />
 
 
         <EditText
-                android:id="@+id/etOrgIdD"
+                android:id="@+id/etClubIdD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Organization ID to be deleted"
+                android:hint="Enter Club ID to be deleted"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="16dp"
@@ -186,10 +186,10 @@
 
         <!-- Button to Delete Organization -->
         <Button
-                android:id="@+id/DO"
+                android:id="@+id/DC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delete Organization"
+                android:text="Delete Club"
                 android:textSize="18sp"
                 android:background="#B3FFFFFF"
                 android:textColor="@color/black"

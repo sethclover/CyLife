@@ -12,6 +12,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button orgButton;
     private Button entButton;
     private Button logoutButton;
+    private Button clubButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
         welcomeText = findViewById(R.id.welcome_text);
         orgButton = findViewById(R.id.org_button);
         entButton = findViewById(R.id.ent_button);
+        clubButton = findViewById(R.id.club_button);
         logoutButton = findViewById(R.id.logout_button);
 
         // Set onClickListeners for buttons
@@ -34,6 +36,11 @@ public class WelcomeActivity extends AppCompatActivity {
         entButton.setOnClickListener(view -> {
             // Start the Events Activity
             Intent intent = new Intent(WelcomeActivity.this, EventsActivity.class);
+            startActivity(intent);
+        });
+        clubButton.setOnClickListener(view -> {
+            // Start the Events Activity
+            Intent intent = new Intent(WelcomeActivity.this, createClub.class);
             startActivity(intent);
         });
 
