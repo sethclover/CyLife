@@ -39,6 +39,7 @@ public class EventController {
         }
         existingEvent.setEventName(request.getEventName());
         existingEvent.setDescription(request.getDescription());
+        existingEvent.setEventLocation(request.getEventLocation());
         eventRepository.save(existingEvent);
         return existingEvent;
     }
