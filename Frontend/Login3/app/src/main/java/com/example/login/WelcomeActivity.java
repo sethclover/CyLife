@@ -39,7 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
         clubButton.setOnClickListener(view -> {
-            // Start the Events Activity
+            // Start the Club Activity
             Intent intent = new Intent(WelcomeActivity.this, createClub.class);
             startActivity(intent);
         });

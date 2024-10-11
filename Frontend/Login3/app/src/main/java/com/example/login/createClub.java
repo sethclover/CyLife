@@ -59,7 +59,7 @@ public class createClub extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clubListTextView2.setText("");
-                createClub();
+                createClubs();
             }
         });
 
@@ -83,8 +83,8 @@ public class createClub extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String clubId = ClubIdD.getText().toString().trim();
-                    deleteClub(clubId);
-                }
+                deleteClub(clubId);
+            }
 
         });
 
@@ -97,7 +97,7 @@ public class createClub extends AppCompatActivity {
     }
 
     // Function to post data and create an club
-    private void createClub() {
+    private void createClubs() {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
 
         // Get values from EditTexts
