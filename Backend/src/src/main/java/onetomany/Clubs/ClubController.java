@@ -50,6 +50,4 @@ public class ClubController {
         clubRepository.deleteById(id);
         return success;
     }
-
-    
 }
