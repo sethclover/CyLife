@@ -35,6 +35,9 @@
     <activity
             android:name="com.example.login.EventsActivity"
             tools:ignore="Instantiatable" />
+    <activity
+            android:name="com.example.login.ShowEvents"
+            tools:ignore="Instantiatable" />
 
     <!-- createOrganization Activity -->
     <activity android:name="com.example.login.createOrganization"

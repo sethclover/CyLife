@@ -139,16 +139,6 @@
                 android:visibility="visible" />
 
         <!-- Email EditText (hidden initially) -->
-        <EditText
-                android:id="@+id/etOgEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter New Organization Email"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                android:visibility="visible" />
 
 
         <!-- Button to Get Organization -->

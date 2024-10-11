@@ -64,7 +64,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void signupUser(String email, String name, String password, boolean isInternational, boolean isMulticultural) {
-        String url = "https://3e0a444d-aca8-4e24-b937-7fe9c183d00c.mock.pstmn.io/students";  // Change to your backend API endpoint
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/users";  // Change to your backend API endpoint
 
         // Create JSON object with the input data
         JSONObject jsonBody = new JSONObject();
