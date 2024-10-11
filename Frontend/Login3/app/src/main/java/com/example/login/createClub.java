@@ -173,7 +173,7 @@ public class createClub extends AppCompatActivity {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject club = response.getJSONObject(i);
                                 String clubId = club.optString("clubId", "Unknown ID");
-                                String clubName = club.optString("name", "Unknown Club");  // Extract the club name (with fallback)
+                                String clubName = club.optString("clubName", "Unknown Club");  // Extract the club name (with fallback)
 
                                 // Append the club name to the builder
                                 clubDetails.append("ID: ").append(clubId).append(" - Name: ").append(clubName).append("\n");
@@ -216,8 +216,8 @@ public class createClub extends AppCompatActivity {
 
         JSONObject updatedClubData = new JSONObject();
         try {
-            updatedClubData.put("name", clubName);
-            updatedClubData.put("email", email);
+            updatedClubData.put("clubName", clubName);
+            updatedClubData.put("clubEmail", email);
         } catch (JSONException e) {
             e.printStackTrace();
             return;

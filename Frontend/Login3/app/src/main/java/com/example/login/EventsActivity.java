@@ -89,7 +89,7 @@ public class EventsActivity extends AppCompatActivity {
 
     // Function to post data and create an event
     private void createEvent() {
-        String url = "http://10.0.2.2:8080/events";
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/events";
 
         // Get values from EditTexts
         String eventName = etEventName.getText().toString();
@@ -104,8 +104,8 @@ public class EventsActivity extends AppCompatActivity {
         // Prepare POST request data
         JSONObject postData = new JSONObject();
         try {
-            postData.put("name", eventName);
-            postData.put("location", eventLocation);
+            postData.put("eventName", eventName);
+            postData.put("eventLocation", eventLocation);
             postData.put("description", eventDescription);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -145,7 +145,7 @@ public class EventsActivity extends AppCompatActivity {
 
     // Function to get an event by name
     private void getEvent() {
-        String url ="http://10.0.2.2:8080/events";
+        String url ="http://coms-3090-065.class.las.iastate.edu:8080/events";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -200,7 +200,7 @@ public class EventsActivity extends AppCompatActivity {
 
     // Function to delete an event by name
     private void deleteEvent(String eventName) {
-        String url = "http://10.0.2.2:8080/events/" + eventName;
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/events/" + eventName;
 
         // Create a StringRequest for a DELETE request
         StringRequest deleteRequest = new StringRequest(
