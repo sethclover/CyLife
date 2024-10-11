@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="com.example.login">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <!-- Set application settings -->
     <application
@@ -38,6 +39,7 @@
     <!-- createOrganization Activity -->
     <activity android:name="com.example.login.createOrganization"
         android:exported="true" />
+
 
     <!-- WelcomeActivity -->
     <activity android:name="com.example.login.WelcomeActivity" />

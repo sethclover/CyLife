@@ -2,7 +2,6 @@ package com.example.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,68 +22,64 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 public class EventsActivity extends AppCompatActivity {
 
-    private final String URL = "http://coms-3090-065.class.las.iastate.edu:8080/events";
-//    private final String URL = "https://9e3fe20e-1ffb-409a-816f-4f2a2f121fab.mock.pstmn.io";
-
-
-    private EditText etName, etLocation, etTime, etDescription, etEditID, etDeleteID;
-    private Button createEventButton, editEventButton, getEventButton, deleteEventButton, logoutButton;
-    private TextView orgListTextView;
+    private EditText etEventName, etEventLocation, etEventDescription, etEventNameDelete;
+    private Button getEventButton, createEventButton;
+    private Button deleteEventButton;
+    private Button logoutButton;
+    private TextView eventListTextView;
     private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
-        // Implement event-related logic here
 
-        logoutButton = findViewById(R.id.logout_button);
-
-        etName = findViewById(R.id.event_name_input);
-        etLocation = findViewById(R.id.location_input);
-        etTime = findViewById(R.id.time_input);
-        etDescription = findViewById(R.id.event_description_input);
+        // Initialize fields and buttons
+        etEventName = findViewById(R.id.event_name_input);
+        etEventLocation = findViewById(R.id.location_time_input);
+        etEventDescription = findViewById(R.id.event_description_input);
+        etEventNameDelete = findViewById(R.id.event_name_input2);
         createEventButton = findViewById(R.id.CE);
-        etEditID = findViewById(R.id.event_id_input);
-        editEventButton = findViewById(R.id.EE);
         getEventButton = findViewById(R.id.GE);
-        etDeleteID = findViewById(R.id.event_id_input2);
         deleteEventButton = findViewById(R.id.DE);
-
-        requestQueue = Volley.newRequestQueue(this);
+        eventListTextView = findViewById(R.id.eventListTextView);
         logoutButton = findViewById(R.id.logout_button);
 
+        // Create Volley request queue
+//        requestQueue = Volley.newRequestQueue(this);
+
+        // Create event
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orgListTextView.setText("");
                 createEvent();
+                Toast.makeText(EventsActivity.this, "Event created", Toast.LENGTH_SHORT).show();
             }
         });
+//        createEventButton.setOnClickListener(view -> {
+//            createEvent();
+//        });
 
+        // Get event
         getEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orgListTextView.setText("");
-                getEvents();
+                getEvent();
             }
         });
 
+        // Delete event
         deleteEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String eventId = etDeleteID.getText().toString().trim();
-                deleteEvent(eventId);
+            public void onClick(View view) {
+                String eventName = etEventNameDelete.getText().toString().trim();
+                deleteEvent(eventName);
             }
-
         });
 
-
+        // Logout functionality
         logoutButton.setOnClickListener(view -> {
             Intent intent = new Intent(EventsActivity.this, WelcomeActivity.class);
             startActivity(intent);
@@ -92,49 +87,46 @@ public class EventsActivity extends AppCompatActivity {
         });
     }
 
-
-    // Function to post data and create an organization
+    // Function to post data and create an event
     private void createEvent() {
-        String url = URL + "/postEvent";
+        String url = "http://10.0.2.2:8080/events";
 
         // Get values from EditTexts
-        String name = etName.getText().toString();
-        String location = etLocation.getText().toString();
-        String time = etTime.getText().toString();
-        String description = etDescription.getText().toString();
+        String eventName = etEventName.getText().toString();
+        String eventLocation = etEventLocation.getText().toString();
+        String eventDescription = etEventDescription.getText().toString();
 
-        if (name.isEmpty() || location.isEmpty() || time.isEmpty() || description.isEmpty()) {
-            orgListTextView.setText("All fields are required.");
+        if (eventName.isEmpty() || eventLocation.isEmpty() || eventDescription.isEmpty()) {
+            Toast.makeText(EventsActivity.this, "Unknown error occurred", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Prepare POST request data
         JSONObject postData = new JSONObject();
         try {
-            postData.put("name", name);
-            postData.put("location", location);
-            postData.put("time", time);
-            postData.put("description", description);
+            postData.put("name", eventName);
+            postData.put("location", eventLocation);
+            postData.put("description", eventDescription);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        // Create a StringRequest to post the data
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
+        // Create a request to post the data
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
-                        // Handle response (e.g., show success message)
-                        orgListTextView.setText("Organization Created Successfully!");
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(EventsActivity.this, "It's working", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // Handle error (e.g., show error message)
-                        orgListTextView.setText("Error creating organization: " + error.getMessage());
+                        eventListTextView.setText("Error creating organization: " + error.getMessage());
                     }
-                }) {
+                }){
+
             @Override
             public byte[] getBody() {
                 return postData.toString().getBytes();
@@ -146,100 +138,93 @@ public class EventsActivity extends AppCompatActivity {
             }
         };
 
+
         // Add the request to the RequestQueue
-        requestQueue.add(stringRequest);
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
-    // Function to get the list of organizations
-    private void getEvents() {
-        String url = URL + "/events";  // Use the correct API URL
+    // Function to get an event by name
+    private void getEvent() {
+        String url ="http://10.0.2.2:8080/events";
 
-        // Create a JsonObjectRequest (since the response is a JSON object)
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            // Check if the response is successful
+                            // Check if the "success" field is true
                             boolean success = response.getBoolean("success");
-
                             if (success) {
-                                // Extract the organizations array
-                                JSONArray organizations = response.getJSONArray("organizations");
+                                // Extract the "events" array from the response
+                                JSONArray events = response.getJSONArray("events");
+                                StringBuilder eventDetails = new StringBuilder();
 
-                                // Prepare a string builder to store the organization names
-                                StringBuilder orgNames = new StringBuilder();
+                                // Iterate over the events array and extract each event's details
+                                for (int i = 0; i < events.length(); i++) {
+                                    JSONObject event = events.getJSONObject(i);
 
-                                // Iterate over the organizations array
-                                for (int i = 0; i < organizations.length(); i++) {
-                                    JSONObject org = organizations.getJSONObject(i);
-                                    String orgName = org.getString("name");  // Extract the organization name
+                                    // Get event details
+                                    String eventName = event.getString("eventName");
+                                    String eventLocation = event.getString("eventLocation");
+                                    String eventDescription = event.getString("eventDescription");
 
-                                    // Append the organization name to the builder
-                                    orgNames.append(orgName).append("\n");
+                                    // Append event details to the StringBuilder
+                                    eventDetails.append("Event Name: ").append(eventName).append("\n")
+                                            .append("Location: ").append(eventLocation).append("\n")
+                                            .append("Description: ").append(eventDescription).append("\n\n");
                                 }
 
-                                // Update the TextView and make it visible
-                                orgListTextView.setVisibility(View.VISIBLE);
-                                orgListTextView.setText(orgNames.toString());
-
+                                // Update the TextView with the event details
+                                eventListTextView.setVisibility(View.VISIBLE);
+                                eventListTextView.setText(eventDetails.toString());
                             } else {
-                                // If success is false, show an error message
-                                orgListTextView.setVisibility(View.VISIBLE);
-                                orgListTextView.setText("Failed to fetch organizations.");
+                                eventListTextView.setText("Failed to retrieve events.");
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            orgListTextView.setVisibility(View.VISIBLE);
-                            orgListTextView.setText("Error parsing response.");
+                            eventListTextView.setText("Error parsing event data.");
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Log and display error
-                        Log.e("VolleyError", error.toString());
-                        orgListTextView.setVisibility(View.VISIBLE);
-                        orgListTextView.setText("Error fetching organizations.");
+                        eventListTextView.setText("Error fetching events: " + error.getMessage());
                     }
                 });
 
         // Add the request to the RequestQueue
-        requestQueue.add(jsonObjectRequest);
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
-    private void deleteEvent(String eventId) {
-        String url = URL + eventId;
+    // Function to delete an event by name
+    private void deleteEvent(String eventName) {
+        String url = "http://10.0.2.2:8080/events/" + eventName;
 
+        // Create a StringRequest for a DELETE request
         StringRequest deleteRequest = new StringRequest(
                 Request.Method.DELETE,
                 url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Instead of checking for "success", we'll just display the raw response for debugging
-                        Toast.makeText(EventsActivity.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EventsActivity.this, "Event deleted successfully", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error.networkResponse != null && error.networkResponse.data != null) {
-                            String errorMsg = new String(error.networkResponse.data);  // Extract error message from response
+                            String errorMsg = new String(error.networkResponse.data);
                             Toast.makeText(EventsActivity.this, "Error: " + errorMsg, Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(EventsActivity.this, "Unknown error occurred", Toast.LENGTH_SHORT).show();
                         }
-                        error.printStackTrace();
                     }
-                }
-        );
+                });
 
-        requestQueue.add(deleteRequest);
+        // Add the request to the RequestQueue
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(deleteRequest);
     }
-
-
 }
-
