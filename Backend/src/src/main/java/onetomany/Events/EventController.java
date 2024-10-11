@@ -11,8 +11,8 @@ public class EventController {
     @Autowired
     EventRepository eventRepository;
 
-    private String success = "{\"message\":\"success\"}";
-    private String failure = "{\"message\":\"failure\"}";
+    private String success = "{\"message\":\"Success\"}";
+    private String failure = "{\"message\":\"Failure\"}";
 
     @GetMapping(path = "/events")
     List<Event> getAllEvents() {
@@ -39,6 +39,7 @@ public class EventController {
         }
         existingEvent.setEventName(request.getEventName());
         existingEvent.setDescription(request.getDescription());
+        existingEvent.setEventLocation(request.getEventLocation());
         eventRepository.save(existingEvent);
         return existingEvent;
     }

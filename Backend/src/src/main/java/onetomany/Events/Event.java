@@ -14,7 +14,11 @@ public class Event {
     private int eventId;
     private String eventName;
     private String description;
+<<<<<<< HEAD
     private String location_time;
+=======
+    private String eventLocation;
+>>>>>>> 7aa477fd833dcede8e9860ffcbff5c5c6b568338
 
     // Constructors
     public Event() {
@@ -57,5 +61,13 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
     }
 }

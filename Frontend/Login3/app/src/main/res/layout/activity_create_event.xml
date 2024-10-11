@@ -58,7 +58,7 @@
                 android:id="@+id/location_time_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Location + Time"
+                android:hint="Location and Time"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:background="@android:drawable/edit_text"
@@ -67,6 +67,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"/>
+
 
         <EditText
                 android:id="@+id/event_description_input"

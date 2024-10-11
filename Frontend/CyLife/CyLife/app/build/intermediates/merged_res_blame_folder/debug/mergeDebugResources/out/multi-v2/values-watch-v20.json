@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.cylife.app-mergeDebugResources-49:/values-watch-v20/values-watch-v20.xml",
+            "map": [
+                {
+                    "source": "/Users/dhvanimistry/.gradle/caches/transforms-4/1ed8156356d2b591621bbd2907ced01c/transformed/appcompat-1.7.0/res/values-watch-v20/values-watch-v20.xml",
+                    "from": {
+                        "startLines": "2,5,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,214,385",
+                        "endLines": "4,7,10",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "209,380,553"
+                    }
+                }
+            ]
+        }
+    ]
+}

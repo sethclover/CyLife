@@ -11,8 +11,8 @@ public class OrganisationController {
     @Autowired
     OrganisationRepository organisationRepository;
 
-    private String success = "{\"message\":\"success\"}";
-    private String failure = "{\"message\":\"failure\"}";
+    private String success = "{\"message\":\"Success\"}";
+    private String failure = "{\"message\":\"Failure\"}";
 
     @GetMapping(path = "/organisations")
     List<Organisation> getAllOrganisations() {
