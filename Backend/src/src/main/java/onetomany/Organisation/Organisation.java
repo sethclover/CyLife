@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 @Entity
 public class Organisation {
 
+    //ID collection and the names to call in Postman
     @Id
     private String orgId;
     private String name;

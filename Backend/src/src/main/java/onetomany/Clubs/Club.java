@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Club {
 
+    //ID collection and the names to call in Postman
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int clubId;

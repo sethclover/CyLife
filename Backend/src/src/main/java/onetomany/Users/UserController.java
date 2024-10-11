@@ -22,8 +22,8 @@ public class UserController {
     @Autowired
     ClubRepository clubRepository;
 
-    private String success = "{\"message\":\"success\"}";
-    private String failure = "{\"message\":\"failure\"}";
+    private String success = "{\"message\":\"Success\"}";
+    private String failure = "{\"message\":\"Failure\"}";
 
     @GetMapping(path = "/users")
     List<User> getAllUsers() {
