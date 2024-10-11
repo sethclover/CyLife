@@ -92,7 +92,25 @@
                 android:padding="16dp"
                 android:layout_marginTop="8dp" />
 
+        <TextView
+                android:id="@+id/orgListTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Organisation response"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white" />
+
         <!-- Button to Edit Organization -->
+        <EditText
+                android:id="@+id/etOrgIdE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Organization ID"
+                android:textColor="@color/black"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="8dp"
+                android:padding="8dp" />
 
         <Button
                 android:id="@+id/EO"
@@ -105,25 +123,10 @@
                 android:padding="16dp"
                 android:layout_marginTop="8dp" />
 
-        <EditText
-                android:id="@+id/etOrgIdE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Organization ID"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="8dp"
-                android:padding="8dp" />
-
         <!-- Button to submit OrgID and show name/email fields -->
-        <Button
-                android:id="@+id/btnSubmitOrgId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Submit Organization ID"
-                android:layout_marginTop="12dp" />
 
         <!-- Name EditText (hidden initially) -->
+
         <EditText
                 android:id="@+id/etOrgNameE"
                 android:layout_width="match_parent"
@@ -133,11 +136,11 @@
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="12dp"
                 android:padding="8dp"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         <!-- Email EditText (hidden initially) -->
         <EditText
-                android:id="@+id/etOrgEmail"
+                android:id="@+id/etOgEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter New Organization Email"
@@ -145,7 +148,7 @@
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="8dp"
                 android:padding="8dp"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
 
         <!-- Button to Get Organization -->
