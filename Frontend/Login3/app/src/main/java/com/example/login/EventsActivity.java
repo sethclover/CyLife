@@ -112,8 +112,8 @@ public class EventsActivity extends AppCompatActivity {
         JSONObject postData = new JSONObject();
         try {
             postData.put("name", name);
-            postData.put("email", location);
-            postData.put("eventId", time);
+            postData.put("location", location);
+            postData.put("time", time);
             postData.put("description", description);
         } catch (JSONException e) {
             e.printStackTrace();
