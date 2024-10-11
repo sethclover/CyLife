@@ -24,98 +24,98 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class createOrganization extends AppCompatActivity {
+public class createClub extends AppCompatActivity {
 
-    private EditText etOrgName, etEmail, etOrgId, OrgIdD, etOrgIdE, etOrgNameE, etOgEmail;;
-    private Button createOrgButton, getOrgButton, editOrg, btnDeleteOrg, logoutButton;
-    private TextView orgListTextView, orgListTextView2;
+    private EditText etClubName, etEmail, etClubId, ClubIdD, etClubIdE, etClubNameE, etClubEmail;
+    private Button createClubButton, getClubButton, editClub, btnDeleteClub, logoutButton;
+    private TextView clubListTextView, clubListTextView2;
     private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_organisation);
+        setContentView(R.layout.activity_create_club);
 
         // Initialize fields and buttons
-        etOrgName = findViewById(R.id.etOrgName);
+        etClubName = findViewById(R.id.etClubName);
         etEmail = findViewById(R.id.etEmail);
-        createOrgButton = findViewById(R.id.CC);
-        getOrgButton = findViewById(R.id.GO);
-        orgListTextView = findViewById(R.id.orgListTextView);
-        orgListTextView2 = findViewById(R.id.orgListTextView2);
-        etOrgId = findViewById(R.id.etOrgId);
-        editOrg = findViewById(R.id.EO);
-        btnDeleteOrg = findViewById(R.id.DO);
-        OrgIdD = findViewById(R.id.etOrgIdD);
+        createClubButton = findViewById(R.id.CC);
+        getClubButton = findViewById(R.id.GC);
+        clubListTextView = findViewById(R.id.clubListTextView);
+        clubListTextView2 = findViewById(R.id.clubListTextView2);
+        etClubId = findViewById(R.id.etClubId);
+        editClub = findViewById(R.id.EC);
+        btnDeleteClub = findViewById(R.id.DC);
+        ClubIdD = findViewById(R.id.etClubIdD);
         requestQueue = Volley.newRequestQueue(this);
         logoutButton = findViewById(R.id.logout_button);
-        etOrgNameE = findViewById(R.id.etOrgNameE);
-        etOgEmail = findViewById(R.id.etOgEmail);
-        etOrgIdE = findViewById(R.id.etOrgIdE);
-        etOrgNameE = findViewById(R.id.etOrgNameE);
+        etClubNameE = findViewById(R.id.etClubNameE);
+        etClubEmail = findViewById(R.id.etClubEmail);
+        etClubIdE = findViewById(R.id.etClubIdE);
+        etClubNameE = findViewById(R.id.etClubNameE);
         etEmail = findViewById(R.id.etEmail);
 
-        createOrgButton.setOnClickListener(new View.OnClickListener() {
+        createClubButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orgListTextView2.setText("");
-                createOrganization();
+                clubListTextView2.setText("");
+                createClub();
             }
         });
 
-        getOrgButton.setOnClickListener(new View.OnClickListener() {
+        getClubButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orgListTextView.setText("");
-                getOrganizations();
+                clubListTextView.setText("");
+                getClubs();
             }
         });
 
-        editOrg.setOnClickListener(new View.OnClickListener() {
+        editClub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editOrganization();
+                editClub();
             }
         });
 
 
-        btnDeleteOrg.setOnClickListener(new View.OnClickListener() {
+        btnDeleteClub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String orgId = OrgIdD.getText().toString().trim();
-                    deleteOrganization(orgId);
+                String clubId = ClubIdD.getText().toString().trim();
+                    deleteClub(clubId);
                 }
 
         });
 
         logoutButton.setOnClickListener(view -> {
-            Intent intent = new Intent(createOrganization.this, WelcomeActivity.class);
+            Intent intent = new Intent(createClub.this, WelcomeActivity.class);
             startActivity(intent);
             finish();
         });
 
     }
 
-    // Function to post data and create an organization
-    private void createOrganization() {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/organisations";
+    // Function to post data and create an club
+    private void createClub() {
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
 
         // Get values from EditTexts
-        String orgName = etOrgName.getText().toString();
+        String clubName = etClubName.getText().toString();
         String email = etEmail.getText().toString();
-        String orgId = etOrgId.getText().toString();
+        String clubId = etClubId.getText().toString();
 
-        if (orgName.isEmpty() || email.isEmpty() || orgId.isEmpty()) {
-            orgListTextView.setText("All fields are required.");
+        if (clubName.isEmpty() || email.isEmpty() || clubId.isEmpty()) {
+            clubListTextView.setText("All fields are required.");
             return;
         }
 
         // Prepare POST request data
         JSONObject postData = new JSONObject();
         try {
-            postData.put("name", orgName);
+            postData.put("name", clubName);
             postData.put("email", email);
-            postData.put("orgId", orgId);
+            postData.put("clubId", clubId);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -125,13 +125,13 @@ public class createOrganization extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        orgListTextView2.setText("Organization Created Successfully!");
+                        clubListTextView2.setText("Club Created Successfully!");
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        orgListTextView2.setText("Error creating organization: " + error.getMessage());
+                        clubListTextView2.setText("Error creating club: " + error.getMessage());
                     }
                 }) {
             @Override
@@ -149,9 +149,9 @@ public class createOrganization extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    // Function to get the list of organizations
-    private void getOrganizations() {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/organisations";  // Ensure this is the correct URL
+    // Function to get the list of clubs
+    private void getClubs() {
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";  // Ensure this is the correct URL
 
         // Create a JsonArrayRequest (since the response is a JSON array)
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -166,27 +166,27 @@ public class createOrganization extends AppCompatActivity {
                             Log.d("API Response", response.toString());
 
 
-                            // Prepare a string builder to store the organization names
-                            StringBuilder orgDetails = new StringBuilder();
+                            // Prepare a string builder to store the club names
+                            StringBuilder clubDetails = new StringBuilder();
 
-                            // Iterate over the organizations array
+                            // Iterate over the clubs array
                             for (int i = 0; i < response.length(); i++) {
-                                JSONObject org = response.getJSONObject(i);
-                                String orgId = org.optString("orgId", "Unknown ID");
-                                String orgName = org.optString("name", "Unknown Organization");  // Extract the organization name (with fallback)
+                                JSONObject club = response.getJSONObject(i);
+                                String clubId = club.optString("clubId", "Unknown ID");
+                                String clubName = club.optString("name", "Unknown Club");  // Extract the club name (with fallback)
 
-                                // Append the organization name to the builder
-                                orgDetails.append("ID: ").append(orgId).append(" - Name: ").append(orgName).append("\n");
+                                // Append the club name to the builder
+                                clubDetails.append("ID: ").append(clubId).append(" - Name: ").append(clubName).append("\n");
                             }
 
                             // Update the TextView and make it visible
-                            orgListTextView.setVisibility(View.VISIBLE);
-                            orgListTextView.setText(orgDetails.toString());
+                            clubListTextView.setVisibility(View.VISIBLE);
+                            clubListTextView.setText(clubDetails.toString());
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            orgListTextView.setVisibility(View.VISIBLE);
-                            orgListTextView.setText("Error parsing response.");
+                            clubListTextView.setVisibility(View.VISIBLE);
+                            clubListTextView.setText("Error parsing response.");
                         }
                     }
                 },
@@ -197,8 +197,8 @@ public class createOrganization extends AppCompatActivity {
                         Log.e("VolleyError", error.toString());
 
                         // Show a user-friendly message in case of an error
-                        orgListTextView.setVisibility(View.VISIBLE);
-                        orgListTextView.setText("Error fetching organizations: " + error.getMessage());
+                        clubListTextView.setVisibility(View.VISIBLE);
+                        clubListTextView.setText("Error fetching clubs: " + error.getMessage());
                     }
                 }
         );
@@ -209,26 +209,26 @@ public class createOrganization extends AppCompatActivity {
     }
 
 
-    private void editOrganization() {
-        String orgId = etOrgIdE.getText().toString();
-        String orgName = etOrgNameE.getText().toString();
-        String email = etOgEmail.getText().toString();
+    private void editClub() {
+        String clubId = etClubIdE.getText().toString();
+        String clubName = etClubNameE.getText().toString();
+        String email = etClubEmail.getText().toString();
 
-        JSONObject updatedOrgData = new JSONObject();
+        JSONObject updatedClubData = new JSONObject();
         try {
-            updatedOrgData.put("name", orgName);
-            updatedOrgData.put("email", email);
+            updatedClubData.put("name", clubName);
+            updatedClubData.put("email", email);
         } catch (JSONException e) {
             e.printStackTrace();
             return;
         }
 
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/organisations/" + orgId;
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs/" + clubId;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.PUT,
                 url,
-                updatedOrgData,
+                updatedClubData,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -243,7 +243,7 @@ public class createOrganization extends AppCompatActivity {
                         error.printStackTrace();
 
                         // Display a user-friendly error message
-                        Toast.makeText(getApplicationContext(), "Error updating organization: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error updating club: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -251,8 +251,8 @@ public class createOrganization extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void deleteOrganization(String orgId) {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/organisations/" + orgId;
+    private void deleteClub(String clubId) {
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs/" + clubId;
 
         StringRequest deleteRequest = new StringRequest(
                 Request.Method.DELETE,
@@ -261,7 +261,7 @@ public class createOrganization extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Instead of checking for "success", we'll just display the raw response for debugging
-                        Toast.makeText(createOrganization.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(createClub.this, response, Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -269,9 +269,9 @@ public class createOrganization extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         if (error.networkResponse != null && error.networkResponse.data != null) {
                             String errorMsg = new String(error.networkResponse.data);  // Extract error message from response
-                            Toast.makeText(createOrganization.this, "Error: " + errorMsg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(createClub.this, "Error: " + errorMsg, Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(createOrganization.this, "Unknown error occurred", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(createClub.this, "Unknown error occurred", Toast.LENGTH_SHORT).show();
                         }
                         error.printStackTrace();
                     }
