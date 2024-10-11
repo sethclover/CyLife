@@ -26,7 +26,7 @@ import org.json.JSONObject;
 
 public class createClub extends AppCompatActivity {
 
-    private EditText etClubName, etEmail, etClubId, ClubIdD, etClubIdE, etClubNameE, etOgEmail;;
+    private EditText etClubName, etEmail, etClubId, ClubIdD, etClubIdE, etClubNameE, etClubEmail;
     private Button createClubButton, getClubButton, editClub, btnDeleteClub, logoutButton;
     private TextView clubListTextView, clubListTextView2;
     private RequestQueue requestQueue;
@@ -50,7 +50,7 @@ public class createClub extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         logoutButton = findViewById(R.id.logout_button);
         etClubNameE = findViewById(R.id.etClubNameE);
-        etOgEmail = findViewById(R.id.etClubEmail);
+        etClubEmail = findViewById(R.id.etClubEmail);
         etClubIdE = findViewById(R.id.etClubIdE);
         etClubNameE = findViewById(R.id.etClubNameE);
         etEmail = findViewById(R.id.etEmail);
@@ -212,7 +212,7 @@ public class createClub extends AppCompatActivity {
     private void editClub() {
         String clubId = etClubIdE.getText().toString();
         String clubName = etClubNameE.getText().toString();
-        String email = etEmail.getText().toString();
+        String email = etClubEmail.getText().toString();
 
         JSONObject updatedClubData = new JSONObject();
         try {

@@ -212,7 +212,7 @@ public class createOrganization extends AppCompatActivity {
     private void editOrganization() {
         String orgId = etOrgIdE.getText().toString();
         String orgName = etOrgNameE.getText().toString();
-        String email = etEmail.getText().toString();
+        String email = etOgEmail.getText().toString();
 
         JSONObject updatedOrgData = new JSONObject();
         try {
