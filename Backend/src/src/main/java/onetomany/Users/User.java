@@ -17,6 +17,7 @@ import onetomany.Organisation.Organisation;
 @Entity
 public class User {
 
+    //ID collection and the names to call in Postman
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
