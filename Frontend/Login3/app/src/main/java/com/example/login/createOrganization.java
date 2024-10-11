@@ -50,7 +50,6 @@ public class createOrganization extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         logoutButton = findViewById(R.id.logout_button);
         etOrgNameE = findViewById(R.id.etOrgNameE);
-        etOgEmail = findViewById(R.id.etOgEmail);
         etOrgIdE = findViewById(R.id.etOrgIdE);
         etOrgNameE = findViewById(R.id.etOrgNameE);
         etEmail = findViewById(R.id.etEmail);

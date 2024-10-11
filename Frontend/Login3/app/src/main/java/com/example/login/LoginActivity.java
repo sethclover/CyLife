@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        String url = "http://localhost:3000/students";
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/users";
 
         JSONObject jsonBody = new JSONObject();
         try {
@@ -72,24 +73,18 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        boolean success = response.optBoolean("success"); // Modify according to your API response
-                        if (success) {
+                        Log.d("API Response", response.toString());
                             String studentName = response.optString("studentName"); // Get student name from response
                             Toast.makeText(LoginActivity.this, "Welcome " + studentName, Toast.LENGTH_SHORT).show();
-                            // Navigate to the next activity
                             Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                             startActivity(intent);
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Login failed. Please check your email and password.", Toast.LENGTH_SHORT).show();
-                        }
+
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(LoginActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
-                        startActivity(intent);
                     }
                 });
 
