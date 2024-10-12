@@ -17,21 +17,26 @@ import onetomany.Organisation.Organisation;
 @Entity
 public class User {
 
-    //ID collection and the names to call in Postman
+    // Unique ID for the user, auto-generated
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
+
+    // User's name, email, and password fields
     private String name;
     private String email;
     private String password;
 
+    // Enum to define the type of user (STUDENT, STAFF, CLUB, ORG)
     @Enumerated(EnumType.STRING)
-    private UserType type;  // Enum for 'student', 'staff', 'club', 'org'
+    private UserType type;
 
+    // Many-to-one relationship with Organisation entity
     @ManyToOne
     @JoinColumn(name = "org_id")
     private Organisation organisation;
 
+    // Many-to-one relationship with Club entity
     @ManyToOne
     @JoinColumn(name = "club_id")
     private Club club;
