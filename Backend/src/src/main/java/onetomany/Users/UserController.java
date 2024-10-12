@@ -25,6 +25,7 @@ public class UserController {
     private String success = "{\"message\":\"Success\"}";
     private String failure = "{\"message\":\"Failure\"}";
 
+    // Endpoint to get all users
     @GetMapping(path = "/users")
     List<User> getAllUsers() {
         return userRepository.findAll();
