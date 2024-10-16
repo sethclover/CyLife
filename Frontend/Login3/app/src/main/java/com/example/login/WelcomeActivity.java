@@ -3,6 +3,7 @@ package com.example.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +14,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button entButton;
     private Button logoutButton;
     private Button clubButton;
+    private ImageButton userButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
         entButton = findViewById(R.id.ent_button);
         clubButton = findViewById(R.id.club_button);
         logoutButton = findViewById(R.id.logout_button);
+        userButton = findViewById(R.id.user_button);
 
         // Set onClickListeners for buttons
         orgButton.setOnClickListener(view -> {
@@ -41,6 +45,12 @@ public class WelcomeActivity extends AppCompatActivity {
         clubButton.setOnClickListener(view -> {
             // Start the Club Activity
             Intent intent = new Intent(WelcomeActivity.this, createClub.class);
+            startActivity(intent);
+        });
+
+        clubButton.setOnClickListener(view -> {
+            // Start the Club Activity
+            Intent intent = new Intent(WelcomeActivity.this, editUser.class);
             startActivity(intent);
         });
 

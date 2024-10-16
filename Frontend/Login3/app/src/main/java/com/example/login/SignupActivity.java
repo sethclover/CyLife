@@ -15,7 +15,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignupActivity extends AppCompatActivity {
+public class    SignupActivity extends AppCompatActivity {
 
     private EditText emailField, nameField, passwordField, confirmPasswordField;
     private CheckBox internationalCheckbox, multiculturalCheckbox;
@@ -72,8 +72,8 @@ public class SignupActivity extends AppCompatActivity {
             jsonBody.put("email", email);
             jsonBody.put("name", name);
             jsonBody.put("password", password);
-            jsonBody.put("international", isInternational);
-            jsonBody.put("multicultural", isMulticultural);
+//            jsonBody.put("international", isInternational);
+//            jsonBody.put("multicultural", isMulticultural);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -96,7 +96,7 @@ public class SignupActivity extends AppCompatActivity {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(SignupActivity.this, "Error parsing server response", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignupActivity.this, "Error parsing server response", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

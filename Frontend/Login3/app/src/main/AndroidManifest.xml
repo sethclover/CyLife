@@ -43,8 +43,12 @@
     <activity android:name="com.example.login.createOrganization"
         android:exported="true" />
 
-    <!-- createOrganization Activity -->
+    <!-- createClub Activity -->
     <activity android:name="com.example.login.createClub"
+        android:exported="true" />
+
+    <!-- createOrganization Activity -->
+    <activity android:name="com.example.login.editUser"
         android:exported="true" />
 
     <!-- WelcomeActivity -->
