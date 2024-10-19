@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.cylife.app-mergeDebugResources-49:/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "com.example.cylife.app-mergeDebugResources-29:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\chwoo\\.gradle\\caches\\transforms-4\\1ed8156356d2b591621bbd2907ced01c\\transformed\\appcompat-1.7.0\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "/Users/dhvanimistry/.gradle/caches/transforms-4/a6709ed8a9dccfb65c6afa5f32e1f6f5/transformed/appcompat-1.7.0/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",
