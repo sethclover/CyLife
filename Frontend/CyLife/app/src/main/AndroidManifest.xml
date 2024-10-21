@@ -29,8 +29,8 @@
 
         <activity android:name=".WelcomeActivity"></activity>
         <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".createOrganization"></activity>
-        <activity android:name=".createClub"></activity>
+        <activity android:name=".OrganizationActivity"></activity>
+        <activity android:name=".clubActivity"></activity>
         <activity android:name=".EventsActivity"></activity>
         <activity android:name=".ShowEvents"></activity>
 
