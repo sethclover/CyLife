@@ -10,6 +10,11 @@ import onetomany.Clubs.ClubRepository;
 import onetomany.Organisation.Organisation;
 import onetomany.Organisation.OrganisationRepository;
 
+//Imports Dhvani Added
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+//Only these two above
+
 @RestController
 public class UserController {
 
@@ -47,25 +52,25 @@ public class UserController {
     public User updateUser(@PathVariable int id, @RequestBody User request) {
         // Fetch the existing user by id
         User existingUser = userRepository.findById(id);
-        
+
         // Check if user exists, if not return null or handle error
         if (existingUser == null) {
             return null;  // You could also throw an exception or return a 404 response here
         }
-    
+
         // Update the existing user's details with the values from the request
         existingUser.setName(request.getName());
         existingUser.setEmail(request.getEmail());
         existingUser.setPassword(request.getPassword());
         existingUser.setType(request.getType());
-    
+
         // Save the updated user back to the repository
         userRepository.save(existingUser);
-        
+
         // Return the updated user
         return existingUser;
     }
-    
+
 
 
     @GetMapping("/users/organisation/{orgId}")
@@ -103,4 +108,18 @@ public class UserController {
         userRepository.deleteById(id);
         return success;
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody User loginRequest) {
+        // Retrieve the user by email
+        User user = userRepository.findByEmail(loginRequest.getEmail().trim());
+        // Check if the user exists and if the password matches
+        if (user != null && user.getPassword().equals(loginRequest.getPassword().trim())) {
+            return ResponseEntity.ok("Login successful");
+        }
+        // If no match, return unauthorized
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+    }
+
+
 }
