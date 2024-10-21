@@ -29,7 +29,11 @@ public class WelcomeActivity extends AppCompatActivity {
         // Set onClickListeners for buttons
         orgButton.setOnClickListener(view -> {
             // Start the Organization Activity
+<<<<<<< HEAD
             Intent intent = new Intent(WelcomeActivity.this, OrganizationActivity.class);
+=======
+            Intent intent = new Intent(WelcomeActivity.this, organizationActivity.class);
+>>>>>>> 21128f5 (login types hardcoded for now while the users is getting fixed in backend)
             startActivity(intent);
         });
 
@@ -40,7 +44,11 @@ public class WelcomeActivity extends AppCompatActivity {
         });
         clubButton.setOnClickListener(view -> {
             // Start the Club Activity
+<<<<<<< HEAD
             Intent intent = new Intent(WelcomeActivity.this, clubActivity.class);
+=======
+            Intent intent = new Intent(WelcomeActivity.this, EventsActivity.class);
+>>>>>>> 21128f5 (login types hardcoded for now while the users is getting fixed in backend)
             startActivity(intent);
         });
 

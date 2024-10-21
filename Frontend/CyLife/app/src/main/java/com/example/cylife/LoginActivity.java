@@ -56,8 +56,16 @@ public class LoginActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
-        startActivity(intent);
+        if (email.equals("student")) {
+            Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+            startActivity(intent);
+        } else if (email.equals("admin")) {
+            Intent intent = new Intent(LoginActivity.this, WelcomeActivityAdmin.class);
+            startActivity(intent);
+        } else if (email.equals("club")) {
+            Intent intent = new Intent(LoginActivity.this, WelcomeActivityClub.class);
+            startActivity(intent);
+        }
 
         // Basic input validation (you can expand this)
 //        if (email.isEmpty() || password.isEmpty()) {

@@ -1,7 +1,7 @@
-#Fri Oct 18 11:36:39 CDT 2024
-base.0=/Users/dhvanimistry/AndroidStudioProjects/CyLife2/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/dhvanimistry/AndroidStudioProjects/CyLife2/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/dhvanimistry/AndroidStudioProjects/CyLife2/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+#Mon Oct 21 16:22:12 CDT 2024
+base.0=/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=14/classes.dex
