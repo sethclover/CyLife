@@ -24,7 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class OrganizationActivity extends AppCompatActivity {
+public class organizationActivity extends AppCompatActivity {
 
     private EditText etOrgName, etEmail, etOrgId, OrgIdD, etOrgIdE, etOrgNameE, etOgEmail;;
     private Button createOrgButton, getOrgButton, editOrg, btnDeleteOrg, logoutButton;
@@ -88,7 +88,7 @@ public class OrganizationActivity extends AppCompatActivity {
         });
 
         logoutButton.setOnClickListener(view -> {
-            Intent intent = new Intent(OrganizationActivity.this, WelcomeActivity.class);
+            Intent intent = new Intent(organizationActivity.this, WelcomeActivity.class);
             startActivity(intent);
             finish();
         });
@@ -303,7 +303,7 @@ public class OrganizationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Instead of checking for "success", we'll just display the raw response for debugging
-                        Toast.makeText(OrganizationActivity.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(organizationActivity.this, response, Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -311,9 +311,9 @@ public class OrganizationActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         if (error.networkResponse != null && error.networkResponse.data != null) {
                             String errorMsg = new String(error.networkResponse.data);  // Extract error message from response
-                            Toast.makeText(OrganizationActivity.this, "Error: " + errorMsg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(organizationActivity.this, "Error: " + errorMsg, Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(OrganizationActivity.this, "Unknown error occurred", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(organizationActivity.this, "Unknown error occurred", Toast.LENGTH_SHORT).show();
                         }
                         error.printStackTrace();
                     }
