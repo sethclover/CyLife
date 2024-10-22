@@ -3262,6 +3262,7 @@ int id ignoreRequest 0x7f0800ed
 int id image 0x7f0800ee
 int id imageView 0x7f0800ef
 int id imageView2 0x7f0800f0
+int id imageView3 0x7f0801fe
 int id indeterminate 0x7f0800f1
 int id info 0x7f0800f2
 int id international_checkbox 0x7f0800f3
@@ -3525,6 +3526,7 @@ int id view_tree_saved_state_registry_owner 0x7f0801f4
 int id view_tree_view_model_store_owner 0x7f0801f5
 int id visible 0x7f0801f6
 int id visible_removing_fragment_view_tag 0x7f0801f7
+int id welcomeTextView 0x7f0801ff
 int id welcome_text 0x7f0801f8
 int id withText 0x7f0801f9
 int id with_icon 0x7f0801fa
@@ -3652,6 +3654,7 @@ int layout activity_organisation 0x7f0b001f
 int layout activity_show_events 0x7f0b0020
 int layout activity_signup 0x7f0b0021
 int layout activity_welcome 0x7f0b0022
+int layout activity_welcome_student 0x7f0b0072
 int layout custom_dialog 0x7f0b0023
 int layout design_bottom_navigation_item 0x7f0b0024
 int layout design_bottom_sheet_dialog 0x7f0b0025

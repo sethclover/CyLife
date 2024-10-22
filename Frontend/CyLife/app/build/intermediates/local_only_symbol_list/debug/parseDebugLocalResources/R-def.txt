@@ -63,6 +63,7 @@ id get_event_title
 id header
 id imageView
 id imageView2
+id imageView3
 id international_checkbox
 id location_time_input
 id logout_button
@@ -73,6 +74,7 @@ id orgListTextView2
 id org_button
 id password
 id signup_button
+id welcomeTextView
 id welcome_text
 layout activity_club
 layout activity_event
@@ -81,6 +83,7 @@ layout activity_organisation
 layout activity_show_events
 layout activity_signup
 layout activity_welcome
+layout activity_welcome_student
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

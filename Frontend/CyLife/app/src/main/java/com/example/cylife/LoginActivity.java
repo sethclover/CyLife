@@ -56,71 +56,72 @@ public class LoginActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        if (email.equals("student")) {
-            Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
-            startActivity(intent);
-        } else if (email.equals("admin")) {
-            Intent intent = new Intent(LoginActivity.this, WelcomeActivityAdmin.class);
-            startActivity(intent);
-        } else if (email.equals("club")) {
-            Intent intent = new Intent(LoginActivity.this, WelcomeActivityClub.class);
-            startActivity(intent);
+        // Basic input validation
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Please enter both email and password.", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        // Basic input validation (you can expand this)
-//        if (email.isEmpty() || password.isEmpty()) {
-//            Toast.makeText(LoginActivity.this, "Please enter both email and password.", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        String url = "http://10.0.2.2:3000/login";  // For Android Emulator\n";  // Update with your correct login endpoint
 
-//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/users/login";  // Update this with the correct login endpoint
-//
-//        // Create the request body
-//        JSONObject jsonBody = new JSONObject();
-//        try {
-//            jsonBody.put("email", email);
-//            jsonBody.put("password", password);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Send POST request to the backend
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-//                Request.Method.POST,
-//                url,
-//                jsonBody,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        // Debug the API response
-//                        Log.d("API Response", response.toString());
-//
-//                        // Check the response for successful login
-//                        boolean success = response.optBoolean("success", false); // Assuming the backend sends a "success" field
-//                        if (success) {
-//                            String studentName = response.optString("studentName"); // Get student name from response
-//                            Toast.makeText(LoginActivity.this, "Welcome " + studentName, Toast.LENGTH_SHORT).show();
-//
-//                            // Redirect to Welcome Activity (you could pass user data through Intent if needed)
-//                            Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
-//                            startActivity(intent);
-//                        } else {
-//                            // Handle unsuccessful login, show a toast
-//                            String errorMessage = response.optString("message", "Login failed");
-//                            Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        // Handle errors like network issues, server down, etc.
-//                        Toast.makeText(LoginActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//        // Add the request to the RequestQueue
-//        Volley.newRequestQueue(this).add(jsonObjectRequest);
-//    }
+        // Create the request body
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("email", email);
+            jsonBody.put("password", password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Send POST request to the backend
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Debug the API response
+                        Log.d("API Response", response.toString());
+
+                        // Check the response for successful login
+                        boolean success = response.optString("message").equals("Login successful");
+                        String userType = response.optString("userType"); // Get user type from response
+
+                        if (success) {
+                            // Open different activities based on user type
+                            Intent intent;
+                            switch (userType) {
+                                case "student":
+                                    intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
+                                    break;
+                                case "admin":
+                                    intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                                    break;
+                                case "club":
+                                    intent = new Intent(LoginActivity.this, WelcomeActivityClub.class);
+                                    break;
+                                default:
+                                    intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
+                                    break;
+                            }
+                            startActivity(intent);
+                        } else {
+                            //unsuccessful login
+                            String errorMessage = response.optString("message", "Login failed");
+                            Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle errors like network issues, server down, etc.
+                        Toast.makeText(LoginActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // Add the request to the RequestQueue
+        Volley.newRequestQueue(this).add(jsonObjectRequest);
     }
 }

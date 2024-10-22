@@ -3263,6 +3263,7 @@ id ignoreRequest
 id image
 id imageView
 id imageView2
+id imageView3
 id indeterminate
 id info
 id international_checkbox
@@ -3526,6 +3527,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id welcomeTextView
 id welcome_text
 id withText
 id with_icon
@@ -3653,6 +3655,7 @@ layout activity_organisation
 layout activity_show_events
 layout activity_signup
 layout activity_welcome
+layout activity_welcome_student
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
