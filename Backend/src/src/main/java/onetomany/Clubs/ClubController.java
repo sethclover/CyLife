@@ -38,9 +38,16 @@ public class ClubController {
         if (existingClub == null) {
             return null;
         }
-        existingClub.setClubName(request.getClubName());
-        existingClub.setDescription(request.getDescription());
-        existingClub.setClubEmail(request.getClubEmail());
+
+        if (request.getClubName() != null) {
+            existingClub.setClubName(request.getClubName());
+        }
+        if (request.getDescription() != null) {
+            existingClub.setDescription(request.getDescription());
+        }
+        if (request.getClubEmail() != null) {
+            existingClub.setClubEmail(request.getClubEmail());
+        }
         clubRepository.save(existingClub);
         return existingClub;
     }

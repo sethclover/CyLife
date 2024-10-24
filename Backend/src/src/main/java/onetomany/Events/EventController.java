@@ -18,4 +18,43 @@ public class EventController {
     List<Event> getAllEvents() {
         return eventRepository.findAll();
     }
+
+    @GetMapping(path = "/events/{id}")
+    Event getEventById(@PathVariable int id) {
+        return eventRepository.findById(id).orElse(null);
+    }
+
+    @PostMapping(path = "/events")
+    String createEvent(@RequestBody Event event) {
+        if (event == null) return failure;
+        eventRepository.save(event);
+        return success;
+    }
+
+    @PutMapping("/events/{id}")
+    public Event updateEvent(@PathVariable int id, @RequestBody Event request) {
+        Event existingEvent = eventRepository.findById(id).orElse(null);
+        if (existingEvent == null) {
+            return null;
+        }
+        System.out.println();
+        if (request.getEventName() != null) {
+            existingEvent.setEventName(request.getEventName());
+        }
+        if (request.getDescription() != null) {
+            existingEvent.setDescription(request.getDescription());
+        }
+        if (request.getEventLocation() != null) {
+            existingEvent.setEventLocation(request.getEventLocation());
+        }
+
+        eventRepository.save(existingEvent);
+        return existingEvent;
+    }
+
+    @DeleteMapping(path = "/events/{id}")
+    String deleteEvent(@PathVariable int id) {
+        eventRepository.deleteById(id);
+        return success;
+    }
 }

@@ -37,9 +37,15 @@ public class OrganisationController {
         if (organisation == null) return null;
         
         // Update the fields of the existing organisation
-        organisation.setName(request.getName());
-        organisation.setEmail(request.getEmail());
-        organisation.setQualification(request.getQualification());
+        if (request.getName() != null) {
+            organisation.setName(request.getName());
+        }
+        if (request.getEmail() != null) {
+            organisation.setEmail(request.getEmail());
+        }
+        if (request.getQualification() != null) {
+            organisation.setQualification(request.getQualification());
+        }
 
         organisationRepository.save(organisation);
         return organisation;
