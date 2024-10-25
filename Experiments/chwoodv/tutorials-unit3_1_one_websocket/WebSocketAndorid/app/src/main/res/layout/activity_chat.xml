@@ -7,38 +7,39 @@ android:layout_height="match_parent"
 android:layout_width="match_parent"
 android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
 
-    <EditText
-        android:layout_height="50dp"
-        android:layout_width="320dp"
-        android:hint="message"
-        android:textSize="20dp"
-        android:id="@+id/msgEdt" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        android:id="@+id/sendBtn" />
-</LinearLayout>
 
 
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="650dp">
+    android:layout_height="500dp">
 
     <TextView
         android:id="@+id/tx1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:hint="The Conversation will appear here:\n"
         android:textSize="20dp" />
 </ScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_height="50dp"
+            android:layout_width="320dp"
+            android:hint="message"
+            android:textSize="20dp"
+            android:id="@+id/msgEdt" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:id="@+id/sendBtn" />
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
