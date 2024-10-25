@@ -27,6 +27,7 @@ public class ImageUploadActivity extends AppCompatActivity {
     // 10.0.2.2 to be used for localhost if running springboot on the same host
     private static String UPLOAD_URL = "http://10.0.2.2:8080/images";
 
+
     private ActivityResultLauncher<String> mGetContent;
 
     @Override
@@ -54,8 +55,10 @@ public class ImageUploadActivity extends AppCompatActivity {
     }
 
 
+
     /**
      * Uploads an image to a remote server using a multipart Volley request.
+     *
      *
      * This method creates and executes a multipart request using the Volley library to upload
      * an image to a predefined server endpoint. The image data is sent as a byte array and the
@@ -73,12 +76,12 @@ public class ImageUploadActivity extends AppCompatActivity {
                 response -> {
                     // Handle response
                     Toast.makeText(getApplicationContext(), response,Toast.LENGTH_LONG).show();
-                    Log.d("Upload", "Response: " + response);
+                    Log.d("Upload", "Responses: " + response);
                 },
                 error -> {
                     // Handle error
                     Toast.makeText(getApplicationContext(), error.getMessage(),Toast.LENGTH_LONG).show();
-                    Log.e("Upload", "Error: " + error.getMessage());
+                    Log.e("Upload", "Errors: " + error.getMessage());
                 }
         );
 

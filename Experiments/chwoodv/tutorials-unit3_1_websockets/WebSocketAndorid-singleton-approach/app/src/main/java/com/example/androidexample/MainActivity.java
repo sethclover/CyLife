@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
+// This activity is not working for me so I can't really edit it well
 public class MainActivity extends AppCompatActivity{
 
     private Button connectBtn, connectBtn2, backBtn, backBtn2;
