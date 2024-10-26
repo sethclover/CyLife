@@ -37,9 +37,17 @@ public class EventController {
         if (existingEvent == null) {
             return null;
         }
-        existingEvent.setEventName(request.getEventName());
-        existingEvent.setDescription(request.getDescription());
-        existingEvent.setEventLocation(request.getEventLocation());
+        System.out.println();
+        if (request.getEventName() != null) {
+            existingEvent.setEventName(request.getEventName());
+        }
+        if (request.getDescription() != null) {
+            existingEvent.setDescription(request.getDescription());
+        }
+        if (request.getEventLocation() != null) {
+            existingEvent.setEventLocation(request.getEventLocation());
+        }
+
         eventRepository.save(existingEvent);
         return existingEvent;
     }
