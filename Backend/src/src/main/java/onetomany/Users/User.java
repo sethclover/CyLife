@@ -21,6 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
+    
 
     // User's name, email, and password fields
     private String name;
@@ -31,15 +32,15 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType type;
 
-    // Many-to-one relationship with Organisation entity
+
     @ManyToOne
-    @JoinColumn(name = "org_id")
+    @JoinColumn(name = "org_id", nullable = true)
     private Organisation organisation;
 
-    // Many-to-one relationship with Club entity
     @ManyToOne
-    @JoinColumn(name = "club_id")
+    @JoinColumn(name = "club_id", nullable = true)
     private Club club;
+
 
     public enum UserType {
         STUDENT, STAFF, CLUB, ORG
@@ -55,7 +56,19 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
+        this.username = "";
     }
+
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 
     public int getUserId() {
         return userId;
