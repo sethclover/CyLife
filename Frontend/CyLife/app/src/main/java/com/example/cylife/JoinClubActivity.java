@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,11 +29,15 @@ public class JoinClubActivity extends AppCompatActivity {
     private ClubAdapter clubAdapter;
     private List<Club> clubList;
     private RequestQueue requestQueue;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_club);
+
+        Button backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(view -> finish());
 
         searchBar = findViewById(R.id.searchBar);
         recyclerView = findViewById(R.id.clubListRecyclerView);
