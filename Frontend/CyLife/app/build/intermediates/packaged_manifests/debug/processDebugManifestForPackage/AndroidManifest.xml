@@ -33,7 +33,7 @@
 
         <!-- LoginActivity (launch activity) -->
         <activity
-            android:name="com.example.cylife.ChatActivity"
+            android:name="com.example.cylife.JoinClubActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
