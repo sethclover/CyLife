@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#e3e9f5"> <!-- Set background color here -->
+    android:background="#e3e9f5">
 
     <TextView
         android:id="@+id/welcomeTextView"
@@ -21,7 +21,5 @@
         android:layout_below="@+id/welcomeTextView"
         android:layout_marginTop="371dp"
         app:srcCompat="@drawable/camp" />
-
-    <!-- You can add more UI elements here as needed -->
 
 </RelativeLayout>
