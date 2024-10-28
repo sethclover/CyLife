@@ -108,12 +108,12 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/dhvanimistry/.gradle
 		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:11:9-65
 	android:usesCleartextTraffic
 		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:9:9-44
-activity#com.example.cylife.LoginActivity
+activity#com.example.cylife.JoinClubActivity
 ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:21:9-28:20
 	android:exported
 		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:23:13-36
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:22:13-60
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:22:13-63
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:24:13-27:29
 action#android.intent.action.MAIN

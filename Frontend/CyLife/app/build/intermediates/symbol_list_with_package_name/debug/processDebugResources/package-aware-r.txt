@@ -1275,6 +1275,7 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
+color blue
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -3114,12 +3115,14 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
 id beginning
 id blocking
 id bottom
+id bottom_tab
 id bounce
 id buttonLogin
 id buttonPanel
@@ -3140,8 +3143,10 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id clubListRecyclerView
 id clubListTextView
 id clubListTextView2
+id clubName
 id club_button
 id collapseActionView
 id compress
@@ -3255,6 +3260,7 @@ id hideable
 id home
 id homeAsUp
 id honorRequest
+id horizontal_tab
 id icon
 id icon_group
 id ifRoom
@@ -3271,6 +3277,7 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
+id joinButton
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3420,6 +3427,7 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id searchBar
 id search_badge
 id search_bar
 id search_button
@@ -3466,6 +3474,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id tabLabel
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3650,12 +3659,14 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_club
 layout activity_event
+layout activity_join_club
 layout activity_login
 layout activity_organisation
 layout activity_show_events
 layout activity_signup
 layout activity_welcome
 layout activity_welcome_student
+layout club_item
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
