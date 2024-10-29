@@ -1275,7 +1275,6 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
-color blue
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1338,7 +1337,6 @@ color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
 color gold
-color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color m3_appbar_overlay_color
@@ -2908,7 +2906,6 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
-drawable account
 drawable avd_hide_password
 drawable avd_show_password
 drawable btn_checkbox_checked_mtrl
@@ -2920,7 +2917,6 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable camp
-drawable chat
 drawable ci
 drawable cy
 drawable design_fab_background
@@ -2928,7 +2924,6 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
-drawable event_item_background
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3024,14 +3019,12 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable settings
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
 id BOTTOM_END
 id BOTTOM_START
-id BackButton
 id CC
 id CE
 id CTRL
@@ -3052,7 +3045,6 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
-id SaveButton
 id TOP_END
 id TOP_START
 id accelerate
@@ -3129,9 +3121,6 @@ id beginOnFirstDraw
 id beginning
 id blocking
 id bottom
-id bottomAccountButton
-id bottomBar
-id bottomLogoutButton
 id bottom_tab
 id bounce
 id buttonLogin
@@ -3145,7 +3134,6 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
-id chatButton
 id checkbox
 id checked
 id chronometer
@@ -3159,7 +3147,6 @@ id clubListTextView
 id clubListTextView2
 id clubName
 id club_button
-id club_name_text
 id collapseActionView
 id compress
 id confirm_button
@@ -3208,7 +3195,6 @@ id easeOut
 id edge
 id editTextEmail
 id editTextPassword
-id edit_club_button
 id edit_query
 id edit_text_id
 id elastic
@@ -3227,22 +3213,14 @@ id etClubIdE
 id etClubName
 id etClubNameE
 id etEmail
-id etName
 id etOrgId
 id etOrgIdD
 id etOrgIdE
 id etOrgName
 id etOrgNameE
-id etPasswordNew
-id etPasswordNewConfirm
-id etPasswordOld
-id eventDateTextView
-id eventDescriptionTextView
 id eventDescription_input
 id eventId_input
 id eventListTextView
-id eventLocationTextView
-id eventTitleTextView
 id event_description_input
 id event_name_edit
 id event_name_input
@@ -3290,6 +3268,7 @@ id ignoreRequest
 id image
 id imageView
 id imageView2
+id imageView3
 id indeterminate
 id info
 id international_checkbox
@@ -3298,8 +3277,6 @@ id inward
 id italic
 id item_touch_helper_previous_elevation
 id joinButton
-id joinClubButton
-id joining_text
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3432,7 +3409,6 @@ id radio
 id ratio
 id rectangles
 id report_drawn
-id requestClubButton
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3449,7 +3425,6 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
-id scrollView2
 id scrollable
 id searchBar
 id search_badge
@@ -3535,7 +3510,6 @@ id titleDividerNoCustom
 id title_template
 id toggle
 id top
-id topBar
 id topPanel
 id touch_outside
 id transitionToEnd
@@ -3553,11 +3527,7 @@ id unchecked
 id uniform
 id unlabeled
 id up
-id upcomingEventsLabel
-id upcomingEventsRecyclerView
 id useLogo
-id username_text
-id viewEventsButton
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
@@ -3565,7 +3535,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
-id welcomeMessage
+id welcomeTextView
 id welcome_text
 id withText
 id with_icon
@@ -3687,8 +3657,6 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_club
-layout activity_edit_club
-layout activity_edit_user
 layout activity_event
 layout activity_join_club
 layout activity_login
@@ -3696,7 +3664,6 @@ layout activity_organisation
 layout activity_show_events
 layout activity_signup
 layout activity_welcome
-layout activity_welcome_club
 layout activity_welcome_student
 layout club_item
 layout custom_dialog
@@ -3717,7 +3684,6 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
-layout item_event
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
