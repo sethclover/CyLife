@@ -1274,6 +1274,7 @@ int color background_floating_material_light 0x7f05001e
 int color background_material_dark 0x7f05001f
 int color background_material_light 0x7f050020
 int color black 0x7f050021
+int color blue 0x7f05030f
 int color bright_foreground_disabled_material_dark 0x7f050022
 int color bright_foreground_disabled_material_light 0x7f050023
 int color bright_foreground_inverse_material_dark 0x7f050024
@@ -3113,12 +3114,14 @@ int id auto 0x7f080058
 int id autoComplete 0x7f080059
 int id autoCompleteToEnd 0x7f08005a
 int id autoCompleteToStart 0x7f08005b
+int id backButton 0x7f080200
 int id barrier 0x7f08005c
 int id baseline 0x7f08005d
 int id beginOnFirstDraw 0x7f08005e
 int id beginning 0x7f08005f
 int id blocking 0x7f080060
 int id bottom 0x7f080061
+int id bottom_tab 0x7f080201
 int id bounce 0x7f080062
 int id buttonLogin 0x7f080063
 int id buttonPanel 0x7f080064
@@ -3139,8 +3142,10 @@ int id clear_text 0x7f080072
 int id clip_horizontal 0x7f080073
 int id clip_vertical 0x7f080074
 int id clockwise 0x7f080075
+int id clubListRecyclerView 0x7f080202
 int id clubListTextView 0x7f080076
 int id clubListTextView2 0x7f080077
+int id clubName 0x7f080203
 int id club_button 0x7f080078
 int id collapseActionView 0x7f080079
 int id compress 0x7f08007a
@@ -3254,6 +3259,7 @@ int id hideable 0x7f0800e5
 int id home 0x7f0800e6
 int id homeAsUp 0x7f0800e7
 int id honorRequest 0x7f0800e8
+int id horizontal_tab 0x7f080204
 int id icon 0x7f0800e9
 int id icon_group 0x7f0800ea
 int id ifRoom 0x7f0800eb
@@ -3270,6 +3276,7 @@ int id invisible 0x7f0800f4
 int id inward 0x7f0800f5
 int id italic 0x7f0800f6
 int id item_touch_helper_previous_elevation 0x7f0800f7
+int id joinButton 0x7f080205
 int id jumpToEnd 0x7f0800f8
 int id jumpToStart 0x7f0800f9
 int id labeled 0x7f0800fa
@@ -3419,6 +3426,7 @@ int id scrollIndicatorDown 0x7f080189
 int id scrollIndicatorUp 0x7f08018a
 int id scrollView 0x7f08018b
 int id scrollable 0x7f08018c
+int id searchBar 0x7f080206
 int id search_badge 0x7f08018d
 int id search_bar 0x7f08018e
 int id search_button 0x7f08018f
@@ -3465,6 +3473,7 @@ int id stop 0x7f0801b7
 int id stretch 0x7f0801b8
 int id submenuarrow 0x7f0801b9
 int id submit_area 0x7f0801ba
+int id tabLabel 0x7f080207
 int id tabMode 0x7f0801bb
 int id tag_accessibility_actions 0x7f0801bc
 int id tag_accessibility_clickable_spans 0x7f0801bd
@@ -3649,12 +3658,14 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_club 0x7f0b001c
 int layout activity_event 0x7f0b001d
+int layout activity_join_club 0x7f0b0073
 int layout activity_login 0x7f0b001e
 int layout activity_organisation 0x7f0b001f
 int layout activity_show_events 0x7f0b0020
 int layout activity_signup 0x7f0b0021
 int layout activity_welcome 0x7f0b0022
 int layout activity_welcome_student 0x7f0b0072
+int layout club_item 0x7f0b0074
 int layout custom_dialog 0x7f0b0023
 int layout design_bottom_navigation_item 0x7f0b0024
 int layout design_bottom_sheet_dialog 0x7f0b0025
