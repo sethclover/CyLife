@@ -30,21 +30,42 @@ public class UserController {
     }
 
 
+
+    @GetMapping("/user/{username}")
+    public ResponseEntity<Map<String, Object>> getUserByUsername(@PathVariable String username) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            User user = userRepository.findByUsername(username);
+
+            if (user != null) {
+                response.put("user", user);
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("message", "User not found with username: " + username);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("message", "Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+
+
     @PostMapping("/signup")
     public Map<String, Object> signup(@RequestBody User newUser) {
         Map<String, Object> response = new HashMap<>();
 
         try {
-            // Check if the user already exists by email or username
             if (userRepository.existsByEmail(newUser.getEmail()) ||
                 userRepository.existsByUsername(newUser.getUsername())) {
                 response.put("message", "User already exists.");
-                response.put("status", "409");  // Conflict
+                response.put("status", "409");
             } else {
-                // Save the new user
                 userRepository.save(newUser);
                 response.put("message", "User registered successfully.");
-                response.put("status", "201");  // Created
+                response.put("status", "201");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,8 +78,6 @@ public class UserController {
 
 
 
-
-
     @PutMapping("/update/{username}")
     public Map<String, Object> updateUser(
         @PathVariable String username, @RequestBody User updatedUser) {
@@ -66,21 +85,17 @@ public class UserController {
         Map<String, Object> response = new HashMap<>();
 
         try {
-            // Check if the user exists
             User existingUser = userRepository.findByUsername(username);
             if (existingUser == null) {
                 response.put("message", "User not found with username: " + username);
                 response.put("status", "404");
                 return response;
             }
-
-            // Update the user's details
             existingUser.setName(updatedUser.getName());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setPassword(updatedUser.getPassword());
             existingUser.setType(updatedUser.getType());
 
-            // Save the updated user
             userRepository.save(existingUser);
 
             response.put("message", "User updated successfully.");
@@ -147,26 +162,27 @@ public class UserController {
 
 
 
-    @GetMapping("/login/{username}")
-    public Map<String, Object> getUserByUsername(@PathVariable String username) {
-
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> credentials) {
         Map<String, Object> response = new HashMap<>();
 
-        // Retrieve the user directly using your findByUid method
-        User existingUser = userRepository.findByUsername(username);
+        String username = credentials.get("username");
+        String password = credentials.get("password");
 
-        if (existingUser != null) {
-            // If the user exists, add the user details and status to the response
-            response.put("user", existingUser);
-            response.put("status", "200"); // HTTP 200 OK
-        } else {
-            // If the user does not exist, return a 404 message
-            response.put("message", "User not found with username: " + username);
-            response.put("status", "404"); // HTTP 404 Not Found
+        if (username == null || password == null) {
+            response.put("message", "Username or password is missing.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
+        User user = userRepository.findByUsername(username.trim());
 
-        // Return the JSON response
-        return response;
+        if (user != null && user.getPassword().equals(password.trim())) {
+            response.put("message", "Login successful");
+            response.put("userType", user.getType());
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("message", "Invalid username or password.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
     }
 
 }
