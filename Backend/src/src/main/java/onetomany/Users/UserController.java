@@ -166,23 +166,25 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> credentials) {
         Map<String, Object> response = new HashMap<>();
 
-        String username = credentials.get("username");
+        String email = credentials.get("email");
         String password = credentials.get("password");
 
-        if (username == null || password == null) {
-            response.put("message", "Username or password is missing.");
+        if (email == null || password == null) {
+            response.put("message", "Email or password is missing.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
-        User user = userRepository.findByUsername(username.trim());
+
+        User user = userRepository.findByEmail(email.trim());
 
         if (user != null && user.getPassword().equals(password.trim())) {
             response.put("message", "Login successful");
             response.put("userType", user.getType());
             return ResponseEntity.ok(response);
         } else {
-            response.put("message", "Invalid username or password.");
+            response.put("message", "Invalid email or password.");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
+
 
 }
