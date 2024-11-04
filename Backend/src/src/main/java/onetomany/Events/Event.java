@@ -1,6 +1,8 @@
 
 package onetomany.Events;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,7 @@ public class Event {
     private String eventName;
     private String description;
     private String eventLocation;
+    private LocalDateTime date;
 
     // Constructors
     public Event() {
@@ -57,5 +60,13 @@ public class Event {
 
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }
