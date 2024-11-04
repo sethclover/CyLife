@@ -87,6 +87,20 @@
             android:layout_marginTop="8dp"
             android:padding="8dp" />
 
+        <!-- Button to go back to welcome page -->
+        <Button
+            android:id="@+id/BackButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:background="#B3FFFFFF"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp" />
 
 
     </LinearLayout>
