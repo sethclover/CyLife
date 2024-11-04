@@ -7,204 +7,87 @@
         android:fillViewport="true">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/black"
-            android:padding="16dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/black"
+        android:padding="16dp"
+        android:margin="20dp">
+
+        <!-- Button to Create Organization -->
+        <Button
+            android:id="@+id/SaveButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="8dp"
+            android:background="#B3FFFFFF"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:text="Save Changes"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp" />
 
         <!-- Welcome Text -->
         <TextView
-                android:id="@+id/welcome_text"
+                android:id="@+id/username_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="WELCOME CYCLONES"
+                android:text="Name here"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/dark_red"
                 android:paddingBottom="16dp"
                 android:layout_marginTop="20dp" />
 
-        <!-- EditText for Organization Name -->
+        <!-- EditText for User name -->
         <EditText
-                android:id="@+id/etClubName"
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Club Name"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="16dp"
-                android:padding="8dp" />
-
-        <!-- EditText for Email -->
-        <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="Enter New Name"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="8dp"
                 android:padding="8dp" />
 
-        <!-- EditText for Organization ID -->
+        <!-- EditText for old user password -->
         <EditText
-                android:id="@+id/etClubId"
+                android:id="@+id/etPasswordOld"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Club ID"
+                android:hint="Enter Old Password"
                 android:textColor="@color/black"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="8dp"
                 android:padding="8dp" />
 
-        <!-- EditText for Director -->
-<!--        <EditText-->
-<!--                android:id="@+id/etDirector"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="Director"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:background="@android:drawable/edit_text"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:padding="8dp" />-->
-
-<!--        &lt;!&ndash; EditText for Advisor &ndash;&gt;-->
-<!--        <EditText-->
-<!--                android:id="@+id/etAdvisor"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="Advisor"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:background="@android:drawable/edit_text"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:padding="8dp" />-->
-
-        <!-- Button to Create Organization -->
-        <Button
-                android:id="@+id/CC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Create Club"
-                android:textSize="18sp"
-                android:background="#B3FFFFFF"
-                android:textColor="@color/black"
-                android:padding="16dp"
-                android:layout_marginTop="8dp" />
-
-        <TextView
-                android:id="@+id/clubListTextView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Create Club response"
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/white" />
-
-        <!-- Button to Edit Organization -->
+        <!-- EditText for new User password -->
         <EditText
-                android:id="@+id/etClubIdE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Club ID"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="8dp"
-                android:padding="8dp" />
+            android:id="@+id/etPasswordNew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter New Password"
+            android:textColor="@color/black"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:padding="8dp" />
 
-        <Button
-                android:id="@+id/EC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Edit Club"
-                android:textSize="18sp"
-                android:background="#B3FFFFFF"
-                android:textColor="@color/black"
-                android:padding="16dp"
-                android:layout_marginTop="8dp" />
 
-        <!-- Button to submit OrgID and show name/email fields -->
-
-        <!-- Name EditText (hidden initially) -->
-
+        <!-- EditText for confirming new User password -->
         <EditText
-                android:id="@+id/etClubNameE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter New Club Name"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="12dp"
-                android:padding="8dp"
-                android:visibility="visible" />
-
-        <!-- Email EditText (hidden initially) -->
-        <EditText
-                android:id="@+id/etClubEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter New Club Email"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                android:visibility="visible" />
+            android:id="@+id/etPasswordNewConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter New Password again"
+            android:textColor="@color/black"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:padding="8dp" />
 
 
-        <!-- Button to Get Organization -->
-        <Button
-                android:id="@+id/GC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Get Club"
-                android:textSize="18sp"
-                android:background="#B3FFFFFF"
-                android:textColor="@color/black"
-                android:padding="16dp"
-                android:layout_marginTop="8dp" />
 
-        <!-- TextView for Organization List -->
-        <TextView
-                android:id="@+id/clubListTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Clubs will be listed here"
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/white" />
-
-
-        <EditText
-                android:id="@+id/etClubIdD"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Club ID to be deleted"
-                android:textColor="@color/black"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginTop="16dp"
-                android:padding="8dp" />
-
-        <!-- Button to Delete Organization -->
-        <Button
-                android:id="@+id/DC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Delete Club"
-                android:textSize="18sp"
-                android:background="#B3FFFFFF"
-                android:textColor="@color/black"
-                android:padding="16dp"
-                android:layout_marginTop="8dp" />
-
-        <!-- Button to Logout -->
-        <Button
-                android:id="@+id/logout_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:textColor="@color/white"
-                android:background="@null"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp" />
     </LinearLayout>
 </ScrollView>
