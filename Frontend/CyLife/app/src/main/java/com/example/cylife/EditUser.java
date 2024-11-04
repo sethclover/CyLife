@@ -19,14 +19,15 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ResourceBundle;
+
 public class EditUser extends AppCompatActivity {
 
     private EditText nameField, oldPasswordField, newPasswordField, confirmPasswordField;
     private Button saveButton, backButton;
 
-    // intent.putExtra("UserID", userInput.getText().toString());  //
 
-    private int studentId = 1; // TODO
+    private int studentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,9 @@ public class EditUser extends AppCompatActivity {
         backButton = findViewById(R.id.BackButton);
 
         saveButton = findViewById(R.id.SaveButton);
-     //   backButton = findViewById(R.id.buttonLogin);
+
+        Bundle extras = getIntent().getExtras();
+        studentId = extras.getInt("UserID");  // this will come from Welcome
 
         // Handle sign-up logic
         saveButton.setOnClickListener(v -> {
@@ -62,6 +65,7 @@ public class EditUser extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
             Intent intent = new Intent(EditUser.this, WelcomeActivityStudent.class);
+            intent.putExtra("UserID", studentId);
             startActivity(intent);
         });
     }

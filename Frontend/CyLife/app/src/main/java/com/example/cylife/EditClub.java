@@ -22,7 +22,7 @@ public class EditClub extends AppCompatActivity {
     private EditText nameField, oldPasswordField, newPasswordField, confirmPasswordField;
     private Button saveButton, backButton;
 
-    private int clubId = 1; // TODO
+    private int clubId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,9 @@ public class EditClub extends AppCompatActivity {
         backButton = findViewById(R.id.BackButton);
 
         saveButton = findViewById(R.id.SaveButton);
-        //   backButton = findViewById(R.id.buttonLogin);
+
+        Bundle extras = getIntent().getExtras();
+        clubId = extras.getInt("ClubID");  // this will come from Welcome
 
         // Handle sign-up logic
         saveButton.setOnClickListener(v -> {
@@ -58,6 +60,7 @@ public class EditClub extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
             Intent intent = new Intent(EditClub.this, WelcomeActivityStudent.class);
+            intent.putExtra("ClubID", clubId);
             startActivity(intent);
         });
     }
