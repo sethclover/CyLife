@@ -29,19 +29,17 @@ public class UserController {
         return userRepository.findAll();
     }
 
-
-
-    @GetMapping("/user/{username}")
-    public ResponseEntity<Map<String, Object>> getUserByUsername(@PathVariable String username) {
+    @GetMapping("/user/{email}")
+    public ResponseEntity<Map<String, Object>> getUserByEmail(@PathVariable String email) {
         Map<String, Object> response = new HashMap<>();
         try {
-            User user = userRepository.findByUsername(username);
+            User user = userRepository.findByEmail(email);
 
             if (user != null) {
                 response.put("user", user);
                 return ResponseEntity.ok(response);
             } else {
-                response.put("message", "User not found with username: " + username);
+                response.put("message", "User not found with email: " + email);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
         } catch (Exception e) {
@@ -51,15 +49,12 @@ public class UserController {
         }
     }
 
-
-
     @PostMapping("/signup")
     public Map<String, Object> signup(@RequestBody User newUser) {
         Map<String, Object> response = new HashMap<>();
 
         try {
-            if (userRepository.existsByEmail(newUser.getEmail()) ||
-                userRepository.existsByUsername(newUser.getUsername())) {
+            if (userRepository.existsByEmail(newUser.getEmail())) {
                 response.put("message", "User already exists.");
                 response.put("status", "409");
             } else {
@@ -76,18 +71,16 @@ public class UserController {
         return response;
     }
 
-
-
-    @PutMapping("/update/{username}")
+    @PutMapping("/update/{email}")
     public Map<String, Object> updateUser(
-        @PathVariable String username, @RequestBody User updatedUser) {
+        @PathVariable String email, @RequestBody User updatedUser) {
         
         Map<String, Object> response = new HashMap<>();
 
         try {
-            User existingUser = userRepository.findByUsername(username);
+            User existingUser = userRepository.findByEmail(email);
             if (existingUser == null) {
-                response.put("message", "User not found with username: " + username);
+                response.put("message", "User not found with email: " + email);
                 response.put("status", "404");
                 return response;
             }
@@ -109,45 +102,41 @@ public class UserController {
         return response;
     }
 
-
-
-
-    @PutMapping("/editusername/{newusername}")
-    public Map<String, String> changeUserName(@RequestBody User user, @PathVariable String newUsername){
+    @PutMapping("/editemail/{newEmail}")
+    public Map<String, String> changeEmail(@RequestBody User user, @PathVariable String newEmail){
         Map<String, String> response = new HashMap<>();
-        boolean testForName = userRepository.existsByUsername(newUsername);
-        System.out.println("testForName");
-        if(testForName){
-            response.put("message", "The username \""+newUsername+"\" is already taken");
+        boolean testForEmail = userRepository.existsByEmail(newEmail);
+        System.out.println("testForEmail");
+        if(testForEmail){
+            response.put("message", "The email \""+newEmail+"\" is already taken");
             response.put("status", "409");
             return response;
         }
-        String oldUsername = user.getName();
-        User existingUser = userRepository.findByUsername(oldUsername);
+        String oldEmail = user.getEmail();
+        User existingUser = userRepository.findByEmail(oldEmail);
         if(existingUser != null){
-            response.put("message","Username updated successfully from "+oldUsername+" to "+newUsername);
+            response.put("message","Email updated successfully from "+oldEmail+" to "+newEmail);
             response.put("status","200");
-            existingUser.setName(newUsername);
+            existingUser.setEmail(newEmail);
             userRepository.save(existingUser);
         } else {
-            response.put("message", "User not found with username: " + oldUsername);
+            response.put("message", "User not found with email: " + oldEmail);
             response.put("status", "404");
         }
         return response;
     }
 
-
     @Transactional
-    @DeleteMapping("/delete/{username}")
-    public Map<String, Object> deleteUser(@PathVariable String username) {
+    @DeleteMapping("/delete/{email}")
+    public Map<String, Object> deleteUser(@PathVariable String email) {
         Map<String, Object> response = new HashMap<>();
 
         try {
-            if (!userRepository.existsByUsername(username)) {
-                response.put("message", "User not found with username: " + username);
+            if (!userRepository.existsByEmail(email)) {
+                response.put("message", "User not found with email: " + email);
                 response.put("status", "404");
             } else {
-                userRepository.deleteByUsername(username);
+                userRepository.deleteByEmail(email);
                 response.put("message", "User deleted successfully.");
                 response.put("status", "200");
             }
@@ -159,8 +148,6 @@ public class UserController {
 
         return response;
     }
-
-
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> credentials) {
@@ -185,6 +172,4 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
-
-
 }
