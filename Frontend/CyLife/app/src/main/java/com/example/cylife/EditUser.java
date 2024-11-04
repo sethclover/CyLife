@@ -45,7 +45,7 @@ public class EditUser extends AppCompatActivity {
         saveButton = findViewById(R.id.SaveButton);
 
         Bundle extras = getIntent().getExtras();
-        studentId = extras.getInt("UserID");  // this will come from Welcome
+        studentId = extras.getInt("userId");  // this will come from Welcome
 
         // Handle sign-up logic
         saveButton.setOnClickListener(v -> {
@@ -65,7 +65,7 @@ public class EditUser extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
             Intent intent = new Intent(EditUser.this, WelcomeActivityStudent.class);
-            intent.putExtra("UserID", studentId);
+            intent.putExtra("userId", studentId);
             startActivity(intent);
         });
     }

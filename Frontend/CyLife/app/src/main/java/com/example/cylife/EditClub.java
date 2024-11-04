@@ -40,7 +40,7 @@ public class EditClub extends AppCompatActivity {
         saveButton = findViewById(R.id.SaveButton);
 
         Bundle extras = getIntent().getExtras();
-        clubId = extras.getInt("ClubID");  // this will come from Welcome
+        clubId = extras.getInt("userId");  // this will come from Welcome
 
         // Handle sign-up logic
         saveButton.setOnClickListener(v -> {
@@ -60,7 +60,7 @@ public class EditClub extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
             Intent intent = new Intent(EditClub.this, WelcomeActivityStudent.class);
-            intent.putExtra("ClubID", clubId);
+            intent.putExtra("userId", clubId);
             startActivity(intent);
         });
     }
