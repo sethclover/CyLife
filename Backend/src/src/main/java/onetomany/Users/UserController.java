@@ -52,7 +52,6 @@ public class UserController {
     @PostMapping("/signup")
     public Map<String, Object> signup(@RequestBody User newUser) {
         Map<String, Object> response = new HashMap<>();
-
         try {
             if (userRepository.existsByEmail(newUser.getEmail())) {
                 response.put("message", "User already exists.");
@@ -67,16 +66,13 @@ public class UserController {
             response.put("message", "Internal Server Error: " + e.getMessage());
             response.put("status", "500");
         }
-
         return response;
     }
 
     @PutMapping("/update/{email}")
     public Map<String, Object> updateUser(
         @PathVariable String email, @RequestBody User updatedUser) {
-        
         Map<String, Object> response = new HashMap<>();
-
         try {
             User existingUser = userRepository.findByEmail(email);
             if (existingUser == null) {
@@ -88,9 +84,7 @@ public class UserController {
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setPassword(updatedUser.getPassword());
             existingUser.setType(updatedUser.getType());
-
             userRepository.save(existingUser);
-
             response.put("message", "User updated successfully.");
             response.put("status", "200");
         } catch (Exception e) {
@@ -98,7 +92,6 @@ public class UserController {
             response.put("message", "Internal Server Error: " + e.getMessage());
             response.put("status", "500");
         }
-
         return response;
     }
 
@@ -130,7 +123,6 @@ public class UserController {
     @DeleteMapping("/delete/{email}")
     public Map<String, Object> deleteUser(@PathVariable String email) {
         Map<String, Object> response = new HashMap<>();
-
         try {
             if (!userRepository.existsByEmail(email)) {
                 response.put("message", "User not found with email: " + email);
@@ -145,22 +137,18 @@ public class UserController {
             response.put("message", "Internal Server Error: " + e.getMessage());
             response.put("status", "500");
         }
-
         return response;
     }
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> credentials) {
         Map<String, Object> response = new HashMap<>();
-
         String email = credentials.get("email");
         String password = credentials.get("password");
-
         if (email == null || password == null) {
             response.put("message", "Email or password is missing.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
-
         User user = userRepository.findByEmail(email.trim());
 
         if (user != null && user.getPassword().equals(password.trim())) {
