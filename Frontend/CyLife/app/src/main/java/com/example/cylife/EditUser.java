@@ -24,6 +24,8 @@ public class EditUser extends AppCompatActivity {
     private EditText nameField, oldPasswordField, newPasswordField, confirmPasswordField;
     private Button saveButton, backButton;
 
+    // intent.putExtra("UserID", userInput.getText().toString());  //
+
     private int studentId = 1; // TODO
 
     @Override
@@ -36,7 +38,8 @@ public class EditUser extends AppCompatActivity {
 
         oldPasswordField = findViewById(R.id.etPasswordOld);
         newPasswordField = findViewById(R.id.etPasswordNew);
-        confirmPasswordField = findViewById(R.id.etPasswordNew);
+        confirmPasswordField = findViewById(R.id.etPasswordNewConfirm);
+        backButton = findViewById(R.id.BackButton);
 
         saveButton = findViewById(R.id.SaveButton);
      //   backButton = findViewById(R.id.buttonLogin);

@@ -34,7 +34,8 @@ public class EditClub extends AppCompatActivity {
 
         oldPasswordField = findViewById(R.id.etPasswordOld);
         newPasswordField = findViewById(R.id.etPasswordNew);
-        confirmPasswordField = findViewById(R.id.etPasswordNew);
+        confirmPasswordField = findViewById(R.id.etPasswordNewConfirm);
+        backButton = findViewById(R.id.BackButton);
 
         saveButton = findViewById(R.id.SaveButton);
         //   backButton = findViewById(R.id.buttonLogin);
