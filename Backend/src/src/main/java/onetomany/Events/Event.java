@@ -18,6 +18,7 @@ public class Event {
     private String eventName;
     private String description;
     private String eventLocation;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     // Constructors
@@ -69,8 +70,6 @@ public class Event {
     }
 
     public void setDate(LocalDate date) {
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-        private LocalDate dateTime;
-
+        this.date = date;
     }
 }
