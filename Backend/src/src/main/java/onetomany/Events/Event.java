@@ -2,6 +2,7 @@
 package onetomany.Events;
 
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -68,6 +69,8 @@ public class Event {
     }
 
     public void setDate(LocalDate date) {
-        this.date = date;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        private LocalDate dateTime;
+
     }
 }
