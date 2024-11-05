@@ -47,6 +47,9 @@ public class EventController {
         if (request.getEventLocation() != null) {
             existingEvent.setEventLocation(request.getEventLocation());
         }
+        if (request.getDate() != null) {
+            existingEvent.setDate(request.getDate());
+        }
 
         eventRepository.save(existingEvent);
         return existingEvent;
