@@ -66,7 +66,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void signupUser(String email, String name, String password, boolean isInternational, boolean isMulticultural) {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/users";
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/signup";
 
         // Create JSON object with the input data
         JSONObject jsonBody = new JSONObject();
@@ -74,6 +74,7 @@ public class SignupActivity extends AppCompatActivity {
             jsonBody.put("email", email);
             jsonBody.put("name", name);
             jsonBody.put("password", password);
+            jsonBody.put("userType", "STUDENT");
             jsonBody.put("international", isInternational);
             jsonBody.put("multicultural", isMulticultural);
         } catch (JSONException e) {

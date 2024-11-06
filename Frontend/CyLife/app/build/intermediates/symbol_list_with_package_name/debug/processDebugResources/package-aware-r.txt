@@ -3286,6 +3286,7 @@ id inward
 id italic
 id item_touch_helper_previous_elevation
 id joinButton
+id joining_text
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3533,7 +3534,6 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tx1
 id unchecked
 id uniform
 id unlabeled
