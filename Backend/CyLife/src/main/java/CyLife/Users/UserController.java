@@ -155,6 +155,7 @@ public class UserController {
         if (user != null && user.getPassword().equals(password.trim())) {
             response.put("message", "Login successful");
             response.put("userType", user.getType());
+            response.put("userID", user.getUserId());
             return ResponseEntity.ok(response);
         } else {
             response.put("message", "Invalid email or password.");
