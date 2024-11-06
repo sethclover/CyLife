@@ -50,6 +50,12 @@ public class JoinClubActivity extends AppCompatActivity {
         clubList = new ArrayList<>();
         clubAdapter = new ClubAdapter(clubList, club -> {
             //NEED TO IMPLEMENT JOIN FUNCTION< CURRENTLY ON CLICKING JOIN BUTTON IT WILL SAY CLUB JOINED
+            try {
+                // Send message to websocket manager to message club when student joins
+                WebSocketManager.getInstance().sendMessage(" joined the club.");
+            } catch (Exception e) {
+                Log.d("ExceptionSendMessage:", e.getMessage().toString());
+            }
             Toast.makeText(this, "Joined " + club.getName(), Toast.LENGTH_SHORT).show();
         });
         recyclerView.setAdapter(clubAdapter);
