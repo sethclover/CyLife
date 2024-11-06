@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/black"
+        android:padding="16dp"
+        android:margin="20dp">
+
+        <!-- Button to save information -->
+        <Button
+            android:id="@+id/SaveButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="8dp"
+            android:background="#B3FFFFFF"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:text="Save Changes"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp" />
+
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/club_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Club Name here"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_red"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="20dp" />
+
+        <!-- EditText for Club Name -->
+        <EditText
+            android:id="@+id/etClubName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter New Username"
+            android:textColor="@color/black"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:padding="8dp" />
+
+        <!-- EditText for Club Email -->
+        <EditText
+            android:id="@+id/etClubEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter New Username"
+            android:textColor="@color/black"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:padding="8dp" />
+
+        <!-- EditText for Old club password -->
+        <EditText
+            android:id="@+id/etPasswordOld"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Old Password"
+            android:textColor="@color/black"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:padding="8dp" />
+
+        <!-- EditText for new Club password -->
+        <EditText
+            android:id="@+id/etPasswordNew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter New Password"
+            android:textColor="@color/black"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:padding="8dp" />
+
+
+        <!-- EditText for confirming new Club password -->
+        <EditText
+            android:id="@+id/etPasswordNewConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter New Password again"
+            android:textColor="@color/black"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:padding="8dp" />
+
+        <!-- Button to go back to welcome page -->
+        <Button
+            android:id="@+id/BackButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:background="#B3FFFFFF"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp" />
+
+
+    </LinearLayout>
+</ScrollView>
