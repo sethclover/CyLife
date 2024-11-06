@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/black"
-        android:padding="16dp"
-        android:margin="20dp">
+        android:padding="16dp">
 
         <!-- Button to save information -->
         <Button
