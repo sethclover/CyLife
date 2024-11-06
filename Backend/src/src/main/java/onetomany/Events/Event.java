@@ -1,6 +1,9 @@
 
 package onetomany.Events;
 
+import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,15 +18,18 @@ public class Event {
     private String eventName;
     private String description;
     private String eventLocation;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate date;
 
     // Constructors
     public Event() {
     }
 
-    public Event(String eventName, String description, String eventLocation) {
+    public Event(String eventName, String description, String eventLocation, LocalDate date) {
         this.eventName = eventName;
         this.description = description;
         this.eventLocation = eventLocation;
+        this.date = date;
     }
 
     // Getters and Setters
@@ -57,5 +63,13 @@ public class Event {
 
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
