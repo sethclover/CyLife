@@ -80,6 +80,7 @@ id imageView2
 id imageView3
 id international_checkbox
 id joinButton
+id joining_text
 id location_time_input
 id logout_button
 id multicultural_checkbox
@@ -92,7 +93,6 @@ id scrollView2
 id searchBar
 id signup_button
 id tabLabel
-id tx1
 id username_text
 id welcomeTextView
 id welcome_text

@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        String url = "http://10.0.2.2:3000/login";  // For Android Emulator\n";  // Update with your correct login endpoint
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/login";  // For Android Emulator\n";  // Update with your correct login endpoint
 
         // Create the request body
         JSONObject jsonBody = new JSONObject();
