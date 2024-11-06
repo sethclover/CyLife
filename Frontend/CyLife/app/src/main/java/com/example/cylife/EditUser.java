@@ -77,7 +77,7 @@ public class EditUser extends AppCompatActivity {
         JSONObject updatedUserData = new JSONObject();
         try {
             updatedUserData.put("name: ", name);
-            updatedUserData.put("password", password);
+            updatedUserData.put("password: ", password);
             Log.i("Updated Organisation Data JSON Object Before: ", updatedUserData.toString());
         } catch (JSONException e) {
             e.printStackTrace();
