@@ -1,5 +1,6 @@
 package com.example.cylife;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,7 +38,10 @@ public class JoinClubActivity extends AppCompatActivity {
         setContentView(R.layout.activity_join_club);
 
         Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(view -> finish());
+        backButton.setOnClickListener(view -> {
+            Intent intent = new Intent(JoinClubActivity.this, EditClub.class);
+            startActivity(intent);
+        });
 
         searchBar = findViewById(R.id.searchBar);
         recyclerView = findViewById(R.id.clubListRecyclerView);
