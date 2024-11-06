@@ -54,8 +54,8 @@
 34        <!-- LoginActivity (launch activity) -->
 35        <activity
 35-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:21:9-28:20
-36            android:name="com.example.cylife.LoginActivity"
-36-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:22:13-60
+36            android:name="com.example.cylife.WelcomeActivityClub"
+36-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:22:13-66
 37            android:exported="true" >
 37-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:23:13-36
 38            <intent-filter>
@@ -84,9 +84,7 @@
 48        <activity android:name="com.example.cylife.clubActivity" />
 48-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:34:9-59
 48-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:34:19-47
-49        <activity android:name="com.example.cylife.WelcomeActivityClub" />
-49-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:35:9-66
-49-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:35:19-54
+49        <!-- <activity android:name=".WelcomeActivityClub"></activity> -->
 50        <activity android:name="com.example.cylife.EditClub" />
 50-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:36:9-55
 50-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:36:19-43

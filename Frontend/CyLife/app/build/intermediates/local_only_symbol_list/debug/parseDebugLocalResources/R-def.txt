@@ -88,9 +88,11 @@ id orgListTextView
 id orgListTextView2
 id org_button
 id password
+id scrollView2
 id searchBar
 id signup_button
 id tabLabel
+id tx1
 id username_text
 id welcomeTextView
 id welcome_text

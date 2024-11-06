@@ -33,7 +33,7 @@
 
         <!-- LoginActivity (launch activity) -->
         <activity
-            android:name="com.example.cylife.LoginActivity"
+            android:name="com.example.cylife.WelcomeActivityClub"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +46,7 @@
         <activity android:name="com.example.cylife.organizationActivity" />
         <activity android:name="com.example.cylife.WelcomeActivityStudent" />
         <activity android:name="com.example.cylife.clubActivity" />
-        <activity android:name="com.example.cylife.WelcomeActivityClub" />
+        <!-- <activity android:name=".WelcomeActivityClub"></activity> -->
         <activity android:name="com.example.cylife.EditClub" />
         <activity android:name="com.example.cylife.EditUser" />
         <activity android:name="com.example.cylife.EventsActivity" />
