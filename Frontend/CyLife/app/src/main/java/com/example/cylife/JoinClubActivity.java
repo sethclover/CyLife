@@ -32,6 +32,9 @@ public class JoinClubActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private Button backButton;
 
+    private String username;
+    private int studentID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,10 @@ public class JoinClubActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Bundle extras = getIntent().getExtras();
+        studentID = extras.getInt("userId");  // this will come from Welcome
+        username = extras.getString("username");  // this will come from Welcome
+
         searchBar = findViewById(R.id.searchBar);
         recyclerView = findViewById(R.id.clubListRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -52,7 +59,7 @@ public class JoinClubActivity extends AppCompatActivity {
             //NEED TO IMPLEMENT JOIN FUNCTION< CURRENTLY ON CLICKING JOIN BUTTON IT WILL SAY CLUB JOINED
             try {
                 // Send message to websocket manager to message club when student joins
-                WebSocketManager.getInstance().sendMessage(" joined the club.");
+                WebSocketManager.getInstance().sendMessage(username);
             } catch (Exception e) {
                 Log.d("ExceptionSendMessage:", e.getMessage().toString());
             }

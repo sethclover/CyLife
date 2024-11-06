@@ -28,6 +28,7 @@ public class EditUser extends AppCompatActivity {
 
 
     private int studentId;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class EditUser extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         studentId = extras.getInt("userId");  // this will come from Welcome
+        username = extras.getString("username");  // this will come from Welcome
 
         // Handle sign-up logic
         saveButton.setOnClickListener(v -> {
@@ -65,8 +67,9 @@ public class EditUser extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
             Intent intent = new Intent(EditUser.this, WelcomeActivityStudent.class);
-            intent.putExtra("userId", studentId);
-            startActivity(intent);
+
+            intent.putExtra("userId", studentId);  // key-value to pass to the Welcome
+            intent.putExtra("username", username);  // key-value to pass to the Welcome            startActivity(intent);
         });
     }
 
