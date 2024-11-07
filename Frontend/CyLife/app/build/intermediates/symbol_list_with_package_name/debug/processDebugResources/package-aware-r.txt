@@ -2908,6 +2908,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable back
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3019,6 +3020,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable rounded_box
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3114,15 +3116,14 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
-id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
 id beginning
 id blocking
 id bottom
-id bottom_tab
 id bounce
+id btn_back
 id buttonLogin
 id buttonPanel
 id buttonSignup
@@ -3142,10 +3143,8 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
-id clubListRecyclerView
 id clubListTextView
 id clubListTextView2
-id clubName
 id club_button
 id collapseActionView
 id compress
@@ -3218,6 +3217,7 @@ id etOrgIdD
 id etOrgIdE
 id etOrgName
 id etOrgNameE
+id et_search_club
 id eventDescription_input
 id eventId_input
 id eventListTextView
@@ -3259,7 +3259,6 @@ id hideable
 id home
 id homeAsUp
 id honorRequest
-id horizontal_tab
 id icon
 id icon_group
 id ifRoom
@@ -3269,6 +3268,7 @@ id image
 id imageView
 id imageView2
 id imageView3
+id imageView_chat_icon
 id indeterminate
 id info
 id international_checkbox
@@ -3276,7 +3276,6 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
-id joinButton
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3408,6 +3407,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recycler_view_chats
 id report_drawn
 id reverseSawtooth
 id right
@@ -3426,7 +3426,6 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
-id searchBar
 id search_badge
 id search_bar
 id search_button
@@ -3473,7 +3472,6 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
-id tabLabel
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3495,6 +3493,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView_chat_name
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3523,6 +3522,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tv_username
 id unchecked
 id uniform
 id unlabeled
@@ -3656,16 +3656,15 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_chat
 layout activity_club
 layout activity_event
-layout activity_join_club
 layout activity_login
 layout activity_organisation
 layout activity_show_events
 layout activity_signup
 layout activity_welcome
 layout activity_welcome_student
-layout club_item
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3684,6 +3683,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_chat
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
