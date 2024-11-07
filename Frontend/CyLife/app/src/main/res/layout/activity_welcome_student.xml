@@ -1,25 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#e3e9f5">
+    android:padding="8dp">
+
+    <!-- Top Horizontal Bar -->
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="403dp"
+        android:layout_height="424dp"
+        android:layout_below="@+id/upcomingEventsLabel"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e3e9f5"
+            android:padding="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/upcomingEventsRecyclerView"
+                android:layout_width="371dp"
+                android:layout_height="408dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:clipToPadding="false"
+                tools:listitem="@layout/item_event" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/welcomeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-black"
+            android:textAlignment="center"
+            android:textColor="@color/dark_red"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/viewEventsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topBar"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:backgroundTint="@color/green"
+        android:padding="12dp"
+        android:text="View Events"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/joinClubButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewEventsButton"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="0dp"
+        android:backgroundTint="@color/green"
+        android:padding="12dp"
+        android:text="Join Club"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/requestClubButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/joinClubButton"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="0dp"
+        android:backgroundTint="@color/green"
+        android:padding="12dp"
+        android:text="Request Club"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/welcomeTextView"
+        android:id="@+id/upcomingEventsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, Student!"
+        android:layout_below="@+id/requestClubButton"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Upcoming Events"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="594dp"
-        android:layout_height="334dp"
-        android:layout_below="@+id/welcomeTextView"
-        android:layout_marginTop="371dp"
-        app:srcCompat="@drawable/camp" />
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:paddingStart="8dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="0dp">
+
+        <Button
+            android:id="@+id/chatButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/chat"
+            android:contentDescription="Go to Chat" />
+
+        <Button
+            android:id="@+id/bottomAccountButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="65dp"
+            android:background="@drawable/account" />
+
+        <Button
+            android:id="@+id/bottomLogoutButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/settings" />
+    </LinearLayout>
 
 </RelativeLayout>

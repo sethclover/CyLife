@@ -1337,6 +1337,7 @@ int color error_color_material_light 0x7f05005d
 int color foreground_material_dark 0x7f05005e
 int color foreground_material_light 0x7f05005f
 int color gold 0x7f050060
+int color green 0x7f050310
 int color highlighted_text_material_dark 0x7f050061
 int color highlighted_text_material_light 0x7f050062
 int color m3_appbar_overlay_color 0x7f050063
@@ -2906,6 +2907,7 @@ int drawable abc_textfield_search_activated_mtrl_alpha 0x7f070074
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f070075
 int drawable abc_textfield_search_material 0x7f070076
 int drawable abc_vector_test 0x7f070077
+int drawable account 0x7f0700ec
 int drawable avd_hide_password 0x7f070078
 int drawable avd_show_password 0x7f070079
 int drawable btn_checkbox_checked_mtrl 0x7f07007a
@@ -2917,6 +2919,7 @@ int drawable btn_radio_off_to_on_mtrl_animation 0x7f07007f
 int drawable btn_radio_on_mtrl 0x7f070080
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f070081
 int drawable camp 0x7f070082
+int drawable chat 0x7f0700ed
 int drawable ci 0x7f070083
 int drawable cy 0x7f070084
 int drawable design_fab_background 0x7f070085
@@ -2924,6 +2927,7 @@ int drawable design_ic_visibility 0x7f070086
 int drawable design_ic_visibility_off 0x7f070087
 int drawable design_password_eye 0x7f070088
 int drawable design_snackbar_background 0x7f070089
+int drawable event_item_background 0x7f0700ee
 int drawable ic_arrow_back_black_24 0x7f07008a
 int drawable ic_call_answer 0x7f07008b
 int drawable ic_call_answer_low 0x7f07008c
@@ -3019,6 +3023,7 @@ int drawable notification_template_icon_bg 0x7f0700e5
 int drawable notification_template_icon_low_bg 0x7f0700e6
 int drawable notification_tile_bg 0x7f0700e7
 int drawable notify_panel_notification_icon_bg 0x7f0700e8
+int drawable settings 0x7f0700ef
 int drawable test_level_drawable 0x7f0700e9
 int drawable tooltip_frame_dark 0x7f0700ea
 int drawable tooltip_frame_light 0x7f0700eb
@@ -3123,6 +3128,9 @@ int id beginOnFirstDraw 0x7f080061
 int id beginning 0x7f080062
 int id blocking 0x7f080063
 int id bottom 0x7f080064
+int id bottomAccountButton 0x7f080213
+int id bottomBar 0x7f080214
+int id bottomLogoutButton 0x7f080215
 int id bottom_tab 0x7f080065
 int id bounce 0x7f080066
 int id buttonLogin 0x7f080067
@@ -3136,6 +3144,7 @@ int id center_horizontal 0x7f08006e
 int id center_vertical 0x7f08006f
 int id chain 0x7f080070
 int id chains 0x7f080071
+int id chatButton 0x7f080216
 int id checkbox 0x7f080072
 int id checked 0x7f080073
 int id chronometer 0x7f080074
@@ -3226,9 +3235,13 @@ int id etOrgNameE 0x7f0800c8
 int id etPasswordNew 0x7f0800c9
 int id etPasswordNewConfirm 0x7f0800ca
 int id etPasswordOld 0x7f0800cb
+int id eventDateTextView 0x7f080217
+int id eventDescriptionTextView 0x7f080218
 int id eventDescription_input 0x7f0800cc
 int id eventId_input 0x7f0800cd
 int id eventListTextView 0x7f0800ce
+int id eventLocationTextView 0x7f080219
+int id eventTitleTextView 0x7f08021a
 int id event_description_input 0x7f0800cf
 int id event_name_edit 0x7f0800d0
 int id event_name_input 0x7f0800d1
@@ -3276,7 +3289,6 @@ int id ignoreRequest 0x7f0800fa
 int id image 0x7f0800fb
 int id imageView 0x7f0800fc
 int id imageView2 0x7f0800fd
-int id imageView3 0x7f0800fe
 int id indeterminate 0x7f0800ff
 int id info 0x7f080100
 int id international_checkbox 0x7f080101
@@ -3285,6 +3297,7 @@ int id inward 0x7f080103
 int id italic 0x7f080104
 int id item_touch_helper_previous_elevation 0x7f080105
 int id joinButton 0x7f080106
+int id joinClubButton 0x7f08021b
 int id joining_text 0x7f080107
 int id jumpToEnd 0x7f080108
 int id jumpToStart 0x7f080109
@@ -3418,6 +3431,7 @@ int id radio 0x7f080188
 int id ratio 0x7f080189
 int id rectangles 0x7f08018a
 int id report_drawn 0x7f08018b
+int id requestClubButton 0x7f08021c
 int id reverseSawtooth 0x7f08018c
 int id right 0x7f08018d
 int id rightToLeft 0x7f08018e
@@ -3520,6 +3534,7 @@ int id titleDividerNoCustom 0x7f0801ee
 int id title_template 0x7f0801ef
 int id toggle 0x7f0801f0
 int id top 0x7f0801f1
+int id topBar 0x7f08021d
 int id topPanel 0x7f0801f2
 int id touch_outside 0x7f0801f3
 int id transitionToEnd 0x7f0801f4
@@ -3537,8 +3552,11 @@ int id unchecked 0x7f0801ff
 int id uniform 0x7f080200
 int id unlabeled 0x7f080201
 int id up 0x7f080202
+int id upcomingEventsLabel 0x7f08021e
+int id upcomingEventsRecyclerView 0x7f08021f
 int id useLogo 0x7f080203
 int id username_text 0x7f080204
+int id viewEventsButton 0x7f080220
 int id view_offset_helper 0x7f080205
 int id view_tree_lifecycle_owner 0x7f080206
 int id view_tree_on_back_pressed_dispatcher_owner 0x7f080207
@@ -3546,7 +3564,7 @@ int id view_tree_saved_state_registry_owner 0x7f080208
 int id view_tree_view_model_store_owner 0x7f080209
 int id visible 0x7f08020a
 int id visible_removing_fragment_view_tag 0x7f08020b
-int id welcomeTextView 0x7f08020c
+int id welcomeMessage 0x7f080221
 int id welcome_text 0x7f08020d
 int id withText 0x7f08020e
 int id with_icon 0x7f08020f
@@ -3698,6 +3716,7 @@ int layout design_text_input_end_icon 0x7f0b0037
 int layout design_text_input_start_icon 0x7f0b0038
 int layout ime_base_split_test_activity 0x7f0b0039
 int layout ime_secondary_split_test_activity 0x7f0b003a
+int layout item_event 0x7f0b0078
 int layout m3_alert_dialog 0x7f0b003b
 int layout m3_alert_dialog_actions 0x7f0b003c
 int layout m3_alert_dialog_title 0x7f0b003d

@@ -1,7 +1,7 @@
-#Wed Nov 06 16:38:50 CST 2024
-base.0=C\:\\Users\\chwoo\\Documents\\COMS309\\4_mahdi_2\\Frontend\\CyLife\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\chwoo\\Documents\\COMS309\\4_mahdi_2\\Frontend\\CyLife\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\chwoo\\Documents\\COMS309\\4_mahdi_2\\Frontend\\CyLife\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+#Wed Nov 06 18:56:55 CST 2024
+base.0=/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=14/classes.dex
