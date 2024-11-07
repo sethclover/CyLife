@@ -30,17 +30,18 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/user/{email}")
-    public ResponseEntity<Map<String, Object>> getUserByEmail(@PathVariable String email) {
+    // Endpoint to get a user by id
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Map<String, Object>> getUserById(@PathVariable int id) {
         Map<String, Object> response = new HashMap<>();
         try {
-            User user = userRepository.findByEmail(email);
+            User user = userRepository.findById(id);
 
             if (user != null) {
                 response.put("user", user);
                 return ResponseEntity.ok(response);
             } else {
-                response.put("message", "User not found with email: " + email);
+                response.put("message", "User not found with id: " + id);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
         } catch (Exception e) {
@@ -49,6 +50,55 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+    // Endpoint to update user by id
+    @PutMapping("/update/{id}")
+    public Map<String, Object> updateUser(
+            @PathVariable int id, @RequestBody User updatedUser) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            User existingUser = userRepository.findById(id);
+            if (existingUser == null) {
+                response.put("message", "User not found with id: " + id);
+                response.put("status", "404");
+                return response;
+            }
+            existingUser.setName(updatedUser.getName());
+            existingUser.setEmail(updatedUser.getEmail());
+            existingUser.setPassword(updatedUser.getPassword());
+            existingUser.setType(updatedUser.getType());
+            userRepository.save(existingUser);
+            response.put("message", "User updated successfully.");
+            response.put("status", "200");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("message", "Internal Server Error: " + e.getMessage());
+            response.put("status", "500");
+        }
+        return response;
+    }
+
+    @Transactional
+    @DeleteMapping("/delete/{id}")
+    public Map<String, Object> deleteUser(@PathVariable int id) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            if (!userRepository.existsById(id)) {
+                response.put("message", "User not found with id: " + id);
+                response.put("status", "404");
+            } else {
+                userRepository.deleteById(id);
+                response.put("message", "User deleted successfully.");
+                response.put("status", "200");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("message", "Internal Server Error: " + e.getMessage());
+            response.put("status", "500");
+        }
+        return response;
+    }
+
 
     @PostMapping("/signup")
     public Map<String, Object> signup(@RequestBody User newUser) {
