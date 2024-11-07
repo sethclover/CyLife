@@ -108,12 +108,12 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\chwoo\.gradle\cach
 		ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:11:9-65
 	android:usesCleartextTraffic
 		ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:9:9-44
-activity#com.example.cylife.LoginActivity
+activity#com.example.cylife.WelcomeActivityClub
 ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:21:9-28:20
 	android:exported
 		ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:23:13-36
 	android:name
-		ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:22:13-60
+		ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:22:13-66
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:24:13-27:29
 action#android.intent.action.MAIN
@@ -144,10 +144,6 @@ activity#com.example.cylife.clubActivity
 ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:34:9-59
 	android:name
 		ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:34:19-47
-activity#com.example.cylife.WelcomeActivityClub
-ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:35:9-66
-	android:name
-		ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:35:19-54
 activity#com.example.cylife.EditClub
 ADDED from C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:36:9-55
 	android:name

@@ -1,138 +1,142 @@
 [
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_event.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_event.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_show_events.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_show_events.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.cylife.app-main-33:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\drawable_camp.jpg.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\drawable\\camp.jpg"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_club_item.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/club_item.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\drawable_ci.jpg.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\drawable\\ci.jpg"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\drawable_cy.jpg.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\drawable\\cy.jpg"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.cylife.app-main-33:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/drawable_isu.jpg.flat",
-        "source": "com.example.cylife.app-main-33:/drawable/isu.jpg"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_welcome_student.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_welcome_student.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_welcome_club.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_welcome_club.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_edit_user.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_edit_user.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_login.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_login.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/drawable_logo.jpg.flat",
-        "source": "com.example.cylife.app-main-33:/drawable/logo.jpg"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_edit_club.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_edit_club.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_organisation.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_organisation.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/drawable_cy.jpg.flat",
-        "source": "com.example.cylife.app-main-33:/drawable/cy.jpg"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_show_events.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_show_events.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_welcome.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_welcome.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/drawable_ci.jpg.flat",
-        "source": "com.example.cylife.app-main-33:/drawable/ci.jpg"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\drawable_logo.jpg.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\drawable\\logo.jpg"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_welcome_student.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_welcome_student.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_club.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_club.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_club.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_club.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_edit_club.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_edit_club.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_signup.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_signup.xml"
     },
     {
         "merged": "com.example.cylife.app-debug-31:/layout_activity_welcome_club.xml.flat",
         "source": "com.example.cylife.app-main-33:/layout/activity_welcome_club.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.cylife.app-main-33:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_event.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_event.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_edit_user.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_edit_user.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_join_club.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_join_club.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/drawable_camp.jpg.flat",
-        "source": "com.example.cylife.app-main-33:/drawable/camp.jpg"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_join_club.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_join_club.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\drawable_isu.jpg.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\drawable\\isu.jpg"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cylife.app-main-33:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/xml_backup_rules.xml.flat",
-        "source": "com.example.cylife.app-main-33:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_club_item.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\club_item.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_signup.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_signup.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_organisation.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_organisation.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_welcome.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_welcome.xml"
     }
 ]
