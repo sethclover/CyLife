@@ -108,6 +108,9 @@ public class UserController {
                 response.put("message", "User already exists.");
                 response.put("status", "409");
             } else {
+                if (newUser.getType() == null) {
+                    newUser.setType(User.UserType.STUDENT); // Set default to STUDENT
+                }
                 userRepository.save(newUser);
                 response.put("message", "User registered successfully.");
                 response.put("status", "201");
@@ -119,6 +122,7 @@ public class UserController {
         }
         return response;
     }
+
 
     @PutMapping("/update/{email}")
     public Map<String, Object> updateUser(
@@ -146,29 +150,6 @@ public class UserController {
         return response;
     }
 
-    @PutMapping("/editemail/{newEmail}")
-    public Map<String, String> changeEmail(@RequestBody User user, @PathVariable String newEmail){
-        Map<String, String> response = new HashMap<>();
-        boolean testForEmail = userRepository.existsByEmail(newEmail);
-        System.out.println("testForEmail");
-        if(testForEmail){
-            response.put("message", "The email \""+newEmail+"\" is already taken");
-            response.put("status", "409");
-            return response;
-        }
-        String oldEmail = user.getEmail();
-        User existingUser = userRepository.findByEmail(oldEmail);
-        if(existingUser != null){
-            response.put("message","Email updated successfully from "+oldEmail+" to "+newEmail);
-            response.put("status","200");
-            existingUser.setEmail(newEmail);
-            userRepository.save(existingUser);
-        } else {
-            response.put("message", "User not found with email: " + oldEmail);
-            response.put("status", "404");
-        }
-        return response;
-    }
 
     @Transactional
     @DeleteMapping("/delete/{email}")
