@@ -24,15 +24,11 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_club);
 
-//        Bundle extras = getIntent().getExtras();
-//        clubId = extras.getInt("userId");  // this will come from Welcome
-//        clubName = extras.getString("username");  // this will come from Welcome
+        Bundle extras = getIntent().getExtras();
+        clubId = extras.getInt("userId");  // this will come from Welcome
+        clubName = extras.getString("username");  // this will come from Welcome
 
-        clubId = 21;
-        clubName = "test club";
-
-
-        String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + clubId + "/" + clubId;
+        String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + clubId;
 
         // Establish WebSocket connection and set listener
         WebSocketManager.getInstance().connectWebSocket(serverUrl);
@@ -45,8 +41,6 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         clubButton = findViewById(R.id.edit_club_button);
         logoutButton = findViewById(R.id.logout_button);
 
-        welcomeText.setText("WELCOME " + clubName);
-
         entButton.setOnClickListener(view -> {
             // Start the Events Activity
             Intent intent = new Intent(WelcomeActivityClub.this, EventsActivity.class);
@@ -55,8 +49,6 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         clubButton.setOnClickListener(view -> {
             // Start the Club Activity
             Intent intent = new Intent(WelcomeActivityClub.this, EditClub.class);
-            intent.putExtra("userId", clubId);  // key-value to pass to the Welcome
-            intent.putExtra("name", clubName);  // key-value to pass to the Welcome
             startActivity(intent);
         });
 
@@ -87,7 +79,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
             String s = joiningText.getText().toString();
             joiningText.setText(s + "---\nconnection closed by " + closedBy + "\nreason: " + reason);
         });
-    }
+    }   
 
     @Override
     public void onWebSocketOpen(ServerHandshake handshakedata) {}

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,6 +33,7 @@ public class WelcomeActivityStudent extends AppCompatActivity {
     private EventAdapter eventAdapter;
     private List<Event> eventList = new ArrayList<>();
     private TextView welcomeMessage;
+    private int clubId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_student);
 
         Intent intent = getIntent();
-        int userId = intent.getIntExtra("userID", 84); // Same uppercase "ID" key
+        int userId = intent.getIntExtra("userID", -1); // Same uppercase "ID" key
         if (userId != -1) {
             Log.d("WelcomeActivityStudent", "User ID: " + userId);
             fetchUserDetails(userId); // Fetching user details
@@ -62,10 +64,18 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         joinClubButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, JoinClubActivity.class)));
 
         Button chatButton = findViewById(R.id.chatButton);
-        chatButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, ChatActivity.class)));
+        chatButton.setOnClickListener(v -> {
+            Intent chatIntent = new Intent(WelcomeActivityStudent.this, ChatActivity.class);
+            chatIntent.putExtra("clubId", clubId);
+            chatIntent.putExtra("userID", userId); // Ensure this key matches exactly
+            startActivity(chatIntent);
+        });
+
+        Button requestClubButton = findViewById(R.id.requestClubButton);
+        requestClubButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, RequestClub.class)));
 
         Button bottomAccountButton = findViewById(R.id.bottomAccountButton);
-        bottomAccountButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, AccountActivity.class)));
+        bottomAccountButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, EditUser.class)));
 
         Button bottomSettingsButton = findViewById(R.id.bottomLogoutButton);
         bottomSettingsButton.setOnClickListener(v -> finish());
@@ -74,28 +84,37 @@ public class WelcomeActivityStudent extends AppCompatActivity {
 
     private void fetchUserDetails(int userId) {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/user/" + userId;
-
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
-                    try {
-                        JSONObject userObj = response.getJSONObject("user");
-                        String studentName = userObj.optString("name", "Student"); // Provide a default value if "name" is null
-                        welcomeMessage.setText("Welcome " + studentName); // Set the welcome message
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.e("FetchUserDetails", "Error parsing user details: " + e.getMessage());
-                    }
+                    // Log the entire response for debugging
+                    Log.d("FetchUserDetails", "Response: " + response.toString());
+
+                    // Get the student's name and clubId from the response
+                    String studentName = response.optString("name", "Student");
+                    clubId = response.optInt("clubId", -1);  // Correctly update the class-level clubId
+                    Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
+                    welcomeMessage.setText("Welcome " + studentName);
+
+                    // Pass clubId to ChatActivity via chat button
+                    Button chatButton = findViewById(R.id.chatButton);
+                    chatButton.setOnClickListener(v -> {
+                        Intent chatIntent = new Intent(WelcomeActivityStudent.this, ChatActivity.class);
+                        chatIntent.putExtra("clubId", clubId); // Pass the clubId
+                        chatIntent.putExtra("userID", userId); // Ensure this key matches exactly
+                        startActivity(chatIntent);
+                    });
+
                 },
                 error -> {
                     error.printStackTrace();
                     Log.e("FetchUserDetails", "Error fetching user details: " + error.toString());
+                    Toast.makeText(WelcomeActivityStudent.this, "Failed to fetch user details", Toast.LENGTH_SHORT).show();
                 });
 
         queue.add(jsonObjectRequest);
     }
-
 
 
     private void fetchEvents(String url) {

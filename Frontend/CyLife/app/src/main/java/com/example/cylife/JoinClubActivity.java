@@ -47,7 +47,6 @@ public class JoinClubActivity extends AppCompatActivity {
         });
 
         Bundle extras = getIntent().getExtras();
-        assert extras != null;
         studentID = extras.getInt("userId");  // this will come from Welcome
         username = extras.getString("username");  // this will come from Welcome
 
@@ -83,8 +82,8 @@ public class JoinClubActivity extends AppCompatActivity {
     }
 
     private void fetchAllClubs() {
-//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
-        String url = "http://10.0.2.2:3000/club";
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
+//        String url = "http://10.0.2.2:3000/club";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,

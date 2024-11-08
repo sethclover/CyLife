@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +16,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 public class EditClub extends AppCompatActivity {
 
-    private TextView welcomeText;
-    private EditText nameField, descriptionField;
+    private EditText nameField, oldPasswordField, newPasswordField, confirmPasswordField;
     private Button saveButton, backButton;
 
     private int clubId;
@@ -33,10 +30,11 @@ public class EditClub extends AppCompatActivity {
         setContentView(R.layout.activity_edit_club);
 
         // Initialize views
-        welcomeText = findViewById(R.id.club_name_text);
         nameField = findViewById(R.id.etClubName);
 
-        descriptionField = findViewById(R.id.etDescription);
+        oldPasswordField = findViewById(R.id.etPasswordOld);
+        newPasswordField = findViewById(R.id.etPasswordNew);
+        confirmPasswordField = findViewById(R.id.etPasswordNewConfirm);
         backButton = findViewById(R.id.BackButton);
 
         saveButton = findViewById(R.id.SaveButton);
@@ -47,29 +45,34 @@ public class EditClub extends AppCompatActivity {
         // Handle sign-up logic
         saveButton.setOnClickListener(v -> {
             String name = nameField.getText().toString();
-            String description = descriptionField.getText().toString();
+            String oldPassword = oldPasswordField.getText().toString();
+            String newPassword = newPasswordField.getText().toString();
+            String confirmPassword = confirmPasswordField.getText().toString();
+
+            if (!newPassword.equals(confirmPassword)) {
+                Toast.makeText(EditClub.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            } else {
                 // If inputs are valid, send data to the backend server
-            editUser(name, description);
+                editUser(name, newPassword);
+            }
         });
 
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
-            Intent intent = new Intent(EditClub.this, WelcomeActivityClub.class);
+            Intent intent = new Intent(EditClub.this, WelcomeActivityStudent.class);
             intent.putExtra("userId", clubId);
             startActivity(intent);
         });
-
-        welcomeText.setText("Welcome club " + clubId);
     }
 
-    private void editUser(String name, String description) {
+    private void editUser(String name, String password) {
         String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/clubs/" + clubId;
 
         // Create JSON object with the input data
         JSONObject updatedUserData = new JSONObject();
         try {
-            updatedUserData.put("clubName", name);
-            updatedUserData.put("description", description);
+            updatedUserData.put("clubName: ", name);
+            updatedUserData.put("password: ", password);
             Log.i("Updated Organisation Data JSON Object Before: ", updatedUserData.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -87,8 +90,6 @@ public class EditClub extends AppCompatActivity {
                         // Log the response for debugging
                         Log.i("Success Response: ", updatedUserData.toString());
                         Log.d("Edit Response", response.toString());
-                        Toast.makeText(EditClub.this, "Edit successful!", Toast.LENGTH_SHORT).show();
-
                     }
                 },
                 new Response.ErrorListener() {
