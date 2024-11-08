@@ -47,8 +47,10 @@ public class JoinClubActivity extends AppCompatActivity {
         });
 
         Bundle extras = getIntent().getExtras();
-        studentID = extras.getInt("userId");  // this will come from Welcome
-        username = extras.getString("username");  // this will come from Welcome
+//        studentID = extras.getInt("userId");  // this will come from Welcome
+//        username = extras.getString("username");  // this will come from Welcome
+        studentID = 92;
+        username = "TESTER";
 
         searchBar = findViewById(R.id.searchBar);
         recyclerView = findViewById(R.id.clubListRecyclerView);

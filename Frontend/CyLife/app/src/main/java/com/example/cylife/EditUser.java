@@ -84,7 +84,7 @@ public class EditUser extends AppCompatActivity {
     }
 
     private void editUser(String name, String password) {
-        String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/update/" + studentId;
+        String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/update/byId/" + studentId;
 
         // Create JSON object with the input data
         JSONObject updatedUserData = new JSONObject();
