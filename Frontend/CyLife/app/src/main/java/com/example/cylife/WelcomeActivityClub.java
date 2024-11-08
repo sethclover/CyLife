@@ -32,7 +32,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         clubName = "test club";
 
 
-        String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + clubId;
+        String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + clubId + "/" + clubId;
 
         // Establish WebSocket connection and set listener
         WebSocketManager.getInstance().connectWebSocket(serverUrl);
