@@ -24,7 +24,6 @@ public class ChatController {
         // Optionally, you could filter only clubs with recent messages
         return clubRepository.findAll(); // Or customize to filter based on active status
     }
-
     // Endpoint to retrieve chat history for a specific club
     @GetMapping("/history/{clubId}")
     public List<Message> getChatHistory(@PathVariable int clubId) {
