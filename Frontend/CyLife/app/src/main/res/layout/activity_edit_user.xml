@@ -59,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter Old Password"
                 android:textColor="@color/black"
+                android:inputType="textPassword"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="8dp"
                 android:padding="8dp" />
@@ -70,6 +71,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter New Password"
             android:textColor="@color/black"
+            android:inputType="textPassword"
             android:background="@android:drawable/edit_text"
             android:layout_marginTop="8dp"
             android:padding="8dp" />
@@ -81,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter New Password again"
+            android:inputType="textPassword"
             android:textColor="@color/black"
             android:background="@android:drawable/edit_text"
             android:layout_marginTop="8dp"
