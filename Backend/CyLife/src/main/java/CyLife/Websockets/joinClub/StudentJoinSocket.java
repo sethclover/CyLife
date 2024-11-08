@@ -16,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 
 @Controller // this is needed for this to be an endpoint to springboot
 @ServerEndpoint(value = "/joinClub/{clubId}/{name}") // this is Websocket url
@@ -45,7 +44,6 @@ public class StudentJoinSocket {
 
     private final Logger logger = LoggerFactory.getLogger(StudentJoinSocket.class);
 
-    @Transactional
     @OnOpen
     public void onOpen(Session session, @PathParam("clubId") String clubId, @PathParam("name") String name)
             throws IOException {
@@ -56,10 +54,11 @@ public class StudentJoinSocket {
         usernameSessionMap.put(clubId, session);
 
         if (name.equals(clubId)) {
-            // Send chat history to the newly connected user
-            sendMessageToParticularUser(clubId, getChatHistory());
             return;
         }
+
+        // //Send chat history to the newly connected user
+		// sendMessageToParticularUser(name, getChatHistory());
 
         String message = name + " has joined the club!";
         broadcast(message);
@@ -97,13 +96,14 @@ public class StudentJoinSocket {
     }
 
     private void sendMessageToParticularUser(String name, String message) {
-        try {
-            usernameSessionMap.get(name).getBasicRemote().sendText(message);
-        } catch (IOException e) {
-            logger.info("Exception: " + e.getMessage().toString());
-            e.printStackTrace();
-        }
-    }
+		try {
+			usernameSessionMap.get(name).getBasicRemote().sendText(message);
+		} 
+    catch (IOException e) {
+			logger.info("Exception: " + e.getMessage().toString());
+			e.printStackTrace();
+		}
+	}
 
     // Gets the Chat history from the repository
     private String getChatHistory() {
