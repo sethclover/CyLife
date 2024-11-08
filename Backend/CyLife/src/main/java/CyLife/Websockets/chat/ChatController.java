@@ -17,7 +17,6 @@ public class ChatController {
 
     @Autowired
     private ClubRepository clubRepository;
-
     // Endpoint to retrieve all active chats with club information
     @GetMapping("/active")
     public List<Club> getActiveChats() {
