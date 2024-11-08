@@ -4,7 +4,7 @@
             "outputFile": "com.example.cylife.app-mergeDebugResources-29:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "/Users/dhvanimistry/.gradle/caches/transforms-4/348abe4096f6f004d5649668e929a922/transformed/material-1.12.0/res/values-v28/values-v28.xml",
+                    "source": "C:\\Users\\chwoo\\.gradle\\caches\\transforms-4\\348abe4096f6f004d5649668e929a922\\transformed\\material-1.12.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/dhvanimistry/.gradle/caches/transforms-4/a6709ed8a9dccfb65c6afa5f32e1f6f5/transformed/appcompat-1.7.0/res/values-v28/values-v28.xml",
+                    "source": "C:\\Users\\chwoo\\.gradle\\caches\\transforms-4\\a6709ed8a9dccfb65c6afa5f32e1f6f5\\transformed\\appcompat-1.7.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",
