@@ -13,7 +13,7 @@ import org.java_websocket.handshake.ServerHandshake;
 public class ChatScreenActivity extends AppCompatActivity implements WebSocketListener {
     private TextView chatHistory;
     private EditText msgInput;
-    private Button sendBtn;
+    private Button sendBtn, backButton;
     private int clubId;
     private int userId;
 
@@ -26,6 +26,9 @@ public class ChatScreenActivity extends AppCompatActivity implements WebSocketLi
         chatHistory = findViewById(R.id.chat_history);
         msgInput = findViewById(R.id.message_input);
         sendBtn = findViewById(R.id.send_button);
+
+        backButton = findViewById(R.id.btn_back);
+        backButton.setOnClickListener(v -> finish());
 
         // Get clubId and userId passed from the previous activity
         clubId = getIntent().getIntExtra("clubId", -1);

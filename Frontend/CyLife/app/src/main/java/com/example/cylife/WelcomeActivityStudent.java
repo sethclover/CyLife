@@ -34,6 +34,8 @@ public class WelcomeActivityStudent extends AppCompatActivity {
     private List<Event> eventList = new ArrayList<>();
     private TextView welcomeMessage;
     private int clubId = -1;
+    private String studentName = "Guest"; // Default name in case fetch fails
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +63,19 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         viewEventsButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, ShowEvents.class)));
 
         Button joinClubButton = findViewById(R.id.joinClubButton);
-        joinClubButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, JoinClubActivity.class)));
+        joinClubButton.setOnClickListener(v -> {
+            Intent joinIntent = new Intent(WelcomeActivityStudent.this, JoinClubActivity.class);
+            joinIntent.putExtra("userId", userId);
+            joinIntent.putExtra("name", studentName);
+            startActivity(joinIntent);
+        });
 
         Button chatButton = findViewById(R.id.chatButton);
         chatButton.setOnClickListener(v -> {
             Intent chatIntent = new Intent(WelcomeActivityStudent.this, ChatActivity.class);
             chatIntent.putExtra("clubId", clubId);
-            chatIntent.putExtra("userID", userId); // Ensure this key matches exactly
+            chatIntent.putExtra("userID", userId);
+            chatIntent.putExtra("name", studentName);// Ensure this key matches exactly
             startActivity(chatIntent);
         });
 
@@ -98,17 +106,18 @@ public class WelcomeActivityStudent extends AppCompatActivity {
                     Log.d("FetchUserDetails", "Response: " + response.toString());
 
                     // Get the student's name and clubId from the response
-                    String studentName = response.optString("name", "Student");
+                    String name = response.optString("name", "Student");
                     clubId = response.optInt("clubId", -1);  // Correctly update the class-level clubId
                     Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
-                    welcomeMessage.setText("Welcome " + studentName);
+                    Log.d("FetchUserDetails", "UserName: " + name);
+                    welcomeMessage.setText("Welcome " + name);
 
-                    // Pass clubId to ChatActivity via chat button
                     Button chatButton = findViewById(R.id.chatButton);
                     chatButton.setOnClickListener(v -> {
                         Intent chatIntent = new Intent(WelcomeActivityStudent.this, ChatActivity.class);
                         chatIntent.putExtra("clubId", clubId); // Pass the clubId
                         chatIntent.putExtra("userID", userId); // Ensure this key matches exactly
+                        chatIntent.putExtra("studentName", name);
                         startActivity(chatIntent);
                     });
 

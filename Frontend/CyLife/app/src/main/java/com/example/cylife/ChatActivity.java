@@ -20,12 +20,15 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
+    private static final Logger log = LoggerFactory.getLogger(ChatActivity.class);
     private RecyclerView recyclerViewChats;
     private ChatAdapter chatAdapter;
     private List<Chat> chatList;
@@ -42,25 +45,27 @@ public class ChatActivity extends AppCompatActivity {
 
         // Retrieve student name, clubId, and userId from Intent
         Intent intent = getIntent();
-        String studentName = intent.getStringExtra("studentName");
+        String name = intent.getStringExtra("name");
         int clubId = intent.getIntExtra("clubId", -1);
         int userId = intent.getIntExtra("userID", -1);
 
-        if (studentName != null) {
-            setTitle(studentName); // Set the student name as the title
+        if (name != null) {
+            setTitle(name);
         } else {
-            setTitle("User Name"); // Default title if no name is passed
+            setTitle("User Name");
         }
+
 
         if (clubId != -1 && userId != -1) {
             Log.d("ChatActivity", "Club ID: " + clubId);
             Log.d("ChatActivity", "User ID: " + userId);
+            Log.d("ChatActivity", "UserName: " + name);
             intent.putExtra("clubId", clubId);
             intent.putExtra("userID", userId);
             fetchChats();
 
             // Initialize ChatAdapter with userId
-            chatAdapter = new ChatAdapter(this, chatList, userId);
+            chatAdapter = new ChatAdapter(this, chatList, userId, name);
             recyclerViewChats.setAdapter(chatAdapter);
 
         } else {
