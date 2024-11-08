@@ -1,3 +1,4 @@
+
 package CyLife.Websockets.chat;
 
 import java.util.Date;
@@ -18,7 +19,7 @@ import lombok.Data;
 @Table(name = "messages")
 @Data
 public class Message {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -31,46 +32,35 @@ public class Message {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "sent")
     private Date sent = new Date();
-	
-	
-	public Message() {};
-	
-	public Message(String userName, String content) {
-		this.userName = userName;
-		this.content = content;
-	}
 
-    public Long getId() {
-        return id;
+    @Column
+    private int clubId; // New field added for clubId
+
+    // Default constructor
+    public Message() {}
+
+    // New constructor with clubId
+    public Message(String userName, String content, int clubId) {
+        this.userName = userName;
+        this.content = content;
+        this.clubId = clubId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    // Getter and Setter for clubId
+    public int getClubId() {
+        return clubId;
     }
 
+    public void setClubId(int clubId) {
+        this.clubId = clubId;
+    }
+
+    // Explicit getters for userName and content to resolve the issue
     public String getUserName() {
         return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getContent() {
         return content;
     }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getSent() {
-        return sent;
-    }
-
-    public void setSent(Date sent) {
-        this.sent = sent;
-    }
-
-    
 }
