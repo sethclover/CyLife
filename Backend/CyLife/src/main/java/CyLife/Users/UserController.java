@@ -24,13 +24,15 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    ClubRepository clubRepository;
+
     // Endpoint to get all users
     @GetMapping(path = "/users")
     List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    // Endpoint to get a user by id
     @GetMapping("/user/{id}")
     public ResponseEntity<Map<String, Object>> getUserById(@PathVariable int id) {
         Map<String, Object> response = new HashMap<>();
@@ -38,7 +40,11 @@ public class UserController {
             User user = userRepository.findById(id);
 
             if (user != null) {
-                response.put("user", user);
+                response.put("userId", user.getUserId());
+                response.put("name", user.getName());
+                response.put("email", user.getEmail());
+                response.put("clubId", user.getClub() != null ? user.getClub().getClubId() : null);
+                response.put("eventId", user.getEvent() != null ? user.getEvent().getEventId() : null);
                 return ResponseEntity.ok(response);
             } else {
                 response.put("message", "User not found with id: " + id);
@@ -50,6 +56,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
 
     // Endpoint to update user by id
     @PutMapping("/update/{id}")
@@ -98,6 +105,7 @@ public class UserController {
         }
         return response;
     }
+
 
 
     @PostMapping("/signup")
@@ -152,15 +160,15 @@ public class UserController {
 
 
     @Transactional
-    @DeleteMapping("/delete/{email}")
-    public Map<String, Object> deleteUser(@PathVariable String email) {
+    @DeleteMapping("/delete/byId/{id}")
+    public Map<String, Object> deleteUserById(@PathVariable int id) {
         Map<String, Object> response = new HashMap<>();
         try {
-            if (!userRepository.existsByEmail(email)) {
-                response.put("message", "User not found with email: " + email);
+            if (!userRepository.existsById(id)) {
+                response.put("message", "User not found with id: " + id);
                 response.put("status", "404");
             } else {
-                userRepository.deleteByEmail(email);
+                userRepository.deleteById(id);
                 response.put("message", "User deleted successfully.");
                 response.put("status", "200");
             }
@@ -193,4 +201,35 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
+
+
+    @PutMapping("/user/{userId}/addClub/{clubId}")
+    public ResponseEntity<Map<String, Object>> addUserToClub(@PathVariable int userId, @PathVariable int clubId) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            User user = userRepository.findById(userId);
+            Club club = clubRepository.findById(clubId).orElse(null);
+
+            if (user == null) {
+                response.put("message", "User not found with id: " + userId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            if (club == null) {
+                response.put("message", "Club not found with id: " + clubId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            user.setClub(club);
+            userRepository.save(user);
+            response.put("message", "User added to club successfully.");
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("message", "Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
 }
