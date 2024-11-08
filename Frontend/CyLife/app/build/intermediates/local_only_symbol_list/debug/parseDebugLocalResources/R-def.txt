@@ -75,6 +75,7 @@ id etClubIdD
 id etClubIdE
 id etClubName
 id etClubNameE
+id etDesc
 id etEmail
 id etName
 id etOrgId

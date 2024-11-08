@@ -75,7 +75,13 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         requestClubButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, RequestClub.class)));
 
         Button bottomAccountButton = findViewById(R.id.bottomAccountButton);
-        bottomAccountButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, EditUser.class)));
+        bottomAccountButton.setOnClickListener(v -> {
+            Intent editIntent = new Intent(WelcomeActivityStudent.this, EditUser.class);
+//            editIntent.putExtra("userId", userId);
+//            editIntent.putExtra("username", name); // Ensure this key matches exactly
+            startActivity(editIntent);
+        });
+
 
         Button bottomSettingsButton = findViewById(R.id.bottomLogoutButton);
         bottomSettingsButton.setOnClickListener(v -> finish());

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.cylife.app-mergeDebugResources-29:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.cylife.app-mergeDebugResources-30:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\chwoo\\.gradle\\caches\\transforms-4\\a6709ed8a9dccfb65c6afa5f32e1f6f5\\transformed\\appcompat-1.7.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\chwoo\\.gradle\\caches\\transforms-4\\927ccc58c096e1df657771c577305e1a\\transformed\\appcompat-1.7.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
