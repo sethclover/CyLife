@@ -11,6 +11,8 @@ public class ClubController {
 
     @Autowired
     ClubRepository clubRepository;
+    @Autowired
+    ClubRequestRepository clubRequestRepository;
 
     private String success = "{\"message\":\"Success\"}";
     private String failure = "{\"message\":\"Failure\"}";
