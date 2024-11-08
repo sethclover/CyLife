@@ -22,6 +22,8 @@ import org.springframework.stereotype.Controller;
 
 import CyLife.Users.User;
 import CyLife.Users.UserRepository;
+import CyLife.Clubs.Club;
+import CyLife.Clubs.ClubRepository;
 
 @Controller
 @ServerEndpoint(value = "/chat/{clubId}/{userId}")  // WebSocket URL with clubId and userId
@@ -29,6 +31,7 @@ public class ChatSocket {
 
 	private static MessageRepository msgRepo;
 	private static UserRepository userRepo;
+	private static ClubRepository clubRepo;
 
 	@Autowired
 	public void setMessageRepository(MessageRepository repo) {
@@ -38,6 +41,11 @@ public class ChatSocket {
 	@Autowired
 	public void setUserRepository(UserRepository repo) {
 		userRepo = repo;
+	}
+
+	@Autowired
+	public void setClubRepository(ClubRepository repo) {
+		clubRepo = repo;
 	}
 
 	private static Map<Session, String> sessionUserIdMap = new Hashtable<>();
@@ -55,15 +63,20 @@ public class ChatSocket {
 
 		// Retrieve user's name
 		String username = userRepo.findById(Integer.parseInt(userId)).getName();
-		logger.info("User " + username + " (ID: " + userId + ") joined club chat " + clubId);
+
+		// Retrieve club name
+		Optional<Club> clubOpt = clubRepo.findById(Integer.parseInt(clubId));
+		String clubName = clubOpt.map(Club::getClubName).orElse("Unknown Club");
+
+		logger.info("User " + username + " (ID: " + userId + ") joined club chat " + clubName);
 
 		// Store session and user details
 		sessionUserIdMap.put(session, userId);
 		userIdSessionMap.put(userId, session);
 
-		// Send chat history and broadcast user join
+		// Send chat history and broadcast user join with club name
 		sendMessageToUser(userId, getChatHistory(Integer.parseInt(clubId)));
-		String message = "User " + username + " joined the club chat";
+		String message = "User " + username + " joined the chat for " + clubName;
 		broadcastToClub(message, Integer.parseInt(clubId));
 	}
 
@@ -83,8 +96,12 @@ public class ChatSocket {
 	public void onClose(Session session, @PathParam("clubId") String clubId) throws IOException {
 		String userId = sessionUserIdMap.remove(session);
 		String username = userRepo.findById(Integer.parseInt(userId)).getName();
+
+		// Retrieve club name for the disconnect message
+		String clubName = clubRepo.findById(Integer.parseInt(clubId)).map(Club::getClubName).orElse("Unknown Club");
+
 		userIdSessionMap.remove(userId);
-		broadcastToClub("User " + username + " left the chat", Integer.parseInt(clubId));
+		broadcastToClub("User " + username + " left the chat for " + clubName, Integer.parseInt(clubId));
 	}
 
 	@OnError
