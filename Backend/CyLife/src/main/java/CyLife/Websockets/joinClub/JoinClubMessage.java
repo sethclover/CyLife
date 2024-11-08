@@ -22,6 +22,8 @@ public class JoinClubMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String clubId;
+
     @Column
     private String name;
 
@@ -35,7 +37,8 @@ public class JoinClubMessage {
 	
 	public JoinClubMessage() {};
 	
-	public JoinClubMessage(String name, String content) {
+	public JoinClubMessage(String clubId, String name, String content) {
+        this.clubId = clubId;
 		this.name = name;
 		this.content = content;
 	}
@@ -46,6 +49,14 @@ public class JoinClubMessage {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getClubId() {
+        return clubId;
+    }
+
+    public void setClubId(String clubId) {
+        this.clubId = clubId;
     }
 
     public String getName() {
@@ -71,6 +82,4 @@ public class JoinClubMessage {
     public void setSent(Date sent) {
         this.sent = sent;
     }
-
-    
 }

@@ -39,32 +39,44 @@ public class StudentJoinSocket {
     }
 
     // Store all socket session and their corresponding username.
-    private static Map<Session, String> sessionUsernameMap = new Hashtable<>();
-    private static Map<String, Session> usernameSessionMap = new Hashtable<>();
+    private static Map<Session, String> sessionNameMap = new Hashtable<>();
+    private static Map<String, Session> nameSessionMap = new Hashtable<>();
+
+    private static Map<String, Map<Session, String>> clubSessionMap = new Hashtable<>();
 
     private final Logger logger = LoggerFactory.getLogger(StudentJoinSocket.class);
 
     @OnOpen
     public void onOpen(Session session, @PathParam("clubId") String clubId, @PathParam("name") String name)
             throws IOException {
-        logger.info("Entered into Open");
+        logger.info("Entered into Open for club: " + clubId);
+
+        // Ensure the map for this clubId exists
+        clubSessionMap.computeIfAbsent(clubId, k -> new Hashtable<>());
+
+        // Store the session for this clubId
+        clubSessionMap.get(clubId).put(session, name);
 
         // store connecting user information
-        sessionUsernameMap.put(session, clubId);
-        usernameSessionMap.put(clubId, session);
+        sessionNameMap.put(session, name);
+        nameSessionMap.put(name, session);
 
         if (name.equals(clubId)) {
+            logger.info("Getting chat history");
+            String chatHistory = getChatHistory(clubId);
+            session.getBasicRemote().sendText(chatHistory);
             return;
         }
 
-        // //Send chat history to the newly connected user
-		// sendMessageToParticularUser(name, getChatHistory());
-
         String message = name + " has joined the club!";
-        broadcast(message);
+        broadcastToClub(clubId, message);
 
         // Saving chat history to repository
-        msgRepo.save(new JoinClubMessage(clubId, message));
+        JoinClubMessage msg = new JoinClubMessage(clubId, name, message);
+        msgRepo.save(msg);
+        logger.info("Message saved to repository: " + message);
+
+        session.close();
     }
 
     @OnClose
@@ -72,9 +84,9 @@ public class StudentJoinSocket {
         logger.info("Entered into Close");
 
         // remove the user connection information
-        String username = sessionUsernameMap.get(session);
-        sessionUsernameMap.remove(session);
-        usernameSessionMap.remove(username);
+        String username = sessionNameMap.get(session);
+        sessionNameMap.remove(session);
+        nameSessionMap.remove(username);
     }
 
     @OnError
@@ -84,38 +96,38 @@ public class StudentJoinSocket {
         throwable.printStackTrace();
     }
 
-    private void broadcast(String message) {
-        sessionUsernameMap.forEach((session, username) -> {
-            try {
-                session.getBasicRemote().sendText(message);
-            } catch (IOException e) {
-                logger.info("Exception: " + e.getMessage().toString());
-                e.printStackTrace();
-            }
-        });
-    }
+    private void broadcastToClub(String clubId, String message) {
+        Map<Session, String> sessionNameMap = clubSessionMap.get(clubId);
 
-    private void sendMessageToParticularUser(String name, String message) {
-		try {
-			usernameSessionMap.get(name).getBasicRemote().sendText(message);
-		} 
-    catch (IOException e) {
-			logger.info("Exception: " + e.getMessage().toString());
-			e.printStackTrace();
-		}
-	}
+        if (sessionNameMap != null) {
+            sessionNameMap.forEach((session, username) -> {
+                try {
+                    session.getBasicRemote().sendText(message);
+                } catch (IOException e) {
+                    logger.error("Exception: " + e.getMessage(), e);
+                }
+            });
+        }
+    }
 
     // Gets the Chat history from the repository
-    private String getChatHistory() {
-        List<JoinClubMessage> messages = msgRepo.findAll();
+    private String getChatHistory(String clubId) {
+        List<JoinClubMessage> messages = msgRepo.findByClubId(clubId);
 
-        // convert the list to a string
-        StringBuilder sb = new StringBuilder();
-        if (messages != null && messages.size() != 0) {
-            for (JoinClubMessage message : messages) {
-                sb.append(message.getName() + ": " + message.getContent() + "\n");
-            }
+        if (messages.isEmpty()) {
+            logger.info("No chat history found.");
+            return "";
         }
-        return sb.toString();
+
+        // Convert the list to a single string for printing
+        StringBuilder sb = new StringBuilder();
+        for (JoinClubMessage message : messages) {
+            sb.append(message.getContent()).append("\n");
+        }
+
+        String history = sb.toString();
+        logger.info("Chat History:\n" + history); // Log the chat history
+        return history;
     }
+
 }
