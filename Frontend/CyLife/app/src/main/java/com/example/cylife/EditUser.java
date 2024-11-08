@@ -69,7 +69,8 @@ public class EditUser extends AppCompatActivity {
             Intent intent = new Intent(EditUser.this, WelcomeActivityStudent.class);
 
             intent.putExtra("userId", studentId);  // key-value to pass to the Welcome
-            intent.putExtra("username", username);  // key-value to pass to the Welcome            startActivity(intent);
+            intent.putExtra("username", username);  // key-value to pass to the Welcome
+            startActivity(intent);
         });
     }
 
