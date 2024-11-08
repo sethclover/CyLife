@@ -1,109 +1,93 @@
 package com.example.cylife;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.cylife.VolleySingleton;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 public class ShowEvents extends AppCompatActivity {
-    private TextView eventsTextView;
-    private Button logoutButton;
+
+    private LinearLayout eventListLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_events);
 
-        // Initialize the TextView and Button
-        eventsTextView = findViewById(R.id.eventListTextView);
-        logoutButton = findViewById(R.id.logout_button);
+        eventListLayout = findViewById(R.id.eventListLayout);
 
-        fetchEvents();
+        // Fetch and display events
+        fetchEvents("http://coms-3090-065.class.las.iastate.edu:8080/events");
 
-        logoutButton.setOnClickListener(view -> {
-            Intent intent = new Intent(ShowEvents.this, WelcomeActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(v -> finish());
     }
 
-    // Function to fetch events from the server
-    private void fetchEvents() {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/events"; // Update to the correct server URL
+    private void fetchEvents(String url) {
+        RequestQueue queue = Volley.newRequestQueue(this);
 
-        // Create a JsonObjectRequest (since the response is a JSON object)
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONObject>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            // Log the response for debugging purposes
-                            Log.d("API Response", response.toString());
+                    public void onResponse(JSONArray response) {
+                        eventListLayout.removeAllViews(); // Clear existing views
 
-                            // Get the events array from the JSON response
-                            JSONArray eventsArray = response.optJSONArray("events");
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject eventObj = response.getJSONObject(i);
+                                String eventName = eventObj.optString("eventName", "No name");
+                                String date = eventObj.optString("date", "No date");
+                                String location = eventObj.optString("eventLocation", "No location");
+                                String description = eventObj.optString("description", "No description");
 
-                            if (eventsArray != null) {
-                                // Prepare a string builder to store the event details
-                                StringBuilder eventDetails = new StringBuilder();
+                                // Create TextView for each event
+                                TextView eventView = new TextView(ShowEvents.this);
+                                eventView.setText(String.format("Event: %s\nDate: %s\nLocation: %s\nDescription: %s",
+                                        eventName, date, location, description));
+                                eventView.setTextSize(16);
+                                eventView.setPadding(16, 16, 16, 16);
 
-                                // Iterate over the events array and append details to the StringBuilder
-                                for (int i = 0; i < eventsArray.length(); i++) {
-                                    JSONObject events = eventsArray.getJSONObject(i);
-                                    String eventName = events.optString("eventName", "Unknown Event");
-                                    String eventLocation = events.optString("eventLocation", "Location not available");
-                                    String eventDescription = events.optString("Description", "Description not available");
+                                // Add TextView to LinearLayout
+                                eventListLayout.addView(eventView);
 
-                                    // Append the event details to the builder
-                                    eventDetails.append("Event: ").append(eventName)
-                                            .append("\nLocation: ").append(eventLocation)
-                                            .append("\nDescription: ").append(eventDescription)
-                                            .append("\n\n");
-                                }
-
-                                // Display the event details in the TextView
-                                eventsTextView.setText(eventDetails.toString());
-
-                            } else {
-                                // Handle the case where there are no events
-                                eventsTextView.setText("N events available.");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Log.e("FetchEvents", "JSON parsing error: " + e.getMessage());
                             }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            eventsTextView.setText("Error parsing response.");
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Log the error for debugging
-                        Log.e("VolleyError", error.toString());
-
-                        // Show a user-friendly message in case of an error
-                        eventsTextView.setText("Error fetching events: " + error.getMessage());
+                        error.printStackTrace();
+                        Log.e("FetchEvents", "Network error: " + error.toString());
                     }
-                }
-        );
+                });
 
-        // Add the request to the Volley request queue
-        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+        queue.add(jsonArrayRequest);
     }
 }

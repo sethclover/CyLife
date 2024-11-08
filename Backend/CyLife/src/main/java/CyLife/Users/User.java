@@ -1,23 +1,36 @@
 package CyLife.Users;
 
 import CyLife.Clubs.Club;
-import CyLife.Events.Event;
 import CyLife.Organisation.Organisation;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
 
+    // Unique ID for the user, auto-generated
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
+    
 
+    // User's name, email, and password fields
     private String name;
     private String email;
     private String password;
 
+    // Enum to define the type of user (STUDENT, STAFF, CLUB, ORG)
     @Enumerated(EnumType.STRING)
     private UserType type;
+
 
     @ManyToOne
     @JoinColumn(name = "org_id", nullable = true)
@@ -27,13 +40,12 @@ public class User {
     @JoinColumn(name = "club_id", nullable = true)
     private Club club;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id", nullable = true)
-    private Event event;
 
     public enum UserType {
         STUDENT, STAFF, CLUB, ORG
     }
+
+    // Constructors, getters, and setters
 
     public User() {
     }
@@ -43,9 +55,20 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
+        this.username = "";
     }
 
-    // Getter and Setter for userId
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
     public int getUserId() {
         return userId;
     }
@@ -54,7 +77,6 @@ public class User {
         this.userId = userId;
     }
 
-    // Other getters and setters
     public String getName() {
         return name;
     }
@@ -101,13 +123,5 @@ public class User {
 
     public void setClub(Club club) {
         this.club = club;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
     }
 }
