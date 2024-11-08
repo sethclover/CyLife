@@ -146,7 +146,7 @@
             android:id="@+id/bottomLogoutButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/settings" />
+            android:background="@drawable/logout" />
     </LinearLayout>
 
 </RelativeLayout>

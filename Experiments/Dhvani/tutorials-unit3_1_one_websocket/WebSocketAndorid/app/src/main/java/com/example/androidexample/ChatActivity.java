@@ -16,6 +16,7 @@ public class ChatActivity extends AppCompatActivity implements WebSocketListener
     private EditText msgEtx;
     private TextView chatHistory;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

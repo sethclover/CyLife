@@ -35,7 +35,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         holder.chatIcon.setImageResource(chat.getChatIcon());
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ChatActivity.class);
+            Intent intent = new Intent(context, ChatScreenActivity.class);
             intent.putExtra("CHAT_ID", chat.getId());
             context.startActivity(intent);
         });

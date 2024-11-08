@@ -19,7 +19,7 @@
 
         <!-- LoginActivity (launch activity) -->
         <activity
-            android:name="com.example.cylife.ChatActivity"
+            android:name="com.example.cylife.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,12 +30,15 @@
         <activity android:name=".WelcomeActivity"></activity>
         <activity android:name=".SignupActivity"></activity>
         <activity android:name=".organizationActivity"></activity>
-        <activity android:name="WelcomeActivityStudent"
-            tools:ignore="Instantiatable"></activity>
+        <activity android:name=".WelcomeActivityStudent"></activity>
+        <activity android:name="ChatActivity" />
+        <activity android:name=".JoinClubActivity"></activity>
+        <activity android:name=".ChatScreenActivity"></activity>
+        <activity android:name=".EditUser"/>
+        <activity android:name=".RequestClub"></activity>
         <activity android:name=".clubActivity"></activity>
         <activity android:name=".WelcomeActivityClub"></activity>
         <activity android:name=".EditClub"></activity>
-        <activity android:name=".EditUser"></activity>
         <activity android:name=".EventsActivity"></activity>
         <activity android:name=".ShowEvents"></activity>
 

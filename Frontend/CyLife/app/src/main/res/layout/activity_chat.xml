@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#e3e9f5"
+    android:background="@color/blue"
     tools:context=".ChatActivity">
 
     <LinearLayout
@@ -15,13 +15,12 @@
         android:gravity="center_vertical"
         android:paddingBottom="8dp">
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_back"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/back"
+            android:background="@drawable/back"
             android:contentDescription="Back"
-            android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="@color/dark_red" />
 
         <TextView
@@ -32,22 +31,19 @@
             android:text="User Name"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#333333"
-            android:gravity="center"
+            android:textColor="@color/black"
+            android:gravity="left"
             android:paddingStart="8dp" />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/et_search_club"
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search by club name"
-        android:background="@drawable/rounded_box"
-        android:padding="12dp"
-        android:drawablePadding="8dp"
-        android:textColor="#333333"
-        android:textColorHint="#999999"
-        android:layout_marginBottom="16dp" />
+        android:background="@android:drawable/editbox_background"
+        android:hint="Search for chat"
+        android:inputType="text"
+        android:padding="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chats"

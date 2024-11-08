@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -64,8 +65,11 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         Button chatButton = findViewById(R.id.chatButton);
         chatButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, ChatActivity.class)));
 
+        Button requestClubButton = findViewById(R.id.requestClubButton);
+        requestClubButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, RequestClub.class)));
+
         Button bottomAccountButton = findViewById(R.id.bottomAccountButton);
-        bottomAccountButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, AccountActivity.class)));
+        bottomAccountButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, EditUser.class)));
 
         Button bottomSettingsButton = findViewById(R.id.bottomLogoutButton);
         bottomSettingsButton.setOnClickListener(v -> finish());
@@ -80,9 +84,19 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
-                        JSONObject userObj = response.getJSONObject("user");
-                        String studentName = userObj.optString("name", "Student"); // Provide a default value if "name" is null
-                        welcomeMessage.setText("Welcome " + studentName); // Set the welcome message
+                        // Log the entire response for debugging
+                        Log.d("FetchUserDetails", "Response: " + response.toString());
+
+                        // Check if 'user' key exists in the response
+                        if (response.has("user")) {
+                            JSONObject userObj = response.getJSONObject("user");
+                            String studentName = userObj.optString("name", "Student");
+                            welcomeMessage.setText("Welcome " + studentName);
+                        } else {
+                            Log.e("FetchUserDetails", "No 'user' key found in the response.");
+                            Toast.makeText(WelcomeActivityStudent.this, "User details not found", Toast.LENGTH_SHORT).show();
+                            welcomeMessage.setText("Welcome Student"); // Fallback message
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Log.e("FetchUserDetails", "Error parsing user details: " + e.getMessage());
@@ -91,11 +105,11 @@ public class WelcomeActivityStudent extends AppCompatActivity {
                 error -> {
                     error.printStackTrace();
                     Log.e("FetchUserDetails", "Error fetching user details: " + error.toString());
+                    Toast.makeText(WelcomeActivityStudent.this, "Failed to fetch user details", Toast.LENGTH_SHORT).show();
                 });
 
         queue.add(jsonObjectRequest);
     }
-
 
 
     private void fetchEvents(String url) {
