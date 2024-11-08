@@ -26,6 +26,7 @@ drawable isu
 drawable logo
 drawable logout
 drawable rounded_box
+drawable settings
 id BackButton
 id CC
 id CE
