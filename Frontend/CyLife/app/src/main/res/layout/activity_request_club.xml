@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".RequestClub">
+
+    <TextView
+        android:id="@+id/createClubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request for a New Club"
+        android:textSize="24sp"
+        android:textColor="@color/dark_red"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelClubName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club Name"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createClubTitle" />
+
+    <EditText
+        android:id="@+id/etClubName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club Name"
+        android:padding="12dp"
+        android:background="@drawable/event_item_background"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelClubName" />
+
+    <TextView
+        android:id="@+id/labelEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club Email"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etClubName" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club Email"
+        android:padding="12dp"
+        android:background="@drawable/event_item_background"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelEmail" />
+
+    <TextView
+        android:id="@+id/labelClubId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club Description"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+    <EditText
+        android:id="@+id/etClubDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club Description"
+        android:padding="12dp"
+        android:background="@drawable/event_item_background"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelClubId" />
+
+    <TextView
+        android:id="@+id/informationMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="This request will be sent to the admin, you will be notified regarding the approval of the club within a week."
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:lineSpacingExtra="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etClubDesc" />
+
+    <Button
+        android:id="@+id/createClubButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Create Club"
+        android:textColor="#FFFFFF"
+        android:background="@color/blue"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informationMessage" />
+
+    <TextView
+        android:id="@+id/clubCreationStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createClubButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

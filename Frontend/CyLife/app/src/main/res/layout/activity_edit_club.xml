@@ -41,57 +41,26 @@
             android:paddingBottom="16dp"
             android:layout_marginTop="20dp" />
 
-        <!-- EditText for Club Name -->
+
+        <!-- EditText for Club Email -->
         <EditText
             android:id="@+id/etClubName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter New Username"
+            android:hint="Enter New Club name"
             android:textColor="@color/black"
             android:background="@android:drawable/edit_text"
             android:layout_marginTop="8dp"
             android:padding="8dp" />
 
-        <!-- EditText for Club Email -->
-        <EditText
-            android:id="@+id/etClubEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter New Username"
-            android:textColor="@color/black"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="8dp"
-            android:padding="8dp" />
-
-        <!-- EditText for Old club password -->
-        <EditText
-            android:id="@+id/etPasswordOld"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Old Password"
-            android:textColor="@color/black"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="8dp"
-            android:padding="8dp" />
-
-        <!-- EditText for new Club password -->
-        <EditText
-            android:id="@+id/etPasswordNew"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter New Password"
-            android:textColor="@color/black"
-            android:background="@android:drawable/edit_text"
-            android:layout_marginTop="8dp"
-            android:padding="8dp" />
 
 
         <!-- EditText for confirming new Club password -->
         <EditText
-            android:id="@+id/etPasswordNewConfirm"
+            android:id="@+id/etDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter New Password again"
+            android:hint="Enter New description"
             android:textColor="@color/black"
             android:background="@android:drawable/edit_text"
             android:layout_marginTop="8dp"

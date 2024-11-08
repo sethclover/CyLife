@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import java.util.ResourceBundle;
 
 public class EditUser extends AppCompatActivity {
 
+    private TextView welcomeText;
     private EditText nameField, oldPasswordField, newPasswordField, confirmPasswordField;
     private Button saveButton, backButton;
 
@@ -35,7 +37,10 @@ public class EditUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user);
 
+
         // Initialize views
+        welcomeText = findViewById(R.id.username_text);
+
         nameField = findViewById(R.id.etName);
 
         oldPasswordField = findViewById(R.id.etPasswordOld);
@@ -45,9 +50,13 @@ public class EditUser extends AppCompatActivity {
 
         saveButton = findViewById(R.id.SaveButton);
 
-        Bundle extras = getIntent().getExtras();
-        studentId = extras.getInt("userId");  // this will come from Welcome
-        username = extras.getString("username");  // this will come from Welcome
+//        Bundle extras = getIntent().getExtras();
+//        studentId = extras.getInt("userId");  // this will come from Welcome
+//        username = extras.getString("username");  // this will come from Welcome
+        studentId = 90;
+        username = "Student";
+
+        welcomeText.setText("Welcome " + username);
 
         // Handle sign-up logic
         saveButton.setOnClickListener(v -> {
@@ -69,12 +78,13 @@ public class EditUser extends AppCompatActivity {
             Intent intent = new Intent(EditUser.this, WelcomeActivityStudent.class);
 
             intent.putExtra("userId", studentId);  // key-value to pass to the Welcome
-            intent.putExtra("username", username);  // key-value to pass to the Welcome            startActivity(intent);
+            intent.putExtra("username", username);  // key-value to pass to the Welcome
+            startActivity(intent);
         });
     }
 
     private void editUser(String name, String password) {
-        String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/users/" + studentId;
+        String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/update/" + studentId;
 
         // Create JSON object with the input data
         JSONObject updatedUserData = new JSONObject();

@@ -25,7 +25,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         setContentView(R.layout.activity_welcome_club);
 
         Bundle extras = getIntent().getExtras();
-        clubId = extras.getInt("userId");  // this will come from Welcome
+        clubId = 21;  // this will come from Welcome
         clubName = extras.getString("username");  // this will come from Welcome
 
         String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + clubId;
@@ -49,6 +49,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         clubButton.setOnClickListener(view -> {
             // Start the Club Activity
             Intent intent = new Intent(WelcomeActivityClub.this, EditClub.class);
+            intent.putExtra("userId", clubId);
             startActivity(intent);
         });
 

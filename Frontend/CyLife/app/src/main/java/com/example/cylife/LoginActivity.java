@@ -88,26 +88,27 @@ public class LoginActivity extends AppCompatActivity {
                         boolean success = response.optString("message").equals("Login successful");
                         String userType = response.optString("userType"); // Get user type from response
                         String name = response.optString("name");
-                        String userID = response.optString("userId");
+                        Integer userID = Integer.valueOf(response.optString("userID")); // Note the uppercase "ID"
+
 
                         if (success) {
                             // Open different activities based on user type
                             Intent intent;
                             switch (userType) {
-                                case "student":
+                                case "STUDENT":
                                     intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
                                     break;
-                                case "admin":
+                                case "STAFF":
                                     intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                     break;
-                                case "club":
+                                case "CLUB":
                                     intent = new Intent(LoginActivity.this, WelcomeActivityClub.class);
                                     break;
                                 default:
                                     intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
                                     break;
                             }
-                            intent.putExtra("userId", userID);  // key-value to pass to the Welcome
+                            intent.putExtra("userID", userID);
                             intent.putExtra("username", name);  // key-value to pass to the Welcome
                             startActivity(intent);
                         } else {
