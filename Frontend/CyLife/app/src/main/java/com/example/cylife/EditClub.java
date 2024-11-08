@@ -58,7 +58,7 @@ public class EditClub extends AppCompatActivity {
 
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
-            Intent intent = new Intent(EditClub.this, WelcomeActivityStudent.class);
+            Intent intent = new Intent(EditClub.this, WelcomeActivityClub.class);
             intent.putExtra("userId", clubId);
             startActivity(intent);
         });

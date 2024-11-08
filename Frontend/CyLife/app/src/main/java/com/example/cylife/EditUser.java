@@ -89,8 +89,8 @@ public class EditUser extends AppCompatActivity {
         // Create JSON object with the input data
         JSONObject updatedUserData = new JSONObject();
         try {
-            updatedUserData.put("name: ", name);
-            updatedUserData.put("password: ", password);
+            updatedUserData.put("name", name);
+            updatedUserData.put("password", password);
             Log.i("Updated Organisation Data JSON Object Before: ", updatedUserData.toString());
         } catch (JSONException e) {
             e.printStackTrace();
