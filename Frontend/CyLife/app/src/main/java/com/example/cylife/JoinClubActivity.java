@@ -47,6 +47,7 @@ public class JoinClubActivity extends AppCompatActivity {
         });
 
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         studentID = extras.getInt("userId");  // this will come from Welcome
         username = extras.getString("username");  // this will come from Welcome
 
