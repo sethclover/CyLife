@@ -3217,6 +3217,7 @@ id etClubIdD
 id etClubIdE
 id etClubName
 id etClubNameE
+id etDescription
 id etEmail
 id etName
 id etOrgId

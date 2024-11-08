@@ -49,7 +49,7 @@ public class EditClub extends AppCompatActivity {
             String name = nameField.getText().toString();
             String description = descriptionField.getText().toString();
                 // If inputs are valid, send data to the backend server
-                editUser(name, description);
+            editUser(name, description);
         });
 
         backButton.setOnClickListener(v -> {
@@ -68,8 +68,8 @@ public class EditClub extends AppCompatActivity {
         // Create JSON object with the input data
         JSONObject updatedUserData = new JSONObject();
         try {
-            updatedUserData.put("clubName: ", name);
-            updatedUserData.put("description: ", description);
+            updatedUserData.put("clubName", name);
+            updatedUserData.put("description", description);
             Log.i("Updated Organisation Data JSON Object Before: ", updatedUserData.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -87,6 +87,8 @@ public class EditClub extends AppCompatActivity {
                         // Log the response for debugging
                         Log.i("Success Response: ", updatedUserData.toString());
                         Log.d("Edit Response", response.toString());
+                        Toast.makeText(EditClub.this, "Edit successful!", Toast.LENGTH_SHORT).show();
+
                     }
                 },
                 new Response.ErrorListener() {

@@ -96,8 +96,8 @@
         "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-33:\\layout\\activity_signup.xml"
     },
     {
-        "merged": "com.example.cylife.app-debug-31:/layout_activity_welcome_club.xml.flat",
-        "source": "com.example.cylife.app-main-33:/layout/activity_welcome_club.xml"
+        "merged": "com.example.cylife.app-debug-31:/layout_activity_edit_club.xml.flat",
+        "source": "com.example.cylife.app-main-33:/layout/activity_edit_club.xml"
     },
     {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-31:\\layout_activity_event.xml.flat",

@@ -94,13 +94,13 @@ public class LoginActivity extends AppCompatActivity {
                             // Open different activities based on user type
                             Intent intent;
                             switch (userType) {
-                                case "student":
+                                case "STUDENT":
                                     intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
                                     break;
-                                case "admin":
+                                case "STAFF":
                                     intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                     break;
-                                case "club":
+                                case "CLUB":
                                     intent = new Intent(LoginActivity.this, WelcomeActivityClub.class);
                                     break;
                                 default:

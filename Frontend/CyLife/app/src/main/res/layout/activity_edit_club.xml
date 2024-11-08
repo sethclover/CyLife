@@ -59,7 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter New Description"
-            android:inputType="textPassword"
             android:textColor="@color/black"
             android:background="@android:drawable/edit_text"
             android:layout_marginTop="8dp"
