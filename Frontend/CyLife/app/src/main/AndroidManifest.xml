@@ -27,20 +27,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".WelcomeActivity"></activity>
-        <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".organizationActivity"></activity>
-        <activity android:name=".WelcomeActivityStudent"></activity>
+        <activity android:name=".WelcomeActivity"/>
+        <activity android:name=".SignupActivity"/>
+        <activity android:name=".organizationActivity"/>
+        <activity android:name=".WelcomeActivityStudent"/>
         <activity android:name="ChatActivity" />
-        <activity android:name=".JoinClubActivity"></activity>
-        <activity android:name=".ChatScreenActivity"></activity>
+        <activity android:name=".JoinClubActivity"/>
+        <activity android:name=".ChatScreenActivity" />
         <activity android:name=".EditUser"/>
-        <activity android:name=".RequestClub"></activity>
-        <activity android:name=".clubActivity"></activity>
-        <activity android:name=".WelcomeActivityClub"></activity>
-        <activity android:name=".EditClub"></activity>
-        <activity android:name=".EventsActivity"></activity>
-        <activity android:name=".ShowEvents"></activity>
+        <activity android:name=".RequestClub"/>
+        <activity android:name=".clubActivity"/>
+        <activity android:name=".WelcomeActivityClub"/>
+        <activity android:name=".EditClub"/>
+        <activity android:name=".EventsActivity"/>
+        <activity android:name=".ShowEvents"/>
 
     </application>
 </manifest>

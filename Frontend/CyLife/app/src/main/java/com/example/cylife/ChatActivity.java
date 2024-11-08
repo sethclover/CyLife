@@ -1,6 +1,8 @@
 package com.example.cylife;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -27,8 +29,6 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView recyclerViewChats;
     private ChatAdapter chatAdapter;
     private List<Chat> chatList;
-    private static final String CHATS_URL = "http://10.0.2.2:8080/chats";  // Replace with your actual server IP if testing on a device
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +39,40 @@ public class ChatActivity extends AppCompatActivity {
         recyclerViewChats.setLayoutManager(new LinearLayoutManager(this));
 
         chatList = new ArrayList<>();
-        chatAdapter = new ChatAdapter(this, chatList);
-        recyclerViewChats.setAdapter(chatAdapter);
 
-        fetchChats();
+        // Retrieve student name, clubId, and userId from Intent
+        Intent intent = getIntent();
+        String studentName = intent.getStringExtra("studentName");
+        int clubId = intent.getIntExtra("clubId", -1);
+        int userId = intent.getIntExtra("userID", -1);
+
+        if (studentName != null) {
+            setTitle(studentName); // Set the student name as the title
+        } else {
+            setTitle("User Name"); // Default title if no name is passed
+        }
+
+        if (clubId != -1 && userId != -1) {
+            Log.d("ChatActivity", "Club ID: " + clubId);
+            Log.d("ChatActivity", "User ID: " + userId);
+            intent.putExtra("clubId", clubId);
+            intent.putExtra("userID", userId);
+            fetchChats();
+
+            // Initialize ChatAdapter with userId
+            chatAdapter = new ChatAdapter(this, chatList, userId);
+            recyclerViewChats.setAdapter(chatAdapter);
+
+        } else {
+            Log.d("Chat Activity", "Club ID or User ID is missing");
+        }
 
         Button bottomSettingsButton = findViewById(R.id.btn_back);
         bottomSettingsButton.setOnClickListener(v -> finish());
     }
 
     private void fetchChats() {
+        String CHATS_URL = "http://coms-3090-065.class.las.iastate.edu:8080/api/chats/active";
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -62,7 +86,6 @@ public class ChatActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Log error for debugging purposes
                         error.printStackTrace();
                         Toast.makeText(ChatActivity.this, "Error fetching chats: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -78,12 +101,12 @@ public class ChatActivity extends AppCompatActivity {
             for (int i = 0; i < chatArray.length(); i++) {
                 JSONObject chatObject = chatArray.getJSONObject(i);
 
-                // Assuming the server sends chat data with 'id' and 'name'
-                String chatName = chatObject.optString("name", "Unknown Chat");
-                int chatId = chatObject.optInt("id", -1);
+                // Use 'clubName' instead of 'name' to get the club's name
+                String clubName = chatObject.optString("clubName", "Unknown Chat");
+                int clubId = chatObject.optInt("clubId", -1);
 
-                // Add chat item to the list
-                chatList.add(new Chat(chatName, R.drawable.cy, chatId));
+                // Add chat item to the list with clubName
+                chatList.add(new Chat(clubName, R.drawable.cy, clubId));
             }
             chatAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
@@ -91,4 +114,5 @@ public class ChatActivity extends AppCompatActivity {
             Toast.makeText(this, "Error parsing chat data", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.cylife;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,7 +14,8 @@ public class ChatScreenActivity extends AppCompatActivity implements WebSocketLi
     private TextView chatHistory;
     private EditText msgInput;
     private Button sendBtn;
-    private int chatId;
+    private int clubId;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +27,27 @@ public class ChatScreenActivity extends AppCompatActivity implements WebSocketLi
         msgInput = findViewById(R.id.message_input);
         sendBtn = findViewById(R.id.send_button);
 
-        // Get chat details passed from the previous activity
-        chatId = getIntent().getIntExtra("chatId", -1);
+        // Get clubId and userId passed from the previous activity
+        clubId = getIntent().getIntExtra("clubId", -1);
+        userId = getIntent().getIntExtra("userID", -1);
+        Log.d("ChatScreenActivity", "Received clubId: " + clubId);
+        Log.d("ChatScreenActivity", "Received userId: " + userId);
+
         String chatName = getIntent().getStringExtra("chatName");
+
+        if (clubId == -1 || userId == -1) {
+            Log.e("ChatScreenActivity", "Invalid clubId or userId passed to ChatScreenActivity");
+        }
+
         setTitle(chatName);
 
-        // Set WebSocket listener
+        // Construct WebSocket URL
+        String serverUrl = "ws://coms-3090-065.class.las.iastate.edu:8080/chat/" + clubId + "/" + userId;
+        Log.d("ChatScreenActivity", "Connecting to WebSocket URL: " + serverUrl);
+
+        // Set WebSocket listener and connect
         WebSocketManager.getInstance().setWebSocketListener(this);
+        WebSocketManager.getInstance().connectWebSocket(serverUrl);
 
         // Handle sending message
         sendBtn.setOnClickListener(v -> {
@@ -68,5 +84,13 @@ public class ChatScreenActivity extends AppCompatActivity implements WebSocketLi
     @Override
     public void onWebSocketError(Exception ex) {
         runOnUiThread(() -> appendMessageToChat("System: Error - " + ex.getMessage()));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove listener and close WebSocket connection
+        WebSocketManager.getInstance().removeWebSocketListener();
+        WebSocketManager.getInstance().disconnectWebSocket();
     }
 }

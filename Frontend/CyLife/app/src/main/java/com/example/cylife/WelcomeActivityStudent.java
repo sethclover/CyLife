@@ -33,6 +33,7 @@ public class WelcomeActivityStudent extends AppCompatActivity {
     private EventAdapter eventAdapter;
     private List<Event> eventList = new ArrayList<>();
     private TextView welcomeMessage;
+    private int clubId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_student);
 
         Intent intent = getIntent();
-        int userId = intent.getIntExtra("userID", 84); // Same uppercase "ID" key
+        int userId = intent.getIntExtra("userID", -1); // Same uppercase "ID" key
         if (userId != -1) {
             Log.d("WelcomeActivityStudent", "User ID: " + userId);
             fetchUserDetails(userId); // Fetching user details
@@ -63,7 +64,12 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         joinClubButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, JoinClubActivity.class)));
 
         Button chatButton = findViewById(R.id.chatButton);
-        chatButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, ChatActivity.class)));
+        chatButton.setOnClickListener(v -> {
+            Intent chatIntent = new Intent(WelcomeActivityStudent.this, ChatActivity.class);
+            chatIntent.putExtra("clubId", clubId);
+            chatIntent.putExtra("userID", userId); // Ensure this key matches exactly
+            startActivity(chatIntent);
+        });
 
         Button requestClubButton = findViewById(R.id.requestClubButton);
         requestClubButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, RequestClub.class)));
@@ -78,29 +84,28 @@ public class WelcomeActivityStudent extends AppCompatActivity {
 
     private void fetchUserDetails(int userId) {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/user/" + userId;
-
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
-                    try {
-                        // Log the entire response for debugging
-                        Log.d("FetchUserDetails", "Response: " + response.toString());
+                    // Log the entire response for debugging
+                    Log.d("FetchUserDetails", "Response: " + response.toString());
 
-                        // Check if 'user' key exists in the response
-                        if (response.has("user")) {
-                            JSONObject userObj = response.getJSONObject("user");
-                            String studentName = userObj.optString("name", "Student");
-                            welcomeMessage.setText("Welcome " + studentName);
-                        } else {
-                            Log.e("FetchUserDetails", "No 'user' key found in the response.");
-                            Toast.makeText(WelcomeActivityStudent.this, "User details not found", Toast.LENGTH_SHORT).show();
-                            welcomeMessage.setText("Welcome Student"); // Fallback message
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.e("FetchUserDetails", "Error parsing user details: " + e.getMessage());
-                    }
+                    // Get the student's name and clubId from the response
+                    String studentName = response.optString("name", "Student");
+                    clubId = response.optInt("clubId", -1);  // Correctly update the class-level clubId
+                    Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
+                    welcomeMessage.setText("Welcome " + studentName);
+
+                    // Pass clubId to ChatActivity via chat button
+                    Button chatButton = findViewById(R.id.chatButton);
+                    chatButton.setOnClickListener(v -> {
+                        Intent chatIntent = new Intent(WelcomeActivityStudent.this, ChatActivity.class);
+                        chatIntent.putExtra("clubId", clubId); // Pass the clubId
+                        chatIntent.putExtra("userID", userId); // Ensure this key matches exactly
+                        startActivity(chatIntent);
+                    });
+
                 },
                 error -> {
                     error.printStackTrace();

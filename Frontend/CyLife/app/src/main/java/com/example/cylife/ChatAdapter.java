@@ -15,10 +15,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     private final Context context;
     private final List<Chat> chatList;
+    private final int userId;  // Add userId field to be passed to ChatScreenActivity
 
-    public ChatAdapter(Context context, List<Chat> chatList) {
+    public ChatAdapter(Context context, List<Chat> chatList, int userId) {
         this.context = context;
         this.chatList = chatList;
+        this.userId = userId;  // Initialize userId
     }
 
     @NonNull
@@ -36,7 +38,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ChatScreenActivity.class);
-            intent.putExtra("CHAT_ID", chat.getId());
+            intent.putExtra("clubId", chat.getId());
+            intent.putExtra("userID", userId);
             context.startActivity(intent);
         });
     }
@@ -57,4 +60,3 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         }
     }
 }
-

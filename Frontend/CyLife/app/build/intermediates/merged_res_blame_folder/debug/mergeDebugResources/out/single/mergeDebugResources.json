@@ -84,6 +84,10 @@
         "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-34:/drawable/logo.jpg"
     },
     {
+        "merged": "com.example.cylife.app-debug-32:/layout_activity_chat_screen.xml.flat",
+        "source": "com.example.cylife.app-main-34:/layout/activity_chat_screen.xml"
+    },
+    {
         "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-32:/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-34:/mipmap-xxhdpi/ic_launcher.webp"
     },
@@ -118,10 +122,6 @@
     {
         "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-32:/drawable_cy.jpg.flat",
         "source": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-main-34:/drawable/cy.jpg"
-    },
-    {
-        "merged": "com.example.cylife.app-debug-32:/layout_activity_show_events.xml.flat",
-        "source": "com.example.cylife.app-main-34:/layout/activity_show_events.xml"
     },
     {
         "merged": "/Users/dhvanimistry/.gradle/daemon/8.7/com.example.cylife.app-debug-32:/layout_item_chat.xml.flat",
