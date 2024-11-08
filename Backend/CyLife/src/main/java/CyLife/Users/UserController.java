@@ -59,7 +59,7 @@ public class UserController {
 
 
     // Endpoint to update user by id
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/byId/{id}")
     public Map<String, Object> updateUser(
             @PathVariable int id, @RequestBody User updatedUser) {
         Map<String, Object> response = new HashMap<>();
@@ -132,9 +132,9 @@ public class UserController {
     }
 
 
-    @PutMapping("/update/{email}")
+    @PutMapping("/update/byEmail/{email}")
     public Map<String, Object> updateUser(
-        @PathVariable String email, @RequestBody User updatedUser) {
+            @PathVariable String email, @RequestBody User updatedUser) {
         Map<String, Object> response = new HashMap<>();
         try {
             User existingUser = userRepository.findByEmail(email);
