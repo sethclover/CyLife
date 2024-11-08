@@ -11,7 +11,6 @@ public class ClubController {
 
     @Autowired
     ClubRepository clubRepository;
-
     @Autowired
     ClubRequestRepository clubRequestRepository;
 
