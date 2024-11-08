@@ -63,10 +63,19 @@ public class UserController {
                 response.put("status", "404");
                 return response;
             }
-            existingUser.setName(updatedUser.getName());
-            existingUser.setEmail(updatedUser.getEmail());
-            existingUser.setPassword(updatedUser.getPassword());
-            existingUser.setType(updatedUser.getType());
+            if (updatedUser.getName() != null) {
+                existingUser.setName(updatedUser.getName());
+            }
+            if (updatedUser.getEmail() != null) {
+                existingUser.setEmail(updatedUser.getEmail());
+            }
+            if (updatedUser.getPassword() != null) {
+                existingUser.setPassword(updatedUser.getPassword());
+            }
+            if (updatedUser.getType() != null) {
+                existingUser.setType(updatedUser.getType());
+            }
+
             userRepository.save(existingUser);
             response.put("message", "User updated successfully.");
             response.put("status", "200");
