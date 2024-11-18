@@ -79,6 +79,16 @@ public class ClubController {
         }
     }
 
+    @DeleteMapping(path = "/club-requests/{id}")
+    public String deleteClubRequest(@PathVariable int id) {
+        if (clubRequestRepository.existsById(id)) {
+            clubRequestRepository.deleteById(id);
+            return "{ \"message\": \"Club request deleted successfully.\" }";
+        } else {
+            return "{ \"message\": \"Club request not found.\" }";
+        }
+    }
+
     @PutMapping(
             path = {"/club-requests/{id}/status"}
     )
