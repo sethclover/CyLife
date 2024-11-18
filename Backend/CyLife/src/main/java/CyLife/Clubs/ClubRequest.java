@@ -1,3 +1,4 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
 package CyLife.Clubs;
 
 import jakarta.persistence.Entity;
@@ -7,17 +8,16 @@ import jakarta.persistence.Id;
 
 @Entity
 public class ClubRequest {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private int requestId;
     private int studentId;
     private String clubName;
     private String description;
     private String clubEmail;
-    private String status; // Status could be "PENDING", "APPROVED", or "DECLINED"
-
-    // Constructors, getters, and setters
+    private String status;
 
     public ClubRequest() {
     }
@@ -31,7 +31,7 @@ public class ClubRequest {
     }
 
     public int getRequestId() {
-        return requestId;
+        return this.requestId;
     }
 
     public void setRequestId(int requestId) {
@@ -39,7 +39,7 @@ public class ClubRequest {
     }
 
     public int getStudentId() {
-        return studentId;
+        return this.studentId;
     }
 
     public void setStudentId(int studentId) {
@@ -47,7 +47,7 @@ public class ClubRequest {
     }
 
     public String getClubName() {
-        return clubName;
+        return this.clubName;
     }
 
     public void setClubName(String clubName) {
@@ -55,7 +55,7 @@ public class ClubRequest {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -63,7 +63,7 @@ public class ClubRequest {
     }
 
     public String getClubEmail() {
-        return clubEmail;
+        return this.clubEmail;
     }
 
     public void setClubEmail(String clubEmail) {
@@ -71,7 +71,7 @@ public class ClubRequest {
     }
 
     public String getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(String status) {

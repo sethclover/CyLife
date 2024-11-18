@@ -61,33 +61,43 @@ public class ClubController {
         return success;
     }
 
-    @PostMapping(path = "/club-requests")
-    public String requestNewClub(@RequestBody ClubRequest clubRequest) {
-        if (clubRequest == null) return failure;
-        clubRequest.setStatus("PENDING");
-        clubRequestRepository.save(clubRequest);
-        return success;
+    @GetMapping(path = "/club-requests")
+    public List<ClubRequest> getAllClubRequests() {
+        return clubRequestRepository.findAll();
     }
 
-    @PutMapping(path = "/club-requests/{id}/status")
-    public String updateClubRequestStatus(@PathVariable int id, @RequestParam String status) {
-        Optional<ClubRequest> clubRequestOpt = clubRequestRepository.findById(id);
-        if (!clubRequestOpt.isPresent()) return "{ \"message\": \"Club request not found.\" }";
-
-        ClubRequest clubRequest = clubRequestOpt.get();
-        clubRequest.setStatus(status.toUpperCase());
-        clubRequestRepository.save(clubRequest);
-
-        // If approved, create the club in the ClubRepository
-        if ("APPROVED".equalsIgnoreCase(status)) {
-            Club newClub = new Club(clubRequest.getClubName(), clubRequest.getDescription(), clubRequest.getClubEmail());
-            clubRepository.save(newClub);
-            return "{ \"message\": \"Your club '" + clubRequest.getClubName() + "' has been approved.\" }";
-        } else if ("DECLINED".equalsIgnoreCase(status)) {
-            return "{ \"message\": \"Your club '" + clubRequest.getClubName() + "' has been declined.\" }";
+    @PostMapping(
+            path = {"/club-requests"}
+    )
+    public String requestNewClub(@RequestBody ClubRequest clubRequest) {
+        if (clubRequest == null) {
+            return this.failure;
+        } else {
+            clubRequest.setStatus("PENDING");
+            this.clubRequestRepository.save(clubRequest);
+            return this.success;
         }
+    }
 
-        return "{ \"message\": \"Invalid status update.\" }";
+    @PutMapping(
+            path = {"/club-requests/{id}/status"}
+    )
+    public String updateClubRequestStatus(@PathVariable int id, @RequestParam String status) {
+        Optional<ClubRequest> clubRequestOpt = this.clubRequestRepository.findById(id);
+        if (!clubRequestOpt.isPresent()) {
+            return "{ \"message\": \"Club request not found.\" }";
+        } else {
+            ClubRequest clubRequest = (ClubRequest)clubRequestOpt.get();
+            clubRequest.setStatus(status.toUpperCase());
+            this.clubRequestRepository.save(clubRequest);
+            if ("APPROVED".equalsIgnoreCase(status)) {
+                Club newClub = new Club(clubRequest.getClubName(), clubRequest.getDescription(), clubRequest.getClubEmail());
+                this.clubRepository.save(newClub);
+                return "{ \"message\": \"Your club '" + clubRequest.getClubName() + "' has been approved.\" }";
+            } else {
+                return "DECLINED".equalsIgnoreCase(status) ? "{ \"message\": \"Your club '" + clubRequest.getClubName() + "' has been declined.\" }" : "{ \"message\": \"Invalid status update.\" }";
+            }
+        }
     }
 
 }

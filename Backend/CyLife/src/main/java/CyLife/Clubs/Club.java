@@ -1,4 +1,4 @@
-
+// Source code is decompiled from a .class file using FernFlower decompiler.
 package CyLife.Clubs;
 
 import jakarta.persistence.Entity;
@@ -8,16 +8,14 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Club {
-
-    //ID collection and the names to call in Postman
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private int clubId;
     private String clubName;
     private String description;
     private String clubEmail;
-
-    // Constructors, getters, and setters
 
     public Club() {
     }
@@ -29,7 +27,7 @@ public class Club {
     }
 
     public int getClubId() {
-        return clubId;
+        return this.clubId;
     }
 
     public void setClubId(int clubId) {
@@ -37,7 +35,7 @@ public class Club {
     }
 
     public String getClubName() {
-        return clubName;
+        return this.clubName;
     }
 
     public void setClubName(String clubName) {
@@ -45,7 +43,7 @@ public class Club {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -53,7 +51,7 @@ public class Club {
     }
 
     public String getClubEmail() {
-        return clubEmail;
+        return this.clubEmail;
     }
 
     public void setClubEmail(String clubEmail) {
