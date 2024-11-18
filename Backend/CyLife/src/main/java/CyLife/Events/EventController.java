@@ -1,6 +1,7 @@
 package CyLife.Events;
 
 import java.util.List;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,14 @@ public class EventController {
         return eventRepository.findAll();
     }
 
+    @GetMapping(path = "/upcomingEvents")
+    List<Event> getUpcomingEvents() {
+        Date currentDate = new Date();
+        Date sevenDaysFromNow = new Date(currentDate.getTime() + (7L * 24 * 60 * 60 * 1000)); // current day + 7 days in milliseconds
+
+        return eventRepository.findByDateBetween(currentDate, sevenDaysFromNow);
+    }
+
     @GetMapping(path = "/events/{id}")
     Event getEventById(@PathVariable int id) {
         return eventRepository.findById(id).orElse(null);
@@ -26,7 +35,8 @@ public class EventController {
 
     @PostMapping(path = "/events")
     String createEvent(@RequestBody Event event) {
-        if (event == null) return failure;
+        if (event == null)
+            return failure;
         eventRepository.save(event);
         return success;
     }
