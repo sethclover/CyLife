@@ -9,172 +9,172 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:4:5-67
-11-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:4:22-64
+11-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:4:5-67
+11-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:4:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:5:5-78
-12-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:5:22-76
+12-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:5:5-78
+12-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:5:22-76
 13
 14    <permission
-14-->[androidx.core:core:1.13.0] C:\Users\chwoo\.gradle\caches\transforms-4\5338fd149b5ef8af92d368526a392241\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+14-->[androidx.core:core:1.13.0] /Users/dhvanimistry/.gradle/caches/transforms-4/5338fd149b5ef8af92d368526a392241/transformed/core-1.13.0/AndroidManifest.xml:22:5-24:47
 15        android:name="com.example.cylife.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-15-->[androidx.core:core:1.13.0] C:\Users\chwoo\.gradle\caches\transforms-4\5338fd149b5ef8af92d368526a392241\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+15-->[androidx.core:core:1.13.0] /Users/dhvanimistry/.gradle/caches/transforms-4/5338fd149b5ef8af92d368526a392241/transformed/core-1.13.0/AndroidManifest.xml:23:9-81
 16        android:protectionLevel="signature" />
-16-->[androidx.core:core:1.13.0] C:\Users\chwoo\.gradle\caches\transforms-4\5338fd149b5ef8af92d368526a392241\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+16-->[androidx.core:core:1.13.0] /Users/dhvanimistry/.gradle/caches/transforms-4/5338fd149b5ef8af92d368526a392241/transformed/core-1.13.0/AndroidManifest.xml:24:9-44
 17
 18    <uses-permission android:name="com.example.cylife.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Set application settings -->
-18-->[androidx.core:core:1.13.0] C:\Users\chwoo\.gradle\caches\transforms-4\5338fd149b5ef8af92d368526a392241\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
-18-->[androidx.core:core:1.13.0] C:\Users\chwoo\.gradle\caches\transforms-4\5338fd149b5ef8af92d368526a392241\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+18-->[androidx.core:core:1.13.0] /Users/dhvanimistry/.gradle/caches/transforms-4/5338fd149b5ef8af92d368526a392241/transformed/core-1.13.0/AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.13.0] /Users/dhvanimistry/.gradle/caches/transforms-4/5338fd149b5ef8af92d368526a392241/transformed/core-1.13.0/AndroidManifest.xml:26:22-94
 19    <application
-19-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:8:5-45:19
+19-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:8:5-45:19
 20        android:allowBackup="true"
-20-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:10:9-35
+20-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:10:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.13.0] C:\Users\chwoo\.gradle\caches\transforms-4\5338fd149b5ef8af92d368526a392241\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+21-->[androidx.core:core:1.13.0] /Users/dhvanimistry/.gradle/caches/transforms-4/5338fd149b5ef8af92d368526a392241/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
 22        android:dataExtractionRules="@xml/data_extraction_rules"
-22-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:11:9-65
+22-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:11:9-65
 23        android:debuggable="true"
 24        android:extractNativeLibs="false"
 25        android:fullBackupContent="@xml/backup_rules"
-25-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:12:9-54
+25-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:12:9-54
 26        android:icon="@mipmap/ic_launcher"
-26-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:13:9-43
+26-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:13:9-43
 27        android:label="@string/app_name"
-27-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:14:9-41
+27-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:14:9-41
 28        android:roundIcon="@mipmap/ic_launcher_round"
-28-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:15:9-54
+28-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:15:9-54
 29        android:supportsRtl="true"
-29-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:16:9-35
+29-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:16:9-35
 30        android:testOnly="true"
 31        android:theme="@style/Theme.cylife"
-31-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:17:9-44
+31-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:17:9-44
 32        android:usesCleartextTraffic="true" >
-32-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:9:9-44
+32-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:9:9-44
 33
 34        <!-- LoginActivity (launch activity) -->
 35        <activity
-35-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:21:9-28:20
+35-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:21:9-28:20
 36            android:name="com.example.cylife.LoginActivity"
-36-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:22:13-60
+36-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:22:13-60
 37            android:exported="true" >
-37-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:23:13-36
+37-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:23:13-36
 38            <intent-filter>
-38-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:24:13-27:29
+38-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:24:13-27:29
 39                <action android:name="android.intent.action.MAIN" />
-39-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:25:17-69
-39-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:25:25-66
+39-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:25:17-69
+39-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:25:25-66
 40
 41                <category android:name="android.intent.category.LAUNCHER" />
-41-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:26:17-77
-41-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:26:27-74
+41-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:26:17-77
+41-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:26:27-74
 42            </intent-filter>
 43        </activity>
 44        <activity android:name="com.example.cylife.WelcomeActivity" />
-44-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:30:9-52
-44-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:30:19-50
+44-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:30:9-52
+44-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:30:19-50
 45        <activity android:name="com.example.cylife.SignupActivity" />
-45-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:31:9-51
-45-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:31:19-49
+45-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:31:9-51
+45-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:31:19-49
 46        <activity android:name="com.example.cylife.organizationActivity" />
-46-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:32:9-57
-46-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:32:19-55
+46-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:32:9-57
+46-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:32:19-55
 47        <activity android:name="com.example.cylife.WelcomeActivityStudent" />
-47-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:33:9-59
-47-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:33:19-57
+47-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:9-59
+47-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:19-57
 48        <activity android:name="com.example.cylife.ChatActivity" />
-48-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:34:9-49
-48-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:34:19-46
+48-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:9-49
+48-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:19-46
 49        <activity android:name="com.example.cylife.JoinClubActivity" />
-49-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:35:9-53
-49-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:35:19-51
+49-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:35:9-53
+49-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:35:19-51
 50        <activity android:name="com.example.cylife.ChatScreenActivity" />
-50-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:36:9-56
-50-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:36:19-53
+50-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:36:9-56
+50-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:36:19-53
 51        <activity android:name="com.example.cylife.EditUser" />
-51-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:37:9-45
-51-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:37:19-43
+51-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:37:9-45
+51-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:37:19-43
 52        <activity android:name="com.example.cylife.RequestClub" />
-52-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:38:9-48
-52-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:38:19-46
+52-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:38:9-48
+52-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:38:19-46
 53        <activity android:name="com.example.cylife.clubActivity" />
-53-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:39:9-49
-53-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:39:19-47
+53-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:39:9-49
+53-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:39:19-47
 54        <activity android:name="com.example.cylife.WelcomeActivityClub" />
-54-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:40:9-56
-54-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:40:19-54
+54-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:40:9-56
+54-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:40:19-54
 55        <activity android:name="com.example.cylife.EditClub" />
-55-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:41:9-45
-55-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:41:19-43
+55-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:41:9-45
+55-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:41:19-43
 56        <activity android:name="com.example.cylife.EventsActivity" />
-56-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:42:9-51
-56-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:42:19-49
+56-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:42:9-51
+56-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:42:19-49
 57        <activity android:name="com.example.cylife.ShowEvents" />
-57-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:43:9-47
-57-->C:\Users\chwoo\Documents\COMS309\4_mahdi_2\Frontend\CyLife\app\src\main\AndroidManifest.xml:43:19-45
+57-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:43:9-47
+57-->/Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:43:19-45
 58
 59        <provider
-59-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chwoo\.gradle\caches\transforms-4\0db7779674499a393c04b718be9f02d3\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+59-->[androidx.emoji2:emoji2:1.3.0] /Users/dhvanimistry/.gradle/caches/transforms-4/0db7779674499a393c04b718be9f02d3/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
 60            android:name="androidx.startup.InitializationProvider"
-60-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chwoo\.gradle\caches\transforms-4\0db7779674499a393c04b718be9f02d3\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+60-->[androidx.emoji2:emoji2:1.3.0] /Users/dhvanimistry/.gradle/caches/transforms-4/0db7779674499a393c04b718be9f02d3/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
 61            android:authorities="com.example.cylife.androidx-startup"
-61-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chwoo\.gradle\caches\transforms-4\0db7779674499a393c04b718be9f02d3\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+61-->[androidx.emoji2:emoji2:1.3.0] /Users/dhvanimistry/.gradle/caches/transforms-4/0db7779674499a393c04b718be9f02d3/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
 62            android:exported="false" >
-62-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chwoo\.gradle\caches\transforms-4\0db7779674499a393c04b718be9f02d3\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+62-->[androidx.emoji2:emoji2:1.3.0] /Users/dhvanimistry/.gradle/caches/transforms-4/0db7779674499a393c04b718be9f02d3/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
 63            <meta-data
-63-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chwoo\.gradle\caches\transforms-4\0db7779674499a393c04b718be9f02d3\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+63-->[androidx.emoji2:emoji2:1.3.0] /Users/dhvanimistry/.gradle/caches/transforms-4/0db7779674499a393c04b718be9f02d3/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
 64                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-64-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chwoo\.gradle\caches\transforms-4\0db7779674499a393c04b718be9f02d3\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+64-->[androidx.emoji2:emoji2:1.3.0] /Users/dhvanimistry/.gradle/caches/transforms-4/0db7779674499a393c04b718be9f02d3/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
 65                android:value="androidx.startup" />
-65-->[androidx.emoji2:emoji2:1.3.0] C:\Users\chwoo\.gradle\caches\transforms-4\0db7779674499a393c04b718be9f02d3\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+65-->[androidx.emoji2:emoji2:1.3.0] /Users/dhvanimistry/.gradle/caches/transforms-4/0db7779674499a393c04b718be9f02d3/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
 66            <meta-data
-66-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\chwoo\.gradle\caches\transforms-4\a12027316428165fe122f37dab9564fb\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+66-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/dhvanimistry/.gradle/caches/transforms-4/a12027316428165fe122f37dab9564fb/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
 67                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-67-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\chwoo\.gradle\caches\transforms-4\a12027316428165fe122f37dab9564fb\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+67-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/dhvanimistry/.gradle/caches/transforms-4/a12027316428165fe122f37dab9564fb/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
 68                android:value="androidx.startup" />
-68-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\chwoo\.gradle\caches\transforms-4\a12027316428165fe122f37dab9564fb\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+68-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/dhvanimistry/.gradle/caches/transforms-4/a12027316428165fe122f37dab9564fb/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
 69            <meta-data
-69-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+69-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
 70                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-70-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+70-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
 71                android:value="androidx.startup" />
-71-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+71-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
 72        </provider>
 73
 74        <receiver
-74-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
 75            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-75-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+75-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
 76            android:directBootAware="false"
-76-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+76-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
 77            android:enabled="true"
-77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
 78            android:exported="true"
-78-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+78-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
 79            android:permission="android.permission.DUMP" >
-79-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+79-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
 80            <intent-filter>
-80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
 81                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-81-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-81-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+81-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+81-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
 82            </intent-filter>
 83            <intent-filter>
-83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
 84                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-84-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-84-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+84-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+84-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
 85            </intent-filter>
 86            <intent-filter>
-86-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+86-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
 87                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+87-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+87-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
 88            </intent-filter>
 89            <intent-filter>
-89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+89-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
 90                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\chwoo\.gradle\caches\transforms-4\8d4f099ff0ac147ddb3eb5e9e2d42e3f\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+90-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+90-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/dhvanimistry/.gradle/caches/transforms-4/8d4f099ff0ac147ddb3eb5e9e2d42e3f/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
 91            </intent-filter>
 92        </receiver>
 93    </application>

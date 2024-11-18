@@ -47,10 +47,10 @@ public class JoinClubActivity extends AppCompatActivity {
         });
 
         Bundle extras = getIntent().getExtras();
-//        studentID = extras.getInt("userId");  // this will come from Welcome
-//        username = extras.getString("username");  // this will come from Welcome
-        studentID = 92;
-        username = "TESTER";
+        studentID = extras.getInt("userId");  // this will come from Welcome
+        username = extras.getString("username");  // this will come from Welcome
+//        studentID = 92;
+//        username = "TESTER";
 
         searchBar = findViewById(R.id.searchBar);
         recyclerView = findViewById(R.id.clubListRecyclerView);
@@ -83,50 +83,88 @@ public class JoinClubActivity extends AppCompatActivity {
         });
     }
 
+//    private void fetchAllClubs() {
+//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
+////        String url = "http://10.0.2.2:3000/club";
+//
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                Request.Method.GET,
+//                url,
+//                null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            boolean success = response.getBoolean("success");
+//                            if (success) {
+//                                JSONArray clubsArray = response.getJSONArray("clubs");
+//                                clubList.clear();
+//
+//                                for (int i = 0; i < clubsArray.length(); i++) {
+//                                    JSONObject clubObject = clubsArray.getJSONObject(i);
+//                                    String clubName = clubObject.getString("clubName"); // Ensure this matches JSON key
+//                                    clubList.add(new Club(clubName));
+//                                }
+//
+//                                clubAdapter.notifyDataSetChanged();
+//                            } else {
+//                                Toast.makeText(JoinClubActivity.this, "No clubs found", Toast.LENGTH_SHORT).show();
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            Toast.makeText(JoinClubActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(JoinClubActivity.this, "Failed to fetch clubs", Toast.LENGTH_SHORT).show();
+//                        Log.e("Fetch Clubs", error.toString());
+//                    }
+//                }
+//        );
+//
+//        requestQueue.add(jsonObjectRequest);
+//    }
+
     private void fetchAllClubs() {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
-//        String url = "http://10.0.2.2:3000/club";
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 url,
                 null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            boolean success = response.getBoolean("success");
-                            if (success) {
-                                JSONArray clubsArray = response.getJSONArray("clubs");
-                                clubList.clear();
+                response -> {
+                    try {
+                        // Clear the existing list
+                        clubList.clear();
 
-                                for (int i = 0; i < clubsArray.length(); i++) {
-                                    JSONObject clubObject = clubsArray.getJSONObject(i);
-                                    String clubName = clubObject.getString("clubName"); // Ensure this matches JSON key
-                                    clubList.add(new Club(clubName));
-                                }
+                        // Loop through the JSON array
+                        for (int i = 0; i < response.length(); i++) {
+                            JSONObject clubObject = response.getJSONObject(i);
 
-                                clubAdapter.notifyDataSetChanged();
-                            } else {
-                                Toast.makeText(JoinClubActivity.this, "No clubs found", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(JoinClubActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
+                            // Extract club information
+                            String clubName = clubObject.optString("clubName", "Unknown Club"); // Fallback to "Unknown Club" if null
+                            clubList.add(new Club(clubName));
                         }
+
+                        // Notify the adapter about data changes
+                        clubAdapter.notifyDataSetChanged();
+                    } catch (JSONException e) {
+                        Log.e("Fetch Clubs", "Error parsing JSON response: " + e.getMessage());
+                        Toast.makeText(JoinClubActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(JoinClubActivity.this, "Failed to fetch clubs", Toast.LENGTH_SHORT).show();
-                        Log.e("Fetch Clubs", error.toString());
-                    }
+                error -> {
+                    Log.e("Fetch Clubs", "Error fetching clubs: " + error.toString());
+                    Toast.makeText(JoinClubActivity.this, "Failed to fetch clubs", Toast.LENGTH_SHORT).show();
                 }
         );
 
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonArrayRequest);
     }
+
 
     private void searchClub(String query) {
         List<Club> filteredClubs = new ArrayList<>();

@@ -2925,6 +2925,7 @@ drawable camp
 drawable chat
 drawable ci
 drawable cy
+drawable cylfe
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off

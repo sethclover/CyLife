@@ -19,6 +19,7 @@ drawable camp
 drawable chat
 drawable ci
 drawable cy
+drawable cylfe
 drawable event_item_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
