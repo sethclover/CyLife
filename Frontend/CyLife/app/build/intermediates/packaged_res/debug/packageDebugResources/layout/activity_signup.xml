@@ -85,28 +85,6 @@
         android:layout_marginBottom="16dp"
         android:background="@color/red" />
 
-    <CheckBox
-        android:id="@+id/international_checkbox"
-        android:layout_width="384dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:rotation="-360"
-        android:rotationX="-360"
-        android:rotationY="-360"
-        android:text="Are you an international student?"
-        android:textAlignment="viewStart"
-        android:textColor="@color/gold" />
-
-    <CheckBox
-        android:id="@+id/multicultural_checkbox"
-        android:layout_width="385dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-10dp"
-        android:layout_marginBottom="16dp"
-        android:text="Are you part of a multicultural group?"
-        android:textAlignment="viewStart"
-        android:textColor="@color/gold" />
-
     <Button
         android:id="@+id/signup_button"
         android:layout_width="200dp"

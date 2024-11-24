@@ -7,101 +7,102 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class EditClub extends AppCompatActivity {
 
-    private TextView welcomeText;
-    private EditText nameField, etDesc;
-    private Button saveButton, backButton;
+  private TextView welcomeText;
+  private EditText nameField, etDesc;
+  private Button saveButton, backButton;
 
-    private int clubId;
+  private int clubId;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_club);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_edit_club);
 
-        // Initialize views
-        welcomeText = findViewById(R.id.club_name_text);
+    // Initialize views
+    welcomeText = findViewById(R.id.club_name_text);
 
-        nameField = findViewById(R.id.etClubName);
+    nameField = findViewById(R.id.etClubName);
 
-        etDesc = findViewById(R.id.etDesc);
-        backButton = findViewById(R.id.BackButton);
+    etDesc = findViewById(R.id.etDesc);
+    backButton = findViewById(R.id.BackButton);
 
-        saveButton = findViewById(R.id.SaveButton);
+    saveButton = findViewById(R.id.SaveButton);
 
+    Bundle extras = getIntent().getExtras();
+    clubId = extras.getInt("userId"); // this will come from Welcome
 
-        Bundle extras = getIntent().getExtras();
-        clubId = extras.getInt("userId");  // this will come from Welcome
+    welcomeText.setText("Welcome " + clubId);
 
-        welcomeText.setText("Welcome " + clubId);
+    // Handle sign-up logic
+    saveButton.setOnClickListener(
+        v -> {
+          String name = nameField.getText().toString();
+          String desc = etDesc.getText().toString();
 
-        // Handle sign-up logic
-        saveButton.setOnClickListener(v -> {
-            String name = nameField.getText().toString();
-            String desc = etDesc.getText().toString();
-
-            editUser(name, desc);
-
+          editUser(name, desc);
         });
 
-        backButton.setOnClickListener(v -> {
-            // Redirect to Login Activity
-            Intent intent = new Intent(EditClub.this, WelcomeActivityClub.class);
-            intent.putExtra("userId", clubId);
-            startActivity(intent);
+    backButton.setOnClickListener(
+        v -> {
+          // Redirect to Login Activity
+          Intent intent = new Intent(EditClub.this, WelcomeActivityClub.class);
+          intent.putExtra("userId", clubId);
+          startActivity(intent);
         });
+  }
+
+  private void editUser(String name, String desc) {
+    String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/clubs/" + clubId;
+
+    // Create JSON object with the input data
+    JSONObject updatedUserData = new JSONObject();
+    try {
+      updatedUserData.put("name", name);
+      updatedUserData.put("description", desc);
+      Log.i("Updated Organisation Data JSON Object Before: ", updatedUserData.toString());
+    } catch (JSONException e) {
+      e.printStackTrace();
+      return;
     }
 
-    private void editUser(String name, String desc) {
-        String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/clubs/" + clubId;
+    // Send POST request using Volley
+    JsonObjectRequest putRequest =
+        new JsonObjectRequest(
+            Request.Method.PUT,
+            putURL,
+            updatedUserData,
+            new Response.Listener<JSONObject>() {
+              @Override
+              public void onResponse(JSONObject response) {
+                // Log the response for debugging
+                Log.i("Success Response: ", updatedUserData.toString());
+                Log.d("Edit Response", response.toString());
+              }
+            },
+            new Response.ErrorListener() {
+              @Override
+              public void onErrorResponse(VolleyError error) {
+                // Log the error for debugging
+                error.printStackTrace();
 
-        // Create JSON object with the input data
-        JSONObject updatedUserData = new JSONObject();
-        try {
-            updatedUserData.put("name", name);
-            updatedUserData.put("description", desc);
-            Log.i("Updated Organisation Data JSON Object Before: ", updatedUserData.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        // Send POST request using Volley
-        JsonObjectRequest putRequest = new JsonObjectRequest(
-                Request.Method.PUT,
-                putURL,
-                updatedUserData,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // Log the response for debugging
-                        Log.i("Success Response: ", updatedUserData.toString());
-                        Log.d("Edit Response", response.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Log the error for debugging
-                        error.printStackTrace();
-
-                        // Display a user-friendly error message
-                        Toast.makeText(getApplicationContext(), "Error updating organization: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(putRequest);
-    }
+                // Display a user-friendly error message
+                Toast.makeText(
+                        getApplicationContext(),
+                        "Error updating organization: " + error.getMessage(),
+                        Toast.LENGTH_SHORT)
+                    .show();
+              }
+            });
+    VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(putRequest);
+  }
 }

@@ -1,4 +1,3 @@
 package com.example.cylife;
 
-public class AccountActivity {
-}
+public class AccountActivity {}

@@ -13,53 +13,54 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
 
-    private final Context context;
-    private final List<Chat> chatList;
-    private final int userId;
-    private final String name;// Add userId field to be passed to ChatScreenActivity
+  private final Context context;
+  private final List<Chat> chatList;
+  private final int userId;
+  private final String name; // Add userId field to be passed to ChatScreenActivity
 
-    public ChatAdapter(Context context, List<Chat> chatList, int userId, String name) {
-        this.context = context;
-        this.chatList = chatList;
-        this.userId = userId;
-        this.name = name;
-    }
+  public ChatAdapter(Context context, List<Chat> chatList, int userId, String name) {
+    this.context = context;
+    this.chatList = chatList;
+    this.userId = userId;
+    this.name = name;
+  }
 
-    @NonNull
-    @Override
-    public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_chat, parent, false);
-        return new ChatViewHolder(view);
-    }
+  @NonNull
+  @Override
+  public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    View view = LayoutInflater.from(context).inflate(R.layout.item_chat, parent, false);
+    return new ChatViewHolder(view);
+  }
 
-    @Override
-    public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
-        Chat chat = chatList.get(position);
-        holder.chatName.setText(chat.getChatName());
-        holder.chatIcon.setImageResource(chat.getChatIcon());
+  @Override
+  public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
+    Chat chat = chatList.get(position);
+    holder.chatName.setText(chat.getChatName());
+    holder.chatIcon.setImageResource(chat.getChatIcon());
 
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ChatScreenActivity.class);
-            intent.putExtra("clubId", chat.getId());
-            intent.putExtra("userID", userId);
-            intent.putExtra("Name", name);
-            context.startActivity(intent);
+    holder.itemView.setOnClickListener(
+        v -> {
+          Intent intent = new Intent(context, ChatScreenActivity.class);
+          intent.putExtra("clubId", chat.getId());
+          intent.putExtra("userID", userId);
+          intent.putExtra("Name", name);
+          context.startActivity(intent);
         });
-    }
+  }
 
-    @Override
-    public int getItemCount() {
-        return chatList.size();
-    }
+  @Override
+  public int getItemCount() {
+    return chatList.size();
+  }
 
-    public static class ChatViewHolder extends RecyclerView.ViewHolder {
-        TextView chatName;
-        ImageView chatIcon;
+  public static class ChatViewHolder extends RecyclerView.ViewHolder {
+    TextView chatName;
+    ImageView chatIcon;
 
-        public ChatViewHolder(@NonNull View itemView) {
-            super(itemView);
-            chatName = itemView.findViewById(R.id.textView_chat_name);
-            chatIcon = itemView.findViewById(R.id.imageView_chat_icon);
-        }
+    public ChatViewHolder(@NonNull View itemView) {
+      super(itemView);
+      chatName = itemView.findViewById(R.id.textView_chat_name);
+      chatIcon = itemView.findViewById(R.id.imageView_chat_icon);
     }
+  }
 }
