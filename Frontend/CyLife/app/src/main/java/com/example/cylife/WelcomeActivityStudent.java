@@ -57,7 +57,7 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         upcomingEventsRecyclerView.setAdapter(eventAdapter);
 
 
-        fetchEvents("http://coms-3090-065.class.las.iastate.edu:8080/events");
+        fetchEvents("http://coms-3090-065.class.las.iastate.edu:8080/upcomingEvents");
 
         Button viewEventsButton = findViewById(R.id.viewEventsButton);
         viewEventsButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, ShowEvents.class)));
