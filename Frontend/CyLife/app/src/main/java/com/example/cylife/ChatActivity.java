@@ -101,16 +101,12 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void parseChatData(JSONArray chatArray) {
-        chatList.clear();  // Clear previous data if needed
+        chatList.clear();
         try {
             for (int i = 0; i < chatArray.length(); i++) {
                 JSONObject chatObject = chatArray.getJSONObject(i);
-
-                // Use 'clubName' instead of 'name' to get the club's name
                 String clubName = chatObject.optString("clubName", "Unknown Chat");
                 int clubId = chatObject.optInt("clubId", -1);
-
-                // Add chat item to the list with clubName
                 chatList.add(new Chat(clubName, R.drawable.cy, clubId));
             }
             chatAdapter.notifyDataSetChanged();
