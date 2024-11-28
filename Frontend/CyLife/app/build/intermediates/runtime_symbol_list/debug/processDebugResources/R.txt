@@ -3307,7 +3307,6 @@ int id imageView_chat_icon 0x7f08010f
 int id indeterminate 0x7f080110
 int id info 0x7f080111
 int id informationMessage 0x7f080112
-int id international_checkbox 0x7f080113
 int id invisible 0x7f080114
 int id inward 0x7f080115
 int id is_pooling_container_tag 0x7f080116
@@ -3393,7 +3392,6 @@ int id mtrl_picker_text_input_range_end 0x7f080165
 int id mtrl_picker_text_input_range_start 0x7f080166
 int id mtrl_picker_title_text 0x7f080167
 int id mtrl_view_tag_bottom_padding 0x7f080168
-int id multicultural_checkbox 0x7f080169
 int id multiply 0x7f08016a
 int id name 0x7f08016b
 int id navigation_bar_item_active_indicator_view 0x7f08016c

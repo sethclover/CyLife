@@ -106,7 +106,6 @@ id imageView
 id imageView2
 id imageView_chat_icon
 id informationMessage
-id international_checkbox
 id joinButton
 id joinClubButton
 id joining_text
@@ -117,7 +116,6 @@ id location_time_input
 id logout_button
 id message_input
 id message_input_container
-id multicultural_checkbox
 id name
 id orgListTextView
 id orgListTextView2
