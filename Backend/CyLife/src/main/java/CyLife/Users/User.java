@@ -1,51 +1,53 @@
 package CyLife.Users;
 
 import CyLife.Clubs.Club;
-import CyLife.Organisation.Organisation;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import CyLife.Events.Event;
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
 
-    // Unique ID for the user, auto-generated
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
-    
 
-    // User's name, email, and password fields
     private String name;
     private String email;
     private String password;
 
-    // Enum to define the type of user (STUDENT, STAFF, CLUB, ORG)
     @Enumerated(EnumType.STRING)
-    private UserType type;
+    private UserType type = UserType.STUDENT; // Default type is STUDENT
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_events", // Join table for users and events
+            joinColumns = @JoinColumn(name = "user_id"), // Foreign key to User
+            inverseJoinColumns = @JoinColumn(name = "event_id") // Foreign key to Event
+    )
+    private Set<Event> events = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "org_id", nullable = true)
-    private Organisation organisation;
-
-    @ManyToOne
-    @JoinColumn(name = "club_id", nullable = true)
-    private Club club;
-
-
-    public enum UserType {
-        STUDENT, STAFF, CLUB, ORG
+    // Getters and Setters
+    public Set<Event> getEvents() {
+        return events;
     }
 
-    // Constructors, getters, and setters
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_clubs", // The name of the join table
+            joinColumns = @JoinColumn(name = "user_id"), // Foreign key to User
+            inverseJoinColumns = @JoinColumn(name = "club_id") // Foreign key to Club
+    )
+    private Set<Club> clubs = new HashSet<>();
+
+    public enum UserType {
+        STUDENT, STAFF
+    }
 
     public User() {
     }
@@ -55,19 +57,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
-        this.username = "";
     }
-
-    private String username;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
 
     public int getUserId() {
         return userId;
@@ -109,19 +99,11 @@ public class User {
         this.type = type;
     }
 
-    public Organisation getOrganisation() {
-        return organisation;
+    public Set<Club> getClubs() {
+        return clubs;
     }
 
-    public void setOrganisation(Organisation organisation) {
-        this.organisation = organisation;
-    }
-
-    public Club getClub() {
-        return club;
-    }
-
-    public void setClub(Club club) {
-        this.club = club;
+    public void setClubs(Set<Club> clubs) {
+        this.clubs = clubs;
     }
 }

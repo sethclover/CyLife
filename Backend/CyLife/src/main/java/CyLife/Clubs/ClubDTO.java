@@ -1,36 +1,19 @@
 package CyLife.Clubs;
 
-import CyLife.Users.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-
-@Entity
-public class Club {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ClubDTO {
     private int clubId;
-
     private String clubName;
     private String description;
     private String clubEmail;
 
-    @ManyToMany(mappedBy = "clubs")
-    @JsonIgnore
-    private Set<User> users = new HashSet<>();
-
-
-    public Club() {
-    }
-
-    public Club(String clubName, String description, String clubEmail) {
+    public ClubDTO(int clubId, String clubName, String description, String clubEmail) {
+        this.clubId = clubId;
         this.clubName = clubName;
         this.description = description;
         this.clubEmail = clubEmail;
     }
 
+    // Getters and Setters
     public int getClubId() {
         return clubId;
     }
@@ -61,13 +44,5 @@ public class Club {
 
     public void setClubEmail(String clubEmail) {
         this.clubEmail = clubEmail;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 }
