@@ -3,7 +3,6 @@ package com.example.cylife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,11 +83,11 @@ public class WelcomeActivityStudent extends AppCompatActivity {
 
         Button bottomAccountButton = findViewById(R.id.bottomAccountButton);
         bottomAccountButton.setOnClickListener(v -> {
-            Intent editIntent = new Intent(WelcomeActivityStudent.this, EditUser.class);
-//            editIntent.putExtra("userId", userId);
-//            editIntent.putExtra("username", name); // Ensure this key matches exactly
-            startActivity(editIntent);
+            Intent intentAcc = new Intent(WelcomeActivityStudent.this, AccountActivity.class);
+            intentAcc.putExtra("userID", userId); // Replace `userId` with the actual variable holding the userID
+            startActivity(intentAcc);
         });
+
 
 
         Button bottomSettingsButton = findViewById(R.id.bottomLogoutButton);
