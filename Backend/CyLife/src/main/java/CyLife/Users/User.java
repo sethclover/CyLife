@@ -22,23 +22,6 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            name = "user_events", // Join table for users and events
-            joinColumns = @JoinColumn(name = "user_id"), // Foreign key to User
-            inverseJoinColumns = @JoinColumn(name = "event_id") // Foreign key to Event
-    )
-    private Set<Event> events = new HashSet<>();
-
-    // Getters and Setters
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
-
-    @ManyToMany
-    @JoinTable(
             name = "user_clubs", // The name of the join table
             joinColumns = @JoinColumn(name = "user_id"), // Foreign key to User
             inverseJoinColumns = @JoinColumn(name = "club_id") // Foreign key to Club
