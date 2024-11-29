@@ -32,9 +32,6 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    EventRepository eventRepository;
-
     @GetMapping(path = "/users")
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         List<UserDTO> users = userRepository.findAll().stream()
@@ -227,89 +224,29 @@ public class UserController {
         }
     }
 
-    @PutMapping("/joinEvent/{userId}/{eventId}")
-    public ResponseEntity<Map<String, Object>> joinEvent(@PathVariable int userId, @PathVariable int eventId) {
-        Map<String, Object> response = new HashMap<>();
-        try {
-            User user = userRepository.findById(userId);
-            if (user == null) {
-                response.put("message", "User not found with id: " + userId);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-            }
-
-            Event event = eventRepository.findById(eventId).orElse(null);
-            if (event == null) {
-                response.put("message", "Event not found with id: " + eventId);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-            }
-
-            if (user.getEvents().contains(event)) {
-                response.put("message", "User is already attending this event.");
-                response.put("success", false);
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-            }
-
-            user.getEvents().add(event);
-            userRepository.save(user);
-
-            response.put("message", "User successfully joined the event.");
-            response.put("success", true);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.put("message", "Internal Server Error: " + e.getMessage());
-            response.put("success", false);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-    }
-
-    @GetMapping("/user/{userId}/events")
-    public ResponseEntity<Map<String, Object>> getUserEvents(@PathVariable int userId) {
-        Map<String, Object> response = new HashMap<>();
-        try {
-            User user = userRepository.findById(userId);
-            if (user == null) {
-                response.put("message", "User not found with id: " + userId);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-            }
-
-            response.put("events", user.getEvents());
-            response.put("success", true);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.put("message", "Internal Server Error: " + e.getMessage());
-            response.put("success", false);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-    }
-
     @PutMapping("/leaveClub/{userId}/{clubId}")
     public ResponseEntity<Map<String, Object>> leaveClub(@PathVariable int userId, @PathVariable int clubId) {
         Map<String, Object> response = new HashMap<>();
         try {
-            // Find the user
+
             User user = userRepository.findById(userId);
             if (user == null) {
                 response.put("message", "User not found with id: " + userId);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
 
-            // Find the club
             Club club = clubRepository.findById(clubId).orElse(null);
             if (club == null) {
                 response.put("message", "Club not found with id: " + clubId);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
 
-            // Check if the user is part of the club
             if (!user.getClubs().contains(club)) {
                 response.put("message", "User is not a member of this club.");
                 response.put("success", false);
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
             }
 
-            // Remove the club from the user's list of clubs
             user.getClubs().remove(club);
             userRepository.save(user);
 
@@ -323,6 +260,5 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
 
 }
