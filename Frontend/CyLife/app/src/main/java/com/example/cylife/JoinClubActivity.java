@@ -21,10 +21,14 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class JoinClubActivity extends AppCompatActivity {
+    private static final Logger log = LoggerFactory.getLogger(JoinClubActivity.class);
     private EditText searchBar;
     private RecyclerView recyclerView;
     private ClubAdapter clubAdapter;
@@ -32,7 +36,6 @@ public class JoinClubActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private Button backButton;
 
-    private String username;
     private int studentID;
 
     @Override
@@ -40,7 +43,7 @@ public class JoinClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_club);
 
-        Button backButton = findViewById(R.id.backButton);
+        backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> {
             Intent intent = new Intent(JoinClubActivity.this, EditClub.class);
             startActivity(intent);
@@ -48,21 +51,62 @@ public class JoinClubActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         studentID = extras.getInt("userId");  // this will come from Welcome
-        username = extras.getString("username");  // this will come from Welcome
-//        studentID = 92;
-//        username = "TESTER";
 
         searchBar = findViewById(R.id.searchBar);
         recyclerView = findViewById(R.id.clubListRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         clubList = new ArrayList<>();
+//        clubAdapter = new ClubAdapter(clubList, club -> {
+//            //NEED TO IMPLEMENT JOIN FUNCTION< CURRENTLY ON CLICKING JOIN BUTTON IT WILL SAY CLUB JOINED
+//            String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + club + "/" + username; // club is club ID here
+//            WebSocketManager.getInstance().connectWebSocket(serverUrl);
+//            Toast.makeText(this, "Joined " + club.getName(), Toast.LENGTH_SHORT).show();
+//        });
+
         clubAdapter = new ClubAdapter(clubList, club -> {
-            //NEED TO IMPLEMENT JOIN FUNCTION< CURRENTLY ON CLICKING JOIN BUTTON IT WILL SAY CLUB JOINED
-            String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + club + "/" + username; // club is club ID here
-            WebSocketManager.getInstance().connectWebSocket(serverUrl);
-            Toast.makeText(this, "Joined " + club.getName(), Toast.LENGTH_SHORT).show();
+            String url = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + studentID + "/"+ club.getId();
+
+            // Create a JSON object with the required data
+            JSONObject joinData = new JSONObject();
+            try {
+                joinData.put("studentID", studentID); // Pass the user ID from the intent extras
+                joinData.put("clubId", club.getId()); // Assuming Club object has a getId() method
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Error creating request data", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Send a POST request to the backend
+            JsonObjectRequest joinRequest = new JsonObjectRequest(
+                    Request.Method.POST,
+                    url,
+                    joinData,
+                    response -> {
+                        try {
+                            // Check for success response
+                            boolean success = response.getBoolean("success");
+                            if (success) {
+                                Toast.makeText(this, "Joined " + club.getName(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(this, "Error parsing server response", Toast.LENGTH_SHORT).show();
+                        }
+                    },
+                    error -> {
+                        Log.e("Join Club", "Error: " + error.toString());
+                        Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
+                    }
+            );
+
+            // Add the request to the queue
+            requestQueue.add(joinRequest);
         });
+
         recyclerView.setAdapter(clubAdapter);
 
         requestQueue = Volley.newRequestQueue(this);
@@ -137,19 +181,16 @@ public class JoinClubActivity extends AppCompatActivity {
                 null,
                 response -> {
                     try {
-                        // Clear the existing list
                         clubList.clear();
-
-                        // Loop through the JSON array
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject clubObject = response.getJSONObject(i);
 
-                            // Extract club information
                             String clubName = clubObject.optString("clubName", "Unknown Club"); // Fallback to "Unknown Club" if null
-                            clubList.add(new Club(clubName));
+                            String clubid = clubObject.optString("clubId");
+                            Log.d("ClubData", "Club Name: " + clubName + ", Club ID: " + clubid);
+                            clubList.add(new Club(clubName, clubid));
                         }
 
-                        // Notify the adapter about data changes
                         clubAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         Log.e("Fetch Clubs", "Error parsing JSON response: " + e.getMessage());
