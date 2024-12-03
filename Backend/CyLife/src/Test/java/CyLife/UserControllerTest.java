@@ -1,4 +1,3 @@
-
 package CyLife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,29 +31,22 @@ public class UserControllerTest {
                 .when()
                 .get("/users");
 
-        assertEquals(200, response.getStatusCode());
+        assertEquals(200, response.getStatusCode()); // Check for 200 OK
         assertEquals("application/json", response.getContentType());
     }
 
     @Test
-    public void testSignupUser() {
-        // Generate a unique email for each test run
-        String uniqueEmail = "test" + System.currentTimeMillis() + "@example.com";
-
-        String userJson = String.format(
-                "{ \"name\": \"Dhvani M\", \"email\": \"%s\", \"password\": \"securePassword123\", \"type\": \"CLUB\" }",
-                uniqueEmail
-        );
+    public void testJoinClub() {
+        // Use existing user ID and club ID
+        int userId = 95; // Replace with an existing valid user ID from your database
+        int clubId = 23; // Replace with a valid club ID, e.g., Computer Science Club
 
         Response response = RestAssured.given()
-                .header("Content-Type", "application/json")
-                .body(userJson)
                 .when()
-                .post("/signup");
+                .put(String.format("/joinClub/%d/%d", userId, clubId));
 
-        assertEquals(201, response.getStatusCode()); // Check for 201 Created
-        assertEquals("application/json", response.getContentType());
-        assertEquals("User registered successfully.", response.jsonPath().getString("message"));
+        assertEquals(200, response.getStatusCode()); // Check for 200 OK
+        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
     }
 
 
@@ -79,17 +71,24 @@ public class UserControllerTest {
 
 
     @Test
-    public void testJoinClub() {
-        // Use existing user ID and club ID
-        int userId = 94; // Replace with an existing valid user ID from your database
-        int clubId = 22; // Replace with a valid club ID, e.g., Computer Science Club
+    public void testSignupUser() {
+        // Generate a unique email for each test run
+        String uniqueEmail = "test" + System.currentTimeMillis() + "@example.com";
+
+        String userJson = String.format(
+                "{ \"name\": \"Dhvani M\", \"email\": \"%s\", \"password\": \"securePassword123\", \"type\": \"STUDENT\" }",
+                uniqueEmail
+        );
 
         Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(userJson)
                 .when()
-                .put(String.format("/joinClub/%d/%d", userId, clubId));
+                .post("/signup");
 
-        assertEquals(200, response.getStatusCode()); // Check for 200 OK
-        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
+        assertEquals(201, response.getStatusCode()); // Check for 201 Created
+        assertEquals("application/json", response.getContentType());
+        assertEquals("User registered successfully.", response.jsonPath().getString("message"));
     }
 
 }

@@ -133,8 +133,9 @@ public class UserController {
                 response.put("message", "User already exists.");
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(response); // 409 Conflict
             } else {
-                userRepository.save(newUser);
+                User savedUser = userRepository.save(newUser); // Save and retrieve the saved user
                 response.put("message", "User registered successfully.");
+                response.put("userId", savedUser.getUserId()); // Include userId in the response
                 return ResponseEntity.status(HttpStatus.CREATED).body(response); // 201 Created
             }
         } catch (Exception e) {
