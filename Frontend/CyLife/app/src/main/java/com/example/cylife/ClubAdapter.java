@@ -33,7 +33,15 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     public void onBindViewHolder(@NonNull ClubViewHolder holder, int position) {
         Club club = clubList.get(position);
         holder.clubName.setText(club.getName());
-        holder.joinButton.setOnClickListener(v -> onJoinClickListener.onJoinClick(club));
+        holder.joinButton.setText(club.getButtonText());
+
+        holder.joinButton.setOnClickListener(view -> {
+            if (club.getButtonText().equals("Join")) {
+                joinClub(club);
+            } else {
+                leaveClub(club);
+            }
+        });
     }
 
     @Override
@@ -59,5 +67,15 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
 
     public interface OnJoinClickListener {
         void onJoinClick(Club club);
+    }
+
+    private void joinClub(Club club) {
+        club.setButtonText("Leave"); // Update button text after successfully joining
+        notifyDataSetChanged();
+    }
+
+    private void leaveClub(Club club) {
+        club.setButtonText("Join"); // Update button text after successfully leaving
+        notifyDataSetChanged();
     }
 }
