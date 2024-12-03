@@ -3140,6 +3140,9 @@ id bottomBar
 id bottomLogoutButton
 id bottom_tab
 id bounce
+id btnChangePassword
+id btnDeleteUser
+id btnLogout
 id btn_back
 id buttonLogin
 id buttonPanel
@@ -3163,6 +3166,8 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id clubCreationStatus
+id clubDescription
+id clubInfoLabel
 id clubListRecyclerView
 id clubListTextView
 id clubListTextView2
@@ -3171,6 +3176,7 @@ id club_button
 id club_name_text
 id collapseActionView
 id compress
+id confirmPasswordInput
 id confirm_button
 id confirm_password
 id container
@@ -3184,6 +3190,7 @@ id cradle
 id createClubButton
 id createClubTitle
 id create_event_title
+id currentPasswordInput
 id custom
 id customPanel
 id cut
@@ -3217,6 +3224,7 @@ id easeIn
 id easeInOut
 id easeOut
 id edge
+id editProfilePictureText
 id editTextEmail
 id editTextPassword
 id edit_club_button
@@ -3405,6 +3413,7 @@ id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_header_container
 id never
+id newPasswordInput
 id noScroll
 id none
 id normal
@@ -3449,6 +3458,7 @@ id pooling_container_listener_holder_tag
 id position
 id postLayout
 id pressed
+id profileImage
 id progress_circular
 id progress_horizontal
 id radio
@@ -3584,6 +3594,8 @@ id up
 id upcomingEventsLabel
 id upcomingEventsRecyclerView
 id useLogo
+id userEmail
+id userName
 id username_text
 id viewEventsButton
 id view_offset_helper
@@ -3714,6 +3726,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_account
 layout activity_chat
 layout activity_chat_screen
 layout activity_club
@@ -3746,6 +3759,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_change_password
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_chat

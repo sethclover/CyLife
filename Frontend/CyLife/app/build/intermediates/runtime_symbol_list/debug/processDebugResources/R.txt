@@ -3139,6 +3139,9 @@ int id bottomBar 0x7f080067
 int id bottomLogoutButton 0x7f080068
 int id bottom_tab 0x7f080069
 int id bounce 0x7f08006a
+int id btnChangePassword 0x7f080237
+int id btnDeleteUser 0x7f080238
+int id btnLogout 0x7f080239
 int id btn_back 0x7f08006b
 int id buttonLogin 0x7f08006c
 int id buttonPanel 0x7f08006d
@@ -3162,6 +3165,8 @@ int id clip_horizontal 0x7f08007e
 int id clip_vertical 0x7f08007f
 int id clockwise 0x7f080080
 int id clubCreationStatus 0x7f080081
+int id clubDescription 0x7f08023a
+int id clubInfoLabel 0x7f08023b
 int id clubListRecyclerView 0x7f080082
 int id clubListTextView 0x7f080083
 int id clubListTextView2 0x7f080084
@@ -3170,6 +3175,7 @@ int id club_button 0x7f080086
 int id club_name_text 0x7f080087
 int id collapseActionView 0x7f080088
 int id compress 0x7f080089
+int id confirmPasswordInput 0x7f080240
 int id confirm_button 0x7f08008a
 int id confirm_password 0x7f08008b
 int id container 0x7f08008c
@@ -3183,6 +3189,7 @@ int id cradle 0x7f080093
 int id createClubButton 0x7f080094
 int id createClubTitle 0x7f080095
 int id create_event_title 0x7f080096
+int id currentPasswordInput 0x7f080241
 int id custom 0x7f080097
 int id customPanel 0x7f080098
 int id cut 0x7f080099
@@ -3216,6 +3223,7 @@ int id easeIn 0x7f0800b4
 int id easeInOut 0x7f0800b5
 int id easeOut 0x7f0800b6
 int id edge 0x7f0800b7
+int id editProfilePictureText 0x7f08023c
 int id editTextEmail 0x7f0800b8
 int id editTextPassword 0x7f0800b9
 int id edit_club_button 0x7f0800ba
@@ -3404,6 +3412,7 @@ int id navigation_bar_item_large_label_view 0x7f080170
 int id navigation_bar_item_small_label_view 0x7f080171
 int id navigation_header_container 0x7f080172
 int id never 0x7f080173
+int id newPasswordInput 0x7f080242
 int id noScroll 0x7f080174
 int id none 0x7f080175
 int id normal 0x7f080176
@@ -3448,6 +3457,7 @@ int id pooling_container_listener_holder_tag 0x7f08019c
 int id position 0x7f08019d
 int id postLayout 0x7f08019e
 int id pressed 0x7f08019f
+int id profileImage 0x7f08023d
 int id progress_circular 0x7f0801a0
 int id progress_horizontal 0x7f0801a1
 int id radio 0x7f0801a2
@@ -3583,6 +3593,8 @@ int id up 0x7f080223
 int id upcomingEventsLabel 0x7f080224
 int id upcomingEventsRecyclerView 0x7f080225
 int id useLogo 0x7f080226
+int id userEmail 0x7f08023e
+int id userName 0x7f08023f
 int id username_text 0x7f080227
 int id viewEventsButton 0x7f080228
 int id view_offset_helper 0x7f080229
@@ -3713,6 +3725,7 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0b0018
 int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
+int layout activity_account 0x7f0b007d
 int layout activity_chat 0x7f0b001c
 int layout activity_chat_screen 0x7f0b001d
 int layout activity_club 0x7f0b001e
@@ -3745,6 +3758,7 @@ int layout design_navigation_menu 0x7f0b0038
 int layout design_navigation_menu_item 0x7f0b0039
 int layout design_text_input_end_icon 0x7f0b003a
 int layout design_text_input_start_icon 0x7f0b003b
+int layout dialog_change_password 0x7f0b007e
 int layout ime_base_split_test_activity 0x7f0b003c
 int layout ime_secondary_split_test_activity 0x7f0b003d
 int layout item_chat 0x7f0b003e
