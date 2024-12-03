@@ -1,4 +1,3 @@
-
 package CyLife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,27 +31,32 @@ public class UserControllerTest {
                 .when()
                 .get("/users");
 
-        assertEquals(200, response.getStatusCode());
+        assertEquals(200, response.getStatusCode()); // Check for 200 OK
         assertEquals("application/json", response.getContentType());
     }
 
     @Test
-    public void testSignupUser() {
-        String userJson = "{ \"name\": \"John Doe\", \"email\": \"john.doe@example.com\", \"password\": \"password\", \"type\": \"STUDENT\" }";
+    public void testJoinClub() {
+        // Use existing user ID and club ID
+        int userId = 95; // Replace with an existing valid user ID from your database
+        int clubId = 23; // Replace with a valid club ID, e.g., Computer Science Club
 
         Response response = RestAssured.given()
-                .header("Content-Type", "application/json")
-                .body(userJson)
                 .when()
-                .post("/signup");
+                .put(String.format("/joinClub/%d/%d", userId, clubId));
 
-        assertEquals(201, response.getStatusCode());
-        assertEquals("{\"message\":\"User registered successfully.\",\"status\":\"201\"}", response.getBody().asString());
+        assertEquals(200, response.getStatusCode()); // Check for 200 OK
+        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
     }
 
     @Test
     public void testLoginUser() {
-        String loginJson = "{ \"email\": \"john.doe@example.com\", \"password\": \"password\" }";
+        // Properly formatted JSON string
+        String loginJson = String.format(
+                "{ \"email\": \"%s\", \"password\": \"%s\" }",
+                "john.doe@example.com",
+                "password"
+        );
 
         Response response = RestAssured.given()
                 .header("Content-Type", "application/json")
@@ -60,16 +64,29 @@ public class UserControllerTest {
                 .when()
                 .post("/login");
 
-        assertEquals(200, response.getStatusCode());
+        assertEquals(200, response.getStatusCode()); // Check for 200 OK
         assertEquals("application/json", response.getContentType());
     }
 
     @Test
-    public void testJoinClub() {
-        Response response = RestAssured.given()
-                .when()
-                .put("/joinClub/1/1");
+    public void testSignupUser() {
+        // Generate a unique email for each test run
+        String uniqueEmail = "test" + System.currentTimeMillis() + "@example.com";
 
-        assertEquals(200, response.getStatusCode());
+        String userJson = String.format(
+                "{ \"name\": \"Dhvani M\", \"email\": \"%s\", \"password\": \"securePassword123\", \"type\": \"STUDENT\" }",
+                uniqueEmail
+        );
+
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(userJson)
+                .when()
+                .post("/signup");
+
+        assertEquals(201, response.getStatusCode()); // Check for 201 Created
+        assertEquals("application/json", response.getContentType());
+        assertEquals("User registered successfully.", response.jsonPath().getString("message"));
     }
+
 }

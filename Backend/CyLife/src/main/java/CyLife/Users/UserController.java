@@ -126,24 +126,25 @@ public class UserController {
 
 
     @PostMapping("/signup")
-    public Map<String, Object> signup(@RequestBody User newUser) {
+    public ResponseEntity<Map<String, Object>> signup(@RequestBody User newUser) {
         Map<String, Object> response = new HashMap<>();
         try {
             if (userRepository.existsByEmail(newUser.getEmail())) {
                 response.put("message", "User already exists.");
-                response.put("status", "409");
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(response); // 409 Conflict
             } else {
-                userRepository.save(newUser);
+                User savedUser = userRepository.save(newUser); // Save and retrieve the saved user
                 response.put("message", "User registered successfully.");
-                response.put("status", "201");
+                response.put("userId", savedUser.getUserId()); // Include userId in the response
+                return ResponseEntity.status(HttpStatus.CREATED).body(response); // 201 Created
             }
         } catch (Exception e) {
             e.printStackTrace();
             response.put("message", "Internal Server Error: " + e.getMessage());
-            response.put("status", "500");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response); // 500 Internal Server Error
         }
-        return response;
     }
+
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> credentials) {
