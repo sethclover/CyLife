@@ -61,54 +61,10 @@ public class JoinClubActivity extends AppCompatActivity {
 //            //NEED TO IMPLEMENT JOIN FUNCTION< CURRENTLY ON CLICKING JOIN BUTTON IT WILL SAY CLUB JOINED
 //            String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + club + "/" + username; // club is club ID here
 //            WebSocketManager.getInstance().connectWebSocket(serverUrl);
-//            Toast.makeText(this, "Joined " + club.getName(), Toast.LENGTH_SHORT).show();
 //        });
 
-//        clubAdapter = new ClubAdapter(clubList, club -> {
-//            String url = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + studentID + "/"+ club.getId();
-//
-//            // Create a JSON object with the required data
-//            JSONObject joinData = new JSONObject();
-//            try {
-//                joinData.put("studentID", studentID); // Pass the user ID from the intent extras
-//                joinData.put("clubId", club.getId()); // Assuming Club object has a getId() method
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//                Toast.makeText(this, "Error creating request data", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            // Send a POST request to the backend
-//            JsonObjectRequest joinRequest = new JsonObjectRequest(
-//                    Request.Method.POST,
-//                    url,
-//                    joinData,
-//                    response -> {
-//                        try {
-//                            // Check for success response
-//                            boolean success = response.getBoolean("success");
-//                            if (success) {
-//                                Toast.makeText(this, "Joined " + club.getName(), Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                            Toast.makeText(this, "Error parsing server response", Toast.LENGTH_SHORT).show();
-//                        }
-//                    },
-//                    error -> {
-//                        Log.e("Join Club", "Error: " + error.toString());
-//                        Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
-//                    }
-//            );
-//
-//            // Add the request to the queue
-//            requestQueue.add(joinRequest);
-//        });
 
         clubAdapter = new ClubAdapter(clubList, club -> {
-            // Check the current button text, which indicates membership status
             if ("Join".equals(club.getButtonText())) {
                 joinClub(club);  // Call joinClub method if the button shows "Join"
             } else if ("Leave".equals(club.getButtonText())) {
@@ -138,40 +94,6 @@ public class JoinClubActivity extends AppCompatActivity {
     }
 
 
-//    private void fetchAllClubs() {
-//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
-//
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-//                Request.Method.GET,
-//                url,
-//                null,
-//                response -> {
-//                    try {
-//                        clubList.clear();
-//                        for (int i = 0; i < response.length(); i++) {
-//                            JSONObject clubObject = response.getJSONObject(i);
-//
-//                            String clubName = clubObject.optString("clubName", "Unknown Club"); // Fallback to "Unknown Club" if null
-//                            String clubid = clubObject.optString("clubId");
-//                            Log.d("ClubData", "Club Name: " + clubName + ", Club ID: " + clubid);
-//                            clubList.add(new Club(clubName, clubid));
-//                        }
-//
-//                        clubAdapter.notifyDataSetChanged();
-//                    } catch (JSONException e) {
-//                        Log.e("Fetch Clubs", "Error parsing JSON response: " + e.getMessage());
-//                        Toast.makeText(JoinClubActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
-//                    }
-//                },
-//                error -> {
-//                    Log.e("Fetch Clubs", "Error fetching clubs: " + error.toString());
-//                    Toast.makeText(JoinClubActivity.this, "Failed to fetch clubs", Toast.LENGTH_SHORT).show();
-//                }
-//        );
-//
-//        requestQueue.add(jsonArrayRequest);
-//    }
-
     private void fetchAllClubs() {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
 
@@ -194,7 +116,7 @@ public class JoinClubActivity extends AppCompatActivity {
                             clubList.add(club);
 
                             // Check membership status for each club
-                            checkMembershipStatus(club); // Call the checkMembership method
+                            checkMembershipStatus(club);
                         }
 
                         clubAdapter.notifyDataSetChanged();
@@ -224,7 +146,7 @@ public class JoinClubActivity extends AppCompatActivity {
     }
 
     private void checkMembershipStatus(Club club) {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/checkMembership/" + studentID + "/" + club.getId();
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/checkMembershipStatus/" + studentID + "/" + club.getId();
 
         JsonObjectRequest checkRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -251,7 +173,6 @@ public class JoinClubActivity extends AppCompatActivity {
                     Toast.makeText(this, "Failed to check membership", Toast.LENGTH_SHORT).show();
                 }
         );
-        // Add the request to the queue
         requestQueue.add(checkRequest);
     }
 
@@ -283,7 +204,6 @@ public class JoinClubActivity extends AppCompatActivity {
                 }
         );
 
-        // Add the request to the queue
         requestQueue.add(joinRequest);
     }
 
@@ -315,7 +235,6 @@ public class JoinClubActivity extends AppCompatActivity {
                 }
         );
 
-        // Add the request to the queue
         requestQueue.add(leaveRequest);
     }
 
