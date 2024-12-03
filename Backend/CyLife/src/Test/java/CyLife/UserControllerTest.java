@@ -1,4 +1,3 @@
-
 package CyLife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -47,7 +46,8 @@ public class UserControllerTest {
                 .post("/signup");
 
         assertEquals(201, response.getStatusCode());
-        assertEquals("{\"message\":\"User registered successfully.\",\"status\":\"201\"}", response.getBody().asString());
+        assertEquals("application/json", response.getContentType());
+        assertEquals("User registered successfully.", response.jsonPath().getString("message"));
     }
 
     @Test
@@ -66,10 +66,12 @@ public class UserControllerTest {
 
     @Test
     public void testJoinClub() {
+        // Ensure user and club exist in the database for this test
         Response response = RestAssured.given()
                 .when()
                 .put("/joinClub/1/1");
 
         assertEquals(200, response.getStatusCode());
+        assertEquals("Successfully joined the club.", response.jsonPath().getString("message"));
     }
 }

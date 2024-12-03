@@ -29,7 +29,7 @@ public class User {
     private Set<Club> clubs = new HashSet<>();
 
     public enum UserType {
-        STUDENT, STAFF
+        STUDENT, STAFF, CLUB
     }
 
     public User() {
