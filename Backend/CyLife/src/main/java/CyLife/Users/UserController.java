@@ -61,41 +61,47 @@ public class UserController {
         }
     }
 
-    // Endpoint to update user by id
     @PutMapping("/update/byId/{id}")
-    public Map<String, Object> updateUser(
-            @PathVariable int id, @RequestBody User updatedUser) {
+    public ResponseEntity<Map<String, Object>> updateUser(
+            @PathVariable int id, @RequestBody Map<String, Object> updates) {
         Map<String, Object> response = new HashMap<>();
         try {
-            User existingUser = userRepository.findById(id);
-            if (existingUser == null) {
+            User user = userRepository.findById(id);
+            if (user == null) {
                 response.put("message", "User not found with id: " + id);
-                response.put("status", "404");
-                return response;
-            }
-            if (updatedUser.getName() != null) {
-                existingUser.setName(updatedUser.getName());
-            }
-            if (updatedUser.getEmail() != null) {
-                existingUser.setEmail(updatedUser.getEmail());
-            }
-            if (updatedUser.getPassword() != null) {
-                existingUser.setPassword(updatedUser.getPassword());
-            }
-            if (updatedUser.getType() != null) {
-                existingUser.setType(updatedUser.getType());
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
 
-            userRepository.save(existingUser);
+            updates.forEach((key, value) -> {
+                switch (key) {
+                    case "name":
+                        user.setName((String) value);
+                        break;
+                    case "email":
+                        user.setEmail((String) value);
+                        break;
+                    case "password":
+                        user.setPassword((String) value);
+                        break;
+                    case "type":
+                        user.setType(User.UserType.valueOf((String) value)); // Assuming you have an enum UserType
+                        break;
+                    default:
+                        // Ignore unknown fields
+                        break;
+                }
+            });
+
+            userRepository.save(user);
             response.put("message", "User updated successfully.");
-            response.put("status", "200");
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
             response.put("message", "Internal Server Error: " + e.getMessage());
-            response.put("status", "500");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
-        return response;
     }
+
 
     @Transactional
     @DeleteMapping("/delete/{id}")
@@ -260,5 +266,70 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+    @PutMapping("/user/{id}/changePassword")
+    public ResponseEntity<Map<String, Object>> changePassword(
+            @PathVariable int id, @RequestBody Map<String, String> passwords) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            User user = userRepository.findById(id);
+            if (user == null) {
+                response.put("message", "User not found with id: " + id);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            String oldPassword = passwords.get("oldPassword");
+            String newPassword = passwords.get("newPassword");
+
+            if (oldPassword == null || newPassword == null) {
+                response.put("message", "Both old and new passwords are required.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            }
+
+            if (!user.getPassword().equals(oldPassword)) {
+                response.put("message", "Old password is incorrect.");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+            }
+
+            user.setPassword(newPassword);
+            userRepository.save(user);
+            response.put("message", "Password changed successfully.");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("message", "Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @GetMapping("/checkMembershipStatus/{userId}/{clubId}")
+    public ResponseEntity<Map<String, Object>> checkMembershipStatus(
+            @PathVariable int userId, @PathVariable int clubId) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            User user = userRepository.findById(userId);
+            if (user == null) {
+                response.put("message", "User not found with id: " + userId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            Club club = clubRepository.findById(clubId).orElse(null);
+            if (club == null) {
+                response.put("message", "Club not found with id: " + clubId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            boolean isMember = user.getClubs().contains(club);
+            response.put("isMember", isMember);
+            response.put("message", isMember ? "User is a member of the club." : "User is not a member of the club.");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("message", "Internal Server Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+
 
 }
