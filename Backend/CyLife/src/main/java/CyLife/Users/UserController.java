@@ -105,23 +105,22 @@ public class UserController {
 
     @Transactional
     @DeleteMapping("/delete/{id}")
-    public Map<String, Object> deleteUser(@PathVariable int id) {
+    public ResponseEntity<Map<String, Object>> deleteUser(@PathVariable int id) {
         Map<String, Object> response = new HashMap<>();
         try {
             if (!userRepository.existsById(id)) {
                 response.put("message", "User not found with id: " + id);
-                response.put("status", "404");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             } else {
                 userRepository.deleteById(id);
                 response.put("message", "User deleted successfully.");
-                response.put("status", "200");
+                return ResponseEntity.ok(response);
             }
         } catch (Exception e) {
             e.printStackTrace();
             response.put("message", "Internal Server Error: " + e.getMessage());
-            response.put("status", "500");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
-        return response;
     }
 
 
