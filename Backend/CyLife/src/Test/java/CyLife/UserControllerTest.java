@@ -49,6 +49,7 @@ public class UserControllerTest {
         assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
     }
 
+
     @Test
     public void testLoginUser() {
         // Properly formatted JSON string
@@ -67,6 +68,7 @@ public class UserControllerTest {
         assertEquals(200, response.getStatusCode()); // Check for 200 OK
         assertEquals("application/json", response.getContentType());
     }
+
 
     @Test
     public void testSignupUser() {
