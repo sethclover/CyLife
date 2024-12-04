@@ -33,8 +33,13 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     public void onBindViewHolder(@NonNull ClubViewHolder holder, int position) {
         Club club = clubList.get(position);
         holder.clubName.setText(club.getName());
-        holder.joinButton.setOnClickListener(v -> onJoinClickListener.onJoinClick(club));
+        holder.joinButton.setText(club.getButtonText());
+
+        holder.joinButton.setOnClickListener(view -> {
+            onJoinClickListener.onJoinClick(club); // Call the interface method
+        });
     }
+
 
     @Override
     public int getItemCount() {
