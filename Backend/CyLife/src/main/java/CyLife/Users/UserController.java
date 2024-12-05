@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import CyLife.Clubs.Club;
 import CyLife.Clubs.ClubRepository;
-import CyLife.Organisation.Organisation;
-import CyLife.Organisation.OrganisationRepository;
 
 import org.springframework.transaction.annotation.Transactional;
 //Imports Dhvani Added
@@ -329,7 +327,5 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
-
 
 }

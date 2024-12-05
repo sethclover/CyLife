@@ -39,8 +39,8 @@ public class UserControllerTest {
     @Test
     public void testJoinClub() {
         // Use existing user ID and club ID
-        int userId = 95; // Replace with an existing valid user ID from your database
-        int clubId = 24; // Replace with a valid club ID, e.g., Computer Science Club
+        int userId = 98; // Replace with an existing valid user ID from your database
+        int clubId = 22; // Replace with a valid club ID, e.g., Computer Science Club
 
         Response response = RestAssured.given()
                 .when()
