@@ -55,6 +55,7 @@ gen-external-apklibs
 
 # Package Files #
 *.jar
+!Frontend/CyLife/gradle/wrapper/gradle-wrapper.jar
 *.war
 *.nar
 *.ear
