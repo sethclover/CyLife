@@ -1,0 +1,114 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/blue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Profile Picture -->
+        <ImageView
+            android:layout_marginTop="8dp"
+            android:id="@+id/profileImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/account"
+            android:scaleType="centerCrop"
+            android:background="@drawable/cylfe"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Edit Profile Picture -->
+        <TextView
+            android:id="@+id/editProfilePictureText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile Picture"
+            android:textSize="14sp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- Name -->
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textSize="18sp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/userEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="user@example.com"
+            android:textSize="16sp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Member of Club Info -->
+        <TextView
+            android:id="@+id/clubInfoLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Member of:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/clubName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Club Name"
+            android:textSize="16sp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/clubDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Club Description"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="24dp" />
+
+
+        <!-- Change Password -->
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Delete User -->
+        <Button
+            android:id="@+id/btnDeleteUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete User"
+            android:backgroundTint="@color/dark_red"
+            android:textColor="@color/white"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Logout -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</ScrollView>
