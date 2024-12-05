@@ -43,6 +43,7 @@
         </activity>
         <activity android:name="com.example.cylife.WelcomeActivity" />
         <activity android:name="com.example.cylife.SignupActivity" />
+        <activity android:name="com.example.cylife.AccountActivity" />
         <activity android:name="com.example.cylife.organizationActivity" />
         <activity android:name="com.example.cylife.WelcomeActivityStudent" />
         <activity android:name="com.example.cylife.ChatActivity" />

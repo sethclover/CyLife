@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-46:12
-INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-46:12
-INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-46:12
-INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-46:12
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-47:12
+INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-47:12
+INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-47:12
+INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:1:1-47:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/dhvanimistry/.gradle/caches/transforms-4/e23750810e1b442278b0c214f09e19a1/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/dhvanimistry/.gradle/caches/transforms-4/464e4661aa7f9677e9bd06e980fbc7c1/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/dhvanimistry/.gradle/caches/transforms-4/0f645b9b6722e0d4d18f0902af9c2660/transformed/constraintlayout-2.0.1/AndroidManifest.xml:2:1-11:12
@@ -67,8 +67,8 @@ ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/m
 	android:name
 		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:5:22-76
 application
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:8:5-45:19
-INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:8:5-45:19
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:8:5-46:19
+INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:8:5-46:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/dhvanimistry/.gradle/caches/transforms-4/e23750810e1b442278b0c214f09e19a1/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/dhvanimistry/.gradle/caches/transforms-4/e23750810e1b442278b0c214f09e19a1/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /Users/dhvanimistry/.gradle/caches/transforms-4/0f645b9b6722e0d4d18f0902af9c2660/transformed/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
@@ -133,54 +133,58 @@ activity#com.example.cylife.SignupActivity
 ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:31:9-51
 	android:name
 		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:31:19-49
+activity#com.example.cylife.AccountActivity
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:32:9-52
+	android:name
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:32:19-50
 activity#com.example.cylife.organizationActivity
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:32:9-57
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:9-57
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:32:19-55
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:19-55
 activity#com.example.cylife.WelcomeActivityStudent
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:9-59
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:9-59
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:19-57
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:19-57
 activity#com.example.cylife.ChatActivity
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:9-49
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:35:9-49
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:19-46
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:35:19-46
 activity#com.example.cylife.JoinClubActivity
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:35:9-53
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:36:9-53
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:35:19-51
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:36:19-51
 activity#com.example.cylife.ChatScreenActivity
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:36:9-56
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:37:9-56
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:36:19-53
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:37:19-53
 activity#com.example.cylife.EditUser
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:37:9-45
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:38:9-45
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:37:19-43
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:38:19-43
 activity#com.example.cylife.RequestClub
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:38:9-48
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:39:9-48
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:38:19-46
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:39:19-46
 activity#com.example.cylife.clubActivity
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:39:9-49
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:40:9-49
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:39:19-47
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:40:19-47
 activity#com.example.cylife.WelcomeActivityClub
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:40:9-56
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:41:9-56
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:40:19-54
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:41:19-54
 activity#com.example.cylife.EditClub
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:41:9-45
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:42:9-45
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:41:19-43
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:42:19-43
 activity#com.example.cylife.EventsActivity
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:42:9-51
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:43:9-51
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:42:19-49
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:43:19-49
 activity#com.example.cylife.ShowEvents
-ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:43:9-47
+ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:44:9-47
 	android:name
-		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:43:19-45
+		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:44:19-45
 uses-sdk
 INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml
