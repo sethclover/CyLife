@@ -8,7 +8,7 @@ stages:             # these stages (jobs) forms the CICD pipeline
 maven-build:            
   stage: mavenbuild     # one of the stages listed above
   before_script:
-    - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+    - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.13.0.11-4.el9.x86_64
     - export PATH=$JAVA_HOME/bin:$PATH
     - echo "JAVA_HOME=$JAVA_HOME"
     - java -version  # Verifies Java version is correct
