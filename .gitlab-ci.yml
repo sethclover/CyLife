@@ -13,7 +13,7 @@ maven-build:
     - echo "JAVA_HOME=$JAVA_HOME"
     - java -version  # Verifies Java version is correct
     - javac -version  # Verifies JDK is being used, not JRE
-    - mvn --version
+    - mvn -v
 
   tags:                 # to specify which runner to execute this job
     - backend_tag    # change to your runner's tag
