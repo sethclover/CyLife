@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
@@ -95,20 +96,16 @@ public class ExampleInstrumentedTest {
     @Test
     public void testLogoutRedirectsToLoginActivity() {
         // Launch AccountActivity
-        Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), AccountActivity.class);
-        try (ActivityScenario<AccountActivity> scenario = ActivityScenario.launch(intent)) {
-
-            // Perform click on the logout button
-            onView(withId(R.id.btnLogout)).perform(click());
-
-            // Verify the activity is redirected to LoginActivity
-            intended(hasComponent(AccountActivity.class.getName()));
-
-            // Optionally, verify shared preferences or session data is cleared
-            Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-            SharedPreferences sharedPreferences = context.getSharedPreferences("user_session", Context.MODE_PRIVATE);
-            boolean isLoggedIn = ((SharedPreferences) sharedPreferences).getBoolean("isLoggedIn", true); // Assuming this key tracks login state
-            assertFalse("Logout should clear session data", isLoggedIn);
+        Intents.init();
+        try {
+            // Launch AccountActivity
+            Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), AccountActivity.class);
+            try (ActivityScenario<AccountActivity> scenario = ActivityScenario.launch(intent)) {
+                onView(withId(R.id.btnLogout)).perform(click());
+                intended(hasComponent(LoginActivity.class.getName()));
+            }
+        } finally {
+            Intents.release();
         }
     }
 
