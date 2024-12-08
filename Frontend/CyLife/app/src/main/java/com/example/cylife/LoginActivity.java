@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent;
                             switch (userType) {
                                 case "STUDENT":
-                                    intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                                    intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
                                     break;
                                 case "STAFF":
                                     intent = new Intent(LoginActivity.this, WelcomeActivity.class);
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent = new Intent(LoginActivity.this, WelcomeActivityClub.class);
                                     break;
                                 default:
-                                    intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                                    intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
                                     break;
                             }
                             intent.putExtra("userID", userID);

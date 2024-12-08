@@ -60,6 +60,7 @@ id clubInfoLabel
 id clubListRecyclerView
 id clubName
 id club_name_text
+id clubsRecyclerView
 id confirmPasswordInput
 id confirm_password
 id createClubButton
@@ -142,6 +143,7 @@ id screenTitle
 id scrollView2
 id scrollView3
 id searchBar
+id searchView
 id send_button
 id signup_button
 id tabLabel
@@ -155,7 +157,6 @@ id userEmail
 id userName
 id userType
 id username_text
-id viewClubs
 id viewEventsButton
 id viewMembers
 id viewRequestsButton
@@ -174,6 +175,7 @@ layout activity_organisation
 layout activity_request_club
 layout activity_show_events
 layout activity_signup
+layout activity_view_all_clubs
 layout activity_view_users
 layout activity_welcome
 layout activity_welcome_club

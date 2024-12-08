@@ -113,7 +113,7 @@ public class WelcomeActivity extends AppCompatActivity {
         viewEventsButton = findViewById(R.id.viewEventsButton);
         manageClubsButton = findViewById(R.id.manageClubsButton);
         viewRequestsButton = findViewById(R.id.viewRequestsButton);
-        viewClubsButton = findViewById(R.id.viewClubs);
+//        viewClubsButton = findViewById(R.id.viewClubs);
         viewMembersButton = findViewById(R.id.viewMembers);
         chatButton = findViewById(R.id.chatButton);
         accountButton = findViewById(R.id.bottomAccountButton);
@@ -141,10 +141,10 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivity(intent3);
         });
 
-        viewClubsButton.setOnClickListener(view -> {
-            Intent intent4 = new Intent(WelcomeActivity.this, ShowEvents.class);
-            startActivity(intent4);
-        });
+//        viewClubsButton.setOnClickListener(view -> {
+//            Intent intent4 = new Intent(WelcomeActivity.this, ShowEvents.class);
+//            startActivity(intent4);
+//        });
 
         viewMembersButton.setOnClickListener(view -> {
             Intent intent5 = new Intent(WelcomeActivity.this, ViewUsers.class);

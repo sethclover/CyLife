@@ -3169,6 +3169,7 @@ int id clubInfoLabel 0x7f080087
 int id clubListRecyclerView 0x7f080088
 int id clubName 0x7f08008b
 int id club_name_text 0x7f08008c
+int id clubsRecyclerView 0x7f080253
 int id collapseActionView 0x7f08008d
 int id compress 0x7f08008e
 int id confirmPasswordInput 0x7f08008f
@@ -3490,6 +3491,7 @@ int id scrollView2 0x7f0801c2
 int id scrollView3 0x7f0801c3
 int id scrollable 0x7f0801c4
 int id searchBar 0x7f0801c5
+int id searchView 0x7f080254
 int id search_badge 0x7f0801c6
 int id search_bar 0x7f0801c7
 int id search_button 0x7f0801c8
@@ -3601,7 +3603,6 @@ int id userEmail 0x7f080231
 int id userName 0x7f080232
 int id userType 0x7f080252
 int id username_text 0x7f080233
-int id viewClubs 0x7f080243
 int id viewEventsButton 0x7f080234
 int id viewMembers 0x7f080244
 int id viewRequestsButton 0x7f080245
@@ -3746,6 +3747,7 @@ int layout activity_organisation 0x7f0b0025
 int layout activity_request_club 0x7f0b0026
 int layout activity_show_events 0x7f0b0027
 int layout activity_signup 0x7f0b0028
+int layout activity_view_all_clubs 0x7f0b0081
 int layout activity_view_users 0x7f0b007f
 int layout activity_welcome 0x7f0b0029
 int layout activity_welcome_club 0x7f0b002a
