@@ -95,24 +95,12 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/viewClubs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewRequestsButton"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="0dp"
-        android:backgroundTint="@color/green"
-        android:padding="12dp"
-        android:text="View All Existing Club"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
 
     <Button
         android:id="@+id/viewMembers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewClubs"
+        android:layout_below="@+id/viewRequestsButton"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="0dp"
         android:backgroundTint="@color/green"
