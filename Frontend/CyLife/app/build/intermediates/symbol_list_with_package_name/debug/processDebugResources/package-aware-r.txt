@@ -3466,6 +3466,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerViewUsers
 id recycler_view_chats
 id report_drawn
 id requestClubButton
@@ -3599,6 +3600,7 @@ id upcomingEventsRecyclerView
 id useLogo
 id userEmail
 id userName
+id userType
 id username_text
 id viewClubs
 id viewEventsButton
@@ -3745,6 +3747,7 @@ layout activity_organisation
 layout activity_request_club
 layout activity_show_events
 layout activity_signup
+layout activity_view_users
 layout activity_welcome
 layout activity_welcome_club
 layout activity_welcome_student
@@ -3831,6 +3834,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+layout user_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

@@ -135,6 +135,7 @@ id orgListTextView
 id orgListTextView2
 id password
 id profileImage
+id recyclerViewUsers
 id recycler_view_chats
 id requestClubButton
 id screenTitle
@@ -145,12 +146,14 @@ id send_button
 id signup_button
 id tabLabel
 id textView_chat_name
+id title
 id topBar
 id tv_username
 id upcomingEventsLabel
 id upcomingEventsRecyclerView
 id userEmail
 id userName
+id userType
 id username_text
 id viewClubs
 id viewEventsButton
@@ -171,6 +174,7 @@ layout activity_organisation
 layout activity_request_club
 layout activity_show_events
 layout activity_signup
+layout activity_view_users
 layout activity_welcome
 layout activity_welcome_club
 layout activity_welcome_student
@@ -178,6 +182,7 @@ layout club_item
 layout dialog_change_password
 layout item_chat
 layout item_event
+layout user_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
