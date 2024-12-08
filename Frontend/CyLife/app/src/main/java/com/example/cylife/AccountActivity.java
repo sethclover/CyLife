@@ -185,7 +185,7 @@ public class AccountActivity extends AppCompatActivity {
             }
 
             // Call a method to update the password on the server
-            changePassword(userId, currentPassword, newPassword);
+            changePassword(userId, newPassword);
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
@@ -194,52 +194,95 @@ public class AccountActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    private void changePassword(int userId, String currentPassword, String newPassword) {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/update/byId/" + userId;
+//    private void changePassword(int userId, String currentPassword, String newPassword) {
+//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/update/byId/" + userId;
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//
+//        JSONObject requestBody = new JSONObject();
+//        try {
+////          requestBody.put("userId", userId);
+//            requestBody.put("currentPassword", currentPassword);
+//            requestBody.put("newPassword", newPassword);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//            Toast.makeText(this, "Error creating request body", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        JsonObjectRequest request = new JsonObjectRequest(
+//                Request.Method.PUT,
+//                url,
+//                requestBody,
+//                response -> {
+//                    try {
+//                        boolean success = response.getBoolean("success");
+//                        String message = response.getString("message");
+//
+//                        if (success) {
+//                            Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                        Toast.makeText(this, "Error parsing server response", Toast.LENGTH_SHORT).show();
+//                    }
+//                },
+//                error -> {
+//                    if (error.networkResponse != null) {
+//                        int statusCode = error.networkResponse.statusCode;
+//                        Toast.makeText(this, "Error " + statusCode + ": Unable to change password", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(this, "Network error. Please check your connection.", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//        );
+//        requestQueue.add(request);
+//    }
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+    private void changePassword(int userId, String password) {
+        String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/update/byId/" + userId;
 
-        JSONObject requestBody = new JSONObject();
+        // Create JSON object with the input data
+        JSONObject updatedUserData = new JSONObject();
         try {
-//            requestBody.put("userId", userId);
-            requestBody.put("currentPassword", currentPassword);
-            requestBody.put("newPassword", newPassword);
+            updatedUserData.put("password", password);
+            Log.i("Updated Password: ", updatedUserData.toString());
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error creating request body", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        JsonObjectRequest request = new JsonObjectRequest(
+        // Send POST request using Volley
+        JsonObjectRequest putRequest = new JsonObjectRequest(
                 Request.Method.PUT,
-                url,
-                requestBody,
-                response -> {
-                    try {
-                        boolean success = response.getBoolean("success");
-                        String message = response.getString("message");
+                putURL,
+                updatedUserData,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Log the response for debugging
+                        Log.i("Success Response: ", updatedUserData.toString());
+                        Log.d("Edit Response", response.toString());
+                        Toast.makeText(AccountActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
 
-                        if (success) {
-                            Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(this, "Error parsing server response", Toast.LENGTH_SHORT).show();
                     }
                 },
-                error -> {
-                    if (error.networkResponse != null) {
-                        int statusCode = error.networkResponse.statusCode;
-                        Toast.makeText(this, "Error " + statusCode + ": Unable to change password", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this, "Network error. Please check your connection.", Toast.LENGTH_SHORT).show();
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Log the error for debugging
+                        error.printStackTrace();
+
+                        // Display a user-friendly error message
+                        Toast.makeText(getApplicationContext(), "Error updating organization: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
-        requestQueue.add(request);
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(putRequest);
     }
+
 
 
     @Override

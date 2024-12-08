@@ -50,7 +50,6 @@
         <activity android:name="com.example.cylife.ChatActivity" />
         <activity android:name="com.example.cylife.JoinClubActivity" />
         <activity android:name="com.example.cylife.ChatScreenActivity" />
-        <activity android:name="com.example.cylife.EditUser" />
         <activity android:name="com.example.cylife.RequestClub" />
         <activity android:name="com.example.cylife.WelcomeActivityClub" />
         <activity android:name="com.example.cylife.EditClub" />
