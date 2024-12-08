@@ -2933,6 +2933,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable event_item_background
 drawable ic_arrow_back_black_24
+drawable ic_back_arrow
 drawable ic_call_answer
 drawable ic_call_answer_low
 drawable ic_call_answer_video
@@ -3043,11 +3044,9 @@ id CTRL
 id DC
 id DE
 id DO
-id EC
 id EE
 id EO
 id FUNCTION
-id GC
 id GE
 id GO
 id META
@@ -3169,10 +3168,7 @@ id clubCreationStatus
 id clubDescription
 id clubInfoLabel
 id clubListRecyclerView
-id clubListTextView
-id clubListTextView2
 id clubName
-id club_button
 id club_name_text
 id collapseActionView
 id compress
@@ -3188,6 +3184,7 @@ id cos
 id counterclockwise
 id cradle
 id createClubButton
+id createClubLabel
 id createClubTitle
 id create_event_title
 id currentPasswordInput
@@ -3199,6 +3196,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id deleteClubLabel
 id delete_event_title
 id deltaRelative
 id design_bottom_sheet
@@ -3224,6 +3222,8 @@ id easeIn
 id easeInOut
 id easeOut
 id edge
+id editClubButton
+id editClubLabel
 id editProfilePictureText
 id editTextEmail
 id editTextPassword
@@ -3240,14 +3240,16 @@ id enterAlways
 id enterAlwaysCollapsed
 id escape
 id etClubDesc
-id etClubEmail
-id etClubId
 id etClubIdD
-id etClubIdE
+id etClubIdEdit
 id etClubName
-id etClubNameE
+id etClubNameCreate
+id etClubNameEdit
+id etClubPass
 id etDesc
 id etEmail
+id etEmailCreate
+id etEmailEdit
 id etName
 id etOrgId
 id etOrgIdD
@@ -3343,6 +3345,7 @@ id list_item
 id location_time_input
 id logout_button
 id m3_side_sheet
+id manageClubsButton
 id marquee
 id masked
 id match_parent
@@ -3438,7 +3441,6 @@ id open_search_view_toolbar
 id open_search_view_toolbar_container
 id orgListTextView
 id orgListTextView2
-id org_button
 id outline
 id outward
 id packed
@@ -3479,6 +3481,7 @@ id save_overlay_view
 id sawtooth
 id scale
 id screen
+id screenTitle
 id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
@@ -3597,7 +3600,10 @@ id useLogo
 id userEmail
 id userName
 id username_text
+id viewClubs
 id viewEventsButton
+id viewMembers
+id viewRequestsButton
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner

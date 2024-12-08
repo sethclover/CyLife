@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/login";  // For Android Emulator\n";  // Update with your correct login endpoint
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/login";
 
         // Create the request body
         JSONObject jsonBody = new JSONObject();
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent;
                             switch (userType) {
                                 case "STUDENT":
-                                    intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
+                                    intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                     break;
                                 case "STAFF":
                                     intent = new Intent(LoginActivity.this, WelcomeActivity.class);
@@ -105,11 +105,11 @@ public class LoginActivity extends AppCompatActivity {
                                     intent = new Intent(LoginActivity.this, WelcomeActivityClub.class);
                                     break;
                                 default:
-                                    intent = new Intent(LoginActivity.this, WelcomeActivityStudent.class);
+                                    intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                     break;
                             }
                             intent.putExtra("userID", userID);
-                            intent.putExtra("username", name);  // key-value to pass to the Welcome
+                            intent.putExtra("username", name);
                             startActivity(intent);
                         } else {
                             //unsuccessful login
