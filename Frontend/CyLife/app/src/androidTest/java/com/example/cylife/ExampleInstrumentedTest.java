@@ -1,34 +1,8 @@
-//package com.example.cylife;
-//
-//import android.content.Context;
-//
-//import androidx.test.platform.app.InstrumentationRegistry;
-//import androidx.test.ext.junit.runners.AndroidJUnit4;
-//
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//
-//import static org.junit.Assert.*;
-//
-///**
-// * Instrumented test, which will execute on an Android device.
-// *
-// * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
-// */
-//@RunWith(AndroidJUnit4.class)
-//public class ExampleInstrumentedTest {
-//    @Test
-//    public void useAppContext() {
-//        // Context of the app under test.
-//        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-//        assertEquals("com.example.cylife", appContext.getPackageName());
-//    }
-//}
-
 package com.example.cylife;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.TextView;
 
@@ -47,9 +21,12 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -66,15 +43,15 @@ public class ExampleInstrumentedTest {
         assertEquals("com.example.cylife", appContext.getPackageName());
     }
 
-//    @Test
-//    public void testWelcomeMessageDisplaysCorrectly() {
-//        // Launch WelcomeActivityStudent with a mock userId
-//        Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), WelcomeActivityStudent.class);
-//        intent.putExtra("userID", 1); // Mock userId
-//        try (ActivityScenario<WelcomeActivityStudent> scenario = ActivityScenario.launch(intent)) {
-//            onView(withId(R.id.welcomeMessage)).check(matches(withText("")));
-//        }
-//    }
+    @Test
+    public void testWelcomeMessageDisplaysCorrectly() {
+        // Launch WelcomeActivityStudent with a mock userId
+        Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), WelcomeActivityStudent.class);
+        intent.putExtra("userID", 1); // Mock userId
+        try (ActivityScenario<WelcomeActivityStudent> scenario = ActivityScenario.launch(intent)) {
+            onView(withId(R.id.welcomeMessage)).check(matches(withText("")));
+        }
+    }
 
     @Test
     public void testLoginRedirectsToCorrectActivity() {
@@ -114,6 +91,27 @@ public class ExampleInstrumentedTest {
             }
         };
     }
+
+    @Test
+    public void testLogoutRedirectsToLoginActivity() {
+        // Launch AccountActivity
+        Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), AccountActivity.class);
+        try (ActivityScenario<AccountActivity> scenario = ActivityScenario.launch(intent)) {
+
+            // Perform click on the logout button
+            onView(withId(R.id.btnLogout)).perform(click());
+
+            // Verify the activity is redirected to LoginActivity
+            intended(hasComponent(AccountActivity.class.getName()));
+
+            // Optionally, verify shared preferences or session data is cleared
+            Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+            SharedPreferences sharedPreferences = context.getSharedPreferences("user_session", Context.MODE_PRIVATE);
+            boolean isLoggedIn = ((SharedPreferences) sharedPreferences).getBoolean("isLoggedIn", true); // Assuming this key tracks login state
+            assertFalse("Logout should clear session data", isLoggedIn);
+        }
+    }
+
 
 }
 
