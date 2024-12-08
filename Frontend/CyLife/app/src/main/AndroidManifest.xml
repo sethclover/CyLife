@@ -36,7 +36,6 @@
         <activity android:name="ChatActivity" />
         <activity android:name=".JoinClubActivity"/>
         <activity android:name=".ChatScreenActivity" />
-        <activity android:name=".EditUser"/>
         <activity android:name=".RequestClub"/>
         <activity android:name=".WelcomeActivityClub"/>
         <activity android:name=".EditClub"/>
