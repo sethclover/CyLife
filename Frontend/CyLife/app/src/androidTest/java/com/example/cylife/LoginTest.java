@@ -2,7 +2,6 @@ package com.example.cylife;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.TextView;
 
@@ -27,75 +26,80 @@ import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class LoginTest {
 
     @Test
     public void useAppContext() {
-        // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.cylife", appContext.getPackageName());
     }
 
     @Test
     public void testWelcomeMessageDisplaysCorrectly() {
-        // Launch WelcomeActivityStudent with a mock userId
         Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), WelcomeActivityStudent.class);
-        intent.putExtra("userID", 1); // Mock userId
+        intent.putExtra("userID", 92);
         try (ActivityScenario<WelcomeActivityStudent> scenario = ActivityScenario.launch(intent)) {
-            onView(withId(R.id.welcomeMessage)).check(matches(withText("")));
+            onView(withId(R.id.welcomeMessage))
+                    .check(matches(withText("Welcome Gamma")));
         }
     }
 
     @Test
-    public void testLoginRedirectsToCorrectActivity() {
-        // Launch LoginActivity
+    public void testStudentLoginRedirectsToWelcomeStudent() {
         Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), LoginActivity.class);
         try (ActivityScenario<LoginActivity> scenario = ActivityScenario.launch(intent)) {
-
-            // Mock valid login credentials input
             onView(withId(R.id.editTextEmail))
                     .perform(typeText("tester@gmail.com"), closeSoftKeyboard());
             onView(withId(R.id.editTextPassword))
                     .perform(typeText("pass"), closeSoftKeyboard());
-
-            // Perform login action
             onView(withId(R.id.buttonLogin)).perform(click());
-
-            // Mock backend response to simulate successful login
             onView(withId(R.id.welcomeMessage))
                     .check(matches(withTextIgnoreCase("Welcome Gamma")));
         }
     }
 
-    public static Matcher<View> withTextIgnoreCase(final String text) {
-        return new TypeSafeMatcher<View>() {
-            @Override
-            protected boolean matchesSafely(View item) {
-                if (!(item instanceof TextView)) {
-                    return false;
-                }
-                String actualText = ((TextView) item).getText().toString();
-                return actualText.equalsIgnoreCase(text);
+    @Test
+    public void testClubLoginRedirectsToWelcomeClub() {
+        Intents.init();
+        try {
+            Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), LoginActivity.class);
+            try (ActivityScenario<LoginActivity> scenario = ActivityScenario.launch(intent)) {
+                onView(withId(R.id.editTextEmail))
+                        .perform(typeText("dhavi.m@example.com"), closeSoftKeyboard());
+                onView(withId(R.id.editTextPassword))
+                        .perform(typeText("securePassword123"), closeSoftKeyboard());
+                onView(withId(R.id.buttonLogin)).perform(click());
+                intended(hasComponent(WelcomeActivityClub.class.getName()));
             }
-
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("with text ignoring case: " + text);
-            }
-        };
+        } finally {
+            Intents.release();
+        }
     }
+
+
+    @Test
+    public void testStaffLoginRedirectsToWelcomeAdmin() {
+        Intents.init();
+        try {
+            Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), LoginActivity.class);
+            try (ActivityScenario<LoginActivity> scenario = ActivityScenario.launch(intent)) {
+                onView(withId(R.id.editTextEmail))
+                        .perform(typeText("elonmussk@gmail.com"), closeSoftKeyboard());
+                onView(withId(R.id.editTextPassword))
+                        .perform(typeText("123"), closeSoftKeyboard());
+                onView(withId(R.id.buttonLogin)).perform(click());
+                intended(hasComponent(WelcomeActivity.class.getName()));
+            }
+        } finally {
+            Intents.release();
+        }
+    }
+
 
     @Test
     public void testLogoutRedirectsToLoginActivity() {
-        // Launch AccountActivity
         Intents.init();
         try {
             Intent intent = new Intent(InstrumentationRegistry.getInstrumentation().getTargetContext(), AccountActivity.class);
@@ -108,6 +112,25 @@ public class ExampleInstrumentedTest {
         }
     }
 
+
+    public static Matcher<View> withTextIgnoreCase(final String text) {
+        return new TypeSafeMatcher<View>() {
+
+            @Override
+            protected boolean matchesSafely(View view) {
+                if (!(view instanceof TextView)) {
+                    return false;
+                }
+                String actualText = ((TextView) view).getText().toString();
+                return actualText.equalsIgnoreCase(text);
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("with text ignoring case: " + text);
+            }
+        };
+    }
 
 }
 
