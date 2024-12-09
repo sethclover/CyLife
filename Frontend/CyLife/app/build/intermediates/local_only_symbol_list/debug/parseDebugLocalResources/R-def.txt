@@ -66,6 +66,8 @@ id confirm_password
 id createClubButton
 id createClubLabel
 id createClubTitle
+id createEventButton
+id createEventTitle
 id create_event_title
 id currentPasswordInput
 id deleteClubLabel
@@ -76,6 +78,7 @@ id editProfilePictureText
 id editTextEmail
 id editTextPassword
 id edit_club_button
+id edit_event_button
 id email
 id ent_button
 id etClubDesc
@@ -89,6 +92,8 @@ id etDesc
 id etEmail
 id etEmailCreate
 id etEmailEdit
+id etEventName
+id etLocation
 id etName
 id etOrgId
 id etOrgIdD
@@ -98,6 +103,8 @@ id etOrgNameE
 id etPasswordNew
 id etPasswordNewConfirm
 id etPasswordOld
+id etTime
+id eventCreationStatus
 id eventDateTextView
 id eventDescriptionTextView
 id eventDescription_input
@@ -110,6 +117,7 @@ id event_description_input
 id event_name_edit
 id event_name_input
 id event_name_input2
+id exitButton
 id get_event_title
 id header
 id horizontal_tab
@@ -124,6 +132,10 @@ id joining_text
 id labelClubId
 id labelClubName
 id labelEmail
+id labelEventId
+id labelEventName
+id labelLocation
+id labelTime
 id location_time_input
 id logout_button
 id manageClubsButton
@@ -142,6 +154,7 @@ id requestClubButton
 id screenTitle
 id scrollView2
 id scrollView3
+id scrollView5
 id searchBar
 id searchView
 id send_button
@@ -166,6 +179,7 @@ layout activity_account
 layout activity_chat
 layout activity_chat_screen
 layout activity_club
+layout activity_club_create_event
 layout activity_edit_club
 layout activity_edit_user
 layout activity_event

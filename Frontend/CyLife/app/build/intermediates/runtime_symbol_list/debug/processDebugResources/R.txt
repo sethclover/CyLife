@@ -3186,6 +3186,8 @@ int id cradle 0x7f080095
 int id createClubButton 0x7f080096
 int id createClubLabel 0x7f080097
 int id createClubTitle 0x7f080098
+int id createEventButton 0x7f08024b
+int id createEventTitle 0x7f08024c
 int id create_event_title 0x7f080099
 int id currentPasswordInput 0x7f08009a
 int id custom 0x7f08009b
@@ -3228,6 +3230,7 @@ int id editProfilePictureText 0x7f0800bf
 int id editTextEmail 0x7f0800c0
 int id editTextPassword 0x7f0800c1
 int id edit_club_button 0x7f0800c2
+int id edit_event_button 0x7f08024d
 int id edit_query 0x7f0800c3
 int id edit_text_id 0x7f0800c4
 int id elastic 0x7f0800c5
@@ -3250,6 +3253,8 @@ int id etDesc 0x7f0800d5
 int id etEmail 0x7f0800d6
 int id etEmailCreate 0x7f0800d7
 int id etEmailEdit 0x7f0800d8
+int id etEventName 0x7f08024e
+int id etLocation 0x7f08024f
 int id etName 0x7f0800d9
 int id etOrgId 0x7f0800da
 int id etOrgIdD 0x7f0800db
@@ -3259,6 +3264,8 @@ int id etOrgNameE 0x7f0800de
 int id etPasswordNew 0x7f0800df
 int id etPasswordNewConfirm 0x7f0800e0
 int id etPasswordOld 0x7f0800e1
+int id etTime 0x7f080250
+int id eventCreationStatus 0x7f080251
 int id eventDateTextView 0x7f0800e2
 int id eventDescriptionTextView 0x7f0800e3
 int id eventDescription_input 0x7f0800e4
@@ -3271,6 +3278,7 @@ int id event_description_input 0x7f0800ea
 int id event_name_edit 0x7f0800eb
 int id event_name_input 0x7f0800ec
 int id event_name_input2 0x7f0800ed
+int id exitButton 0x7f080252
 int id exitUntilCollapsed 0x7f0800ee
 int id expand_activities_button 0x7f0800ef
 int id expanded_menu 0x7f0800f0
@@ -3332,6 +3340,10 @@ int id jumpToStart 0x7f080127
 int id labelClubId 0x7f080128
 int id labelClubName 0x7f080129
 int id labelEmail 0x7f08012a
+int id labelEventId 0x7f080253
+int id labelEventName 0x7f080254
+int id labelLocation 0x7f080255
+int id labelTime 0x7f080256
 int id labeled 0x7f08012b
 int id layout 0x7f08012c
 int id left 0x7f08012d
@@ -3489,6 +3501,7 @@ int id scrollIndicatorUp 0x7f0801c4
 int id scrollView 0x7f0801c5
 int id scrollView2 0x7f0801c6
 int id scrollView3 0x7f0801c7
+int id scrollView5 0x7f080257
 int id scrollable 0x7f0801c8
 int id searchBar 0x7f0801c9
 int id searchView 0x7f0801ca
@@ -3738,6 +3751,7 @@ int layout activity_account 0x7f0b001c
 int layout activity_chat 0x7f0b001d
 int layout activity_chat_screen 0x7f0b001e
 int layout activity_club 0x7f0b001f
+int layout activity_club_create_event 0x7f0b0082
 int layout activity_edit_club 0x7f0b0020
 int layout activity_edit_user 0x7f0b0021
 int layout activity_event 0x7f0b0022

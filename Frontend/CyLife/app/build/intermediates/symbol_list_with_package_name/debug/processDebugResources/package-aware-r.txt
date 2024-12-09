@@ -3187,6 +3187,8 @@ id cradle
 id createClubButton
 id createClubLabel
 id createClubTitle
+id createEventButton
+id createEventTitle
 id create_event_title
 id currentPasswordInput
 id custom
@@ -3229,6 +3231,7 @@ id editProfilePictureText
 id editTextEmail
 id editTextPassword
 id edit_club_button
+id edit_event_button
 id edit_query
 id edit_text_id
 id elastic
@@ -3251,6 +3254,8 @@ id etDesc
 id etEmail
 id etEmailCreate
 id etEmailEdit
+id etEventName
+id etLocation
 id etName
 id etOrgId
 id etOrgIdD
@@ -3260,6 +3265,8 @@ id etOrgNameE
 id etPasswordNew
 id etPasswordNewConfirm
 id etPasswordOld
+id etTime
+id eventCreationStatus
 id eventDateTextView
 id eventDescriptionTextView
 id eventDescription_input
@@ -3272,6 +3279,7 @@ id event_description_input
 id event_name_edit
 id event_name_input
 id event_name_input2
+id exitButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3333,6 +3341,10 @@ id jumpToStart
 id labelClubId
 id labelClubName
 id labelEmail
+id labelEventId
+id labelEventName
+id labelLocation
+id labelTime
 id labeled
 id layout
 id left
@@ -3490,6 +3502,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollView3
+id scrollView5
 id scrollable
 id searchBar
 id searchView
@@ -3739,6 +3752,7 @@ layout activity_account
 layout activity_chat
 layout activity_chat_screen
 layout activity_club
+layout activity_club_create_event
 layout activity_edit_club
 layout activity_edit_user
 layout activity_event
