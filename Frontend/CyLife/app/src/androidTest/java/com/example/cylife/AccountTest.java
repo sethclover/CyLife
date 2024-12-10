@@ -29,7 +29,6 @@ public class AccountTest {
 
     @Test
     public void testUIElementsAreDisplayed() {
-        // Check if all important UI elements are displayed
         onView(withId(R.id.profileImage)).check(matches(isDisplayed()));
         onView(withId(R.id.userName)).check(matches(isDisplayed()));
         onView(withId(R.id.userEmail)).check(matches(isDisplayed()));
@@ -43,58 +42,29 @@ public class AccountTest {
 
     @Test
     public void testEditProfilePictureNavigation() {
-        // Click on "Edit Profile Picture" and verify the intent to pick an image
         onView(withId(R.id.editProfilePictureText)).perform(click());
     }
 
     @Test
     public void testChangePasswordDialog() {
-        // Click the Change Password button and verify the dialog is displayed
         onView(withId(R.id.btnChangePassword)).perform(click());
         onView(withText("Change Password")).check(matches(isDisplayed()));
     }
 
     @Test
     public void testLogoutButton() {
-        // Click the Logout button and check for the expected result
         onView(withId(R.id.btnLogout)).perform(click());
-        // Verify redirection to LoginActivity (could be checked with an Intent matcher)
     }
 
     @Test
     public void testDeleteUser() {
-        // Simulate Delete User and check for expected behavior
-        onView(withId(R.id.btnDeleteUser)).perform(click());
-        // Add further verification for dialog prompts or subsequent behavior
-    }
-
-    @Test
-    public void testChangePasswordForUser() {
-        // Pass userId 92 to the activity
-//        Intent intent = new Intent(ApplicationProvider.getApplicationContext(), AccountActivity.class);
-//        intent.putExtra("userId", 92);
-//        activityScenarioRule.getScenario().onActivity(activity -> activity.setIntent(intent));
-//
-//        // Perform the change password action
-//        onView(withId(R.id.btnChangePassword)).perform(click());
-//        onView(withId(R.id.currentPasswordInput)).perform(typeText("pass"));
-//        onView(withId(R.id.newPasswordInput)).perform(typeText("123"));
-//        onView(withId(R.id.confirmPasswordInput)).perform(typeText("123"));
-//        onView(withId(R.id.btnChangePassword)).perform(click());
-//        onView(withId(R.id.))
-//
-//        // Verify success message
-//        onView(withText("Password changed successfully")).check(matches(isDisplayed()));
-//    }
-
-    // Pass userID via Intent
-    Intent intent = new Intent(ApplicationProvider.getApplicationContext(), AccountActivity.class);
+        Intent intent = new Intent(ApplicationProvider.getApplicationContext(), AccountActivity.class);
         intent.putExtra("userID", 149);
         try (
-    ActivityScenario<AccountActivity> scenario = ActivityScenario.launch(intent)) {
-        onView(withId(R.id.btnDeleteUser)).perform(click());
+                ActivityScenario<AccountActivity> scenario = ActivityScenario.launch(intent)) {
+            onView(withId(R.id.btnDeleteUser)).perform(click());
 
-    }
+        }
 
 }}
 
