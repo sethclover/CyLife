@@ -3165,7 +3165,6 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id clubCreationStatus
-id clubDescription
 id clubInfoLabel
 id clubListRecyclerView
 id clubName
