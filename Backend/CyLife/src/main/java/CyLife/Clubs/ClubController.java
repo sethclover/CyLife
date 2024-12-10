@@ -4,6 +4,9 @@ package CyLife.Clubs;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
@@ -29,19 +32,29 @@ public class ClubController {
     }
 
     @PostMapping(path = "/clubs")
-    String createClub(@RequestBody Club club) {
-        if (club == null) return failure;
+    public ResponseEntity<String> createClub(@RequestBody Club club) {
+        if (club.getClubName() == null || club.getClubName().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("{ \"message\": \"Club name is required.\" }");
+        }
+        if (club.getDescription() != null && club.getDescription().length() > 5000) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("{ \"message\": \"Description is too long.\" }");
+        }
         clubRepository.save(club);
-        return success;
+        return ResponseEntity.ok("{\"message\":\"Success\"}");
     }
 
+
     @PutMapping("/clubs/{id}")
-    public Club updateClub(@PathVariable int id, @RequestBody Club request) {
-        Club existingClub = clubRepository.findById(id).orElse(null);
-        if (existingClub == null) {
-            return null;
+    public ResponseEntity<Object> updateClub(@PathVariable int id, @RequestBody Club request) {
+        Optional<Club> existingClubOpt = clubRepository.findById(id);
+        if (!existingClubOpt.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("{\"message\": \"Club not found.\"}");
         }
 
+        Club existingClub = existingClubOpt.get();
         if (request.getClubName() != null) {
             existingClub.setClubName(request.getClubName());
         }
@@ -52,13 +65,18 @@ public class ClubController {
             existingClub.setClubEmail(request.getClubEmail());
         }
         clubRepository.save(existingClub);
-        return existingClub;
+        return ResponseEntity.ok(existingClub);
     }
 
+
     @DeleteMapping(path = "/clubs/{id}")
-    String deleteClub(@PathVariable int id) {
+    public ResponseEntity<String> deleteClub(@PathVariable int id) {
+        if (!clubRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("{\"message\": \"Club not found.\"}");
+        }
         clubRepository.deleteById(id);
-        return success;
+        return ResponseEntity.ok(success);
     }
 
     @GetMapping(path = "/club-requests")
@@ -89,25 +107,36 @@ public class ClubController {
         }
     }
 
-    @PutMapping(
-            path = {"/club-requests/{id}/status"}
-    )
-    public String updateClubRequestStatus(@PathVariable int id, @RequestParam String status) {
-        Optional<ClubRequest> clubRequestOpt = this.clubRequestRepository.findById(id);
+    @PutMapping(path = {"/club-requests/{id}/status"})
+    public ResponseEntity<String> updateClubRequestStatus(@PathVariable int id, @RequestParam String status) {
+        Optional<ClubRequest> clubRequestOpt = clubRequestRepository.findById(id);
         if (!clubRequestOpt.isPresent()) {
-            return "{ \"message\": \"Club request not found.\" }";
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"message\": \"Club request not found.\"}");
+        }
+
+        ClubRequest clubRequest = clubRequestOpt.get();
+        clubRequest.setStatus(status.toUpperCase());
+        clubRequestRepository.save(clubRequest);
+
+        if ("APPROVED".equalsIgnoreCase(status)) {
+            Club newClub = new Club(clubRequest.getClubName(), clubRequest.getDescription(), clubRequest.getClubEmail());
+            clubRepository.save(newClub);
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"message\": \"Your club '" + clubRequest.getClubName() + "' has been approved.\"}");
+        } else if ("DECLINED".equalsIgnoreCase(status)) {
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"message\": \"Your club '" + clubRequest.getClubName() + "' has been declined.\"}");
         } else {
-            ClubRequest clubRequest = (ClubRequest)clubRequestOpt.get();
-            clubRequest.setStatus(status.toUpperCase());
-            this.clubRequestRepository.save(clubRequest);
-            if ("APPROVED".equalsIgnoreCase(status)) {
-                Club newClub = new Club(clubRequest.getClubName(), clubRequest.getDescription(), clubRequest.getClubEmail());
-                this.clubRepository.save(newClub);
-                return "{ \"message\": \"Your club '" + clubRequest.getClubName() + "' has been approved.\" }";
-            } else {
-                return "DECLINED".equalsIgnoreCase(status) ? "{ \"message\": \"Your club '" + clubRequest.getClubName() + "' has been declined.\" }" : "{ \"message\": \"Invalid status update.\" }";
-            }
+            return ResponseEntity.badRequest()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body("{\"message\": \"Invalid status update.\"}");
         }
     }
+
+
 
 }
