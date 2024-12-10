@@ -1,7 +1,7 @@
 package CyLife.Events;
 
 import java.util.List;
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +20,12 @@ public class EventController {
         return eventRepository.findAll();
     }
 
-    @GetMapping(path = "/upcomingEvents")
-    List<Event> getUpcomingEvents() {
-        Date currentDate = new Date();
-        Date sevenDaysFromNow = new Date(currentDate.getTime() + (7L * 24 * 60 * 60 * 1000)); // current day + 7 days in milliseconds
+    @GetMapping(path = "/upcomingEvents/{userId}")
+    public List<Event> getUpcomingEvents(@PathVariable int userId) {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate sevenDaysFromNow = currentDate.plusDays(7);
 
-        return eventRepository.findByDateBetween(currentDate, sevenDaysFromNow);
+        return eventRepository.studentsEventsThisWeek(userId, currentDate, sevenDaysFromNow);
     }
 
     @GetMapping(path = "/events/{id}")
@@ -48,6 +48,9 @@ public class EventController {
             return null;
         }
         System.out.println();
+        if (request.getClubId() != null) {
+            existingEvent.setClubId(request.getClubId());
+        }
         if (request.getEventName() != null) {
             existingEvent.setEventName(request.getEventName());
         }
