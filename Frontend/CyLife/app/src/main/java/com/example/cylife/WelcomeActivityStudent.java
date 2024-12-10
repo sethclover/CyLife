@@ -130,6 +130,59 @@ public class WelcomeActivityStudent extends AppCompatActivity {
 //        queue.add(jsonObjectRequest);
 //    }
 
+//    private void fetchUserDetails(int userId) {
+//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/user/" + userId;
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+//                response -> {
+//                    try {
+//                        // Log the entire response for debugging
+//                        Log.d("FetchUserDetails", "Response: " + response.toString());
+//
+//                        // Get the "user" object
+//                        JSONObject user = response.optJSONObject("user");
+//                        if (user == null) {
+//                            throw new JSONException("User object is missing in response");
+//                        }
+//
+//                        // Get the user's name with a fallback value
+//                        String name = user.optString("name", "Student");
+//
+//                        // Get the "club" object
+//                        JSONObject club = user.optJSONObject("club");
+//                        int clubId = (club != null) ? club.optInt("clubId", -1) : -1;
+//
+//                        Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
+//                        Log.d("FetchUserDetails", "UserName: " + name);
+//
+//                        // Update the welcome message
+//                        welcomeMessage.setText("Welcome " + name);
+//
+//                        // Set up the chat button click listener
+//                        Button chatButton = findViewById(R.id.chatButton);
+//                        chatButton.setOnClickListener(v -> {
+//                            Intent chatIntent = new Intent(WelcomeActivityStudent.this, ChatActivity.class);
+//                            chatIntent.putExtra("clubId", clubId); // Pass the clubId
+//                            chatIntent.putExtra("userID", userId); // Ensure this key matches exactly
+//                            chatIntent.putExtra("studentName", name);
+//                            startActivity(chatIntent);
+//                        });
+//
+//                    } catch (JSONException e) {
+//                        Log.e("FetchUserDetails", "Error parsing JSON response: " + e.getMessage());
+//                        Toast.makeText(WelcomeActivityStudent.this, "Invalid user data received", Toast.LENGTH_SHORT).show();
+//                    }
+//                },
+//                error -> {
+//                    error.printStackTrace();
+//                    Log.e("FetchUserDetails", "Error fetching user details: " + error.toString());
+//                    Toast.makeText(WelcomeActivityStudent.this, "Failed to fetch user details", Toast.LENGTH_SHORT).show();
+//                });
+//
+//        queue.add(jsonObjectRequest);
+//    }
+
     private void fetchUserDetails(int userId) {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/user/" + userId;
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -149,9 +202,15 @@ public class WelcomeActivityStudent extends AppCompatActivity {
                         // Get the user's name with a fallback value
                         String name = user.optString("name", "Student");
 
-                        // Get the "club" object
-                        JSONObject club = user.optJSONObject("club");
-                        int clubId = (club != null) ? club.optInt("clubId", -1) : -1;
+                        // Get the clubs array
+                        JSONArray clubs = user.optJSONArray("clubs");
+                        if (clubs == null || clubs.length() == 0) {
+                            throw new JSONException("No clubs found for this user");
+                        }
+
+                        // Select the first club (or implement logic to select a specific club)
+                        JSONObject firstClub = clubs.optJSONObject(0);
+                        int clubId = (firstClub != null) ? firstClub.optInt("clubId", -1) : -1;
 
                         Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
                         Log.d("FetchUserDetails", "UserName: " + name);
@@ -182,6 +241,7 @@ public class WelcomeActivityStudent extends AppCompatActivity {
 
         queue.add(jsonObjectRequest);
     }
+
 
     private void fetchEvents(String url) {
         RequestQueue queue = Volley.newRequestQueue(this);
