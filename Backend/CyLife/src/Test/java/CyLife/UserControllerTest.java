@@ -13,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Map;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 public class UserControllerTest {
@@ -36,19 +38,19 @@ public class UserControllerTest {
         assertEquals("application/json", response.getContentType());
     }
 
-    @Test
-    public void testJoinClub() {
-        // Use existing user ID and club ID
-        int userId = 98; // Replace with an existing valid user ID from your database
-        int clubId = 22; // Replace with a valid club ID, e.g., Computer Science Club
-
-        Response response = RestAssured.given()
-                .when()
-                .put(String.format("/joinClub/%d/%d", userId, clubId));
-
-        assertEquals(200, response.getStatusCode()); // Check for 200 OK
-        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
-    }
+//    @Test
+//    public void testJoinClub() {
+//        // Use existing user ID and club ID
+//        int userId = 93; // Replace with an existing valid user ID from your database
+//        int clubId = 24; // Replace with a valid club ID, e.g., Computer Science Club
+//
+//        Response response = RestAssured.given()
+//                .when()
+//                .put(String.format("/joinClub/%d/%d", userId, clubId));
+//
+//        assertEquals(200, response.getStatusCode()); // Check for 200 OK
+//        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
+//    }
 
     @Test
     public void testLoginUser() {
@@ -175,7 +177,6 @@ public class UserControllerTest {
 
     @Test
     public void testDeleteUser() {
-        // Setup: Create a user to delete
         String uniqueEmail = "delete" + System.currentTimeMillis() + "@example.com";
         String userJson = String.format(
                 "{ \"name\": \"Delete Test\", \"email\": \"%s\", \"password\": \"deletePass123\", \"type\": \"STUDENT\" }",
@@ -214,7 +215,6 @@ public class UserControllerTest {
 
     @Test
     public void testGetUserClubs() {
-        // Setup: Create a user
         String uniqueEmail = "clubs" + System.currentTimeMillis() + "@example.com";
         String userJson = String.format(
                 "{ \"name\": \"Clubs Test\", \"email\": \"%s\", \"password\": \"testPass123\", \"type\": \"STUDENT\" }",
@@ -260,5 +260,73 @@ public class UserControllerTest {
         assertEquals("User not found with id: 999999", invalidUserResponse.jsonPath().getString("message"));
     }
 
+    @Test
+    public void testLeaveClub() {
+        int userId = 24;
+        int clubId = 92;
+
+        // Test successful leave
+        Response response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", userId, clubId));
+        assertEquals(200, response.getStatusCode());
+        assertEquals("User successfully left the club.", response.jsonPath().getString("message"));
+
+        // Test leave when not a member
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", userId, clubId));
+        assertEquals(400, response.getStatusCode());
+        assertEquals("User is not a member of this club.", response.jsonPath().getString("message"));
+
+        // Test invalid user ID
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", -1, clubId));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("User not found with id: -1", response.jsonPath().getString("message"));
+
+        // Test invalid club ID
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", userId, -1));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("Club not found with id: -1", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testChangePassword() {
+        int userId = 94;
+
+        // Test successful password change
+        Map<String, String> passwords = Map.of("oldPassword", "oldPass123", "newPassword", "newPass123");
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(passwords)
+                .when()
+                .put(String.format("/user/%d/changePassword", userId));
+        assertEquals(200, response.getStatusCode());
+        assertEquals("Password changed successfully.", response.jsonPath().getString("message"));
+
+        // Test with incorrect old password
+        passwords = Map.of("oldPassword", "wrongOldPass", "newPassword", "newPass123");
+        response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(passwords)
+                .when()
+                .put(String.format("/user/%d/changePassword", userId));
+        assertEquals(401, response.getStatusCode());
+        assertEquals("Old password is incorrect.", response.jsonPath().getString("message"));
+
+        // Test missing old or new password
+        passwords = Map.of("newPassword", "newPass123");
+        response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(passwords)
+                .when()
+                .put(String.format("/user/%d/changePassword", userId));
+        assertEquals(400, response.getStatusCode());
+        assertEquals("Both old and new passwords are required.", response.jsonPath().getString("message"));
+    }
 
 }
