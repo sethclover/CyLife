@@ -18,7 +18,6 @@ import org.json.JSONObject;
 public class SignupActivity extends AppCompatActivity {
 
     private EditText emailField, nameField, passwordField, confirmPasswordField;
-    private CheckBox internationalCheckbox, multiculturalCheckbox;
     private Button signupButton, loginButton;
 
     @Override
@@ -33,8 +32,6 @@ public class SignupActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.password);
         confirmPasswordField = findViewById(R.id.confirm_password);
 
-        internationalCheckbox = findViewById(R.id.international_checkbox);
-        multiculturalCheckbox = findViewById(R.id.multicultural_checkbox);
 
         signupButton = findViewById(R.id.signup_button);
         loginButton = findViewById(R.id.buttonLogin);
@@ -45,8 +42,6 @@ public class SignupActivity extends AppCompatActivity {
             String name = nameField.getText().toString();
             String password = passwordField.getText().toString();
             String confirmPassword = confirmPasswordField.getText().toString();
-            boolean isInternational = internationalCheckbox.isChecked();
-            boolean isMulticultural = multiculturalCheckbox.isChecked();
 
             if (email.isEmpty() || name.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(SignupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -54,7 +49,7 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(SignupActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             } else {
                 // If inputs are valid, send data to the backend server
-                signupUser(email, name, password, isInternational, isMulticultural);
+                signupUser(email, name, password);
             }
         });
 
@@ -65,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void signupUser(String email, String name, String password, boolean isInternational, boolean isMulticultural) {
+    private void signupUser(String email, String name, String password) {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/signup";
 
         // Create JSON object with the input data
@@ -75,8 +70,6 @@ public class SignupActivity extends AppCompatActivity {
             jsonBody.put("name", name);
             jsonBody.put("password", password);
             jsonBody.put("type", "STUDENT");
-            jsonBody.put("international", isInternational);
-            jsonBody.put("multicultural", isMulticultural);
         } catch (JSONException e) {
             e.printStackTrace();
         }

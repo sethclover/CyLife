@@ -141,7 +141,7 @@ activity#com.example.cylife.clubActivity
 ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:9-49
 	android:name
 		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:33:19-47
-activity#com.example.cylife.organizationActivity
+activity#com.example.cylife.ClubRequestsActivity
 ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:9-57
 	android:name
 		ADDED from /Users/dhvanimistry/Downloads/SEP/4_mahdi_2/Frontend/CyLife/app/src/main/AndroidManifest.xml:34:19-55

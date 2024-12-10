@@ -137,7 +137,7 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
         viewRequestsButton.setOnClickListener(view -> {
-            Intent intent3 = new Intent(WelcomeActivity.this, AccountActivity.class);
+            Intent intent3 = new Intent(WelcomeActivity.this, ClubRequestsActivity.class);
             startActivity(intent3);
         });
 
