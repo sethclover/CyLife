@@ -3164,7 +3164,6 @@ int id clip_horizontal 0x7f08007f
 int id clip_vertical 0x7f080080
 int id clockwise 0x7f080081
 int id clubCreationStatus 0x7f080082
-int id clubDescription 0x7f080083
 int id clubInfoLabel 0x7f080084
 int id clubListRecyclerView 0x7f080085
 int id clubName 0x7f080086
