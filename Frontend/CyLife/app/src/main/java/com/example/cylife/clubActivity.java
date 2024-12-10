@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.TimeUnit;
+
 public class clubActivity extends AppCompatActivity {
 
     private ImageButton backButton;
@@ -69,7 +71,11 @@ public class clubActivity extends AppCompatActivity {
         createClubButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createClub();
+                try {
+                    createClub();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -92,7 +98,7 @@ public class clubActivity extends AppCompatActivity {
     }
 
     // Method to create a new club
-    private void createClub() {
+    private void createClub() throws InterruptedException {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
 
         // Get values from EditTexts
@@ -142,7 +148,82 @@ public class clubActivity extends AppCompatActivity {
                 return "application/json; charset=utf-8";
             }
         };
+
+        String url2 = "http://coms-3090-065.class.las.iastate.edu:8080/signup";
+
+        // Create JSON object with the input data
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("email", email);
+            jsonBody.put("name", clubName);
+            jsonBody.put("password", "pass");
+            jsonBody.put("type", "CLUB");
+            jsonBody.put("international", false);
+            jsonBody.put("multicultural", false);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Send POST request using Volley
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                url2,
+                jsonBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            boolean success = response.getBoolean("success");
+                            if (success) {
+                                Toast.makeText(clubActivity.this, "Signup successful!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(clubActivity.this, "Signup failed. Try again.", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(clubActivity.this, "Error parsing server response", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(clubActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        Volley.newRequestQueue(this).add(jsonObjectRequest);
+
         requestQueue.add(stringRequest);
+
+        String url3= "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + 166 + "/" + 91;  // TODO add actual id's
+
+        TimeUnit.SECONDS.sleep(1);
+
+        JsonObjectRequest joinRequest = new JsonObjectRequest(
+                Request.Method.PUT,
+                url3,
+                null,
+                response -> {
+                    try {
+                        boolean success = response.getBoolean("success");
+                        if (success) {
+                            Toast.makeText(this, "Joined " + clubName, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(this, "Error joining club", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Log.e("Join Club", "Error: " + error.toString());
+                    Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
+                }
+        );
+
+        requestQueue.add(joinRequest);
     }
     private void editClub() {
         String clubId = etClubIdEdit.getText().toString();

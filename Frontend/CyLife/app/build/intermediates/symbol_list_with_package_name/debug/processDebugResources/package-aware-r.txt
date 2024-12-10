@@ -3194,6 +3194,7 @@ id currentPasswordInput
 id custom
 id customPanel
 id cut
+id date
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3231,7 +3232,6 @@ id editProfilePictureText
 id editTextEmail
 id editTextPassword
 id edit_club_button
-id edit_event_button
 id edit_query
 id edit_text_id
 id elastic
@@ -3388,6 +3388,7 @@ id message_input
 id message_input_container
 id middle
 id mini
+id month
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -3634,6 +3635,7 @@ id with_icon
 id withinBounds
 id wrap
 id wrap_content
+id year
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -3789,6 +3791,7 @@ layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_chat
 layout item_event
+layout item_eventedit
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3849,6 +3852,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout spinner_list
 layout support_simple_spinner_dropdown_item
 layout user_item
 mipmap ic_launcher

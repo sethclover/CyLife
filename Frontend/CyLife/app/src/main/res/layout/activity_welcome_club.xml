@@ -30,7 +30,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="0dp"
                 android:clipToPadding="false"
-                tools:listitem="@layout/item_event" />
+                tools:listitem="@layout/item_eventedit" />
 
         </RelativeLayout>
 
@@ -64,7 +64,7 @@
             android:id="@+id/scrollView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_event_button"
+            android:layout_below="@+id/ent_button"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="0dp"
             app:layout_constraintBottom_toTopOf="@+id/ent_button"
@@ -98,18 +98,7 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/edit_event_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ent_button"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="0dp"
-        android:backgroundTint="@color/green"
-        android:padding="12dp"
-        android:text="Edit Event"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+
 
 
     <TextView

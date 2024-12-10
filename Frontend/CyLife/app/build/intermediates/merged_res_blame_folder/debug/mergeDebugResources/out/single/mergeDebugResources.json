@@ -1,7 +1,7 @@
 [
     {
-        "merged": "com.example.cylife.app-debug-32:/layout_activity_welcome_club.xml.flat",
-        "source": "com.example.cylife.app-main-34:/layout/activity_welcome_club.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\layout_spinner_list.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\layout\\spinner_list.xml"
     },
     {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\drawable_camp.jpg.flat",
@@ -12,16 +12,20 @@
         "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\layout\\activity_chat_screen.xml"
     },
     {
-        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\layout_activity_request_club.xml.flat",
-        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\layout\\activity_request_club.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\layout_activity_club_create_event.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\layout\\activity_club_create_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\drawable_blue_item_background.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\drawable\\blue_item_background.xml"
     },
     {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\drawable_blue_item_background.xml.flat",
-        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\drawable\\blue_item_background.xml"
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\layout_activity_request_club.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\layout\\activity_request_club.xml"
     },
     {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\drawable_account.jpg.flat",
@@ -40,12 +44,12 @@
         "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\drawable\\ic_back_arrow.xml"
     },
     {
-        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\mipmap-xxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\xml_data_extraction_rules.xml.flat",
@@ -158,6 +162,10 @@
     {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\layout_item_eventedit.xml.flat",
+        "source": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-main-34:\\layout\\item_eventedit.xml"
     },
     {
         "merged": "C:\\Users\\chwoo\\.gradle\\daemon\\8.7\\com.example.cylife.app-debug-32:\\layout_item_chat.xml.flat",

@@ -80,15 +80,17 @@
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:background="@android:drawable/btn_dropdown"
+            android:textColor="#FF0000"
             android:spinnerMode="dropdown"/>
 
         <Spinner
             android:id="@+id/date"
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@android:drawable/btn_dropdown"
+            android:textColor="#FF0000"
             android:spinnerMode="dropdown"/>
 
         <Spinner
@@ -96,6 +98,7 @@
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:background="@android:drawable/btn_dropdown"
+            android:textColor="#FF0000"
             android:spinnerMode="dropdown"/>
     </LinearLayout>
 

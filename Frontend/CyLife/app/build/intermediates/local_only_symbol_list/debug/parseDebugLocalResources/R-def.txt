@@ -70,6 +70,7 @@ id createEventButton
 id createEventTitle
 id create_event_title
 id currentPasswordInput
+id date
 id deleteClubLabel
 id delete_event_title
 id editClubButton
@@ -78,7 +79,6 @@ id editProfilePictureText
 id editTextEmail
 id editTextPassword
 id edit_club_button
-id edit_event_button
 id email
 id ent_button
 id etClubDesc
@@ -141,6 +141,7 @@ id logout_button
 id manageClubsButton
 id message_input
 id message_input_container
+id month
 id multicultural_checkbox
 id name
 id newPasswordInput
@@ -175,6 +176,7 @@ id viewMembers
 id viewRequestsButton
 id welcomeMessage
 id welcome_text
+id year
 layout activity_account
 layout activity_chat
 layout activity_chat_screen
@@ -198,6 +200,8 @@ layout club_item
 layout dialog_change_password
 layout item_chat
 layout item_event
+layout item_eventedit
+layout spinner_list
 layout user_item
 mipmap ic_launcher
 mipmap ic_launcher_round

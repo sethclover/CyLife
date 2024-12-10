@@ -23,6 +23,8 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.LocalDate;
+
 public class ClubCreateEvent extends AppCompatActivity {
 
     private EditText etEventName, etEventLocation, etEventDescription;
@@ -52,17 +54,17 @@ public class ClubCreateEvent extends AppCompatActivity {
         statusText = findViewById(R.id.eventCreationStatus);
 
 
-        String[] dayItems = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, dayItems);
+        String[] dayItems = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_list, dayItems);
         day.setAdapter(adapter);
 
-        String[] monthItems = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, monthItems);
+        String[] monthItems = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.spinner_list, monthItems);
         month.setAdapter(adapter2);
 
         String[] yearItems = new String[]{"2024", "2025"};
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, yearItems);
-        day.setAdapter(adapter3);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, R.layout.spinner_list, yearItems);
+        year.setAdapter(adapter3);
 
         // Create Volley request queue
 //        requestQueue = Volley.newRequestQueue(this);
@@ -77,7 +79,10 @@ public class ClubCreateEvent extends AppCompatActivity {
 
                 // Get values from EditTexts
                 String eventName = etEventName.getText().toString();
-                String eventTime = month.getSelectedItem().toString() + " " + day.getSelectedItem().toString() + " " + year.getSelectedItem().toString();
+                String eventTimeStr = year.getSelectedItem().toString() + "-" + month.getSelectedItem().toString() + "-" + day.getSelectedItem().toString();
+                LocalDate eventTime = null;
+
+                eventTime = LocalDate.parse(eventTimeStr);
                 String eventLocation = etEventLocation.getText().toString();
                 String eventDescription = etEventDescription.getText().toString();
 
@@ -90,9 +95,9 @@ public class ClubCreateEvent extends AppCompatActivity {
                 JSONObject postData = new JSONObject();
                 try {
                     postData.put("eventName", eventName);
-                    postData.put("eventTime", eventTime);
+                    postData.put("date", eventTime);
                     postData.put("eventLocation", eventLocation);
-                    postData.put("eventDescription", eventDescription);
+                    postData.put("description", eventDescription);
                     //Log.i("JSON Object", String.valueOf(postData));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -154,7 +159,11 @@ public class ClubCreateEvent extends AppCompatActivity {
 
         // Get values from EditTexts
         String eventName = etEventName.getText().toString();
-        String eventTime = month.getSelectedItem().toString() + " " + day.getSelectedItem().toString() + " " + year.getSelectedItem().toString();
+        String eventTimeStr = year.getSelectedItem().toString() + "-" + month.getSelectedItem().toString() + "-" + day.getSelectedItem().toString();
+        LocalDate eventTime = null;
+
+        eventTime = LocalDate.parse(eventTimeStr);
+
         String eventLocation = etEventLocation.getText().toString();
         String eventDescription = etEventDescription.getText().toString();
 
@@ -167,7 +176,7 @@ public class ClubCreateEvent extends AppCompatActivity {
         JSONObject postData = new JSONObject();
         try {
             postData.put("name", eventName);
-            postData.put("time", eventTime);
+            postData.put("date", eventTime);
             postData.put("location", eventLocation);
             postData.put("description", eventDescription);
         } catch (JSONException e) {
