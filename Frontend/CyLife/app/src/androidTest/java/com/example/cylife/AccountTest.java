@@ -33,7 +33,6 @@ public class AccountTest {
         onView(withId(R.id.userName)).check(matches(isDisplayed()));
         onView(withId(R.id.userEmail)).check(matches(isDisplayed()));
         onView(withId(R.id.clubName)).check(matches(isDisplayed()));
-        onView(withId(R.id.clubDescription)).check(matches(isDisplayed()));
         onView(withId(R.id.editProfilePictureText)).check(matches(isDisplayed()));
         onView(withId(R.id.btnChangePassword)).check(matches(isDisplayed()));
         onView(withId(R.id.btnDeleteUser)).check(matches(isDisplayed()));

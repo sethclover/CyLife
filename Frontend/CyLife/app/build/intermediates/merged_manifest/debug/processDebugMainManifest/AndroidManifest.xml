@@ -27,7 +27,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.cylife"
         android:usesCleartextTraffic="true" >
 
@@ -45,7 +44,7 @@
         <activity android:name="com.example.cylife.SignupActivity" />
         <activity android:name="com.example.cylife.AccountActivity" />
         <activity android:name="com.example.cylife.clubActivity" />
-        <activity android:name="com.example.cylife.organizationActivity" />
+        <activity android:name="com.example.cylife.ClubRequestsActivity" />
         <activity android:name="com.example.cylife.WelcomeActivityStudent" />
         <activity android:name="com.example.cylife.ChatActivity" />
         <activity android:name="com.example.cylife.JoinClubActivity" />

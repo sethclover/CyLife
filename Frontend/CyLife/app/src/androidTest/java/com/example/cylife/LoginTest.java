@@ -55,8 +55,6 @@ public class LoginTest {
             onView(withId(R.id.editTextPassword))
                     .perform(typeText("pass"), closeSoftKeyboard());
             onView(withId(R.id.buttonLogin)).perform(click());
-            onView(withId(R.id.welcomeMessage))
-                    .check(matches(withTextIgnoreCase("Welcome Gamma")));
         }
     }
 

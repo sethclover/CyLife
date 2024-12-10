@@ -15,7 +15,7 @@ import java.util.List;
 public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder> {
 
     private List<Club> clubList;
-    private final OnJoinClickListener onJoinClickListener;
+    final OnJoinClickListener onJoinClickListener;
 
     public ClubAdapter(List<Club> clubList, OnJoinClickListener onJoinClickListener) {
         this.clubList = clubList;
