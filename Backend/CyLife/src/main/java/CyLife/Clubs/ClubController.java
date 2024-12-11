@@ -84,6 +84,11 @@ public class ClubController {
         return clubRepository.clubMembers(clubId);
     }
 
+    @GetMapping(path = "/clubId/{clubEmail}")
+    public Integer getClubId(@PathVariable String clubEmail) {
+        return clubRepository.getClubId(clubEmail);
+    }
+
     @GetMapping(path = "/club-requests")
     public List<ClubRequest> getAllClubRequests() {
         return clubRequestRepository.findAll();

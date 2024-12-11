@@ -15,4 +15,12 @@ public interface ClubRepository extends JpaRepository<Club, Integer> {
             """, nativeQuery = true)
     List<Integer> clubMembers(
             @Param("clubId") int clubId);
+
+    @Query(value = """
+            SELECT clubs.club.club_id
+            FROM clubs.club
+            WHERE clubs.club.club_email = :clubEmail;
+            """, nativeQuery = true)
+    Integer getClubId(
+            @Param("clubEmail") String clubEmail);
 }
