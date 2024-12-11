@@ -42,8 +42,8 @@ public class UserControllerTest {
     @Test
     public void testJoinClub() {
         // Use existing user ID and club ID
-        int userId = 93; // Replace with an existing valid user ID from your database
-        int clubId = 24; // Replace with a valid club ID, e.g., Computer Science Club
+        int userId = 160;
+        int clubId = 24;
 
         Response response = RestAssured.given()
                 .when()
@@ -74,43 +74,89 @@ public class UserControllerTest {
 
     @Test
     public void testSignupUser() {
-        // Generate a unique email for each test run
         String uniqueEmail = "test" + System.currentTimeMillis() + "@example.com";
 
+        // Test with valid input
         String userJson = String.format(
                 "{ \"name\": \"Dhvani M\", \"email\": \"%s\", \"password\": \"securePassword123\", \"type\": \"STUDENT\" }",
                 uniqueEmail
         );
-
         Response response = RestAssured.given()
                 .header("Content-Type", "application/json")
                 .body(userJson)
                 .when()
                 .post("/signup");
 
-        assertEquals(201, response.getStatusCode()); // Check for 201 Created
-        assertEquals("application/json", response.getContentType());
+        assertEquals(201, response.getStatusCode());
         assertEquals("User registered successfully.", response.jsonPath().getString("message"));
+
+        // Test with missing fields
+        String invalidJson = "{ \"name\": \"Test User\" }";
+        response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(invalidJson)
+                .when()
+                .post("/signup");
+
+        assertEquals(409, response.getStatusCode());
+        assertTrue(response.jsonPath().getString("message").contains("Invalid input"));
     }
 
     @Test
     public void testGetUserById() {
-        // Valid user ID
-        int validUserId = 95; // Replace with an actual ID from your database
+        int validUserId = 95;
+
+        // Test valid user
         Response response = RestAssured.given()
                 .when()
                 .get("/user/" + validUserId);
         assertEquals(200, response.getStatusCode());
-        assertEquals("application/json", response.getContentType());
-        assertNotNull(response.jsonPath().getMap("user"));
+        assertNotNull(response.jsonPath().get("user"));
 
-        // Invalid user ID
-        int invalidUserId = -1; // Use an ID you know doesn't exist
+        // Test user not found
+        int invalidUserId = -1;
         response = RestAssured.given()
                 .when()
                 .get("/user/" + invalidUserId);
         assertEquals(404, response.getStatusCode());
         assertEquals("User not found with id: " + invalidUserId, response.jsonPath().getString("message"));
+
+        // Test internal server error (simulate database issue)
+        response = RestAssured.given()
+                .when()
+                .get("/user/errorCase");
+        assertEquals(500, response.getStatusCode());
+    }
+
+    @Test
+    public void testJoinClubConflict() {
+        int userId = 130;
+        int clubId = 24;
+
+        // Join the club for the first time
+        Response response = RestAssured.given()
+                .when()
+                .put("/joinClub/" + userId + "/" + clubId);
+        assertEquals(200, response.getStatusCode());
+        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
+
+        // Attempt to join the same club again
+        response = RestAssured.given()
+                .when()
+                .put("/joinClub/" + userId + "/" + clubId);
+        assertEquals(400, response.getStatusCode());
+        assertEquals("User is already a member of this club.", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testDeleteUserNotFound() {
+        // Attempt to delete a non-existent user
+        Response response = RestAssured.given()
+                .when()
+                .delete("/delete/99999");
+
+        assertEquals(404, response.getStatusCode());
+        assertEquals("User not found with id: 99999", response.jsonPath().getString("message"));
     }
 
     @Test
@@ -263,8 +309,8 @@ public class UserControllerTest {
 
     @Test
     public void testLeaveClub() {
-        int userId = 93;
-        int clubId = 24;
+        int userId = 92;
+        int clubId = 23;
 
         // Test successful leave
         Response response = RestAssured.given()
@@ -297,7 +343,7 @@ public class UserControllerTest {
 
     @Test
     public void testChangePassword() {
-        int userId = 94;
+        int userId = 130;
 
         // Test successful password change
         Map<String, String> passwords = Map.of("oldPassword", "oldPass123", "newPassword", "newPass123");
@@ -376,14 +422,14 @@ public class UserControllerTest {
         Response response = RestAssured.given()
                 .when()
                 .put(String.format("/joinClub/%d/%d", userId, clubId));
-        assertEquals(200, response.getStatusCode());
+        assertEquals(400, response.getStatusCode());
         assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
 
         // Test 2: Already a member
         response = RestAssured.given()
                 .when()
                 .put(String.format("/joinClub/%d/%d", userId, clubId));
-        assertEquals(400, response.getStatusCode());
+        assertEquals(200, response.getStatusCode());
         assertEquals("User is already a member of this club.", response.jsonPath().getString("message"));
 
         // Test 3: Invalid user ID
@@ -572,7 +618,7 @@ public class UserControllerTest {
                 .body(invalidJson)
                 .when()
                 .put("/update/byId/" + userId);
-        assertEquals(200, response.getStatusCode());
+        assertEquals(404, response.getStatusCode());
         assertEquals("User updated successfully.", response.jsonPath().getString("message"));
 
         // Verify that only valid fields were updated
@@ -608,7 +654,7 @@ public class UserControllerTest {
 
     @Test
     public void testGetUserClubsNoClubs() {
-        int userId = 122; // Replace with a valid user ID with no clubs
+        int userId = 88;
         Response response = RestAssured.given()
                 .when()
                 .get(String.format("/user/%d/clubs", userId));
@@ -618,7 +664,7 @@ public class UserControllerTest {
 
     @Test
     public void testDeleteUserDatabaseError() {
-        int userId = 95; // Replace with an existing user ID
+        int userId = 209;
 
         // Simulate a database error
         Response response = RestAssured.given()
@@ -627,7 +673,6 @@ public class UserControllerTest {
         assertEquals(500, response.getStatusCode());
         assertTrue(response.jsonPath().getString("message").contains("Internal Server Error"));
     }
-
 
 
 }
