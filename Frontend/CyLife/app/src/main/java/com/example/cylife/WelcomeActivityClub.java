@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.java_websocket.handshake.ServerHandshake;
@@ -37,10 +38,11 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
+    private RecyclerView upcomingEventsRecyclerView;
 
     private String email;
     private String clubName;
-    private int clubId = -1;
+    private Integer clubId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,10 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
             Log.d("WelcomeActivityStudent", "User ID is null");
         }
 
+        upcomingEventsRecyclerView = findViewById(R.id.upcomingEventsRecyclerView);
+        upcomingEventsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        eventAdapter = new EventAdapter(eventList);
+        upcomingEventsRecyclerView.setAdapter(eventAdapter);
 
         String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + clubId + "/" + clubId;
 
@@ -69,13 +75,8 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         clubButton = findViewById(R.id.edit_club_button);
         logoutButton = findViewById(R.id.logout_button);
         welcomeText = findViewById(R.id.welcomeMessage);
-        recyclerView = findViewById(R.id.upcomingEventsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(eventList);
 
-        fetchUserDetails(userId);
-        fetchEvents("http://coms-3090-065.class.las.iastate.edu:8080/upcomingEvents/" + userId);
 
 
         Button chatButton = findViewById(R.id.chatButton);
@@ -90,6 +91,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         entButton.setOnClickListener(view -> {
             // Start the Events Activity
             Intent intent1 = new Intent(WelcomeActivityClub.this, ClubCreateEvent.class);
+            intent1.putExtra("clubId", clubId);
             startActivity(intent1);
         });
         clubButton.setOnClickListener(view -> {
@@ -136,6 +138,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
 
                         Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
                         Log.d("FetchUserDetails", "UserName: " + name);
+                        fetchEvents(userId);
                         welcomeText.setText(name);
 
                         // Set up the chat button click listener
@@ -166,17 +169,16 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
     private void fetchClub(String url) {
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+        StringRequest stringRequest = new StringRequest(
                 Request.Method.GET,
                 url,
-                null,
                 response -> {
                     try {
-                        // Assuming the response contains the club ID directly as a field
-                        clubId = response.optInt("clubId", -2);
-                        Log.e("FetchClubIDbyEmail", "ID Found: " + clubId);
+                        // Parse the integer response as a String
+                        String clubID = response.trim(); // Trim any extra spaces
+                        clubId = Integer.parseInt(clubID);
                     } catch (Exception e) {
-                        Log.e("FetchClubIDByEmail", "JSON parsing error: " + e.getMessage());
+                        Log.e("FetchClubIDByEmail", "Parsing error: " + e.getMessage());
                     }
                 },
                 error -> {
@@ -184,10 +186,11 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
                 });
 
 
-        queue.add(jsonObjectRequest);
+        queue.add(stringRequest);
     }
 
-    private void fetchEvents(String url) {
+    private void fetchEvents(int userId) {
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/upcomingEvents/" + userId;
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -225,7 +228,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
                 });
 
         queue.add(jsonArrayRequest);
-    }
+        }
 
     @Override
     public void onWebSocketMessage(String message) {
