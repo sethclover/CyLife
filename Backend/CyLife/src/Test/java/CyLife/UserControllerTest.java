@@ -459,5 +459,175 @@ public class UserControllerTest {
         assertEquals("STAFF", userDTO.getType());
     }
 
+    @Test
+    public void testChangePasswordMissingParameters() {
+        int userId = 94;
+
+        // Missing newPassword
+        Map<String, String> passwords = Map.of("oldPassword", "oldPass123");
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(passwords)
+                .when()
+                .put(String.format("/user/%d/changePassword", userId));
+        assertEquals(400, response.getStatusCode());
+        assertEquals("Both old and new passwords are required.", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testDeleteNonExistentUser() {
+        int nonExistentUserId = 999999;
+
+        Response response = RestAssured.given()
+                .when()
+                .delete("/delete/" + nonExistentUserId);
+        assertEquals(404, response.getStatusCode());
+        assertEquals("User not found with id: " + nonExistentUserId, response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testJoinClubInvalidInput() {
+        int invalidUserId = 1;
+        int clubId = 24;
+
+        Response response = RestAssured.given()
+                .when()
+                .put(String.format("/joinClub/%d/%d", invalidUserId, clubId));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("User not found with id: " + invalidUserId, response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testSignupExistingEmail() {
+        String existingEmail = "john.doe@example.com"; // Use an email that exists in your database
+
+        String userJson = String.format(
+                "{ \"name\": \"Existing User\", \"email\": \"%s\", \"password\": \"password123\", \"type\": \"STUDENT\" }",
+                existingEmail
+        );
+
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(userJson)
+                .when()
+                .post("/signup");
+        assertEquals(409, response.getStatusCode()); // 409 Conflict
+        assertEquals("User already exists.", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testCheckMembershipStatusInvalidClub() {
+        int userId = 133;
+        int nonExistentClubId = 999999;
+
+        Response response = RestAssured.given()
+                .when()
+                .get(String.format("/checkMembershipStatus/%d/%d", userId, nonExistentClubId));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("Club not found with id: " + nonExistentClubId, response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testUpdateUserPartialFields() {
+        int userId = 95; // Replace with a valid user ID
+        String updateJson = "{ \"email\": \"partial@example.com\" }";
+
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(updateJson)
+                .when()
+                .put("/update/byId/" + userId);
+        assertEquals(200, response.getStatusCode());
+        assertEquals("User updated successfully.", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testSignupInvalidInput() {
+        // Test missing email
+        String invalidJson = "{ \"name\": \"Test User\", \"password\": \"password123\", \"type\": \"STUDENT\" }";
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(invalidJson)
+                .when()
+                .post("/signup");
+        assertEquals(400, response.getStatusCode()); // Bad Request
+
+        // Test invalid type
+        invalidJson = "{ \"name\": \"Test User\", \"email\": \"invalid@example.com\", \"password\": \"password123\", \"type\": \"INVALID\" }";
+        response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(invalidJson)
+                .when()
+                .post("/signup");
+        assertEquals(400, response.getStatusCode()); // Bad Request
+    }
+
+    @Test
+    public void testUpdateUserWithInvalidKeys() {
+        int userId = 95; // Replace with an existing valid user ID
+        String invalidJson = "{ \"nonexistentKey\": \"value\", \"email\": \"valid@example.com\" }";
+
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(invalidJson)
+                .when()
+                .put("/update/byId/" + userId);
+        assertEquals(200, response.getStatusCode());
+        assertEquals("User updated successfully.", response.jsonPath().getString("message"));
+
+        // Verify that only valid fields were updated
+        Response getResponse = RestAssured.given()
+                .when()
+                .get("/user/" + userId);
+        assertEquals(200, getResponse.getStatusCode());
+        assertEquals("valid@example.com", getResponse.jsonPath().getMap("user").get("email"));
+    }
+
+    @Test
+    public void testLoginUserWithMissingCredentials() {
+        // Missing password
+        String missingPasswordJson = "{ \"email\": \"john.doe@example.com\" }";
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(missingPasswordJson)
+                .when()
+                .post("/login");
+        assertEquals(400, response.getStatusCode());
+        assertEquals("Email or password is missing.", response.jsonPath().getString("message"));
+
+        // Missing email
+        String missingEmailJson = "{ \"password\": \"password123\" }";
+        response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(missingEmailJson)
+                .when()
+                .post("/login");
+        assertEquals(400, response.getStatusCode());
+        assertEquals("Email or password is missing.", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testGetUserClubsNoClubs() {
+        int userId = 122; // Replace with a valid user ID with no clubs
+        Response response = RestAssured.given()
+                .when()
+                .get(String.format("/user/%d/clubs", userId));
+        assertEquals(200, response.getStatusCode());
+        assertTrue(response.jsonPath().getList("clubs").isEmpty());
+    }
+
+    @Test
+    public void testDeleteUserDatabaseError() {
+        int userId = 95; // Replace with an existing user ID
+
+        // Simulate a database error
+        Response response = RestAssured.given()
+                .when()
+                .delete("/delete/" + userId);
+        assertEquals(500, response.getStatusCode());
+        assertTrue(response.jsonPath().getString("message").contains("Internal Server Error"));
+    }
+
+
 
 }

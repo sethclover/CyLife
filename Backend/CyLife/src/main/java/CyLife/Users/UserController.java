@@ -44,59 +44,48 @@ public class UserController {
         Map<String, Object> response = new HashMap<>();
         try {
             User user = userRepository.findById(id);
-
             if (user != null) {
                 response.put("user", user);
-                return ResponseEntity.ok(response);
+                return ResponseEntity.ok(response); // Branch 1: User exists
             } else {
                 response.put("message", "User not found with id: " + id);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response); // Branch 2: User not found
             }
         } catch (Exception e) {
             e.printStackTrace();
             response.put("message", "Internal Server Error: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response); // Branch 3: Exception
         }
     }
 
+
     @PutMapping("/update/byId/{id}")
-    public ResponseEntity<Map<String, Object>> updateUser(
-            @PathVariable int id, @RequestBody Map<String, Object> updates) {
+    public ResponseEntity<Map<String, Object>> updateUser(@PathVariable int id, @RequestBody Map<String, Object> updates) {
         Map<String, Object> response = new HashMap<>();
         try {
             User user = userRepository.findById(id);
             if (user == null) {
                 response.put("message", "User not found with id: " + id);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response); // Branch 1: User not found
             }
 
             updates.forEach((key, value) -> {
                 switch (key) {
-                    case "name":
-                        user.setName((String) value);
-                        break;
-                    case "email":
-                        user.setEmail((String) value);
-                        break;
-                    case "password":
-                        user.setPassword((String) value);
-                        break;
-                    case "type":
-                        user.setType(User.UserType.valueOf((String) value)); // Assuming you have an enum UserType
-                        break;
-                    default:
-                        // Ignore unknown fields
-                        break;
+                    case "name": user.setName((String) value); break; // Branch 2: Update name
+                    case "email": user.setEmail((String) value); break; // Branch 3: Update email
+                    case "password": user.setPassword((String) value); break; // Branch 4: Update password
+                    case "type": user.setType(User.UserType.valueOf((String) value)); break; // Branch 5: Update type
+                    default: break; // Branch 6: Ignore invalid fields
                 }
             });
 
             userRepository.save(user);
             response.put("message", "User updated successfully.");
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(response); // Branch 7: Success
         } catch (Exception e) {
             e.printStackTrace();
             response.put("message", "Internal Server Error: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response); // Branch 8: Exception
         }
     }
 
