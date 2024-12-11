@@ -22,10 +22,14 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -50,7 +54,7 @@ public class AccountActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         userEmail = findViewById(R.id.userEmail);
         clubName = findViewById(R.id.clubName);
-        clubDescriptionTextView = findViewById(R.id.clubDescription);
+//        clubDescriptionTextView = findViewById(R.id.clubDescription);
         editProfilePictureText = findViewById(R.id.editProfilePictureText);
         btnChangePassword = findViewById(R.id.btnChangePassword);
         btnDeleteUser = findViewById(R.id.btnDeleteUser);
@@ -120,34 +124,46 @@ public class AccountActivity extends AppCompatActivity {
                         String name = user.optString("name", "N/A");
                         String email = user.optString("email", "N/A");
 
-                        JSONObject club = user.optJSONObject("club");
-                        String clubNameValue = "None";
-                        String clubDescriptionValue = "No description available";
+                        // Extract clubs array
+                        JSONArray clubsArray = user.optJSONArray("clubs");
 
-                        if (club != null) {
-                            clubNameValue = club.optString("clubName", "None");
-                            clubDescriptionValue = club.optString("description", "No description available");
+                        // Prepare a list to store club names
+                        List<String> clubNames = new ArrayList<>();
+
+                        if (clubsArray != null) {
+                            for (int i = 0; i < clubsArray.length(); i++) {
+                                JSONObject club = clubsArray.getJSONObject(i);
+
+                                String clubName = club.optString("clubName", "Unknown Club");
+                                clubNames.add(clubName);
+                            }
                         }
 
+                        // Display user details
                         userName.setText(name);
                         userEmail.setText(email);
 
-                        clubName.setText(clubNameValue);
-                        clubDescriptionTextView.setText(clubDescriptionValue);
+                        // Display clubs
+                        String clubsText = "Clubs: " + String.join(", ", clubNames);
+                        clubName.setText(clubsText); // Display the list of club names in your TextView
 
-                        String profilePicUrl = user.optString("profilePicture", null);
-                        if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
-//                            Picasso.get().load(profilePicUrl).placeholder(R.drawable.account).into(profileImage);
-                        }
                     } catch (JSONException e) {
+                        // Log the exception for debugging purposes
+                        Log.e("fetchUserDetails", "Error parsing user details", e);
                         Toast.makeText(AccountActivity.this, "Error parsing user details", Toast.LENGTH_SHORT).show();
                     }
                 },
-                error -> Toast.makeText(AccountActivity.this, "Error fetching user details", Toast.LENGTH_SHORT).show()
+                error -> {
+                    // Log the error for debugging purposes
+                    Log.e("fetchUserDetails", "Error fetching user details", error);
+                    Toast.makeText(AccountActivity.this, "Error fetching user details", Toast.LENGTH_SHORT).show();
+                }
         );
 
         queue.add(request);
     }
+
+
 
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -193,53 +209,6 @@ public class AccountActivity extends AppCompatActivity {
         // Show the dialog
         builder.create().show();
     }
-
-//    private void changePassword(int userId, String currentPassword, String newPassword) {
-//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/update/byId/" + userId;
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//
-//        JSONObject requestBody = new JSONObject();
-//        try {
-////          requestBody.put("userId", userId);
-//            requestBody.put("currentPassword", currentPassword);
-//            requestBody.put("newPassword", newPassword);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//            Toast.makeText(this, "Error creating request body", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        JsonObjectRequest request = new JsonObjectRequest(
-//                Request.Method.PUT,
-//                url,
-//                requestBody,
-//                response -> {
-//                    try {
-//                        boolean success = response.getBoolean("success");
-//                        String message = response.getString("message");
-//
-//                        if (success) {
-//                            Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-//                        }
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(this, "Error parsing server response", Toast.LENGTH_SHORT).show();
-//                    }
-//                },
-//                error -> {
-//                    if (error.networkResponse != null) {
-//                        int statusCode = error.networkResponse.statusCode;
-//                        Toast.makeText(this, "Error " + statusCode + ": Unable to change password", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(this, "Network error. Please check your connection.", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//        );
-//        requestQueue.add(request);
-//    }
 
     private void changePassword(int userId, String password) {
         String putURL = "http://coms-3090-065.class.las.iastate.edu:8080/update/byId/" + userId;

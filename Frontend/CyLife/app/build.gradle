@@ -35,6 +35,8 @@ android {
 dependencies {
     // for Android
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:4.0.0'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

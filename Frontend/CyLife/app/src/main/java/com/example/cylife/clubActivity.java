@@ -92,38 +92,105 @@ public class clubActivity extends AppCompatActivity {
     }
 
     // Method to create a new club
+//    private void createClub() {
+//        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
+//
+//        // Get values from EditTexts
+//        String clubName = etClubNameCreate.getText().toString();
+//        String email = etEmailCreate.getText().toString();
+//        String pass = etClubPass.getText().toString();
+//
+//        Log.d("Create Club Info", "clubName: " + clubName + ", email: " + email + ", email: " + "Password: " + pass);
+//
+//
+//        if (clubName.isEmpty() || email.isEmpty()) {
+//            Toast.makeText(getApplicationContext(), "All fields are required.", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        // Prepare POST request data
+//        JSONObject postData = new JSONObject();
+//        try {
+//            postData.put("clubName", clubName);
+//            postData.put("clubEmail", email);
+//            postData.put("password", pass);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Create a StringRequest to post the data
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Toast.makeText(getApplicationContext(), "Club Created Successfully!", Toast.LENGTH_SHORT).show();
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getApplicationContext(), "Error creating club: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }) {
+//            @Override
+//            public byte[] getBody() {
+//                return postData.toString().getBytes();
+//            }
+//
+//            @Override
+//            public String getBodyContentType() {
+//                return "application/json; charset=utf-8";
+//            }
+//        };
+//        requestQueue.add(stringRequest);
+//    }
+
     private void createClub() {
-        String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
+        String clubUrl = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
+        String userUrl = "http://coms-3090-065.class.las.iastate.edu:8080/signup";
 
         // Get values from EditTexts
         String clubName = etClubNameCreate.getText().toString();
         String email = etEmailCreate.getText().toString();
         String pass = etClubPass.getText().toString();
 
-        Log.d("Create Club Info", "clubName: " + clubName + ", email: " + email + ", email: " + "Password: " + pass);
-
+        Log.d("Create Club Info", "clubName: " + clubName + ", email: " + email + ", Password: " + pass);
 
         if (clubName.isEmpty() || email.isEmpty()) {
             Toast.makeText(getApplicationContext(), "All fields are required.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Prepare POST request data
-        JSONObject postData = new JSONObject();
+        // Prepare POST request data for the club
+        JSONObject clubData = new JSONObject();
         try {
-            postData.put("clubName", clubName);
-            postData.put("clubEmail", email);
-            postData.put("password", pass);
+            clubData.put("clubName", clubName);
+            clubData.put("clubEmail", email);
+            clubData.put("password", pass);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        // Create a StringRequest to post the data
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        // Prepare POST request data for the user
+        JSONObject userData = new JSONObject();
+        try {
+            userData.put("name" , clubName);
+            userData.put("email", email);
+            userData.put("password", pass);
+            userData.put("type", "CLUB"); // Optional: specify user role
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Create Club request
+        StringRequest clubRequest = new StringRequest(Request.Method.POST, clubUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), "Club Created Successfully!", Toast.LENGTH_SHORT).show();
+
+                        // On successful club creation, create user
+                        createUser(userUrl, userData);
                     }
                 },
                 new Response.ErrorListener() {
@@ -134,7 +201,7 @@ public class clubActivity extends AppCompatActivity {
                 }) {
             @Override
             public byte[] getBody() {
-                return postData.toString().getBytes();
+                return clubData.toString().getBytes();
             }
 
             @Override
@@ -142,8 +209,40 @@ public class clubActivity extends AppCompatActivity {
                 return "application/json; charset=utf-8";
             }
         };
-        requestQueue.add(stringRequest);
+
+        requestQueue.add(clubRequest);
     }
+
+    // Helper method to create a user
+    private void createUser(String url, JSONObject userData) {
+        StringRequest userRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getApplicationContext(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Error creating user: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            public byte[] getBody() {
+                return userData.toString().getBytes();
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
+
+        requestQueue.add(userRequest);
+    }
+
+
     private void editClub() {
         String clubId = etClubIdEdit.getText().toString();
         String clubName = etClubNameEdit.getText().toString();

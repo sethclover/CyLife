@@ -23,7 +23,7 @@ maven-build:
     - mvn package       # maven package
   artifacts:            # where to output the packaged jar file, change 'Backend' to to where you have the pom.xml
     paths:
-    - Backend/target/*.jar # change 'Backend' to where you have 'target' (do not add a / in the beginning)
+    - Backend/CyLife/target/*.jar # change 'Backend' to where you have 'target' (do not add a / in the beginning)
   only:
     refs:
       - main            # only to trigger the pipeline when changes are pushed to 'main'

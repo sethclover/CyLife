@@ -31,7 +31,7 @@
         <activity android:name=".SignupActivity"/>
         <activity android:name=".AccountActivity"/>
         <activity android:name=".clubActivity"/>
-        <activity android:name=".organizationActivity"/>
+        <activity android:name=".ClubRequestsActivity"/>
         <activity android:name=".WelcomeActivityStudent"/>
         <activity android:name="ChatActivity" />
         <activity android:name=".JoinClubActivity"/>

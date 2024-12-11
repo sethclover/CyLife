@@ -211,7 +211,7 @@ public class JoinClubActivity extends AppCompatActivity {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/leaveClub/" + studentID + "/" + club.getId();
 
         JsonObjectRequest leaveRequest = new JsonObjectRequest(
-                Request.Method.POST,
+                Request.Method.PUT,
                 url,
                 null,
                 response -> {

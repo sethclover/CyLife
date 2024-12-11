@@ -45,7 +45,7 @@
         <activity android:name="com.example.cylife.SignupActivity" />
         <activity android:name="com.example.cylife.AccountActivity" />
         <activity android:name="com.example.cylife.clubActivity" />
-        <activity android:name="com.example.cylife.organizationActivity" />
+        <activity android:name="com.example.cylife.ClubRequestsActivity" />
         <activity android:name="com.example.cylife.WelcomeActivityStudent" />
         <activity android:name="com.example.cylife.ChatActivity" />
         <activity android:name="com.example.cylife.JoinClubActivity" />

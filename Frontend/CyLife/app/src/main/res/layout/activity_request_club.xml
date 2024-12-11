@@ -108,7 +108,7 @@
         android:id="@+id/createClubButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Create Club"
+        android:text="Request Club"
         android:textColor="#FFFFFF"
         android:background="@color/blue"
         android:layout_marginTop="24dp"
