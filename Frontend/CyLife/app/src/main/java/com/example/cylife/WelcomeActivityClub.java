@@ -74,7 +74,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         eventAdapter = new EventAdapter(eventList);
 
         fetchUserDetails(userId);
-        fetchEvents("http://coms-3090-065.class.las.iastate.edu:8080/upcomingEvents");
+        fetchEvents("http://coms-3090-065.class.las.iastate.edu:8080/upcomingEvents/" + userId);
 
 
         Button chatButton = findViewById(R.id.chatButton);

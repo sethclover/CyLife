@@ -15,16 +15,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.TimeUnit;
 
 public class clubActivity extends AppCompatActivity {
 
@@ -73,11 +69,7 @@ public class clubActivity extends AppCompatActivity {
         createClubButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    createClub();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                createClub();
             }
         });
 
@@ -100,8 +92,7 @@ public class clubActivity extends AppCompatActivity {
     }
 
     // Method to create a new club
-    private void createClub() throws InterruptedException {
-        // MAKING CLUB CLUB
+    private void createClub() {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
 
         // Get values from EditTexts
@@ -151,149 +142,7 @@ public class clubActivity extends AppCompatActivity {
                 return "application/json; charset=utf-8";
             }
         };
-
-        // MAKING CLUB USER
-
-        String url2 = "http://coms-3090-065.class.las.iastate.edu:8080/signup";
-
-        // Create JSON object with the input data
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("email", email);
-            jsonBody.put("name", clubName);
-            jsonBody.put("password", pass);
-            jsonBody.put("type", "CLUB");
-            jsonBody.put("international", false);
-            jsonBody.put("multicultural", false);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // Send POST request using Volley
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST,
-                url2,
-                jsonBody,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            boolean success = response.getBoolean("success");
-                            if (success) {
-                                Toast.makeText(clubActivity.this, "Signup successful!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(clubActivity.this, "Signup failed. Try again.", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(clubActivity.this, "Error parsing server response", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(clubActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-        Volley.newRequestQueue(this).add(jsonObjectRequest);
-
         requestQueue.add(stringRequest);
-
-        // GETTING CLUB ID
-        String urlClubs = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        final String[] newClubID = {null};
-
-        JsonArrayRequest jsonArrayRequest2 = new JsonArrayRequest(Request.Method.GET, urlClubs, null,
-            new Response.Listener<JSONArray>() {
-                @Override
-                public void onResponse(JSONArray response) {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-
-                        JSONObject eventObj = response.getJSONObject(response.length()-1);
-                        newClubID[0] = eventObj.optString("clubId", "No name");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Log.e("FetchEvents", "JSON parsing error: " + e.getMessage());
-                    }
-                    Log.e("gETTINGcLUBiD", "Got club ID " + newClubID[0]);
-                }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                    Log.e("FetchEvents", "Network error: " + error.toString());
-                }
-            });
-
-        queue.add(jsonArrayRequest2);
-
-
-        // GETTING CLUB ID
-
-        String urlUsers = "http://coms-3090-065.class.las.iastate.edu:8080/users";
-
-        final String[] newUserID = {null};
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlUsers, null,
-            new Response.Listener<JSONArray>() {
-                @Override
-                public void onResponse(JSONArray response) {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                        JSONObject eventObj = response.getJSONObject(response.length()-1);
-                        newUserID[0] = eventObj.optString("userId", "No name");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Log.e("FetchEvents", "JSON parsing error: " + e.getMessage());
-                    }
-                    Log.e("gETTINGuSERiD", "Got user ID " + newUserID[0]);
-                }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                    Log.e("FetchEvents", "Network error: " + error.toString());
-                }
-            });
-
-        queue.add(jsonArrayRequest);
-
-        // MAKING CLUB USER JOIN CLUB CLUB
-
-        String url3= "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + newUserID[0] + "/" + newClubID[0];  // TODO add actual id's
-
-        TimeUnit.SECONDS.sleep(3);
-        JsonObjectRequest joinRequest = new JsonObjectRequest(
-                Request.Method.PUT,
-                url3,
-                null,
-                response -> {
-                    try {
-                        boolean success = response.getBoolean("success");
-                        if (success) {
-                            Toast.makeText(this, "Joined " + clubName, Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(this, "Error joining club", Toast.LENGTH_SHORT).show();
-                    }
-                },
-                error -> {
-                    Log.e("Join Club", "Error: " + error.toString());
-                    Toast.makeText(this, "Failed to join club", Toast.LENGTH_SHORT).show();
-                }
-        );
-
-        requestQueue.add(joinRequest);
     }
     private void editClub() {
         String clubId = etClubIdEdit.getText().toString();
@@ -342,7 +191,7 @@ public class clubActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-        private void deleteClub(String clubId) {
+    private void deleteClub(String clubId) {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs/" + clubId;
 
         StringRequest deleteRequest = new StringRequest(
