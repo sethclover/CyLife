@@ -3182,11 +3182,14 @@ id cradle
 id createClubButton
 id createClubLabel
 id createClubTitle
+id createEventButton
+id createEventTitle
 id create_event_title
 id currentPasswordInput
 id custom
 id customPanel
 id cut
+id date
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3246,10 +3249,14 @@ id etDesc
 id etEmail
 id etEmailCreate
 id etEmailEdit
+id etEventName
+id etLocation
 id etName
 id etPasswordNew
 id etPasswordNewConfirm
 id etPasswordOld
+id etTime
+id eventCreationStatus
 id eventDateTextView
 id eventDescriptionTextView
 id eventDescription_input
@@ -3262,6 +3269,7 @@ id event_description_input
 id event_name_edit
 id event_name_input
 id event_name_input2
+id exitButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3322,6 +3330,10 @@ id jumpToStart
 id labelClubId
 id labelClubName
 id labelEmail
+id labelEventId
+id labelEventName
+id labelLocation
+id labelTime
 id labeled
 id layout
 id left
@@ -3365,6 +3377,7 @@ id message_input
 id message_input_container
 id middle
 id mini
+id month
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -3477,6 +3490,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollView3
+id scrollView5
 id scrollable
 id searchBar
 id searchView
@@ -3613,6 +3627,7 @@ id with_icon
 id withinBounds
 id wrap
 id wrap_content
+id year
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -3731,6 +3746,7 @@ layout activity_account
 layout activity_chat
 layout activity_chat_screen
 layout activity_club
+layout activity_club_create_event
 layout activity_club_request
 layout activity_edit_club
 layout activity_edit_user
@@ -3768,6 +3784,7 @@ layout ime_secondary_split_test_activity
 layout item_chat
 layout item_club_request
 layout item_event
+layout item_eventedit
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3828,6 +3845,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout spinner_list
 layout support_simple_spinner_dropdown_item
 layout user_item
 mipmap ic_launcher

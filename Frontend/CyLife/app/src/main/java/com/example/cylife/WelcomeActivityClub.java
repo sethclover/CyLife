@@ -38,7 +38,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
     private EventAdapter eventAdapter;
     private List<Event> eventList;
 
-
+    private String email;
     private String clubName;
     private int clubId = -1;
 
@@ -126,6 +126,9 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
                         // Get the user's name with a fallback value
                         String name = user.optString("name", "Student");
 
+                        email = user.optString("email", "noEmail");
+                        fetchClub("http://coms-3090-065.class.las.iastate.edu:8080/clubId/" + email);
+
                         // Get the "club" object
                         JSONObject club = user.optJSONObject("club");
                         int clubId = (club != null) ? club.optInt("clubId", -1) : -1;
@@ -153,6 +156,31 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
                     Log.e("FetchUserDetails", "Error fetching user details: " + error.toString());
                     Toast.makeText(WelcomeActivityClub.this, "Failed to fetch user details", Toast.LENGTH_SHORT).show();
                 });
+
+        queue.add(jsonObjectRequest);
+    }
+
+
+    private void fetchClub(String url) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                response -> {
+                    try {
+                        // Assuming the response contains the club ID directly as a field
+                        clubId = response.optInt("clubId", -2);
+                        Log.e("FetchClubIDbyEmail", "ID Found: " + clubId);
+                    } catch (Exception e) {
+                        Log.e("FetchClubIDByEmail", "JSON parsing error: " + e.getMessage());
+                    }
+                },
+                error -> {
+                    Log.e("FetchClubIDByEmail", "Network error: " + error.toString());
+                });
+
 
         queue.add(jsonObjectRequest);
     }
