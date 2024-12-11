@@ -75,7 +75,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         clubButton = findViewById(R.id.edit_club_button);
         logoutButton = findViewById(R.id.logout_button);
         welcomeText = findViewById(R.id.welcomeMessage);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
@@ -97,7 +97,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         clubButton.setOnClickListener(view -> {
             // Start the edit Club Activity
             Intent intent1 = new Intent(WelcomeActivityClub.this, EditClub.class);
-            intent.putExtra("userId", clubId);
+            intent1.putExtra("clubId", clubId);
             startActivity(intent1);
         });
 
@@ -198,7 +198,8 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
-                            eventList.clear();
+                            if (eventList != null)
+                                eventList.clear();
 
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject eventObj = response.getJSONObject(i);

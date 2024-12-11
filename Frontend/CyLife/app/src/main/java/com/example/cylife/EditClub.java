@@ -24,7 +24,7 @@ public class EditClub extends AppCompatActivity {
     private EditText nameField, etDesc;
     private Button saveButton, backButton;
 
-    private int clubId;
+    private Integer clubId = -4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,8 @@ public class EditClub extends AppCompatActivity {
         saveButton = findViewById(R.id.SaveButton);
 
 
-        Bundle extras = getIntent().getExtras();
-        clubId = extras.getInt("userId");  // this will come from Welcome
+        Intent intent = getIntent();
+        clubId = intent.getIntExtra("clubId", -3); // Same uppercase "ID" key
 
         welcomeText.setText("Welcome " + clubId);
 
@@ -58,9 +58,7 @@ public class EditClub extends AppCompatActivity {
 
         backButton.setOnClickListener(v -> {
             // Redirect to Login Activity
-            Intent intent = new Intent(EditClub.this, WelcomeActivityClub.class);
-            intent.putExtra("userId", clubId);
-            startActivity(intent);
+            finish();
         });
     }
 

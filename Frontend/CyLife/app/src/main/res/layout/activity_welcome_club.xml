@@ -142,13 +142,15 @@
             android:layout_height="60dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="65dp"
+            android:contentDescription="Go to Edit Club"
             android:background="@drawable/account" />
 
         <Button
             android:id="@+id/logout_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/settings" />
+            android:background="@drawable/settings"
+            android:contentDescription="Logout"/>
     </LinearLayout>
 
 </RelativeLayout>
