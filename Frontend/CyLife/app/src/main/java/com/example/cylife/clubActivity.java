@@ -148,8 +148,6 @@ public class clubActivity extends AppCompatActivity {
     // Method to create a new club
     private void createClub() {
         String clubUrl = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
-        String userUrl = "http://coms-3090-065.class.las.iastate.edu:8080/signup";
-
         // Get values from EditTexts
         String clubName = etClubNameCreate.getText().toString();
         String email = etEmailCreate.getText().toString();
@@ -186,7 +184,7 @@ public class clubActivity extends AppCompatActivity {
                         e.printStackTrace();
                         return;
                     }
-                    createUser(userUrl, userData, email, pass);
+                    fetchUserId(email, pass);
                 },
                 error -> {
                     logVolleyError("Error creating club", error);
@@ -206,39 +204,13 @@ public class clubActivity extends AppCompatActivity {
         requestQueue.add(clubRequest);
     }
 
-    // Method to create a user
-    private void createUser(String url, JSONObject userData, String email, String pass) {
-        String fetchUserIdUrl = "http://coms-3090-065.class.las.iastate.edu:8080/login";
-
-        StringRequest userRequest = new StringRequest(Request.Method.POST, url,
-                response -> {
-                    Log.d("Create User", "User Created Successfully: " + response);
-                    fetchUserId(fetchUserIdUrl, email, pass);
-                },
-                error -> {
-                    logVolleyError("Error creating user", error);
-                    Toast.makeText(getApplicationContext(), "Error creating user.", Toast.LENGTH_SHORT).show();
-                }) {
-            @Override
-            public byte[] getBody() {
-                return userData.toString().getBytes();
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-        };
-
-        requestQueue.add(userRequest);
-    }
-
     // Method to fetch the user ID
-    private void fetchUserId(String url, String email, String pass) {
+    private void fetchUserId(String email, String pass) {
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/login";
         JSONObject loginData = new JSONObject();
         try {
             loginData.put("email", email);
-            loginData.put("password", pass);
+            loginData.put("password", 123);
         } catch (JSONException e) {
             e.printStackTrace();
             return;
