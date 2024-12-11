@@ -43,7 +43,7 @@ public class EventControllerTest {
     public void getUpcomingEventsTest() {
         Response response = RestAssured.given()
                 .when()
-                .get("/upcomingEvents/1");
+                .get("/upcomingEvents/2");
 
         assertEquals(200, response.getStatusCode());
         assertEquals("application/json", response.getContentType());
@@ -66,7 +66,7 @@ public class EventControllerTest {
     public void getEventByIdNotFoundTest() {
         Response response = RestAssured.given()
                 .when()
-                .get("/events/999"); // Assuming 999 is a non-existent ID
+                .get("/events/1"); // non-existent ID
 
         assertEquals(200, response.getStatusCode());
         assertEquals("", response.getBody().asString()); // Expecting null or empty response
