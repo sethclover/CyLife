@@ -70,7 +70,6 @@ public class ClubController {
     }
 
 
-
     @PutMapping("/clubs/{id}")
     public ResponseEntity<Object> updateClub(@PathVariable int id, @RequestBody Club request) {
         Optional<Club> existingClubOpt = clubRepository.findById(id);
