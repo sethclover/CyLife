@@ -48,7 +48,7 @@ public class ChatSocket {
 		clubRepo = repo;
 	}
 
-	private static Map<Session, String> sessionUserIdMap = new Hashtable<>();
+	public static Map<Session, String> sessionUserIdMap = new Hashtable<>();
 	private static Map<String, Session> userIdSessionMap = new Hashtable<>();
 	private final Logger logger = LoggerFactory.getLogger(ChatSocket.class);
 
@@ -85,12 +85,18 @@ public class ChatSocket {
 		logger.info("Message received: " + message);
 		String userId = sessionUserIdMap.get(session);
 
+		if (userId == null) {
+			logger.warn("Received message from an unmapped session.");
+			return; // Or send an error response
+		}
+
 		// Fetch user's name
 		String username = userRepo.findById(Integer.parseInt(userId)).getName();
 
 		broadcastToClub(username + ": " + message, Integer.parseInt(clubId));
 		msgRepo.save(new Message(userId, message, Integer.parseInt(clubId)));
 	}
+
 
 	@OnClose
 	public void onClose(Session session, @PathParam("clubId") String clubId) throws IOException {
