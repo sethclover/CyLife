@@ -3,6 +3,7 @@ package CyLife;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import CyLife.Users.UserDTO;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -38,19 +39,19 @@ public class UserControllerTest {
         assertEquals("application/json", response.getContentType());
     }
 
-//    @Test
-//    public void testJoinClub() {
-//        // Use existing user ID and club ID
-//        int userId = 93; // Replace with an existing valid user ID from your database
-//        int clubId = 24; // Replace with a valid club ID, e.g., Computer Science Club
-//
-//        Response response = RestAssured.given()
-//                .when()
-//                .put(String.format("/joinClub/%d/%d", userId, clubId));
-//
-//        assertEquals(200, response.getStatusCode()); // Check for 200 OK
-//        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
-//    }
+    @Test
+    public void testJoinClub() {
+        // Use existing user ID and club ID
+        int userId = 93; // Replace with an existing valid user ID from your database
+        int clubId = 24; // Replace with a valid club ID, e.g., Computer Science Club
+
+        Response response = RestAssured.given()
+                .when()
+                .put(String.format("/joinClub/%d/%d", userId, clubId));
+
+        assertEquals(200, response.getStatusCode()); // Check for 200 OK
+        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
+    }
 
     @Test
     public void testLoginUser() {
@@ -262,8 +263,8 @@ public class UserControllerTest {
 
     @Test
     public void testLeaveClub() {
-        int userId = 24;
-        int clubId = 92;
+        int userId = 93;
+        int clubId = 24;
 
         // Test successful leave
         Response response = RestAssured.given()
@@ -328,5 +329,135 @@ public class UserControllerTest {
         assertEquals(400, response.getStatusCode());
         assertEquals("Both old and new passwords are required.", response.jsonPath().getString("message"));
     }
+
+
+    @Test
+    public void testCheckMembershipStatus() {
+        int userId = 133;
+        int clubId = 23;
+
+        // Test 1: User is a member
+        Response response = RestAssured.given()
+                .when()
+                .get(String.format("/checkMembershipStatus/%d/%d", userId, clubId));
+        assertEquals(200, response.getStatusCode());
+        assertTrue(response.jsonPath().getBoolean("isMember"));
+        assertEquals("User is a member of the club.", response.jsonPath().getString("message"));
+
+        // Test 2: User is not a member
+        response = RestAssured.given()
+                .when()
+                .get(String.format("/checkMembershipStatus/%d/%d", userId, 999)); // Invalid club ID
+        assertEquals(200, response.getStatusCode());
+        assertFalse(response.jsonPath().getBoolean("isMember"));
+        assertEquals("User is not a member of the club.", response.jsonPath().getString("message"));
+
+        // Test 3: Non-existent user
+        response = RestAssured.given()
+                .when()
+                .get(String.format("/checkMembershipStatus/%d/%d", 999999, clubId));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("User not found with id: 999999", response.jsonPath().getString("message"));
+
+        // Test 4: Non-existent club
+        response = RestAssured.given()
+                .when()
+                .get(String.format("/checkMembershipStatus/%d/%d", userId, 999999));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("Club not found with id: 999999", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testJoinClubEnhanced() {
+        int userId = 100; // Replace with a valid user ID
+        int clubId = 200; // Replace with a valid club ID
+
+        // Test 1: Successful join
+        Response response = RestAssured.given()
+                .when()
+                .put(String.format("/joinClub/%d/%d", userId, clubId));
+        assertEquals(200, response.getStatusCode());
+        assertEquals("User successfully joined the club.", response.jsonPath().getString("message"));
+
+        // Test 2: Already a member
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/joinClub/%d/%d", userId, clubId));
+        assertEquals(400, response.getStatusCode());
+        assertEquals("User is already a member of this club.", response.jsonPath().getString("message"));
+
+        // Test 3: Invalid user ID
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/joinClub/%d/%d", -1, clubId));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("User not found with id: -1", response.jsonPath().getString("message"));
+
+        // Test 4: Invalid club ID
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/joinClub/%d/%d", userId, -1));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("Club not found with id: -1", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testLeaveClubEnhanced() {
+        int userId = 140;
+        int clubId = 24;
+
+        // Test 1: Successful leave
+        Response response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", userId, clubId));
+        assertEquals(200, response.getStatusCode());
+        assertEquals("User successfully left the club.", response.jsonPath().getString("message"));
+
+        // Test 2: Not a member
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", userId, clubId));
+        assertEquals(400, response.getStatusCode());
+        assertEquals("User is not a member of this club.", response.jsonPath().getString("message"));
+
+        // Test 3: Invalid user ID
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", -1, clubId));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("User not found with id: -1", response.jsonPath().getString("message"));
+
+        // Test 4: Invalid club ID
+        response = RestAssured.given()
+                .when()
+                .put(String.format("/leaveClub/%d/%d", userId, -1));
+        assertEquals(404, response.getStatusCode());
+        assertEquals("Club not found with id: -1", response.jsonPath().getString("message"));
+    }
+
+    @Test
+    public void testUserDTOGettersAndSetters() {
+        // Create a UserDTO object
+        UserDTO userDTO = new UserDTO(1, "John Doe", "john.doe@example.com", "STUDENT");
+
+        // Verify initial values
+        assertEquals(1, userDTO.getUserId());
+        assertEquals("John Doe", userDTO.getName());
+        assertEquals("john.doe@example.com", userDTO.getEmail());
+        assertEquals("STUDENT", userDTO.getType());
+
+        // Update values using setters
+        userDTO.setUserId(2);
+        userDTO.setName("Jane Doe");
+        userDTO.setEmail("jane.doe@example.com");
+        userDTO.setType("STAFF");
+
+        // Verify updated values
+        assertEquals(2, userDTO.getUserId());
+        assertEquals("Jane Doe", userDTO.getName());
+        assertEquals("jane.doe@example.com", userDTO.getEmail());
+        assertEquals("STAFF", userDTO.getType());
+    }
+
 
 }
