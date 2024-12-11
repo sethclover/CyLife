@@ -20,7 +20,7 @@ import org.springframework.stereotype.Controller;
 @Controller // this is needed for this to be an endpoint to springboot
 @ServerEndpoint(value = "/joinClub/{clubId}/{name}") // this is Websocket url
 
-public class StudentJoinSocket {
+public class JoinClubController {
 
     // cannot autowire static directly (instead we do it by the below
     // method
@@ -44,7 +44,23 @@ public class StudentJoinSocket {
 
     private static Map<String, Map<Session, String>> clubSessionMap = new Hashtable<>();
 
-    private final Logger logger = LoggerFactory.getLogger(StudentJoinSocket.class);
+    private final Logger logger = LoggerFactory.getLogger(JoinClubController.class);
+
+    // Getters for the maps
+    public static Map<Session, String> getSessionNameMap() {
+        return sessionNameMap;
+    }
+    public static Map<String, Session> getNameSessionMap() {
+        return nameSessionMap;
+    }
+
+    // Setters for the maps
+    public static void setSessionNameMap(Map<Session, String> sessionNameMap) {
+        JoinClubController.sessionNameMap = sessionNameMap;
+    }
+    public static void setNameSessionMap(Map<String, Session> nameSessionMap) {
+        JoinClubController.nameSessionMap = nameSessionMap;
+    }
 
     @OnOpen
     public void onOpen(Session session, @PathParam("clubId") String clubId, @PathParam("name") String name)

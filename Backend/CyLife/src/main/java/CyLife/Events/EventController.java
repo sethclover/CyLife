@@ -35,10 +35,13 @@ public class EventController {
 
     @PostMapping(path = "/events")
     String createEvent(@RequestBody Event event) {
-        if (event == null)
+        if (event == null) {
             return failure;
-        eventRepository.save(event);
-        return success;
+        }
+        else {
+            eventRepository.save(event);
+            return success;
+        }
     }
 
     @PutMapping("/events/{id}")
@@ -70,7 +73,14 @@ public class EventController {
 
     @DeleteMapping(path = "/events/{id}")
     String deleteEvent(@PathVariable int id) {
-        eventRepository.deleteById(id);
-        return success;
+        // Check if the event exists
+        if (!eventRepository.existsById(id)) {
+            return failure;
+        }
+        else {
+            eventRepository.deleteById(id);
+            return success;
+        }
+        
     }
 }

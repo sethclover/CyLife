@@ -1,5 +1,6 @@
 package CyLife;
 
+import static CyLife.Websockets.chat.ChatSocket.sessionUserIdMap;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -74,4 +75,15 @@ public class ChatSocketTest {
 
         // No exceptions should occur; log should capture the error
     }
+
+    @Test
+    public void testOnOpen_InvalidUserId() throws IOException {
+        when(userRepository.existsById(1)).thenReturn(false);
+
+        chatSocket.onOpen(session, "1", "1");
+
+        // Ensure session is not added to the map and is closed
+        verify(session).close();
+    }
+
 }
