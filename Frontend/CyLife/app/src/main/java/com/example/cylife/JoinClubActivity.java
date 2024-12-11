@@ -45,8 +45,7 @@ public class JoinClubActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> {
-            Intent intent = new Intent(JoinClubActivity.this, EditClub.class);
-            startActivity(intent);
+            finish();
         });
 
         Bundle extras = getIntent().getExtras();
