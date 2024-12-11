@@ -56,6 +56,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
             Log.d("WelcomeActivityStudent", "User ID is null");
         }
 
+
         String serverUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + clubId + "/" + clubId;
 
         // Establish WebSocket connection and set listener
@@ -67,7 +68,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
         entButton = findViewById(R.id.ent_button);
         clubButton = findViewById(R.id.edit_club_button);
         logoutButton = findViewById(R.id.logout_button);
-
+        welcomeText = findViewById(R.id.welcomeMessage);
         recyclerView = findViewById(R.id.upcomingEventsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventList = new ArrayList<>();
@@ -135,6 +136,7 @@ public class WelcomeActivityClub extends AppCompatActivity implements WebSocketL
 
                         Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
                         Log.d("FetchUserDetails", "UserName: " + name);
+                        welcomeText.setText(name);
 
                         // Set up the chat button click listener
                         Button chatButton = findViewById(R.id.chatButton);

@@ -145,18 +145,17 @@ public class clubActivity extends AppCompatActivity {
 //        requestQueue.add(stringRequest);
 //    }
 
+    // Method to create a new club
     private void createClub() {
         String clubUrl = "http://coms-3090-065.class.las.iastate.edu:8080/clubs";
-        String userUrl = "http://coms-3090-065.class.las.iastate.edu:8080/signup";
-
         // Get values from EditTexts
         String clubName = etClubNameCreate.getText().toString();
         String email = etEmailCreate.getText().toString();
         String pass = etClubPass.getText().toString();
 
-        Log.d("Create Club Info", "clubName: " + clubName + ", email: " + email + ", Password: " + pass);
+        Log.d("Create Club Info", "clubName: " + clubName + ", email: " + email);
 
-        if (clubName.isEmpty() || email.isEmpty()) {
+        if (clubName.isEmpty() || email.isEmpty() || pass.isEmpty()) {
             Toast.makeText(getApplicationContext(), "All fields are required.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -169,35 +168,27 @@ public class clubActivity extends AppCompatActivity {
             clubData.put("password", pass);
         } catch (JSONException e) {
             e.printStackTrace();
+            return; // Exit if JSON creation fails
         }
 
-        // Prepare POST request data for the user
-        JSONObject userData = new JSONObject();
-        try {
-            userData.put("name" , clubName);
-            userData.put("email", email);
-            userData.put("password", pass);
-            userData.put("type", "CLUB"); // Optional: specify user role
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // Create Club request
         StringRequest clubRequest = new StringRequest(Request.Method.POST, clubUrl,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Club Created Successfully!", Toast.LENGTH_SHORT).show();
-
-                        // On successful club creation, create user
-                        createUser(userUrl, userData);
+                response -> {
+                    Log.d("Create Club", "Club Created Successfully: " + response);
+                    JSONObject userData = new JSONObject();
+                    try {
+                        userData.put("name", clubName);
+                        userData.put("email", email);
+                        userData.put("password", pass);
+                        userData.put("type", "CLUB");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        return;
                     }
+                    fetchUserId(email, pass);
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error creating club: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                error -> {
+                    logVolleyError("Error creating club", error);
+                    Toast.makeText(getApplicationContext(), "Error creating club.", Toast.LENGTH_SHORT).show();
                 }) {
             @Override
             public byte[] getBody() {
@@ -213,34 +204,94 @@ public class clubActivity extends AppCompatActivity {
         requestQueue.add(clubRequest);
     }
 
-    // Helper method to create a user
-    private void createUser(String url, JSONObject userData) {
-        StringRequest userRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
+    // Method to fetch the user ID
+    private void fetchUserId(String email, String pass) {
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/login";
+        JSONObject loginData = new JSONObject();
+        try {
+            loginData.put("email", email);
+            loginData.put("password", 123);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, url, loginData,
+                response -> {
+                    Log.d("Fetch UserId Response", response.toString());
+
+                    boolean success = response.optString("message").equals("Login successful");
+                    if (success) {
+                        try {
+                            int userId = Integer.parseInt(response.optString("userID"));
+                            fetchClubId("http://coms-3090-065.class.las.iastate.edu:8080/clubId/" + email, userId);
+                        } catch (NumberFormatException e) {
+                            Log.e("Fetch UserId", "Error parsing userID");
+                        }
+                    } else {
+                        Log.e("Fetch UserId", "Login failed: " + response.optString("message"));
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error creating user: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }) {
-            @Override
-            public byte[] getBody() {
-                return userData.toString().getBytes();
-            }
+                error -> {
+                    logVolleyError("Error fetching userID", error);
+                });
 
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-        };
-
-        requestQueue.add(userRequest);
+        requestQueue.add(loginRequest);
     }
+
+    // Method to fetch the club ID
+    private void fetchClubId(String url, int userId) {
+        StringRequest fetchClubIdRequest = new StringRequest(Request.Method.GET, url,
+                response -> {
+                    try {
+                        // Parse the response directly as an integer
+                        int clubId = Integer.parseInt(response);
+                        if (clubId != -1) {
+                            Log.d("Fetch Club ID", "Fetched clubId: " + clubId);
+                            joinClub(userId, clubId);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Invalid clubId received.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Error parsing clubId response.", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    logVolleyError("Error fetching clubId", error);
+                    Toast.makeText(getApplicationContext(), "Error fetching clubId.", Toast.LENGTH_SHORT).show();
+                });
+
+        requestQueue.add(fetchClubIdRequest);
+    }
+
+    // Method to join a club
+    private void joinClub(int userId, int clubId) {
+        String joinClubUrl = "http://coms-3090-065.class.las.iastate.edu:8080/joinClub/" + userId + "/" + clubId;
+
+        StringRequest joinClubRequest = new StringRequest(Request.Method.PUT, joinClubUrl,
+                response -> {
+                    Log.d("Join Club", "User joined club successfully: " + response);
+                    Toast.makeText(getApplicationContext(), "User joined club successfully!", Toast.LENGTH_SHORT).show();
+                },
+                error -> {
+                    logVolleyError("Error joining club", error);
+                    Toast.makeText(getApplicationContext(), "Error joining club.", Toast.LENGTH_SHORT).show();
+                });
+
+        requestQueue.add(joinClubRequest);
+    }
+
+    // Helper method to log Volley errors
+    private void logVolleyError(String tag, VolleyError error) {
+        if (error.networkResponse != null && error.networkResponse.data != null) {
+            String errorMsg = new String(error.networkResponse.data);
+            Log.e(tag, errorMsg);
+        } else {
+            Log.e(tag, "Unknown error occurred.");
+        }
+    }
+
 
 
     private void editClub() {
