@@ -212,14 +212,14 @@ public class clubActivity extends AppCompatActivity {
 
         requestQueue.add(clubRequest);
     }
-
-    // Helper method to create a user
     private void createUser(String url, JSONObject userData) {
+        String fetchClubIdUrl = "http://coms-3090-065.class.las.iastate.edu:8080/club/";
         StringRequest userRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(getApplicationContext(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
+                        fetchClubId(fetchClubIdUrl + clubName, email, joinClubUrl);
                     }
                 },
                 new Response.ErrorListener() {
@@ -240,6 +240,52 @@ public class clubActivity extends AppCompatActivity {
         };
 
         requestQueue.add(userRequest);
+    }
+    private void fetchClubId(String url, String email, String joinClubUrl) {
+        StringRequest fetchClubIdRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject responseJson = new JSONObject(response);
+                            int clubId = responseJson.getInt("clubId");
+                            Log.d("Fetch Club ID", "Fetched clubId: " + clubId);
+
+                            // Step 3: Join Club
+                            joinClub(joinClubUrl, email, clubId);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Error parsing clubId response.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Error fetching clubId: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        requestQueue.add(fetchClubIdRequest);
+    }
+    private void joinClub(String url, String email, int clubId) {
+        String joinClubEndpoint = url + email + "/" + clubId; // Construct URL with userID and clubID
+
+        StringRequest joinClubRequest = new StringRequest(Request.Method.POST, joinClubEndpoint,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getApplicationContext(), "User joined Club Successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Error joining club: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        requestQueue.add(joinClubRequest);
     }
 
 

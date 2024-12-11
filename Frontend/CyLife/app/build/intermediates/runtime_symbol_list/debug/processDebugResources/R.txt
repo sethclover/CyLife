@@ -3181,11 +3181,14 @@ int id cradle 0x7f080090
 int id createClubButton 0x7f080091
 int id createClubLabel 0x7f080092
 int id createClubTitle 0x7f080093
+int id createEventButton 0x7f080243
+int id createEventTitle 0x7f080244
 int id create_event_title 0x7f080094
 int id currentPasswordInput 0x7f080095
 int id custom 0x7f080096
 int id customPanel 0x7f080097
 int id cut 0x7f080098
+int id date 0x7f080245
 int id date_picker_actions 0x7f080099
 int id decelerate 0x7f08009a
 int id decelerateAndComplete 0x7f08009b
@@ -3245,10 +3248,14 @@ int id etDesc 0x7f0800d0
 int id etEmail 0x7f0800d1
 int id etEmailCreate 0x7f0800d2
 int id etEmailEdit 0x7f0800d3
+int id etEventName 0x7f080246
+int id etLocation 0x7f080247
 int id etName 0x7f0800d4
 int id etPasswordNew 0x7f0800d5
 int id etPasswordNewConfirm 0x7f0800d6
 int id etPasswordOld 0x7f0800d7
+int id etTime 0x7f080248
+int id eventCreationStatus 0x7f080249
 int id eventDateTextView 0x7f0800d8
 int id eventDescriptionTextView 0x7f0800d9
 int id eventDescription_input 0x7f0800da
@@ -3261,6 +3268,7 @@ int id event_description_input 0x7f0800e0
 int id event_name_edit 0x7f0800e1
 int id event_name_input 0x7f0800e2
 int id event_name_input2 0x7f0800e3
+int id exitButton 0x7f08024a
 int id exitUntilCollapsed 0x7f0800e4
 int id expand_activities_button 0x7f0800e5
 int id expanded_menu 0x7f0800e6
@@ -3321,6 +3329,10 @@ int id jumpToStart 0x7f08011c
 int id labelClubId 0x7f08011d
 int id labelClubName 0x7f08011e
 int id labelEmail 0x7f08011f
+int id labelEventId 0x7f08024b
+int id labelEventName 0x7f08024c
+int id labelLocation 0x7f08024d
+int id labelTime 0x7f08024e
 int id labeled 0x7f080120
 int id layout 0x7f080121
 int id left 0x7f080122
@@ -3364,6 +3376,7 @@ int id message_input 0x7f080147
 int id message_input_container 0x7f080148
 int id middle 0x7f080149
 int id mini 0x7f08014a
+int id month 0x7f08024f
 int id month_grid 0x7f08014b
 int id month_navigation_bar 0x7f08014c
 int id month_navigation_fragment_toggle 0x7f08014d
@@ -3476,6 +3489,7 @@ int id scrollIndicatorUp 0x7f0801b7
 int id scrollView 0x7f0801b8
 int id scrollView2 0x7f0801b9
 int id scrollView3 0x7f0801ba
+int id scrollView5 0x7f080250
 int id scrollable 0x7f0801bb
 int id searchBar 0x7f0801bc
 int id searchView 0x7f0801bd
@@ -3612,6 +3626,7 @@ int id with_icon 0x7f08023f
 int id withinBounds 0x7f080240
 int id wrap 0x7f080241
 int id wrap_content 0x7f080242
+int id year 0x7f080251
 int integer abc_config_activityDefaultDur 0x7f090000
 int integer abc_config_activityShortDur 0x7f090001
 int integer app_bar_elevation_anim_duration 0x7f090002
@@ -3730,6 +3745,7 @@ int layout activity_account 0x7f0b001c
 int layout activity_chat 0x7f0b001d
 int layout activity_chat_screen 0x7f0b001e
 int layout activity_club 0x7f0b001f
+int layout activity_club_create_event 0x7f0b0083
 int layout activity_club_request 0x7f0b0020
 int layout activity_edit_club 0x7f0b0021
 int layout activity_edit_user 0x7f0b0022
@@ -3767,6 +3783,7 @@ int layout ime_secondary_split_test_activity 0x7f0b0041
 int layout item_chat 0x7f0b0042
 int layout item_club_request 0x7f0b0043
 int layout item_event 0x7f0b0044
+int layout item_eventedit 0x7f0b0084
 int layout m3_alert_dialog 0x7f0b0045
 int layout m3_alert_dialog_actions 0x7f0b0046
 int layout m3_alert_dialog_title 0x7f0b0047
@@ -3827,6 +3844,7 @@ int layout notification_template_part_time 0x7f0b007d
 int layout select_dialog_item_material 0x7f0b007e
 int layout select_dialog_multichoice_material 0x7f0b007f
 int layout select_dialog_singlechoice_material 0x7f0b0080
+int layout spinner_list 0x7f0b0085
 int layout support_simple_spinner_dropdown_item 0x7f0b0081
 int layout user_item 0x7f0b0082
 int mipmap ic_launcher 0x7f0d0000
