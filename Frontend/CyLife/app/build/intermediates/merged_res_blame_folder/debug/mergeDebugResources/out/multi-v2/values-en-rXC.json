@@ -4,7 +4,7 @@
             "outputFile": "com.example.cylife.app-mergeDebugResources-30:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "/Users/dhvanimistry/.gradle/caches/transforms-4/5338fd149b5ef8af92d368526a392241/transformed/core-1.13.0/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "C:\\Users\\chwoo\\.gradle\\caches\\transforms-4\\5338fd149b5ef8af92d368526a392241\\transformed\\core-1.13.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/dhvanimistry/.gradle/caches/transforms-4/927ccc58c096e1df657771c577305e1a/transformed/appcompat-1.7.0/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "C:\\Users\\chwoo\\.gradle\\caches\\transforms-4\\927ccc58c096e1df657771c577305e1a\\transformed\\appcompat-1.7.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

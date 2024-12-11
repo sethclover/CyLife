@@ -290,7 +290,7 @@ public class clubActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-        private void deleteClub(String clubId) {
+    private void deleteClub(String clubId) {
         String url = "http://coms-3090-065.class.las.iastate.edu:8080/clubs/" + clubId;
 
         StringRequest deleteRequest = new StringRequest(

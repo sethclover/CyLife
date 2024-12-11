@@ -26,7 +26,6 @@
                 android:layout_width="371dp"
                 android:layout_height="408dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="0dp"
                 android:clipToPadding="false"
                 tools:listitem="@layout/item_event" />
 

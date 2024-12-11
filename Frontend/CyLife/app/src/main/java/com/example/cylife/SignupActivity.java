@@ -55,8 +55,9 @@ public class SignupActivity extends AppCompatActivity {
 
         loginButton.setOnClickListener(v -> {
             // Redirect to Login Activity
-            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+//            startActivity(intent);
+            finish();       // goes back to previous page
         });
     }
 
