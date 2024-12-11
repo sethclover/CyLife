@@ -1,9 +1,13 @@
 package CyLife;
 
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import CyLife.Clubs.Club;
 import CyLife.Clubs.ClubDTO;
+import CyLife.Clubs.ClubRequest;
+import CyLife.Users.User;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -13,6 +17,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
@@ -61,7 +68,7 @@ public class ClubControllerTest {
                 .post("/clubs");
 
         assertEquals(200, response.getStatusCode());
-        assertEquals("{\"message\":\"Success\"}", response.getBody().asString());
+        assertEquals("{\"message\":\"Club created and user associated.\"}", response.getBody().asString());
     }
 
     @Test
@@ -114,7 +121,7 @@ public class ClubControllerTest {
                 .when()
                 .post("/club-requests");
 
-        assertEquals(200, response.getStatusCode());
+        assertEquals(201, response.getStatusCode()); // Updated to 201
         assertEquals("{\"message\":\"Success\"}", response.getBody().asString());
     }
 
@@ -322,13 +329,178 @@ public class ClubControllerTest {
     }
 
     @Test
-    public void testEmptyConstructor() {
-        ClubDTO clubDTO = new ClubDTO(0, null, null, null);
-
-        assertEquals(0, clubDTO.getClubId());
-        assertNull(clubDTO.getClubName());
-        assertNull(clubDTO.getDescription());
-        assertNull(clubDTO.getClubEmail());
+    public void testClubConstructor() {
+        Club club = new Club("Chess Club", "A club for chess enthusiasts", "chess@club.com");
+        assertEquals("Chess Club", club.getClubName());
+        assertEquals("A club for chess enthusiasts", club.getDescription());
+        assertEquals("chess@club.com", club.getClubEmail());
     }
+
+    @Test
+    public void testSetAndGetUsers() {
+        Club club = new Club();
+        Set<User> users = new HashSet<>();
+        User user = new User();
+        users.add(user);
+        club.setUsers(users);
+        assertEquals(users, club.getUsers());
+    }
+
+    @Test
+    public void testEmptyConstructor() {
+        Club club = new Club();
+        assertNotNull(club);
+        assertNull(club.getClubName());
+        assertNull(club.getDescription());
+        assertNull(club.getClubEmail());
+    }
+
+    @Test
+    public void testAddUserToClub() {
+        Club club = new Club();
+        User user = new User();
+        Set<User> users = new HashSet<>();
+        users.add(user);
+        club.setUsers(users);
+        assertTrue(club.getUsers().contains(user));
+    }
+
+    @Test
+    public void testRemoveUserFromClub() {
+        Club club = new Club();
+        User user = new User();
+        Set<User> users = new HashSet<>();
+        users.add(user);
+        club.setUsers(users);
+        users.remove(user);
+        club.setUsers(users);
+        assertFalse(club.getUsers().contains(user));
+    }
+
+    @Test
+    public void testClubEquality() {
+        Club club1 = new Club("Chess Club", "For chess players", "chess@club.com");
+        Club club2 = new Club("Chess Club", "For chess players", "chess@club.com");
+        assertEquals(club1.getClubName(), club2.getClubName());
+        assertEquals(club1.getDescription(), club2.getDescription());
+        assertEquals(club1.getClubEmail(), club2.getClubEmail());
+    }
+
+    @Test
+    public void testSetAndGetRequestId() {
+        ClubRequest clubRequest = new ClubRequest();
+        clubRequest.setRequestId(101);
+        assertEquals(101, clubRequest.getRequestId());
+    }
+
+    @Test
+    public void testSetAndGetStudentId() {
+        ClubRequest clubRequest = new ClubRequest();
+        clubRequest.setStudentId(2001);
+        assertEquals(2001, clubRequest.getStudentId());
+    }
+
+    @Test
+    public void testSetAndGetStatus() {
+        ClubRequest clubRequest = new ClubRequest();
+        clubRequest.setStatus("PENDING");
+        assertEquals("PENDING", clubRequest.getStatus());
+    }
+
+    @Test
+    public void testFullClubRequestConstructor() {
+        ClubRequest clubRequest = new ClubRequest(1, "Drama Club", "For drama enthusiasts", "drama@club.com", "APPROVED");
+        assertEquals(1, clubRequest.getStudentId());
+        assertEquals("Drama Club", clubRequest.getClubName());
+        assertEquals("For drama enthusiasts", clubRequest.getDescription());
+        assertEquals("drama@club.com", clubRequest.getClubEmail());
+        assertEquals("APPROVED", clubRequest.getStatus());
+    }
+
+    @Test
+    public void testEmptyClubRequestConstructor() {
+        ClubRequest clubRequest = new ClubRequest();
+        assertNotNull(clubRequest);
+        assertEquals(0, clubRequest.getStudentId());
+        assertNull(clubRequest.getClubName());
+        assertNull(clubRequest.getDescription());
+        assertNull(clubRequest.getClubEmail());
+        assertNull(clubRequest.getStatus());
+    }
+
+    @Test
+    public void testGetClubByIdNotFound() {
+        Response response = RestAssured.given()
+                .when()
+                .get("/clubs/99999"); // Non-existent ID
+
+        assertEquals(404, response.getStatusCode()); // Expecting 404 Not Found
+    }
+
+    @Test
+    public void testDeleteClubNotFound() {
+        Response response = RestAssured.given()
+                .when()
+                .delete("/clubs/99999"); // Non-existent ID
+
+        assertEquals(404, response.getStatusCode()); // Expecting 404 Not Found
+        assertEquals("{\"message\": \"Club not found.\"}", response.getBody().asString());
+    }
+
+    @Test
+    public void testUpdateClubNotFound() {
+        String updateJson = "{ \"clubName\": \"Non-existent Club\" }";
+
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(updateJson)
+                .when()
+                .put("/clubs/99999"); // Non-existent ID
+
+        assertEquals(404, response.getStatusCode());
+        assertEquals("{\"message\": \"Club not found.\"}", response.getBody().asString());
+    }
+
+    @Test
+    public void testCreateClubWithLongDescription() {
+        String longDescription = "A".repeat(5001); // Exceeds the limit of 5000 characters
+        String clubJson = "{ \"clubName\": \"Test Club\", \"description\": \"" + longDescription + "\", \"clubEmail\": \"test@club.com\" }";
+
+        Response response = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(clubJson)
+                .when()
+                .post("/clubs");
+
+        assertEquals(400, response.getStatusCode()); // Expecting 400 Bad Request
+        assertEquals("{ \"message\": \"Description is too long.\" }", response.getBody().asString());
+    }
+
+    @Test
+    public void testUpdateClubRequestInvalidStatus() {
+        // Create a valid ClubRequest first
+        String clubRequestJson = "{ \"studentId\": 1, \"clubName\": \"Test Club\", \"description\": \"Test\", \"clubEmail\": \"test@club.com\" }";
+
+        Response createResponse = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .body(clubRequestJson)
+                .when()
+                .post("/club-requests");
+
+        assertEquals(201, createResponse.getStatusCode()); // Ensure creation succeeds
+
+        int validId = createResponse.jsonPath().getInt("id"); // Extract ID from the response
+
+        // Test invalid status update
+        Response response = RestAssured.given()
+                .param("status", "INVALID_STATUS")
+                .when()
+                .put("/club-requests/" + validId + "/status");
+
+        assertEquals(400, response.getStatusCode()); // Expecting 400 Bad Request
+        assertEquals("{\"message\": \"Invalid status update.\"}", response.getBody().asString());
+    }
+
+
 
 }
