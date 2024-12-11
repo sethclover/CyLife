@@ -69,6 +69,11 @@ public class ClubController {
         return ResponseEntity.ok("{\"message\":\"Club created and user associated.\"}");
     }
 
+    @GetMapping(path = "/clubId/{clubEmail}")
+    public Integer getClubId(@PathVariable String clubEmail) {
+        return clubRepository.getClubId(clubEmail);
+    }
+
 
     @PutMapping("/clubs/{id}")
     public ResponseEntity<Object> updateClub(@PathVariable int id, @RequestBody Club request) {
