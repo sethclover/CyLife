@@ -56,9 +56,6 @@ public class WelcomeActivityStudent extends AppCompatActivity {
         eventAdapter = new EventAdapter(eventList);
         upcomingEventsRecyclerView.setAdapter(eventAdapter);
 
-
-        fetchEvents("http://coms-3090-065.class.las.iastate.edu:8080/upcomingEvents");
-
         Button viewEventsButton = findViewById(R.id.viewEventsButton);
         viewEventsButton.setOnClickListener(v -> startActivity(new Intent(WelcomeActivityStudent.this, ShowEvents.class)));
 
@@ -214,6 +211,7 @@ public class WelcomeActivityStudent extends AppCompatActivity {
 
                         Log.d("FetchUserDetails", "Retrieved Club ID: " + clubId);
                         Log.d("FetchUserDetails", "UserName: " + name);
+                         fetchEvents(userId);
 
                         // Update the welcome message
                         welcomeMessage.setText("Welcome " + name);
@@ -243,7 +241,8 @@ public class WelcomeActivityStudent extends AppCompatActivity {
     }
 
 
-    private void fetchEvents(String url) {
+    private void fetchEvents(int userId) {
+        String url = "http://coms-3090-065.class.las.iastate.edu:8080/upcomingEvents/" + userId;
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
