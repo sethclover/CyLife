@@ -1,8 +1,11 @@
 
 package CyLife.Clubs;
 
-import CyLife.Users.User;
+
 import java.util.List;
+
+import CyLife.Users.User;
+import CyLife.Users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +20,9 @@ public class ClubController {
     ClubRepository clubRepository;
     @Autowired
     ClubRequestRepository clubRequestRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     private String success = "{\"message\":\"Success\"}";
     private String failure = "{\"message\":\"Failure\"}";
@@ -41,9 +47,28 @@ public class ClubController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("{ \"message\": \"Description is too long.\" }");
         }
+
+        // Save the club first
         clubRepository.save(club);
-        return ResponseEntity.ok("{\"message\":\"Success\"}");
+
+        // Create a user of type CLUB
+        User clubUser = new User(
+                club.getClubName(),
+                club.getClubEmail(),
+                "123", // Or generate a secure one
+                User.UserType.CLUB
+        );
+
+        // Save the user
+        User savedUser = userRepository.save(clubUser);
+
+        // Add the user to the club
+        club.getUsers().add(savedUser);
+        clubRepository.save(club); // Update the club with the new user
+
+        return ResponseEntity.ok("{\"message\":\"Club created and user associated.\"}");
     }
+
 
 
     @PutMapping("/clubs/{id}")
@@ -77,16 +102,6 @@ public class ClubController {
         }
         clubRepository.deleteById(id);
         return ResponseEntity.ok(success);
-    }
-
-    @GetMapping(path = "/clubMembers/{clubId}")
-    public List<Integer> getClubMembers(@PathVariable int clubId) {
-        return clubRepository.clubMembers(clubId);
-    }
-
-    @GetMapping(path = "/clubId/{clubEmail}")
-    public Integer getClubId(@PathVariable String clubEmail) {
-        return clubRepository.getClubId(clubEmail);
     }
 
     @GetMapping(path = "/club-requests")
