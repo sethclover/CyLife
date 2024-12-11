@@ -1,8 +1,8 @@
 
 package CyLife.Clubs;
 
+import CyLife.Users.User;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -77,6 +77,11 @@ public class ClubController {
         }
         clubRepository.deleteById(id);
         return ResponseEntity.ok(success);
+    }
+
+    @GetMapping(path = "/clubMembers/{clubId}")
+    public List<Integer> getClubMembers(@PathVariable int clubId) {
+        return clubRepository.clubMembers(clubId);
     }
 
     @GetMapping(path = "/club-requests")
