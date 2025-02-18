@@ -1,0 +1,249 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > StudentJoinSocket</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">CyLife.Websockets.joinClub</a>
+</div>
+
+<h1>Coverage Summary for Class: StudentJoinSocket (CyLife.Websockets.joinClub)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StudentJoinSocket</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (3/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14%
+  </span>
+  <span class="absValue">
+    (6/43)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package CyLife.Websockets.joinClub;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Hashtable;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;
+&nbsp;import jakarta.websocket.OnClose;
+&nbsp;import jakarta.websocket.OnError;
+&nbsp;import jakarta.websocket.OnOpen;
+&nbsp;import jakarta.websocket.Session;
+&nbsp;import jakarta.websocket.server.PathParam;
+&nbsp;import jakarta.websocket.server.ServerEndpoint;
+&nbsp;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Controller;
+&nbsp;
+&nbsp;@Controller // this is needed for this to be an endpoint to springboot
+&nbsp;@ServerEndpoint(value = &quot;/joinClub/{clubId}/{name}&quot;) // this is Websocket url
+&nbsp;
+<b class="fc">&nbsp;public class StudentJoinSocket {</b>
+&nbsp;
+&nbsp;    // cannot autowire static directly (instead we do it by the below
+&nbsp;    // method
+&nbsp;    private static JoinClubMessageRepository msgRepo;
+&nbsp;
+&nbsp;    /*
+&nbsp;     * Grabs the MessageRepository singleton from the Spring Application
+&nbsp;     * Context. This works because of the @Controller annotation on this
+&nbsp;     * class and because the variable is declared as static.
+&nbsp;     * There are other ways to set this. However, this approach is
+&nbsp;     * easiest.
+&nbsp;     */
+&nbsp;    @Autowired
+&nbsp;    public void setMessageRepository(JoinClubMessageRepository repo) {
+<b class="fc">&nbsp;        msgRepo = repo; // we are setting the static variable</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Store all socket session and their corresponding username.
+<b class="fc">&nbsp;    private static Map&lt;Session, String&gt; sessionNameMap = new Hashtable&lt;&gt;();</b>
+<b class="fc">&nbsp;    private static Map&lt;String, Session&gt; nameSessionMap = new Hashtable&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;    private static Map&lt;String, Map&lt;Session, String&gt;&gt; clubSessionMap = new Hashtable&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;    private final Logger logger = LoggerFactory.getLogger(StudentJoinSocket.class);</b>
+&nbsp;
+&nbsp;    @OnOpen
+&nbsp;    public void onOpen(Session session, @PathParam(&quot;clubId&quot;) String clubId, @PathParam(&quot;name&quot;) String name)
+&nbsp;            throws IOException {
+<b class="nc">&nbsp;        logger.info(&quot;Entered into Open for club: &quot; + clubId);</b>
+&nbsp;
+&nbsp;        // Ensure the map for this clubId exists
+<b class="nc">&nbsp;        clubSessionMap.computeIfAbsent(clubId, k -&gt; new Hashtable&lt;&gt;());</b>
+&nbsp;
+&nbsp;        // Store the session for this clubId
+<b class="nc">&nbsp;        clubSessionMap.get(clubId).put(session, name);</b>
+&nbsp;
+&nbsp;        // store connecting user information
+<b class="nc">&nbsp;        sessionNameMap.put(session, name);</b>
+<b class="nc">&nbsp;        nameSessionMap.put(name, session);</b>
+&nbsp;
+<b class="nc">&nbsp;        if (name.equals(clubId)) {</b>
+<b class="nc">&nbsp;            logger.info(&quot;Getting chat history&quot;);</b>
+<b class="nc">&nbsp;            String chatHistory = getChatHistory(clubId);</b>
+<b class="nc">&nbsp;            session.getBasicRemote().sendText(chatHistory);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        String message = name + &quot; has joined the club!&quot;;</b>
+<b class="nc">&nbsp;        broadcastToClub(clubId, message);</b>
+&nbsp;
+&nbsp;        // Saving chat history to repository
+<b class="nc">&nbsp;        JoinClubMessage msg = new JoinClubMessage(clubId, name, message);</b>
+<b class="nc">&nbsp;        msgRepo.save(msg);</b>
+<b class="nc">&nbsp;        logger.info(&quot;Message saved to repository: &quot; + message);</b>
+&nbsp;
+<b class="nc">&nbsp;        session.close();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @OnClose
+&nbsp;    public void onClose(Session session) throws IOException {
+<b class="nc">&nbsp;        logger.info(&quot;Entered into Close&quot;);</b>
+&nbsp;
+&nbsp;        // remove the user connection information
+<b class="nc">&nbsp;        String username = sessionNameMap.get(session);</b>
+<b class="nc">&nbsp;        sessionNameMap.remove(session);</b>
+<b class="nc">&nbsp;        nameSessionMap.remove(username);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @OnError
+&nbsp;    public void onError(Session session, Throwable throwable) {
+&nbsp;        // Do error handling here
+<b class="nc">&nbsp;        logger.info(&quot;Entered into Error&quot;);</b>
+<b class="nc">&nbsp;        throwable.printStackTrace();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void broadcastToClub(String clubId, String message) {
+<b class="nc">&nbsp;        Map&lt;Session, String&gt; sessionNameMap = clubSessionMap.get(clubId);</b>
+&nbsp;
+<b class="nc">&nbsp;        if (sessionNameMap != null) {</b>
+<b class="nc">&nbsp;            sessionNameMap.forEach((session, username) -&gt; {</b>
+&nbsp;                try {
+<b class="nc">&nbsp;                    session.getBasicRemote().sendText(message);</b>
+<b class="nc">&nbsp;                } catch (IOException e) {</b>
+<b class="nc">&nbsp;                    logger.error(&quot;Exception: &quot; + e.getMessage(), e);</b>
+&nbsp;                }
+&nbsp;            });
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    // Gets the Chat history from the repository
+&nbsp;    private String getChatHistory(String clubId) {
+<b class="nc">&nbsp;        List&lt;JoinClubMessage&gt; messages = msgRepo.findByClubId(clubId);</b>
+&nbsp;
+<b class="nc">&nbsp;        if (messages.isEmpty()) {</b>
+<b class="nc">&nbsp;            logger.info(&quot;No chat history found.&quot;);</b>
+<b class="nc">&nbsp;            return &quot;&quot;;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Convert the list to a single string for printing
+<b class="nc">&nbsp;        StringBuilder sb = new StringBuilder();</b>
+<b class="nc">&nbsp;        for (JoinClubMessage message : messages) {</b>
+<b class="nc">&nbsp;            sb.append(message.getContent()).append(&quot;\n&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        String history = sb.toString();</b>
+<b class="nc">&nbsp;        logger.info(&quot;Chat History:\n&quot; + history); // Log the chat history</b>
+<b class="nc">&nbsp;        return history;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-04 19:12</div>
+</div>
+</body>
+</html>

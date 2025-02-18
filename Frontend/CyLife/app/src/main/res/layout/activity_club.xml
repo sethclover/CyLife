@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/blue"
+    tools:context=".clubActivity">
+
+<!--     Title -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="52dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/screenTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club Management"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_red"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Create Club Section -->
+    <TextView
+        android:id="@+id/createClubLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Club"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_red"
+        app:layout_constraintTop_toBottomOf="@id/screenTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etClubNameCreate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club Name"
+        android:background="@drawable/event_item_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/createClubLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etEmailCreate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club Email"
+        android:background="@drawable/event_item_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etClubNameCreate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etClubPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club Password"
+        android:background="@drawable/event_item_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etEmailCreate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/createClubButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Create Club"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/etClubPass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Edit Club Section -->
+    <TextView
+        android:id="@+id/editClubLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Club"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_red"
+        app:layout_constraintTop_toBottomOf="@id/createClubButton"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:id="@+id/etClubIdEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club ID"
+        android:background="@drawable/event_item_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editClubLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etClubNameEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter New Club Name"
+        android:background="@drawable/event_item_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etClubIdEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etEmailEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter New Club Email"
+        android:background="@drawable/event_item_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etClubNameEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/editClubButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Club"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/etEmailEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Delete Club Section -->
+    <TextView
+        android:id="@+id/deleteClubLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Club"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_red"
+        app:layout_constraintTop_toBottomOf="@id/editClubButton"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:id="@+id/etClubIdD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Club ID"
+        android:background="@drawable/event_item_background"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/deleteClubLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/DC"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Delete Club"
+        android:background="@color/dark_red"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/etClubIdD"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

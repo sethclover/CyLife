@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="WELCOME CYCLONES"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_red"
+                android:paddingBottom="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp" />
+
+        <!-- Create Event Section -->
+        <TextView
+                android:id="@+id/create_event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Event"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_text"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp" />
+
+        <EditText
+                android:id="@+id/event_name_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Event Name"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/create_event_title"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+        <EditText
+                android:id="@+id/location_time_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Location and Time"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@android:drawable/edit_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/event_name_input"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+
+        <EditText
+                android:id="@+id/event_description_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:textSize="16sp"
+                android:background="@android:drawable/edit_text"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/location_time_input"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+        <Button
+                android:id="@+id/CE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Create Event"
+                tools:ignore="MissingConstraints"
+                android:textSize="18sp"
+                android:background="#B3FFFFFF"
+                android:textColor="@color/black"
+                android:padding="16dp"
+                android:textColorLink="#3F51B5"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.673"
+                app:layout_constraintTop_toBottomOf="@+id/event_description_input"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp" />
+
+        <!-- Edit Event Section -->
+        <TextView
+                android:id="@+id/eventId_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Event"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CE"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp" />
+
+        <EditText
+                android:id="@+id/event_name_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Event Name to be edited"
+                android:textSize="24sp"
+                android:background="@android:drawable/edit_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventId_input"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+        <!-- Get Event Section -->
+
+        <EditText
+                android:id="@+id/eventDescription_input"
+                android:layout_width="match_parent"
+                android:hint="Event Description to be Edited"
+                android:textSize="24sp"
+                android:background="@android:drawable/edit_text"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/event_name_edit"
+                app:layout_constraintBottom_toTopOf="@+id/EE"
+                android:layout_marginTop="8dp" />
+
+        <Button
+                android:id="@+id/EE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Edit Event"
+                tools:ignore="MissingConstraints"
+                android:textSize="18sp"
+                android:background="#B3FFFFFF"
+                android:textColor="@color/black"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/eventDescription_input"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+        <TextView
+                android:id="@+id/get_event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get Event"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EE"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp" />
+
+        <Button
+                android:id="@+id/GE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Get Event"
+                tools:ignore="MissingConstraints"
+                android:textSize="18sp"
+                android:background="#B3FFFFFF"
+                android:textColor="@color/black"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/get_event_title"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:id="@+id/eventListTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:padding="16dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/GE"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+
+
+        <!-- Delete Event Section -->
+        <TextView
+                android:id="@+id/delete_event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete Event"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/GE"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                tools:ignore="NotSibling" />
+
+        <EditText
+                android:id="@+id/event_name_input2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Event Id to be deleted"
+                android:textSize="24sp"
+                android:background="@android:drawable/edit_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/delete_event_title"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+        <Button
+                android:id="@+id/DE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Delete Event"
+                tools:ignore="MissingConstraints"
+                android:textSize="18sp"
+                android:background="#B3FFFFFF"
+                android:textColor="@color/black"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/event_name_input2"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp" />
+
+        <!-- Back Button -->
+        <Button
+                android:id="@+id/logout_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textColor="@color/white"
+                android:background="@null"
+                app:layout_constraintTop_toBottomOf="@+id/DE"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
