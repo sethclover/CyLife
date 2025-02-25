@@ -1,93 +1,104 @@
-# 4_mahdi_2
+# CyLife
 
+CyLife is a centralized platform for managing student organizations, providing features such as club directories, role management, event scheduling, and real-time chat. Built using Java Spring Boot for the backend, the platform enables students to discover, join, and engage with clubs efficiently.
 
+## Features
 
-## Getting started
+- **Club Directory:** Browse and search for student organizations.
+- **Member & Role Management:** Assign roles and manage club members.
+- **Event Scheduling:** Create, update, and view upcoming club events.
+- **Real-time Notifications:** Receive alerts when someone joins a club or an event is created.
+- **WebSocket-based Chat:** Engage in real-time discussions within clubs.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Tech Stack
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### Backend
 
-## Add your files
+- **Spring Boot:** Handles API endpoints and business logic.
+- **WebSockets:** Enables real-time chat and notifications.
+- **Spring Security:** Manages authentication and authorization.
+- **JPA (Hibernate):** Interacts with the database.
+- **MySQL:** Stores user, club, and event data.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Setup Instructions
 
+### Prerequisites
+
+- Java 17+
+- MySQL Server
+- Maven
+
+### Installation
+
+Clone the repository:
+```sh
+git clone https://github.com/yourusername/cylife.git
+cd cylife
 ```
-cd existing_repo
-git remote add origin https://git.las.iastate.edu/cs309/2024fall/4_mahdi_2.git
-git branch -M main
-git push -uf origin main
+
+Configure the database in `application.properties`:
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/cylife
+spring.datasource.username=root
+spring.datasource.password=yourpassword
 ```
 
-## Integrate with your tools
+Build and run the application:
+```sh
+mvn spring-boot:run
+```
 
-- [ ] [Set up project integrations](https://git.las.iastate.edu/cs309/2024fall/4_mahdi_2/-/settings/integrations)
+## API Endpoints
 
-## Collaborate with your team
+### Authentication
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- `POST /api/auth/register` - Register a new user.
+- `POST /api/auth/login` - Authenticate and retrieve a JWT.
 
-## Test and Deploy
+### Clubs
 
-Use the built-in continuous integration in GitLab.
+- `GET /api/clubs` - Fetch all clubs.
+- `GET /api/clubs/{id}` - Get details of a specific club.
+- `POST /api/clubs` - Create a new club (admin only).
+- `PUT /api/clubs/{id}` - Update club details.
+- `DELETE /api/clubs/{id}` - Delete a club.
+- `GET /api/clubId/{clubEmail}` - Get club ID by email.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Club Requests
 
-***
+- `GET /api/club-requests` - Get all club requests.
+- `POST /api/club-requests` - Request to create a new club.
+- `DELETE /api/club-requests/{id}` - Delete a club request.
+- `PUT /api/club-requests/{id}/status?status={APPROVED|DECLINED}` - Update the status of a club request.
 
-# Editing this README
+### Events
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- `GET /api/events` - Get all events.
+- `GET /api/upcomingEvents/{userId}` - Get upcoming events for a user within the next 7 days.
+- `GET /api/events/{id}` - Get details of a specific event.
+- `POST /api/events` - Create an event for a club.
+- `PUT /api/events/{id}` - Update an event.
+- `DELETE /api/events/{id}` - Delete an event.
 
-## Suggestions for a good README
+### Users
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- `GET /api/users` - Get all users.
+- `GET /api/user/{id}` - Get details of a specific user.
+- `PUT /api/update/byId/{id}` - Update user details.
+- `DELETE /api/delete/{id}` - Delete a user.
+- `POST /api/signup` - Register a new user.
+- `POST /api/login` - Authenticate a user.
+- `PUT /api/joinClub/{studentId}/{clubId}` - User joins a club.
+- `GET /api/user/{userId}/clubs` - Get clubs a user is part of.
+- `PUT /api/leaveClub/{userId}/{clubId}` - User leaves a club.
+- `PUT /api/user/{id}/changePassword` - Change user password.
+- `GET /api/checkMembershipStatus/{userId}/{clubId}` - Check if a user is a member of a club.
 
-## Name
-Choose a self-explaining name for your project.
+### WebSockets
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+- `/ws/events` - Notify members when a new event is created.
+- `/ws/chat/{clubId}` - Club-specific real-time chat.
+- `GET /api/chat/active` - Retrieve active chat sessions.
+- `GET /api/chat/history/{clubId}` - Retrieve chat history for a specific club.
+- `/ws/joinClub/{clubId}/{name}` - WebSocket endpoint for when a user joins a club, broadcasting a message to members.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
